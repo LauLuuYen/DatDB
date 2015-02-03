@@ -28,7 +28,7 @@ class Login
 		return true;
 	}
 	
-	private function authenticate()
+	public function authenticate()
 	{
 	    $this->conn = connectDB();
 	    
