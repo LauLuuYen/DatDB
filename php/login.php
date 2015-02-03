@@ -6,9 +6,9 @@
     error_reporting(E_ALL & ~E_NOTICE);
     //nclude 'include/config.php';
   
-  function result(success, message) {
-    $response['success'] = success;
-    $response['message'] = message;
+  function result($success, $message) {
+    $response['success'] = $success;
+    $response['message'] = $message;
     echo $response;
   }
   
