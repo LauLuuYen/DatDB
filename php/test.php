@@ -7,7 +7,7 @@
     error_reporting(E_ALL & ~E_NOTICE);
 
     echo "step1";
-    include 'includes/config.php';
+    include 'include/config.php';
     
     echo "step2";
 
