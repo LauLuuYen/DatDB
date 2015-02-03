@@ -14,7 +14,6 @@
           die(var_dump($e));
       }
       
-      echo "success";
       return $conn;
   }
 
