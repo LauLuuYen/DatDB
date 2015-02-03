@@ -49,7 +49,7 @@ class Login
 		//echo $user['name'];
 		
 		$password = md5($this->password);
-		echo $password;
+		//echo $password;
 		if($password != $user['password'])
 		{
 			result(false, "Invalid email or password combination");
