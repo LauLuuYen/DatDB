@@ -63,6 +63,17 @@ class Login
 
 }
 
-$login = new Login('zoolander@mayfair.com', 'abc123');
-$login->authenticate();
+if(!empty($_POST))
+{
+	$password = $_POST['password'];
+	$email = $_POST['email'];
+	$login = new Login($email, $password);
+	$login->authenticate();
+}
+else
+{
+	result(false, "Permission Denied");
+}
+
+
 ?>
