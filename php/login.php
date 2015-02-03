@@ -9,7 +9,7 @@
   function result($success, $message) {
     $response['success'] = $success;
     $response['message'] = $message;
-    echo $response;
+    echo json_encode($response);
   }
   
   result(true, "hi tan");
