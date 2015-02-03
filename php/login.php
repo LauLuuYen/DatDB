@@ -45,7 +45,7 @@ class Login
 		
 		//echo json_encode($registrants);
 		$user = $registrants[0];
-		echo $user.name;
+		echo $user['name'];
 		
 	}
 	
