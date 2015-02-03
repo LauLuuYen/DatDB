@@ -44,8 +44,20 @@ class Login
 		}
 		
 		//echo json_encode($registrants);
+		
 		$user = $registrants[0];
-		echo $user['name'];
+		//echo $user['name'];
+		
+		$password = md5($this->password);
+		
+		if($password != $user['password'])
+		{
+			result(false, "Invalid email or password combination");
+		}
+		else
+		{
+			result(true, "Success");
+		}
 		
 	}
 	
