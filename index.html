@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+	  <meta charset="utf-8">
+	  <title>The HTML5 Herald</title>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>
+		
+			function login(u,p)
+			{
+				$.ajax({
+						type: "POST",
+						url:"http://lauluuyen.azurewebsites.net/php/login.php",
+						//crossDomain: true,
+						data: {email: u, password: p},
+						dataType: 'json',
+						async: true,
+						timeout: 10000,
+
+						success: function (result)
+						{
+							//alert("success");
+							alert("success: " + result.success + "," + result.message);
+						},
+
+						error: function(xhr, status, error)
+						{
+							alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+						}
+					}
+				);
+			}
+		</script>
+	</head>
+
+	<body>
+	  <button type="button" onclick="login('zoolander@mayfair.com', 'abc123')">Login</button>
+	</body>
+	
+</html>
