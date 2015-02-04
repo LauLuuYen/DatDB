@@ -16,9 +16,22 @@ if (!empty($_FILES["myFile"])) {
         exit;
     }
 
-    $response = "name: " . $myFile["name"] .", size: " . $myFile["size"] . ", type: " .$myFile["type"];
-    echo $response;
+    //$response = "name: " . $myFile["name"] .", size: " . $myFile["size"] . ", type: " .$myFile["type"];
+   // echo $response;
+    $xml = simplexml_load_file($myFile['tmp_name']);
     
+    libxml_use_internal_errors(true);
+$sxe = simplexml_load_string($xml);
+if (!$sxe) {
+    echo "Failed loading XML\n";
+    foreach(libxml_get_errors() as $error) {
+        echo "\t", $error->message;
+    }
+} else {
+    echo "Good XML";
+}
+
+
 } else {
     echo "nothing";   
 }
