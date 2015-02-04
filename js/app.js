@@ -100,7 +100,7 @@ app.controller('Home', function ($scope, master) {
                     /*
                     * workaround for crome browser // delete the fakepath
                     */
-                   	alert("uploaded");
+                   	alert("uploaded: " + data);
 
 /*
                     if(navigator.userAgent.indexOf('Chrome')) {
