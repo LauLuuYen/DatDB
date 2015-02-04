@@ -19,10 +19,10 @@
 
   uploading report
   
-  <form ng-submit="send()">
+  <form ng-submit="return send(this)">
   	
-  	//<input type="file" accept=".xlsx,.xls,.txt">
-  	<input type="file" accept="image/*">
+  	<!-- input type="file" accept=".xlsx,.xls,.txt"> -->
+  	<input id="uploadfile" type="file" accept="image/*">
   	<input type="submit">
   	
   </form>
