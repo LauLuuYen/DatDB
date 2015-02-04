@@ -20,8 +20,12 @@ if (!empty($_FILES["myFile"])) {
    // echo $response;
     $xml = simplexml_load_file($myFile['tmp_name']);
     
-    echo json_encode($xml);
-
+    if ($xml === FALSE) {
+        
+        echo "shit xml";
+    } else {
+        echo json_encode($xml);
+    }
 } else {
     echo "nothing";   
 }
