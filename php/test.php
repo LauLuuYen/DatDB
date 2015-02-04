@@ -16,13 +16,7 @@ if (!empty($_FILES["myFile"])) {
         exit;
     }
 
-    if (!$success) { 
-        echo "<p>Unable to save file.</p>";
-        exit;
-    } else {
-        
-        echo "Uploaddededed!";
-    }
+    echo $_FILES["myFile"]["name"];
 } else {
     echo "nothing";   
 }
