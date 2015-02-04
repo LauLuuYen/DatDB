@@ -81,8 +81,8 @@ app.controller('Home', function ($scope, master) {
                //Check file size 
                var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
                alert(new FormData($("#uploadfile")[0]));
-               console.log($("#uploadfile")[0]);
-               
+               console.log(new FormData($("#uploadfile")[0]));
+          
 		break;
 
             default:
