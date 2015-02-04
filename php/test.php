@@ -12,11 +12,11 @@ if (!empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];
  
     if ($myFile["error"] !== UPLOAD_ERR_OK) {
-        echo "<p>An error occurred.</p>";
+        echo "An error occurred uploading.";
         exit;
     }
 
-    echo $_FILES["myFile"]["name"];
+    $response = "name: " . $_FILES["myFile"]["name"] .", size: " . $_FILES["myFile"]["size"] . ", type: " . $_FILES["myFile"]["type"];
 } else {
     echo "nothing";   
 }
