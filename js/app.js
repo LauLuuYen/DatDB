@@ -36,7 +36,8 @@ app.controller('Login', function ($scope, master) {
             success: function (result)
             {
                 //alert("success");
-                alert("success: " + result.success + "," + result.message);
+                //alert("success: " + result.success + "," + result.message);
+                window.location.href="home/index.html";
             },
 
             error: function(xhr, status, error)
@@ -47,5 +48,13 @@ app.controller('Login', function ($scope, master) {
         );
     }
 
-	
+});
+
+
+/*
+*   Home Controller
+*/
+app.controller('Home', function ($scope, master) {
+
+
 });
