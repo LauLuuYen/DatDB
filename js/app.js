@@ -56,7 +56,10 @@ app.controller('Login', function ($scope, master) {
 */
 app.controller('Home', function ($scope, master) {
     $scope.send = function() {
-    	alert("test");
+    	
+    	var filename = $("#uploadfile").val();
+    	
+    	alert("test" + filename);
     }
 
 });
