@@ -113,9 +113,10 @@ app.controller('Home', function ($scope, master) {
                     $("*setIdOfImageInHiddenInput*").val(data.logo_id);
                     */
                 },
-                error: errorHandler = function() {
-                    alert("Något gick fel");
-                },
+            error: function(xhr, status, error)
+            {
+	          console.log("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+            },
                 // Form data
                 data: formData,
                 //Options to tell JQuery not to process data or worry about content-type
