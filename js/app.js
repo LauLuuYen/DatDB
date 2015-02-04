@@ -80,9 +80,50 @@ app.controller('Home', function ($scope, master) {
                
                //Check file size 
                var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
-               alert(new FormData($("#uploadfile")[0]));
-               console.log(new FormData($("#uploadfile")[0]));
-          
+               var formData = new FormData($("#uploadfile")[0]);
+
+               
+                $.ajax({
+                url: 'http://lauluuyen.azurewebsites.net/php/test.php',  //server script to process data
+                type: 'POST',
+                xhr: function() {  // custom xhr
+                    myXhr = $.ajaxSettings.xhr();
+                    console.log("uploading...");
+                    if(myXhr.upload){ // if upload property exists
+                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // progressbar
+                    }
+                    return myXhr;
+                },
+                //Ajax events
+                success: completeHandler = function(data) {
+                    /*
+                    * workaround for crome browser // delete the fakepath
+                    */
+                   	alert("uploaded");
+
+/*
+                    if(navigator.userAgent.indexOf('Chrome')) {
+                        var catchFile = $(":file").val().replace(/C:\\fakepath\\/i, '');
+                    }
+                    else {
+                        var catchFile = $(":file").val();
+                    }
+                    var writeFile = $(":file");
+                    writeFile.html(writer(catchFile));
+                    $("*setIdOfImageInHiddenInput*").val(data.logo_id);
+                    */
+                },
+                error: errorHandler = function() {
+                    alert("Något gick fel");
+                },
+                // Form data
+                data: formData,
+                //Options to tell JQuery not to process data or worry about content-type
+                cache: false,
+                contentType: false,
+                processData: false
+            }, 'json');
+            
 		break;
 
             default:
