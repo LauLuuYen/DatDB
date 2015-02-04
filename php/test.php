@@ -20,17 +20,7 @@ if (!empty($_FILES["myFile"])) {
    // echo $response;
     $xml = simplexml_load_file($myFile['tmp_name']);
     
-    libxml_use_internal_errors(true);
-$sxe = simplexml_load_string($myFile['tmp_name']);
-if (!$sxe) {
-    echo "Failed loading XML\n";
-    foreach(libxml_get_errors() as $error) {
-        echo "\t", $error->message;
-    }
-} else {
-    echo "Good XML";
-}
-
+    echo $xml;
 
 } else {
     echo "nothing";   
