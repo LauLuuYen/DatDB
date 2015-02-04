@@ -15,6 +15,8 @@ if (!empty($_FILES["myFile"])) {
         echo "<p>An error occurred.</p>";
         exit;
     }
+    
+}
  
 /*
     // ensure a safe filename
