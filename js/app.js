@@ -55,6 +55,8 @@ app.controller('Login', function ($scope, master) {
 *   Home Controller
 */
 app.controller('Home', function ($scope, master) {
-
+    $scope.send = function() {
+    	alert("test");
+    }
 
 });
