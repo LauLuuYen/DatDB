@@ -81,7 +81,7 @@ app.controller('Home', function ($scope, master) {
                //Check file size 
                var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
                var formData = new FormData($("#uploadfile")[0]);
-
+/*
                
                 $.ajax({
                 url: 'http://lauluuyen.azurewebsites.net/php/test.php',  //server script to process data
@@ -89,30 +89,13 @@ app.controller('Home', function ($scope, master) {
                 xhr: function() {  // custom xhr
                     myXhr = $.ajaxSettings.xhr();
                     console.log("uploading..." + myXhr.upload);
-                    /*
-                    if(myXhr.upload){ // if upload property exists
-                        myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // progressbar
-                    }*/
+
                     return myXhr;
                 },
                 //Ajax events
                 success: completeHandler = function(data) {
-                    /*
-                    * workaround for crome browser // delete the fakepath
-                    */
                    	alert("uploaded: " + data);
 
-/*
-                    if(navigator.userAgent.indexOf('Chrome')) {
-                        var catchFile = $(":file").val().replace(/C:\\fakepath\\/i, '');
-                    }
-                    else {
-                        var catchFile = $(":file").val();
-                    }
-                    var writeFile = $(":file");
-                    writeFile.html(writer(catchFile));
-                    $("*setIdOfImageInHiddenInput*").val(data.logo_id);
-                    */
                 },
             error: function(xhr, status, error)
             {
@@ -125,7 +108,36 @@ app.controller('Home', function ($scope, master) {
                 contentType: false,
                 processData: false
             }, 'json');
+            */
             
+ $.ajax({
+        url: 'http://lauluuyen.azurewebsites.net/php/test.php',  //Server script to process data
+        type: 'POST',
+        xhr: function() {  // Custom XMLHttpRequest
+            var myXhr = $.ajaxSettings.xhr();
+            if(myXhr.upload){ // Check if upload property exists
+                myXhr.upload.addEventListener('progress',function(e) {
+                	    if(e.lengthComputable){
+		        console.log({value:e.loaded,max:e.total});
+    }
+                }, false); // For handling the progress of the upload
+            }
+            return myXhr;
+        },
+        //Ajax events
+        beforeSend:  function(data) {alert("before");},
+        success: function(data) {alert("r: " + data);},
+        error:  function(xhr, status, error)
+            {
+	          console.log("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+            },
+        // Form data
+        data: formData,
+        //Options to tell jQuery not to process data or worry about content-type.
+        cache: false,
+        contentType: false,
+        processData: false
+    });
 		break;
 
             default:
