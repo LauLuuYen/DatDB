@@ -15,21 +15,6 @@ if (!empty($_FILES["myFile"])) {
         echo "<p>An error occurred.</p>";
         exit;
     }
-    
-}
- 
-/*
-    // ensure a safe filename
-    $name = preg_replace("/[^A-Z0-9._-]/i", "_", $myFile["name"]);
- 
-    // don't overwrite an existing file
-    $i = 0;
-    $parts = pathinfo($name);
-    while (file_exists(UPLOAD_DIR . $name)) {
-        $i++;
-        $name = $parts["filename"] . "-" . $i . "." . $parts["extension"];
-    }
- */
 
     if (!$success) { 
         echo "<p>Unable to save file.</p>";
@@ -41,5 +26,5 @@ if (!empty($_FILES["myFile"])) {
 } else {
     echo "nothing";   
 }
-}
+
 ?>
