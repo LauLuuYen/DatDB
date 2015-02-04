@@ -18,7 +18,7 @@ if (!empty($_FILES["myFile"])) {
 
     //$response = "name: " . $myFile["name"] .", size: " . $myFile["size"] . ", type: " .$myFile["type"];
    // echo $response;
-    $xml = simplexml_load_file($myFile['tmp_name']);
+    $xml = @simplexml_load_file($myFile['tmp_name']);
     
     if ($xml === FALSE) {
         
