@@ -17,6 +17,8 @@ if (!empty($_FILES["myFile"])) {
     }
 
     $response = "name: " . $_FILES["myFile"]["name"] .", size: " . $_FILES["myFile"]["size"] . ", type: " . $_FILES["myFile"]["type"];
+    echo $response;
+    
 } else {
     echo "nothing";   
 }
