@@ -8,4 +8,5 @@
     include 'include/config.php';
     //$conn = connectDB();
 
+    echo "testing tan";
 ?>
