@@ -39,7 +39,7 @@ class Login
 		
 		if(count($registrants) == 0) 
 		{
-			result(false, "User already exists");
+			result(false, "User does exist");
 			return;
 		}
 		

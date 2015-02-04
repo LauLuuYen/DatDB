@@ -1,41 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 
-	<head>
-	  <meta charset="utf-8">
-	  <title>The HTML5 Herald</title>
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-		<script>
-		
-			function login(u,p)
-			{
-				$.ajax({
-						type: "POST",
-						url:"http://lauluuyen.azurewebsites.net/php/login.php",
-						//crossDomain: true,
-						data: {email: u, password: p},
-						dataType: 'json',
-						async: true,
-						timeout: 10000,
+<head>
+    <meta charset="utf-8">
+    <title>The HTML5 Herald</title>
 
-						success: function (result)
-						{
-							//alert("success");
-							alert("success: " + result.success + "," + result.message);
-						},
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
 
-						error: function(xhr, status, error)
-						{
-							alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
-						}
-					}
-				);
-			}
-		</script>
-	</head>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    
 
-	<body>
-	  <button type="button" onclick="login('zoolander@mayfair.com', 'abc123')">Login</button>
-	</body>
+</head>
+
+<body ng-controller="Login">
+    
+    <div class="login box">
+        <!--Login form-->
+        <form ng-submit="submit()">
+        
+            <div class="input_wrapper">
+                Email
+                <input type="text" class="input_text" ng-model="account.email">
+            </div>
+            
+            <div class="input_wrapper">
+                Password
+                <input type="password" class="input_text" ng-model="account.password">
+            </div>
+            
+            <div class="input_wrapper">
+                <button type="submit" >Login</button>
+            </div>
+            
+        </form>
+    </div>
+</body>
 	
 </html>
