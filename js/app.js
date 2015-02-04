@@ -66,50 +66,17 @@ app.controller('Home', function ($scope, master) {
         if (extension == filename) {
             extension = '';
         } else {
-            // if there is an extension, we convert to lower case
-            // (N.B. this conversion will not effect the value of the extension
-            // on the file upload.)
+
             extension = extension.toLowerCase();
         }
 
         switch (extension) {
-            case 'jpg':
-            case 'jpeg':
-            case 'png':
-                alert("it's got an extension which suggests it's a PNG or JPG image (but N.B. that's only its name, so let's be sure that we, say, check the mime-type server-side!)");
-               
+            case 'xml':
                //Check file size 
                var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
+               
                //var formData = new FormData($("#uploadfile")[0]);
                var formData = new FormData($('form')[0]);
-/*
-               
-                $.ajax({
-                url: 'http://lauluuyen.azurewebsites.net/php/test.php',  //server script to process data
-                type: 'POST',
-                xhr: function() {  // custom xhr
-                    myXhr = $.ajaxSettings.xhr();
-                    console.log("uploading..." + myXhr.upload);
-
-                    return myXhr;
-                },
-                //Ajax events
-                success: completeHandler = function(data) {
-                   	alert("uploaded: " + data);
-
-                },
-            error: function(xhr, status, error)
-            {
-	          console.log("error:" + JSON.stringify(xhr) + "," + status + "," + error);
-            },
-                // Form data
-                data: formData,
-                //Options to tell JQuery not to process data or worry about content-type
-                cache: false,
-                contentType: false,
-                processData: false
-            }, 'json');
-            */
             
  $.ajax({
         url: 'http://lauluuyen.azurewebsites.net/php/test.php',  //Server script to process data
