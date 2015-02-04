@@ -77,8 +77,9 @@ app.controller('Home', function ($scope, master) {
             case 'jpeg':
             case 'png':
                 alert("it's got an extension which suggests it's a PNG or JPG image (but N.B. that's only its name, so let's be sure that we, say, check the mime-type server-side!)");
-                
-               alert($("#uploadfile")[0].files[0].size);
+               
+               //Check file size 
+               var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
                 
 		break;
 
