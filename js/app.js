@@ -88,10 +88,11 @@ app.controller('Home', function ($scope, master) {
                 type: 'POST',
                 xhr: function() {  // custom xhr
                     myXhr = $.ajaxSettings.xhr();
-                    console.log("uploading...");
+                    console.log("uploading..." + myXhr.upload);
+                    /*
                     if(myXhr.upload){ // if upload property exists
                         myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // progressbar
-                    }
+                    }*/
                     return myXhr;
                 },
                 //Ajax events
