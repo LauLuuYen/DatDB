@@ -21,7 +21,7 @@ if (!empty($_FILES["myFile"])) {
     $xml = simplexml_load_file($myFile['tmp_name']);
     
     libxml_use_internal_errors(true);
-$sxe = simplexml_load_string($xml);
+$sxe = simplexml_load_string($myFile['tmp_name']);
 if (!$sxe) {
     echo "Failed loading XML\n";
     foreach(libxml_get_errors() as $error) {
