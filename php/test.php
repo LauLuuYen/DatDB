@@ -30,11 +30,12 @@ if (!empty($_FILES["myFile"])) {
         
         result(false, "shit xml");
     } else {
-        $array = xmlToArray($xml);
+        //$array = xmlToArray($xml);
         
-        //$json = json_encode($xml);
-        //$array = json_decode($json,TRUE);
-        result(true, json_encode($array));
+        $json = json_encode($xml);
+        $array = json_decode($json,TRUE);
+        
+        result(true, $array);
     }
 } else {
     result(false, "nothing");
