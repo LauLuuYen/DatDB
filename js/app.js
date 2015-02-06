@@ -119,6 +119,7 @@ app.controller('Home', function ($scope, master) {
             
             success: function(data) {
                 if (data.success) {
+               	alert(data.message);
                     $scope.updatefeedback("Upload Complete");
 
                 } else {
