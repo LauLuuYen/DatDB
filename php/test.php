@@ -29,8 +29,8 @@
             } else {
                 $rootname = $xml->getName();
                 
-                if ($rootname != "Content" || $rootname != "content") {
-                    result(false, $rootname);
+                if ($rootname != "Content" && $rootname != "content") {
+                    result(false, "fuck you");
                     return;
                 }
                     result(true, "rage");
