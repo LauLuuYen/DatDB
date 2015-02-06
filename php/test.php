@@ -29,7 +29,7 @@
             } else {
                 $rootname = $xml->getName();
                 
-                if ($rootname !== "Content" || $rootname !== "content") {
+                if ($rootname != "Content" || $rootname != "content") {
                     result(false, "fuck you");
                     return;
                 }
