@@ -81,6 +81,9 @@ app.controller('Home', function ($scope, master) {
                 return;
         }
 
+        //TODO check file size
+        //var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
+
         $("#btn_uploadfile").removeAttr("disabled");
 
 
@@ -106,9 +109,11 @@ app.controller('Home', function ($scope, master) {
                 if(myXhr.upload){ // Check if upload property exists
                     myXhr.upload.addEventListener('progress',function(e) {
                         if(e.lengthComputable){
-                            console.log({value:e.loaded,max:e.total});
+                            var progress = "Progress: "+e.loaded/e.total + "%";
+                            $scope.updatefeedback(progress);
+
                         }
-                    }, false); // For handling the progress of the upload
+                    }, false);
                 }
                 return myXhr;
             },
@@ -116,23 +121,26 @@ app.controller('Home', function ($scope, master) {
             success: function(data) {
                 if (data.success) {
                     alert("upload complete");
+                    $scope.updatefeedback("Upload Complete");
+
                 } else {
                     //Error occurred
-                    $scope.$apply(function() {
-                        $scope.feedback = data.message;
-                    });
+                    $scope.updatefeedback(data.message);
+
                 }
             },
             
             error:  function(xhr, status, error) {
-                console.log("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+                alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
             }
 
         });
-
-                
-
-        
+    }
+    
+    $scope.updatefeedback(message) {
+        $scope.$apply(function() {
+            $scope.feedback = message;
+        });
     }
 
 });
