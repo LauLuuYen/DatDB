@@ -36,12 +36,12 @@ if (!empty($_FILES["myFile"])) {
         //$array = json_decode($json,TRUE);
         //$result = xml2array($xml);
         
-        $myxml = new DOMDocument;
-        $myxml->loadXML($xml);
+        //$myxml = new DOMDocument;
+        //$myxml->loadXML($xml);
         
-        $array = $myxml->getElementsByTagName('Content');
+        //$array = $myxml->getElementsByTagName('Content');
         
-        result(true, $array);
+        result(true, $xml->getName());
     }
 } else {
     result(false, "nothing");
