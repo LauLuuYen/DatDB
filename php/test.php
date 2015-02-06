@@ -33,8 +33,13 @@
                     result(false, "fuck you");
                     return;
                 }
-                    result(true, count($xml->children()));
-       
+                 
+                if (count($xml->children()) < 0) {
+                        result(false, "has children");
+                	return;
+                }
+       		$txt = json_encode($xml);
+                result(true, $txt);
 
             }
             
