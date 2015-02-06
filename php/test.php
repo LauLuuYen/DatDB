@@ -12,8 +12,35 @@
         $response["message"] = $message;
         echo json_encode($response);
     }
-  
-  
+    
+    
+    class FileParser {
+    	public function __construct($txtfile)
+    	{
+	        $this->txtfile = $txtfile;
+    	}
+    	
+    	public function checkXML()
+    	{
+    	    $xml = @simplexml_load_file($this->txtfile['tmp_name']);
+            
+            if ($xml === FALSE) {
+                result(false, "shit xml");
+            } else {
+                $rootname = $xml->getName();
+                
+                if ($rootname !== "Content" || $rootname !== "content") {
+                    result(false, "fuck you");
+                    return;
+                }
+                    result(true, "rage");
+
+            }
+            
+            
+    	}
+    	
+    }
 if (!empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];
  
@@ -22,27 +49,10 @@ if (!empty($_FILES["myFile"])) {
         exit;
     }
 
-    //$response = "name: " . $myFile["name"] .", size: " . $myFile["size"] . ", type: " .$myFile["type"];
-   // echo $response;
-    $xml = @simplexml_load_file($myFile['tmp_name']);
+    $parser = new FileParser($myFile);
+    $parser->checkXML();
     
-    if ($xml === FALSE) {
-        
-        result(false, "shit xml");
-    } else {
-        //$array = xmlToArray($xml);
-        
-        //$json = json_encode($xml);
-        //$array = json_decode($json,TRUE);
-        //$result = xml2array($xml);
-        
-        //$myxml = new DOMDocument;
-        //$myxml->loadXML($xml);
-        
-        //$array = $myxml->getElementsByTagName('Content');
-        
-        result(true, $xml->getName());
-    }
+    
 } else {
     result(false, "nothing");
 }
