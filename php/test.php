@@ -28,7 +28,7 @@ if (!empty($_FILES["myFile"])) {
     
     if ($xml === FALSE) {
         
-        echo "shit xml"
+        echo "shit xml";
     } else {
         echo json_encode($xml);
     }
