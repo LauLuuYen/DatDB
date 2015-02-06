@@ -46,9 +46,8 @@ app.controller('Login', function ($scope, master) {
             {
                 alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
             }
-            }
-        );
-    }
+        });
+    };
 
 });
 
@@ -137,7 +136,7 @@ app.controller('Home', function ($scope, master) {
         });
     }
     
-    $scope.updatefeedback(message) {
+    $scope.updatefeedback = function(message) {
         $scope.$apply(function() {
             $scope.feedback = message;
         });
