@@ -33,7 +33,7 @@
                     result(false, "fuck you");
                     return;
                 }
-                    result(true, "rage");
+                    result(true, $xml->hasChildren());
 
             }
             
