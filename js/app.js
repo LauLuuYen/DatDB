@@ -108,7 +108,7 @@ app.controller('Home', function ($scope, master) {
                 if(myXhr.upload){ // Check if upload property exists
                     myXhr.upload.addEventListener('progress',function(e) {
                         if(e.lengthComputable){
-                            var progress = "Progress: "+e.loaded/e.total + "%";
+                            var progress = "Progress: "+ (e.loaded/e.total)*100 + "%";
                             $scope.updatefeedback(progress);
 
                         }
