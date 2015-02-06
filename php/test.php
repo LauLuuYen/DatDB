@@ -30,7 +30,7 @@
                 $rootname = $xml->getName();
                 
                 if ($rootname != "Content" || $rootname != "content") {
-                    result(false, "fuck you");
+                    result(false, $rootname);
                     return;
                 }
                     result(true, "rage");
