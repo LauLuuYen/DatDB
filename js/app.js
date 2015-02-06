@@ -117,8 +117,10 @@ app.controller('Home', function ($scope, master) {
                 if (data.success) {
                     alert("upload complete");
                 } else {
-                    alert("cunt");
-                    $scope.feedback = data.message;
+                    //Error occurred
+                    $scope.$apply(function() {
+                        $scope.feedback = data.message;
+                    });
                 }
             },
             
