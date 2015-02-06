@@ -38,8 +38,8 @@
                         result(false, "has children");
                 	return;
                 }
-       		$txt = json_encode($xml);
-                result(true, $txt);
+       		//$txt = json_encode($xml);
+                result(true, $xml[0]);
 
             }
             
