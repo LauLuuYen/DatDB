@@ -30,7 +30,9 @@ if (!empty($_FILES["myFile"])) {
         
         result(false, "shit xml");
     } else {
-        result(true, "good xml");
+        $json = json_encode($xml);
+        //$array = json_decode($json,TRUE);
+        result(true, $json);
     }
 } else {
     result(false, "nothing");
