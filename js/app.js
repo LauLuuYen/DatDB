@@ -75,7 +75,7 @@ app.controller('Home', function ($scope, master) {
             case "xml":
                 break;
             default:
-                $("#feedback").html("Please use the right file extension.");
+                $scope.updatefeedback("Please use the right file extension.");
                 $("#btn_uploadfile").attr("disabled","disabled");
                 return;
         }
