@@ -32,9 +32,10 @@ if (!empty($_FILES["myFile"])) {
     } else {
         //$array = xmlToArray($xml);
         
-        $json = json_encode($xml);
-        $array = json_decode($json,TRUE);
-        
+        //$json = json_encode($xml);
+        //$array = json_decode($json,TRUE);
+        $array = XML2Array::createArray($xml);
+        //print_r($array);
         result(true, $array);
     }
 } else {
