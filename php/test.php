@@ -33,7 +33,7 @@
                     result(false, "fuck you");
                     return;
                 }
-                    result(true, $xml->children().length);
+                    result(true, $xml->children().count);
        
 
             }
