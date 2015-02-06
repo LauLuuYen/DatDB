@@ -1,26 +1,24 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    
+
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
     include 'include/config.php';
-  
-  function result($success, $message) {
-    $response['success'] = $success;
-    $response['message'] = $message;
-    echo json_encode($response);
-  }
+
+    function result($success, $message) {
+        $response['success'] = $success;
+        $response['message'] = $message;
+        echo json_encode($response);
+    }
   
 class Login
 {
 
 	public function __construct($email, $password)
 	{
-		//echo "Haxxor";
 		$this->email = $email;
-		$this->password = $password;
-		
+		$this->password = $password;		
 	}
 	
 	private function checkInputs()

@@ -26,8 +26,8 @@ app.controller('Login', function ($scope, master) {
         
         $.ajax({
             type: "POST",
-            url:"http://lauluuyen.azurewebsites.net/php/test.php",
-            //crossDomain: true,
+            url:"http://lauluuyen.azurewebsites.net/php/login.php",
+            crossDomain: true,
             data: {email: email, password: password},
             dataType: 'json',
             async: true,
@@ -35,8 +35,6 @@ app.controller('Login', function ($scope, master) {
 
             success: function (result)
             {
-                //alert("success");
-                //alert("success: " + result.success + "," + result.message);
                 window.location.href="home/index.html";
             },
 
@@ -55,6 +53,9 @@ app.controller('Login', function ($scope, master) {
 *   Home Controller
 */
 app.controller('Home', function ($scope, master) {
+
+
+
     $scope.send = function() {
     	
     	var filename = $("#uploadfile").val();
