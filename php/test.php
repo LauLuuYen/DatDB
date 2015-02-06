@@ -33,7 +33,8 @@
                     result(false, "fuck you");
                     return;
                 }
-                    result(true, $xml->hasChildren());
+                    result(true, $xml->children());
+       
 
             }
             
