@@ -26,7 +26,7 @@ app.controller('Login', function ($scope, master) {
         
         $.ajax({
             type: "POST",
-            url:"http://lauluuyen.azurewebsites.net/php/login.php",
+            url:"http://lauluuyen.azurewebsites.net/php/login.php" ,
             crossDomain: true,
             data: {email: email, password: password},
             dataType: 'json',
@@ -53,8 +53,10 @@ app.controller('Login', function ($scope, master) {
 *   Home Controller
 */
 app.controller('Home', function ($scope, master) {
-
-
+    
+    $("#uploadfile").change(function() {
+        alert("test");
+    });
 
     $scope.send = function() {
     	
