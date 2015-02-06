@@ -34,7 +34,9 @@ if (!empty($_FILES["myFile"])) {
         
         //$json = json_encode($xml);
         //$array = json_decode($json,TRUE);
-        $result = xml2array($xml);
+        //$result = xml2array($xml);
+        $array = $xml->getElementsByTagName('Content');
+        
         result(true, $array);
     }
 } else {
