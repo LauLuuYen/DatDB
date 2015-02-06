@@ -4,11 +4,11 @@
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
-    include 'include/config.php';
+    include "include/config.php";
 
     function result($success, $message) {
-        $response['success'] = $success;
-        $response['message'] = $message;
+        $response["success"] = $success;
+        $response["message"] = $message;
         echo json_encode($response);
     }
   

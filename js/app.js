@@ -54,69 +54,77 @@ app.controller('Login', function ($scope, master) {
 */
 app.controller('Home', function ($scope, master) {
     
+    $scope.feedback = "Please upload something";
+
     $("#uploadfile").change(function() {
-        alert("test");
+    
+        //Check file exist
+    	var filename = $(this).val();
+        if (filename == "") {
+            $("#btn_uploadfile").attr("disabled","disabled");
+            return;
+        }
+        
+        //Check file extension
+        var extension = filename.replace(/^.*\./, '').toLowerCase();
+        switch (extension) {
+            //Valid file extensions
+            case 'xml':
+                break;
+            default:
+                $("#feedback").html("Please use the right file extension.");
+                $("#btn_uploadfile").attr("disabled","disabled");
+                return;
+        }
+
+        $("#btn_uploadfile").removeAttr("disabled");
+
+
+
+//        alert("change");
+
     });
+    
+
 
     $scope.send = function() {
     	
-    	var filename = $("#uploadfile").val();
-        // Use a regular expression to trim everything before final dot
-        var extension = filename.replace(/^.*\./, '');
+        var formData = new FormData($('form')[0]);
 
-        // Iff there is no dot anywhere in filename, we would have extension == filename,
-        // so we account for this possibility now
-        if (extension == filename) {
-            extension = '';
-        } else {
-
-            extension = extension.toLowerCase();
-        }
-
-        switch (extension) {
-            case 'xml':
-               //Check file size 
-               var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
-               
-               //var formData = new FormData($("#uploadfile")[0]);
-               var formData = new FormData($('form')[0]);
-            
- $.ajax({
-        url: 'http://lauluuyen.azurewebsites.net/php/test.php',  //Server script to process data
-        type: 'POST',
-        xhr: function() {  // Custom XMLHttpRequest
-            var myXhr = $.ajaxSettings.xhr();
-            if(myXhr.upload){ // Check if upload property exists
-                myXhr.upload.addEventListener('progress',function(e) {
-                	    if(e.lengthComputable){
-		        console.log({value:e.loaded,max:e.total});
-    }
-                }, false); // For handling the progress of the upload
-            }
-            return myXhr;
-        },
-        //Ajax events
-        beforeSend:  function(data) {alert("before");},
-        success: function(data) {alert("r: " + data);},
-        error:  function(xhr, status, error)
-            {
-	          console.log("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+        $.ajax({
+            type: "POST",
+            url: "http://lauluuyen.azurewebsites.net/php/test.php",
+            data: formData,
+            dataType: "jsonp",
+            crossDomain: true,
+            //Options to tell jQuery not to process data or worry about content-type.
+            cache: false,
+            contentType: false,
+            processData: false,
+            xhr: function() {  // Custom XMLHttpRequest
+                var myXhr = $.ajaxSettings.xhr();
+                if(myXhr.upload){ // Check if upload property exists
+                    myXhr.upload.addEventListener('progress',function(e) {
+                        if(e.lengthComputable){
+                            console.log({value:e.loaded,max:e.total});
+                        }
+                    }, false); // For handling the progress of the upload
+                }
+                return myXhr;
             },
-        // Form data
-        data: formData,
-        //Options to tell jQuery not to process data or worry about content-type.
-        cache: false,
-        contentType: false,
-        processData: false
-    });
-		break;
+            
+            success: function(data) {
+                alert("r: " + data);
+            },
+            
+            error:  function(xhr, status, error) {
+                console.log("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+            }
 
-            default:
-                // Cancel the form submission
-                alert("wrong extension");
-                submitEvent.preventDefault();
+        });
+
                 
-        }
+
         
     }
 

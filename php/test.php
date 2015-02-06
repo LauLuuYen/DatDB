@@ -5,9 +5,15 @@
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
-    include 'include/config.php';
-    //$conn = connectDB();
+    include "include/config.php";
 
+    function result($success, $message) {
+        $response["success"] = $success;
+        $response["message"] = $message;
+        echo json_encode($response);
+    }
+  
+  
 if (!empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];
  
@@ -22,12 +28,12 @@ if (!empty($_FILES["myFile"])) {
     
     if ($xml === FALSE) {
         
-        echo "shit xml";
+        result(false, "shit xml");
     } else {
-        echo json_encode($xml);
+        result(true, "good");
     }
 } else {
-    echo "nothing";   
+    result(true, "nothing");
 }
 
 ?>
