@@ -29,13 +29,17 @@ app.controller('Login', function ($scope, master) {
             url:"http://lauluuyen.azurewebsites.net/php/login.php" ,
             crossDomain: true,
             data: {email: email, password: password},
-            dataType: 'json',
+            dataType: "json",
             async: true,
             timeout: 10000,
 
             success: function (result)
             {
-                window.location.href="home/index.html";
+                if (result.success) {
+                    window.location.href="home/index.html";
+                } else {
+                    alert("wrong credentials");
+                }
             },
 
             error: function(xhr, status, error)
@@ -69,7 +73,7 @@ app.controller('Home', function ($scope, master) {
         var extension = filename.replace(/^.*\./, '').toLowerCase();
         switch (extension) {
             //Valid file extensions
-            case 'xml':
+            case "xml":
                 break;
             default:
                 $("#feedback").html("Please use the right file extension.");
@@ -79,9 +83,6 @@ app.controller('Home', function ($scope, master) {
 
         $("#btn_uploadfile").removeAttr("disabled");
 
-
-
-//        alert("change");
 
     });
     
@@ -95,7 +96,7 @@ app.controller('Home', function ($scope, master) {
             type: "POST",
             url: "http://lauluuyen.azurewebsites.net/php/test.php",
             data: formData,
-
+            dataType: "json",
             //Options to tell jQuery not to process data or worry about content-type.
             cache: false,
             contentType: false,
@@ -113,7 +114,12 @@ app.controller('Home', function ($scope, master) {
             },
             
             success: function(data) {
-                alert("r: " + data);
+                if (data.success) {
+                    alert("upload complete");
+                } else {
+                    alert("cunt");
+                    $scope.feedback = data.message;
+                }
             },
             
             error:  function(xhr, status, error) {
