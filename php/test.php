@@ -34,8 +34,7 @@ if (!empty($_FILES["myFile"])) {
         
         //$json = json_encode($xml);
         //$array = json_decode($json,TRUE);
-        $data_array = xml_to_array($xml);
-        //var_dump($data_array);
+        $result = xml2array($xml);
         result(true, $array);
     }
 } else {
