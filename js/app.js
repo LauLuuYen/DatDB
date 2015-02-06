@@ -99,10 +99,10 @@ app.controller('Home', function ($scope, master) {
             url: "http://lauluuyen.azurewebsites.net/php/test.php",
             data: formData,
             dataType: "json",
-            //Options to tell jQuery not to process data or worry about content-type.
             cache: false,
             contentType: false,
             processData: false,
+            
             xhr: function() {  // Custom XMLHttpRequest
                 var myXhr = $.ajaxSettings.xhr();
                 if(myXhr.upload){ // Check if upload property exists
@@ -119,7 +119,6 @@ app.controller('Home', function ($scope, master) {
             
             success: function(data) {
                 if (data.success) {
-                    alert("upload complete");
                     $scope.updatefeedback("Upload Complete");
 
                 } else {
