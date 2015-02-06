@@ -40,7 +40,7 @@
                 }
        		$json = json_encode($xml);
        		$array = json_decode($json, true);
-                result(true, $array[0]));
+                result(true, $json));
 
             }
             
