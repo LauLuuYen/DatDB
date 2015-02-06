@@ -95,8 +95,7 @@ app.controller('Home', function ($scope, master) {
             type: "POST",
             url: "http://lauluuyen.azurewebsites.net/php/test.php",
             data: formData,
-            dataType: "jsonp",
-            crossDomain: true,
+
             //Options to tell jQuery not to process data or worry about content-type.
             cache: false,
             contentType: false,

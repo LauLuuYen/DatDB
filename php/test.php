@@ -18,7 +18,7 @@ if (!empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];
  
     if ($myFile["error"] !== UPLOAD_ERR_OK) {
-        echo "An error occurred uploading.";
+        echo "An error occured uploading.";
         exit;
     }
 
@@ -28,12 +28,12 @@ if (!empty($_FILES["myFile"])) {
     
     if ($xml === FALSE) {
         
-        result(false, "shit xml");
+        echo "shit xml"
     } else {
-        result(true, "good");
+        echo json_encode($xml);
     }
 } else {
-    result(true, "nothing");
+    echo "nothing";
 }
 
 ?>
