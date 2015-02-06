@@ -39,7 +39,7 @@
                 	return;
                 }
        		//$txt = json_encode($xml);
-                result(true, $xml[0]);
+                result(true, json_encode($xml[0]));
 
             }
             
