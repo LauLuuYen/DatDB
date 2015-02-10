@@ -15,9 +15,10 @@
 
 class Signup {
 
-	public function __construct($email, $password) {
-		$this->email = $email;
-		$this->password = $password;		
+	public function __construct($email, $password, $groupname) {
+		$this->email = strtolower(trim($email));
+		$this->password = md5($password);
+        $this->groupname = ucfirst(trim($groupname));
 	}
 	
 	public function checkInputs() {
@@ -29,13 +30,13 @@ class Signup {
 	    $this->conn = connectDB();
 	    
         if ($this->checkExist()) {
-            $this->conn = NULL; //Close DB connection
-			result(false, "User already exist");
             return;
         }
-		//$user = $registrants[0];
 
-        result(true, "User does NOT exist");
+        echo $this->email;
+        echo $this->groupname;
+        
+        //result(true, "User does NOT exist");
 	}
 
 
@@ -50,16 +51,22 @@ class Signup {
 		$stmt->execute();		
 		$registrants = $stmt->fetchAll();
 		
-        $count = count($registrants) > 0;
-		return $count;
+        if (count($registrants) > 0) {
+            $this->conn = NULL; //Close DB connection
+			result(false, "User already exist");
+            return true;
+        }
+		return false;
     }
     
     
 }
 
-$email = "zcabtng@ucl.ac.uk";
+$email = "zODtng@ucl.ac.uk";
 $password = "abc123";
-$signup = new Signup($email, $password);
+$groupname= "zdafEEFEF 2";
+
+$signup = new Signup($email, $password, $groupname);
 if ($signup->checkInputs()) {
     $signup->register();
 }
