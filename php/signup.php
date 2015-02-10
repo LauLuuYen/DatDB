@@ -1,6 +1,6 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-
+    date_default_timezone_set("GMT");
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
@@ -15,7 +15,9 @@
 
 class Signup {
 
-	public function __construct($email, $password, $groupname) {
+	public function __construct($name, $lastname, $email, $password, $groupname) {
+		$this->name = ucfirst(strtolower(trim($name)));
+		$this->lastname = ucfirst(strtolower(trim($lastname)));
 		$this->email = strtolower(trim($email));
 		$this->password = md5($password);
         $this->groupname = ucfirst(strtolower(trim($groupname)));
@@ -29,16 +31,84 @@ class Signup {
         //Connect to DB
 	    $this->conn = connectDB();
 	    
-        if ($this->checkExist()) {
-            return;
+        if (!$this->checkExist()) {
+        	$this->assignGroup();
         }
+	
 
-        echo $this->email;
-        echo $this->groupname;
-        
-        //result(true, "User does NOT exist");
 	}
-
+	
+	private function createGroup()
+	{
+		$stmt = $this->conn->prepare("INSERT INTO groups (name) VALUES(?)");
+		$stmt->bindValue(1, $this->groupname);
+		$stmt->execute();		
+		$groupID = $this->conn->lastInsertId();
+		return $groupID;
+	}
+	
+	private function createUser()
+	{
+		$stmt = $this->conn->prepare("INSERT INTO users (name, lastname, email, password, timestamp) VALUES(?,?,?,?,?)");
+		$stmt->bindValue(1, $this->name);
+		$stmt->bindValue(2, $this->lastname);
+		$stmt->bindValue(3, $this->email);
+		$stmt->bindValue(4, $this->password);
+		$stmt->bindValue(5, $this->timestamp);
+		$stmt->execute();		
+		$userID = $this->conn->lastInsertId();
+		return $userID;
+	}
+	
+	private function assignUserGroup($userID, $groupID)
+	{
+		$stmt = $this->conn->prepare("INSERT INTO usergroups (userid, groupid) VALUES(?,?)");
+		$stmt->bindValue(1, $userID);
+		$stmt->bindValue(2, $groupID);
+		$stmt->execute();		
+		$id = $this->conn->lastInsertId();
+		return $id;
+	}
+	
+	private function getGroupID()
+	{
+		$stmt = $this->conn->prepare("SELECT id FROM groups WHERE name = ?");
+		$stmt->bindValue(1, $this->groupname);
+		$stmt->execute();		
+		$registrants = $stmt->fetchAll();
+		$groupID = $registrants[0]["id"];
+		return $groupID;
+	}
+	
+	private function assignGroup()
+	{
+		$count = $this->getGroupSize();
+		if ($count >= 3)
+		{
+			result(false, "Group is full");
+		}
+		else if ($count == 0)
+		{
+			
+		}
+		else
+		{
+			
+		}
+		
+		result(true, "User has been created successfully");
+		
+	}
+	
+	private function getGroupSize()
+	{
+		$stmt = $this->conn->prepare("SELECT * FROM groups WHERE name = ?");
+		$stmt->bindValue(1, $this->groupname);
+		$stmt->execute();		
+		$registrants = $stmt->fetchAll();
+		$count = count($registrants);
+		return $count;
+	}
 
     /*
     *   Check if user already exist in the database.
@@ -62,11 +132,13 @@ class Signup {
     
 }
 
+$name = "Amigo pollos";
+$lastname = "Los Hermanos";
 $email = "zODtng@ucl.ac.uk";
 $password = "abc123";
 $groupname= "zdafEEFEF 2";
 
-$signup = new Signup($email, $password, $groupname);
+$signup = new Signup($name, $lastname, $email, $password, $groupname);
 if ($signup->checkInputs()) {
     $signup->register();
 }
