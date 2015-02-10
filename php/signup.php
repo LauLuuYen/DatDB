@@ -40,7 +40,7 @@ class Signup {
 	    $this->conn = connectDB();
 	    
         if (!$this->checkExist()) {
-        	$roleID = getRoleID();
+        	$roleID = $this->getRoleID();
         	echo "roleID" . $roleID;
         	//$this->assignGroup();
         }
@@ -84,6 +84,16 @@ class Signup {
 		$stmt = $this->conn->prepare("INSERT INTO usergroups (userid, groupid) VALUES(?,?)");
 		$stmt->bindValue(1, $userID);
 		$stmt->bindValue(2, $groupID);
+		$stmt->execute();		
+		$id = $this->conn->lastInsertId();
+		return $id;
+	}
+	
+	private function assignUserRole($userID, $roleID)
+	{
+		$stmt = $this->conn->prepare("INSERT INTO userroles (userid, roleid) VALUES(?,?)");
+		$stmt->bindValue(1, $userID);
+		$stmt->bindValue(2, $roleID);
 		$stmt->execute();		
 		$id = $this->conn->lastInsertId();
 		return $id;
