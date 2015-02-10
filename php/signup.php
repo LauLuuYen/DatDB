@@ -50,7 +50,7 @@ class Signup {
 		$stmt->execute();		
 		$registrants = $stmt->fetchAll();
 		
-        $count = count($registrants) > 0);
+        $count = count($registrants) > 0;
 		return $count;
     }
     
