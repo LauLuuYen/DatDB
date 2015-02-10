@@ -18,7 +18,7 @@ class Signup {
 	public function __construct($email, $password, $groupname) {
 		$this->email = strtolower(trim($email));
 		$this->password = md5($password);
-        $this->groupname = ucfirst(trim($groupname));
+        $this->groupname = ucfirst(strtolower(trim($groupname)));
 	}
 	
 	public function checkInputs() {
