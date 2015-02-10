@@ -110,6 +110,8 @@ class Signup {
 	private function assignGroup()
 	{
 		$count = $this->getGroupSize();
+		echo "c: " .$count;
+		return;
 		if ($count >= 3)
 		{
 			result(false, "Group is full");
