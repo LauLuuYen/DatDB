@@ -144,8 +144,7 @@ class Signup {
 		$stmt->bindValue(1, $this->groupname);
 		$stmt->execute();		
 		$registrants = $stmt->fetchAll();
-		$count = count($registrants);
-		return $count;
+		return $registrants[0]['groupcount'];
 	}
 
     /*
