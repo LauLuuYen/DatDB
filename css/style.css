@@ -11,8 +11,9 @@
 
 .login.box {
     background-color:#2E9AFE;
-	position: fixed;
-	margin: 14% 40%;
+    opacity: 0.7;
+    position: fixed;
+    margin: 14% 40%;
     height:150px;
 }
 
