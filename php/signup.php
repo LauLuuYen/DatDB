@@ -170,7 +170,7 @@ class Signup {
 
 $name = "Amigo pollos3";
 $lastname = "Los Hermanos";
-$email = "z2@ucl.ac.uk";
+$email = "z4@ucl.ac.uk";
 $password = "abc123";
 $groupname= "zdafEEFEF 2";
 $role = "studENT";
