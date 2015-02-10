@@ -168,9 +168,9 @@ class Signup {
     
 }
 
-$name = "Amigo pollos";
+$name = "Amigo pollos2";
 $lastname = "Los Hermanos";
-$email = "zODtng@ucl.ac.uk";
+$email = "z1@ucl.ac.uk";
 $password = "abc123";
 $groupname= "zdafEEFEF 2";
 $role = "studENT";
