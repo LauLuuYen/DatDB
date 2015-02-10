@@ -40,9 +40,7 @@ class Signup {
 	    $this->conn = connectDB();
 	    
         if (!$this->checkExist()) {
-        	$roleID = $this->getRoleID();
-        	echo "roleID" . $roleID;
-        	//$this->assignGroup();
+        	$this->assignGroup();
         }
 	
 
@@ -127,8 +125,12 @@ class Signup {
 			$groupID = $this->getGroupID();
 		}
 
+        	$roleID = $this->getRoleID();
 		$userID = $this->createUser();
+
+		$this->assignUserRole($userID, $roleID);
 		$this->assignUserGroup($userID, $groupID);
+		
 		result(true, "User has been created successfully");
 		$this->conn = NULL; //Close DB connection
 		
