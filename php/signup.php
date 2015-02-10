@@ -40,7 +40,9 @@ class Signup {
 	    $this->conn = connectDB();
 	    
         if (!$this->checkExist()) {
-        	$this->assignGroup();
+        	$roleID = getRoleID();
+        	echo "roleID" . $roleID;
+        	//$this->assignGroup();
         }
 	
 
@@ -51,9 +53,10 @@ class Signup {
 		$stmt->bindValue(1, $this->role);
 		$stmt->execute();		
 		$registrants = $stmt->fetchAll();
-		$groupID = $registrants[0]["id"];
-		return $groupID;
+		$roleID = $registrants[0]["id"];
+		return $roleID;
 	}
+	
 	private function createGroup()
 	{
 		$stmt = $this->conn->prepare("INSERT INTO groups (name) VALUES(?)");
@@ -162,8 +165,7 @@ $role = "studENT";
 
 $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
 if ($signup->checkInputs()) {
-	echo "addin student";
-    //$signup->register();
+    $signup->register();
 }
 
 /*
