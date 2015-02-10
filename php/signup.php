@@ -86,17 +86,22 @@ class Signup {
 		if ($count >= 3)
 		{
 			result(false, "Group is full");
+			$this->conn = NULL; //Close DB connection
+			return;
 		}
 		else if ($count == 0)
 		{
-			
+			$groupID = $this->createGroup();
 		}
 		else
 		{
-			
+			$groupID = $this->getGroupID();
 		}
-		
+
+		$userID = $this->createUser();
+		$this->assignUserGroup($userID, $groupID);
 		result(true, "User has been created successfully");
+		$this->conn = NULL; //Close DB connection
 		
 	}
 	
