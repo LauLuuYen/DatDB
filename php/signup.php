@@ -71,7 +71,7 @@ class Signup {
 		$stmt->bindValue(2, $this->lastname);
 		$stmt->bindValue(3, $this->email);
 		$stmt->bindValue(4, $this->password);
-		$stmt->bindValue(5, $this->timestamp);
+		$stmt->bindValue(5, date("Y-m-d H:i:s"));
 		$stmt->execute();		
 		$userID = $this->conn->lastInsertId();
 		return $userID;
