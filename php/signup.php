@@ -140,7 +140,7 @@ class Signup {
 	
 	private function getGroupSize()
 	{
-		$stmt = $this->conn->prepare("SELECT * FROM groups WHERE name = ?");
+		$stmt = $this->conn->prepare("SELECT COUNT(*) AS groupcount FROM usergroups WHERE groupid=(SELECT id FROM groups WHERE name=?);");
 		$stmt->bindValue(1, $this->groupname);
 		$stmt->execute();		
 		$registrants = $stmt->fetchAll();
