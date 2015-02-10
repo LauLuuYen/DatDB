@@ -15,15 +15,23 @@
 
 class Signup {
 
-	public function __construct($name, $lastname, $email, $password, $groupname) {
+	public function __construct($name, $lastname, $email, $password, $groupname, $role) {
 		$this->name = ucfirst(strtolower(trim($name)));
 		$this->lastname = ucfirst(strtolower(trim($lastname)));
 		$this->email = strtolower(trim($email));
 		$this->password = md5($password);
         $this->groupname = ucfirst(strtolower(trim($groupname)));
+        	$this->role = strtolower(trim($role));
 	}
 	
 	public function checkInputs() {
+		
+		//Check role is valid
+		$ROLES = array("admin", "student");
+		if (!in_array($this->role, $ROLES)) {
+			results(false, "Role not found");
+			return false;
+		}
 		return true;
 	}
 	
@@ -38,6 +46,14 @@ class Signup {
 
 	}
 	
+	private function getRoleID() {
+		$stmt = $this->conn->prepare("SELECT id FROM roles WHERE name = ?");
+		$stmt->bindValue(1, $this->role);
+		$stmt->execute();		
+		$registrants = $stmt->fetchAll();
+		$groupID = $registrants[0]["id"];
+		return $groupID;
+	}
 	private function createGroup()
 	{
 		$stmt = $this->conn->prepare("INSERT INTO groups (name) VALUES(?)");
@@ -142,10 +158,12 @@ $lastname = "Los Hermanos";
 $email = "zODtng@ucl.ac.uk";
 $password = "abc123";
 $groupname= "zdafEEFEF 2";
+$role = "studENT";
 
-$signup = new Signup($name, $lastname, $email, $password, $groupname);
+$signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
 if ($signup->checkInputs()) {
-    $signup->register();
+	echo "addin student";
+    //$signup->register();
 }
 
 /*
