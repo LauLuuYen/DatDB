@@ -143,3 +143,8 @@ app.controller('Home', function ($scope, master) {
     }
 
 });
+
+
+app.controller('CreateUser', function ($scope, master) {
+
+});
