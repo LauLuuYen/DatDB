@@ -11,6 +11,9 @@
 
 .login.box {
     background-color:red;
+	position: fixed;
+	margin: 14% 40%;
+    height:150px;
 }
 
 .createuser.box {
