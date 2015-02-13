@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>The HTML5 Herald</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="../js/app.js"></script>
+    
+    <script>
+        function test() {
+            var script = "";
+            for (i=0; i<20; i++) {
+                script += "<div>Group: Test"+i+"&nbsp;&nbsp;&nbsp;Assessing: Jackdaw"+i+", Creed"+i+", Test"+i+"</div>";
+            }
+        
+            $("#grouplist").html(script);
+            
+        }
+        setTimeout(function() {
+            test();
+        }, 500);
+    </script>
+</head>
+
+<body ng-controller="">
+    <div>Groups</div>
+    <div id="grouplist"></div>
+
+
+
+</body>
+	
+</html>
