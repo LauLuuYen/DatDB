@@ -1,178 +1,294 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-    date_default_timezone_set("GMT");
+
+header("Access-Control-Allow-Origin: *");
+define("DEBUG", true);
+
+if (DEBUG) {
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
-    include "include/config.php";
+}
 
-    function result($success, $message) {
-        $response["success"] = $success;
-        $response["message"] = $message;
-        echo json_encode($response);
-    }
-  
+include "include/config.php";
+
+
+/*
+*   Echoes to the client the result of the process.
+*   @params: bool - $success, string - $msg
+*   @return: none
+*/
+function result($success, $msg) {
+    $response["success"] = $success;
+    $response["message"] = $msg;
+    echo json_encode($response);
+}
+
 
 class Signup {
 
+    private $ROLES = array("admin", "student");
+    
+    /*
+    *   Constructor.
+    *   @params: string - $name, string - $lastname, string - $email, 
+    *            string - $password, string - $groupname, string - $role
+    *   @return: none
+    */
 	public function __construct($name, $lastname, $email, $password, $groupname, $role) {
 		$this->name = ucfirst(strtolower(trim($name)));
 		$this->lastname = ucfirst(strtolower(trim($lastname)));
 		$this->email = strtolower(trim($email));
-		$this->password = md5($password);
+		$this->password = $password;
         $this->groupname = ucfirst(strtolower(trim($groupname)));
-        	$this->role = strtolower(trim($role));
+        $this->role = strtolower(trim($role));
 	}
 	
+    
+    /*
+    *   Validate the inputs.
+    *   @params: none
+    *   @return: none
+    */
 	public function checkInputs() {
-		
-		//Check role is valid
-		$ROLES = array("admin", "student");
-		if (!in_array($this->role, $ROLES)) {
-			results(false, "Role not found");
-			return false;
-		}
-		return true;
+        if (strlen($this->name) == 0) {
+            result(false, "First name must be set");
+            
+        } else if (strlen($this->lastname) == 0) {
+            result(false, "Last name must be set");
+            
+        } else if (strlen($this->email) == 0) {
+            result(false, "Email must be set");
+            
+        } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            result(false, "Invalid email");
+            
+        } else if (strlen($this->password) == 0) {
+            result(false, "Password must be set");
+            
+        } else if (strlen($this->password) <= 5) {
+            result(false, "Password too short");
+
+        } else if (strlen($this->groupname) == 0) {
+            result(false, "Group name must be set");
+            
+		} else if (!in_array($this->role, $this->ROLES)) {
+			result(false, "Role not found");
+            
+		} else {
+            return true;
+        }
+
+        return false;
 	}
 	
+
+    /*
+    *   Attempt to register to user and assign user
+    *   @params: none
+    *   @return: none
+    */
 	public function register() {
         //Connect to DB
 	    $this->conn = connectDB();
 	    
+        //If user does not exist, create account and assign their roles
         if (!$this->checkExist()) {
         	$this->assignGroup();
         }
+
+        //TODO consider admin
+        
+        //Close DB connection
+        closeDB($this->conn);
+	}
 	
 
-	}
-	
-	private function getRoleID() {
-		$stmt = $this->conn->prepare("SELECT id FROM roles WHERE name = ?");
-		$stmt->bindValue(1, $this->role);
-		$stmt->execute();		
-		$registrants = $stmt->fetchAll();
-		$roleID = $registrants[0]["id"];
-		return $roleID;
-	}
-	
+
+    /*
+    *   Create an empty group.
+    *   @params: none
+    *   @return: int - $groupID
+    */
 	private function createGroup()
 	{
 		$stmt = $this->conn->prepare("INSERT INTO groups (name) VALUES(?)");
-		$stmt->bindValue(1, $this->groupname);
-		$stmt->execute();		
-		$groupID = $this->conn->lastInsertId();
-		return $groupID;
+        $stmt->bind_param("s", $this->groupname);
+
+        if ($stmt->execute()) {
+            $groupID = mysqli_insert_id($this->conn);
+            $stmt->close();
+            return $groupID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
 	}
-	
-	private function createUser()
-	{
-		$stmt = $this->conn->prepare("INSERT INTO users (name, lastname, email, password, timestamp) VALUES(?,?,?,?,?)");
-		$stmt->bindValue(1, $this->name);
-		$stmt->bindValue(2, $this->lastname);
-		$stmt->bindValue(3, $this->email);
-		$stmt->bindValue(4, $this->password);
-		$stmt->bindValue(5, date("Y-m-d H:i:s"));
-		$stmt->execute();		
-		$userID = $this->conn->lastInsertId();
-		return $userID;
-	}
-	
-	private function assignUserGroup($userID, $groupID)
-	{
-		$stmt = $this->conn->prepare("INSERT INTO usergroups (userid, groupid) VALUES(?,?)");
-		$stmt->bindValue(1, $userID);
-		$stmt->bindValue(2, $groupID);
-		$stmt->execute();		
-		$id = $this->conn->lastInsertId();
-		return $id;
-	}
-	
-	private function assignUserRole($userID, $roleID)
-	{
-		$stmt = $this->conn->prepare("INSERT INTO userroles (userid, roleid) VALUES(?,?)");
-		$stmt->bindValue(1, $userID);
-		$stmt->bindValue(2, $roleID);
-		$stmt->execute();		
-		$id = $this->conn->lastInsertId();
-		return $id;
-	}
-	
+    
+
+    /*
+    *   Get groupID of an existing group
+    *   @params: none
+    *   @return: int - $groupID
+    */
 	private function getGroupID()
 	{
-		$stmt = $this->conn->prepare("SELECT id FROM groups WHERE name = ?");
-		$stmt->bindValue(1, $this->groupname);
-		$stmt->execute();		
-		$registrants = $stmt->fetchAll();
-		$groupID = $registrants[0]["id"];
-		return $groupID;
+		$stmt = $this->conn->prepare("SELECT id FROM groups WHERE name=?");
+        $stmt->bind_param("s", $this->groupname);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($groupID);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $groupID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
 	}
 	
+    
+    /*
+    *   Get roleID of the role
+    *   @params: none
+    *   @return: int - $roleID
+    */
+	private function getRoleID() {
+		$stmt = $this->conn->prepare("SELECT id FROM roles WHERE name=?");
+        $stmt->bind_param("s", $this->role);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($roleID);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $roleID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+	
+
+    /*
+    *   Create user into the database
+    *   @params: none
+    *   @return: bool - $success
+    */
+	private function createUser($roleID, $groupID)
+	{
+        $password = md5($this->password);
+        $timestamp = date("Y-m-d H:i:s");
+        
+		$stmt = $this->conn->prepare("INSERT INTO users (name, lastname, email, password, roleid, groupid, timestamp) VALUES(?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssiis", $this->name, $this->lastname, $this->email, $password, $roleID, $groupID, $timestamp);
+
+        if ($stmt->execute()) {
+            $success = mysqli_insert_id($this->conn) > 0;
+            $stmt->close();
+            return $success;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+	
+
+    
+    /*
+    *   Attempt to assign user to a group
+    *   @params: none
+    *   @return: none
+    */
 	private function assignGroup()
 	{
 		$count = $this->getGroupSize();
-		if ($count >= 3)
-		{
+        
+		if ($count >= 3) {
 			result(false, "Group is full");
-			$this->conn = NULL; //Close DB connection
 			return;
-		}
-		else if ($count == 0)
-		{
+
+		} else if ($count == 0) {
 			$groupID = $this->createGroup();
-		}
-		else
-		{
+            
+		} else {
 			$groupID = $this->getGroupID();
 		}
 
-        	$roleID = $this->getRoleID();
-		$userID = $this->createUser();
+        $roleID = $this->getRoleID();
+        
+        //RoleID and groupID gathered, now create user.
+		if ($this->createUser($roleID, $groupID)) {
+            result(true, "User has been created successfully");
+        } else {
+            result(false, "Error creating User");
+        }
 
-		$this->assignUserRole($userID, $roleID);
-		$this->assignUserGroup($userID, $groupID);
-		
-		result(true, "User has been created successfully");
-		$this->conn = NULL; //Close DB connection
-		
 	}
 	
+    
+    /*
+    *   Count the number of users in that specified group
+    *   @params: none
+    *   @return: bool - $exist
+    */
 	private function getGroupSize()
 	{
-		$stmt = $this->conn->prepare("SELECT COUNT(*) AS groupcount FROM usergroups WHERE groupid=(SELECT id FROM groups WHERE name=?);");
-		$stmt->bindValue(1, $this->groupname);
-		$stmt->execute();		
-		$registrants = $stmt->fetchAll();
-		return $registrants[0]['groupcount'];
+		$stmt = $this->conn->prepare("SELECT count(*) AS groupcount FROM users WHERE groupid = (SELECT id FROM groups WHERE name=?)");
+        $stmt->bind_param("s", $this->groupname);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($groupcount);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $groupcount;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
 	}
+
 
     /*
     *   Check if user already exist in the database.
     *   @params: none
-    *   @return: int - $count
+    *   @return: bool - $exist
     */
     private function checkExist() {
 		$stmt = $this->conn->prepare("SELECT email FROM Users WHERE email = ?");
-		$stmt->bindValue(1, $this->email);
-		$stmt->execute();		
-		$registrants = $stmt->fetchAll();
-		
-        if (count($registrants) > 0) {
-            $this->conn = NULL; //Close DB connection
-			result(false, "User already exist");
-            return true;
+        $stmt->bind_param("s", $this->email);
+
+        if ($stmt->execute()) {
+            $registrant = $stmt->fetch();
+            $stmt->close();
+
+            if (count($registrant) > 0) {
+                result(false, "User already exist");
+                return true;
+            }
+            return false;
+            
+        } else {
+            die("An error occurred performing a request");
         }
-		return false;
     }
-    
     
 }
 
-$name = "Amigo pollos3";
-$lastname = "Los Hermanos";
-$email = "z4@ucl.ac.uk";
+
+$name = "Test4";
+$lastname = "Last4";
+$email = "test4@ucl.ac.uk";
 $password = "abc123";
-$groupname= "gay";
-$role = "studENT";
+$groupname= "gangnam";
+$role = "studENt";
 
 $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
 if ($signup->checkInputs()) {

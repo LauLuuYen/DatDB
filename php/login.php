@@ -1,77 +1,126 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
 
+header("Access-Control-Allow-Origin: *");
+define("DEBUG", false);
+
+if (DEBUG) {
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
-    include "include/config.php";
+}
 
-    function result($success, $message) {
-        $response["success"] = $success;
-        $response["message"] = $message;
-        echo json_encode($response);
-    }
-  
+include "include/config.php";
+
+
+/*
+*   Echoes to the client the result of the process.
+*   @params: bool - $success, string - $msg
+*   @return: none
+*/
+function result($success, $msg) {
+    $response["success"] = $success;
+    $response["message"] = $msg;
+    echo json_encode($response);
+}
+
+
 class Login
 {
 
+    /*
+    *   Constructor.
+    *   @params: string - $email, string - $password
+    *   @return: none
+    */
 	public function __construct($email, $password)
-	{
-		$this->email = $email;
+    {
+		$this->email = strtolower(trim($email));
 		$this->password = $password;		
 	}
 	
-	private function checkInputs()
-	{
-		return true;
+
+    /*
+    *   Validate the inputs.
+    *   @params: none
+    *   @return: none
+    */
+	public function checkInputs()
+    {
+        if (strlen($this->email) == 0) {
+            result(false, "Email must be set");
+            
+        } else if (strlen($this->password) == 0) {
+            result(false, "Password must be set");
+            
+        } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            result(false, "Invalid email");
+
+        } else {
+            return true;
+        }
+        
+        return false;
 	}
 	
+
+    /*
+    *   Attempt to authenticate the user.
+    *   @params: none
+    *   @return: none
+    */
 	public function authenticate()
 	{
 	    $this->conn = connectDB();
 	    
 		$stmt = $this->conn->prepare("SELECT * FROM Users WHERE email = ?");
-		$stmt->bindValue(1, $this->email);
-		$stmt->execute();		
-		$registrants = $stmt->fetchAll();
-		
-		if(count($registrants) == 0) 
-		{
-			result(false, "User does not exist");
-			return;
-		}
-		
-		//echo json_encode($registrants);
-		
-		$user = $registrants[0];
-		//echo $user['name'];
-		
-		$password = md5($this->password);
-		//echo $password;
-		if($password != $user['password'])
-		{
-			result(false, "Invalid email or password combination");
-		}
-		else
-		{
-			result(true, "Success");
-		}
-		
-	}
+        $stmt->bind_param("s", $this->email);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($id, $name, $lastname, $email, $password, $roleID, $groupID, $timestamp);
+            
+            $registrant = $stmt->fetch();
+            
+            if (count($registrant) == 0) {
+                //No user found
+                result(false, "Email does not exist");
+                return;
+            }
+            
+            if (md5($this->password) != $password) {
+                result(false, "Invalid email/password combination");
+            } else {
+                result(true, "Success!");
+                //TODO return back other stuff
+                
+            }
+            
+            $stmt->close();
+            closeDB($this->conn);
+
+        } else {
+            die("An error occurred performing the request");
+        }
+    }
 
 }
 
+
+
 if(!empty($_POST))
 {
-	$password = $_POST['password'];
-	$email = $_POST['email'];
-	$login = new Login($email, $password);
-	$login->authenticate();
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+    $login = new Login($email, $password);
+    if ($login->checkInputs()) {
+        $login->authenticate();
+    }
 }
 else
 {
 	result(false, "Permission Denied");
 }
+
 
 
 ?>
