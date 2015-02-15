@@ -11,7 +11,7 @@
     *   @return: mysqli - $conn
     */
     function connectDB() {
-        $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASS, DB_NAME);
+        $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
         if (mysqli_connect_errno()) {
             die("Failed to connect to database");
         }
