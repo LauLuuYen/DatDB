@@ -143,10 +143,3 @@ app.controller('Home', function ($scope, master) {
     }
 
 });
-
-
-app.controller('CreateUser', function ($scope, master) {
-    $scope.account = {
-        firstname:"", lastname:"", email:"", password: ""
-    };
-});

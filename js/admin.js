@@ -19,14 +19,14 @@ app.config(function($routeProvider) {
             controller: "Main"
         })
 
-        .when("/users", {
+        .when("/user", {
             templateUrl: "user.html",
-            controller: "CreateUser"
+            controller: "User"
         })
         
-        .when("/", {
+        .when("/assignments", {
             templateUrl: "assignment.html",
-            controller: "CreateAssignment"
+            controller: "Assignment"
         })
         
         .when("/groups", {
@@ -40,10 +40,11 @@ app.config(function($routeProvider) {
 );
 
 app.controller("Main", function ($scope, master) {
-
+    $scope.navigation = "Home > Admin";
 });
 
 app.controller("User", function ($scope, master) {
+    $scope.navigation = "Home > Admin > Create User";
     $scope.account = {
         firstname:"", lastname:"", email:"", password: ""
     };
@@ -51,12 +52,15 @@ app.controller("User", function ($scope, master) {
 });
 
 app.controller("Assignment", function ($scope, master) {
+    $scope.navigation = "Home > Admin > Create Assignment";
     $scope.account = {
         firstname:"", lastname:"", email:"", password: ""
     };
 });
 
 app.controller("Groups", function ($scope, master) {
+    $scope.navigation = "Home > Admin > View groups";
+
     //alert("Testff");
 });
 
