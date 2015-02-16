@@ -1,4 +1,11 @@
 
+html, body {
+    height: 100%;
+    width:100%;
+    margin: 0;
+    background-color:#DDD;
+}
+
 /*
 *   Login page / index.html
 */
@@ -45,6 +52,82 @@
 }
 
 
-/*
-*
-*/
+.banner {
+    position:absolute;
+    top:0px;
+    width:100%;
+    height:100px;
+    background-color:rgb(179,200,51);
+    z-index:2;
+}
+
+.left_panel {
+    position:absolute;
+    width:250px;
+    height:100%;
+    background-color:grey;
+}
+
+.left_panel .panel{
+    display:block;
+    float:left;
+    width:250px;
+    font-size:20px;
+    margin:0;
+    padding-left:10px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.panel.header{
+    height:50px;
+    background-color:green;
+    line-height:50px;
+    color:white;
+}
+
+.panel.btn {
+    float:right;
+    height:60px;
+    background-color:rgb(243,243,243);
+    line-height:60px;
+    border-bottom: 1px solid black;
+    color:black;
+    -webkit-box-shadow: 0px 27px 109px -27px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 27px 109px -27px rgba(0,0,0,0.75);
+    box-shadow: 0px 27px 109px -27px rgba(0,0,0,0.75);
+    text-decoration: none !important;
+}
+
+.panel.btn:hover {
+    background-color:rgb(179,200,51);
+    color:white;
+}
+
+.panel.btn.onSelect {
+    color:rgb(179,200,51);
+}
+
+
+.content_panel {
+    position:absolute;
+    right:0;
+    left:250px;
+    height:100%;
+    margin:10px;
+}
+
+
+.innerbox {
+    position:relative;
+    width:84%;
+    min-height:80%;
+    background-color:rgb(229,229,229);
+    top:100px;
+    left:8%;
+    right:8%;
+    -webkit-box-shadow: 0px 0px 98px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 98px -13px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 98px -13px rgba(0,0,0,0.75);
+}

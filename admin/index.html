@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Peer Review System</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="../;/admin.js"></script>
+    
+
+</head>
+
+<body>
+    <div class="banner"></div>
+    <div class="innerbox">
+    
+        <div class="left_panel">
+            <div class="panel header" >Home > Admin</div>
+            <a class="panel btn" href="#/user.html">Create User</a>
+            <a class="panel btn" href="#/assignment.html">Create Assignment</a>
+            <a class="panel btn" href="#/groups.html">View Groups</a>
+        </div>
+        
+        <div class="content_panel">
+            <div ng-view></div>
+        </div>
+
+    
+    </div>
+
+</body>
+	
+</html>
