@@ -84,6 +84,27 @@ public function createAssignment()
 	echo 'ladyboy';
 }
 
+private function createReport()
+{
+	$this->getGroupIDs();
+}
+
+private function getGroupIDs()
+{
+	$this->conn = connectDB();
+	$stmt = $this->conn->prepare("SELECT * FROM groups");
+	
+	   if ($stmt->execute()) 
+	   {
+	   	echo 'success';
+            $stmt->close();
+        } else {
+            die("An error occurred performing a request");
+        }
+	
+	closeDB($this->conn);
+}
+
     /*
     *   Check if user already exist in the database.
     *   @params: none
