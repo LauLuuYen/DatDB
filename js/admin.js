@@ -46,8 +46,40 @@ app.controller("Main", function ($scope, master) {
 app.controller("User", function ($scope, master) {
     $scope.navigation = "Home > Admin > Create User";
     $scope.account = {
-        firstname:"", lastname:"", email:"", password: ""
+        firstname:"", lastname:"", email:"", password: "", groupname:"",
+        role:"student"
     };
+
+    $scope.submit = function() {
+        console.log("submitting...");
+        $.ajax({
+            type: "POST",
+            url:"http://lauluuyen.azurewebsites.net/php/signup.php" ,
+            crossDomain: true,
+            data: { name:$scope.account.firstname,
+                    lastname:$scope.account.lastname,
+                    email: $scope.account.email,
+                    password:$scope.account.password,
+                    password:$scope.account.password,
+                    groupname:$scope.account.groupname,
+                    role:$scope.account.role
+                },
+            dataType: "json",
+            async: true,
+            timeout: 10000,
+
+            success: function (result)
+            {
+                alert("result: " + result.success + ", message: " +result.message);
+            },
+
+            error: function(xhr, status, error)
+            {
+                alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+            }
+        });
+    };
+    
     
 });
 
