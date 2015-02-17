@@ -17,7 +17,7 @@ html, body {
 }
 
 .login.box {
-    background-color:#2E9AFE;
+    background-color:rgb(179,200,51);
     opacity: 0.7;
     position: fixed;
     margin: 14% 40%;
