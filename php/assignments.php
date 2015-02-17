@@ -112,7 +112,7 @@ private function createAssignment() {
 private function createReports($assignmentID)
 {	
 	$data = $this->getGroupIDs();
-	foreach($data as $name=>$groupid)
+	foreach($data as $name=>$groupID)
 	{
 		$this->createReport($assignmentID, $groupID);
 	}
