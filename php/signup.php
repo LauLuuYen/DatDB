@@ -283,11 +283,11 @@ class Signup {
 }
 
 
-$name = "Test4";
-$lastname = "Last4";
-$email = "test4@ucl.ac.uk";
+$name = "Jack";
+$lastname = "Black";
+$email = "jackblack@ucl.ac.uk";
 $password = "abc123";
-$groupname= "gangnam";
+$groupname= "ParisHilton";
 $role = "studENt";
 
 $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
