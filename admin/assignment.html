@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="/resources/demos/style.css">
         <script>
           $(function() {
-          $( "#datepicker" ).datepicker();
+          $( "#datepicker" ).datepicker()({ dateFormat: 'dd-mm-yy' }).val(); 
           });
         </script>
 <div>
@@ -21,7 +21,7 @@
             <textarea cols="100" rows="5"></textarea>
         </div>
        
-        <p>Date: <input type="date" id="datepicker"></p>
+        <p>Date: <input type="input" id="datepicker"></p>
         
     </form>
 </div>
