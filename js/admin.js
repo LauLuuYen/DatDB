@@ -45,13 +45,16 @@ app.controller("Main", function ($scope, master) {
 
 app.controller("User", function ($scope, master) {
     $scope.navigation = "Home > Admin > Create User";
+    alert("testing");
+    
     $scope.account = {
-        firstname:"", lastname:"", email:"", password: "", groupname:"",
+        firstname:"test1", lastname:"", email:"", password: "", groupname:"",
         role:"student"
     };
 
     $scope.submit = function() {
         console.log("submitting...");
+        
         $.ajax({
             type: "POST",
             url:"http://lauluuyen.azurewebsites.net/php/signup.php" ,
