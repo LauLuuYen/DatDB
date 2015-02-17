@@ -134,7 +134,7 @@ else
 $title = "lggflex2";
 $task = "Exampletext";
 $deadline = "02/02/02";
-$assignment = new Assignment($title, $task, $deadline);
+$assignment = new Assignments($title, $task, $deadline);
 $assignment->createAssignment();
 
 ?>
