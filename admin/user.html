@@ -27,7 +27,7 @@
         </div>
         
     </form>
-    <script language="javascript">
+	<script language="javascript">
 	var dt=new Date();
 	var dt_month=dt.getMonth() +1;
 	//alert(dt_month);
@@ -40,23 +40,26 @@
 	}
 
 	function addOption_list(){
-	var month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+	var month = new Array("January","February","March","April","May","June","July","August",
+	"September","October","November","December");
 	for (var i=0; i < month.length;++i){
 	addOption(document.drop_list.Month_list, month[i], month[i]);
-	if(i== dt_month){document.drop_list.Month_list.options[i].	selected=true;}
+	if(i== dt_month){document.drop_list.Month_list.options[i].selected=true;}
 	}
 	}
-</script>
+	</script>
 
 
-<body onLoad="addOption_list()";>
+	<body onLoad="addOption_list()";>
+	You can see the view-> Source of this page. 
+	<br><br>
+	<FORM name="drop_list" action="yourpage.php" method="POST" >
 
-<FORM name="drop_list" action="yourpage.php" method="POST" >
+	<SELECT NAME="Month_list">
+	<Option value="" >Month list</option>
+	</SELECT>
+	</form>
 
-<SELECT NAME="Month_list">
-<Option value="" >Month list</option>
-</SELECT>
-</form>
 
 </div>
 
