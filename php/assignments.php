@@ -32,7 +32,11 @@ class Assignments {
     *            string - $password, string - $groupname, string - $role
     *   @return: none
     */
-	public function __construct() {
+	public function __construct($title, $task, $deadline) {
+		$this->title = $title;
+		$this->task = $task;
+		$this->deadline = $deadline;
+		
 	}
 	
     
@@ -75,6 +79,10 @@ class Assignments {
 	*/
 	}
 
+public function createAssignment()
+{
+	echo 'ladyboy';
+}
 
     /*
     *   Check if user already exist in the database.
@@ -122,5 +130,11 @@ else
 }
 
 */
+
+$title = "lggflex2";
+$task = "Exampletext";
+$deadline = "02/02/02";
+$assignment = new Assignment($title, $task, $deadline);
+$assignment->createAssignment();
 
 ?>
