@@ -27,6 +27,39 @@
         </div>
         
     </form>
+    <script language="javascript">
+//var dt=new Date();
+//var dt_month=dt.getMonth() +1;
+//alert(dt_month);
+function addOption(selectbox,text,value )
+{
+var optn = document.createElement("OPTION");
+optn.text = text;
+optn.value = value;
+selectbox.options.add(optn);
+}
+
+function addOption_list(){
+var groupname = new Array("1","2","3","4","5","6","7","8","9","10","11","12");
+for (var i=0; i < groupname.length;++i){
+addOption(document.drop_list.Group_list, groupname[i], groupname[i]);
+}
+}
+
+</script>
+
+<body onLoad="addOption_list()";>
+ 
+<br><br>
+<FORM name="drop_list" action="yourpage.php" method="POST" >
+
+<SELECT NAME="Group_list">
+<Option value="" >Group list</option>
+</SELECT>
+</form>
+
+
+</body>
 
 </div>
 
