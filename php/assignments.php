@@ -79,39 +79,59 @@ class Assignments {
 	*/
 	}
 
-public function createAssignment()
+public function create()
 {
-	echo 'ladyboy';
-	$this->createReports();
+	$this->conn = connectDB();
+	//$this->createReports();
+	$assignmentID = $this->createAssignment();
+	echo $assignmentID;
+	closeDB($this->conn);
+
+}
+
+private function createAssignment() {
+	$stmt = $this->conn->prepare("INSERT INTO assignments (title, task, deadline) values(?,?,?)");
+	$stmt->bind_param("sss", $this->title, $this->task, $this->deadline);
+	if ($stmt->execute()) 
+	{
+	  $ID = mysqli_insert_id($this->conn);
+	  return $ID;
+        } 
+        else 
+        {
+            die("An error occurred performing a request");
+        }
 }
 
 private function createReports()
 {
+
 	$this->getGroupIDs();
+
 }
 
 private function getGroupIDs()
 {
-	$this->conn = connectDB();
 	$stmt = $this->conn->prepare("SELECT * FROM groups");
 	
-	   if ($stmt->execute()) 
+	if ($stmt->execute()) 
 	   {
 	   	$stmt->store_result();
 	   	$stmt->bind_result($id, $name);
 	   	$data = array();
 	   	while($stmt->fetch())
 	   	{
-	   	$data["" . $name] = $id;	
+	   		$data["" . $name] = $id;	
 	   	}
-	   	echo json_encode($data);
+	   	
 	   	$stmt->free_result();
-            $stmt->close();
+            	$stmt->close();
+            	return $data;
+            	
         } else {
             die("An error occurred performing a request");
         }
 	
-	closeDB($this->conn);
 }
 
     /*
@@ -147,6 +167,6 @@ $title = "lggflex2";
 $task = "Exampletext";
 $deadline = "02/02/02";
 $assignment = new Assignments($title, $task, $deadline);
-$assignment->createAssignment();
+$assignment->create();
 
 ?>
