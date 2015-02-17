@@ -282,7 +282,7 @@ class Signup {
     
 }
 
-
+/*
 $name = "Jack";
 $lastname = "Black";
 $email = "jackblack@ucl.ac.uk";
@@ -295,19 +295,28 @@ if ($signup->checkInputs()) {
     $signup->register();
 }
 
-/*
+*/
+
+
 if(!empty($_POST))
 {
-	$password = $_POST['password'];
+	$name = $_POST['name'];
+	$lastname = $_POST['lastname'];
 	$email = $_POST['email'];
-	$signup = new Signup($email, $password);
-	$signup->authenticate();
+	$password = $_POST['password'];
+	$groupname= $_POST['groupname'];
+	$role = $_POST['role'];
+	$signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
+	if ($signup->checkInputs()) {
+	    $signup->register();
+	}
+
 }
 else
 {
 	result(false, "Permission Denied");
 }
-*/
+
 
 
 ?>
