@@ -123,7 +123,7 @@ private function createReports($assignmentID)
 private function createReport($assignmentID, $groupid)
 {
 	$statusid = 1;
-	$stmt = $this->conn->prepare("INSERT INTO reports (groupid, assignmentid, statusid) values(?,?,?)");
+	$stmt = $this->conn->prepare("INSERT INTO reports (groupid, assignmentid, statusid) values (?,?,?)");
 	$stmt->bind_param("iii", $groupid, $assignmentID, $statusid);
 	if ($stmt->execute()) 
 	{
