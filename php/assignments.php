@@ -110,10 +110,30 @@ private function createAssignment() {
 }
 
 private function createReports($assignmentID)
+{	
+	$data = $this->getGroupIDs();
+	foreach($data as $name=>$groupid)
+	{
+		$this->createReport($assignmentID, $groupID);
+	}
+	
+
+}
+
+private function createReport($assignmentID, $groupid)
 {
-
-	$this->getGroupIDs();
-
+	$statusid = 1;
+	$stmt = $this->conn->prepare("INSERT INTO reports (groupid, assignmentid, statusid) values(?,?,?)");
+	$stmt->bind_param("iii", $groupid, $assignmentID, $statusid);
+	if ($stmt->execute()) 
+	{
+	  $ID = mysqli_insert_id($this->conn);
+	  return $ID;
+        } 
+        else 
+        {
+            die("An error occurred performing a request");
+        }
 }
 
 private function getGroupIDs()
