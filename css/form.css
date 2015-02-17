@@ -6,10 +6,6 @@
     margin: 10px 0;
 }
 
-.input_content_wrapper {
-    margin: 30px 0;
-}
-
 .input_text {
     box-sizing: border-box;
     margin-bottom: 10px;
@@ -17,6 +13,10 @@
     height:25px;
     font-size:15px;
     padding-left:5px;
+}
+
+.input_text.content {
+    height:100px;
 }
 
 
