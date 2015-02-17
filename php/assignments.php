@@ -82,11 +82,17 @@ class Assignments {
 public function create()
 {
 	$this->conn = connectDB();
-	//$this->createReports();
+	
 	$assignmentID = $this->createAssignment();
-	echo $assignmentID;
+	if($assignmentID <= 0)
+	{
+		result (false, "error inserting assignment");
+		return;
+	}
+	
+	$this->createReports($assignmentID);
 	closeDB($this->conn);
-
+	
 }
 
 private function createAssignment() {
@@ -103,7 +109,7 @@ private function createAssignment() {
         }
 }
 
-private function createReports()
+private function createReports($assignmentID)
 {
 
 	$this->getGroupIDs();
