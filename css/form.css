@@ -16,6 +16,7 @@
 }
 
 .input_text.content {
+    box-sizing: content-box;
     height:250px;
 }
 
