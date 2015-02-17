@@ -23,7 +23,7 @@
 .input_text.login {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    background-color: #EAEAEA;
+    background-color:rgb(179,200,51);
     background: -moz-linear-gradient(top, #FFF, #EAEAEA);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #FFF), color-stop(1.0, #EAEAEA));
     border: 1px solid #CACACA;
