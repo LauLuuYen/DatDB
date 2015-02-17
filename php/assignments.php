@@ -97,7 +97,15 @@ private function getGroupIDs()
 	
 	   if ($stmt->execute()) 
 	   {
-	   	echo 'success';
+	   	$stmt->store_result();
+	   	$stmt->bind_result($id, $name);
+	   	$data = array();
+	   	while($stmt->fetch())
+	   	{
+	   	$data["" . $name] = $id;	
+	   	}
+	   	echo json_encode($data);
+	   	$stmt->free_result();
             $stmt->close();
         } else {
             die("An error occurred performing a request");
@@ -111,25 +119,7 @@ private function getGroupIDs()
     *   @params: none
     *   @return: bool - $exist
     */
-    private function checkExist() {
-		$stmt = $this->conn->prepare("SELECT email FROM Users WHERE email = ?");
-        $stmt->bind_param("s", $this->email);
 
-        if ($stmt->execute()) {
-            $registrant = $stmt->fetch();
-            $stmt->close();
-
-            if (count($registrant) > 0) {
-                result(false, "User already exist");
-                return true;
-            }
-            return false;
-            
-        } else {
-            die("An error occurred performing a request");
-        }
-    }
-    
 }
 /*
 if(!empty($_POST))
