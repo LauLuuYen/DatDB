@@ -82,9 +82,10 @@ class Assignments {
 public function createAssignment()
 {
 	echo 'ladyboy';
+	$this->createReports();
 }
 
-private function createReport()
+private function createReports()
 {
 	$this->getGroupIDs();
 }
