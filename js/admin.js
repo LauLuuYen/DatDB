@@ -85,8 +85,8 @@ app.controller("User", function ($scope, master) {
 
 app.controller("Assignment", function ($scope, master) {
     $scope.navigation = "Home > Admin > Create Assignment";
-    $scope.account = {
-        firstname:"", lastname:"", email:"", password: ""
+    $scope.assignment = {
+        title:"", content:"", date:""
     };
 });
 
