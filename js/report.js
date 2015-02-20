@@ -134,10 +134,10 @@ app.controller("Submit", function ($scope, master) {
 });
 
 app.controller("Assessments", function ($scope, master) {
-    alert("Assessments");
+
 });
 
 app.controller("Marks", function ($scope, master) {
-    alert("Marks");
+
 });
 
