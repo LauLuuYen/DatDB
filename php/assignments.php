@@ -112,11 +112,16 @@ private function createAssignment() {
 private function createReports($assignmentID)
 {	
 	$data = $this->getGroupIDs();
-	foreach($data as $name=>$groupID)
-	{
-		$this->createReport($assignmentID, $groupID);
+
+	foreach ($data as &$row) {
+		foreach ($data as &$row) {
+			$groupID = $row["groupid"];
+			$reportID = $this->createReport($assignmentID, $groupID);
+			$row["reportid"] = $reportID;
+		}
 	}
-	
+
+	echo json_encode($data);
 
 }
 
@@ -147,8 +152,13 @@ private function getGroupIDs()
 	   	$data = array();
 	   	while($stmt->fetch())
 	   	{
-	   		$data["" . $name] = $id;	
+	   		$row = array();
+			$row["groupid"] = $id;
+			$row["reportid"] = -1;
+	   		$data["" . $name] = $row;	
 	   	}
+	   	
+	   	echo json_encode($data);
 	   	
 	   	$stmt->free_result();
             	$stmt->close();
@@ -195,4 +205,48 @@ $deadline = "02/02/02";
 $assignment = new Assignments($title, $task, $deadline);
 $assignment->create();
 
+/*
+$json_str = '{  
+   "Zdafeefef 2":[  
+      "Animatrix",
+      "Zeldafans",
+      "Theterminator"
+   ],
+   "Gangnam":[  
+      "Parishilton",
+      "It'smorphintime!",
+      "Housestark"
+   ],
+   "Parishilton":[  
+      "It'smorphintime!",
+      "Zdafeefef 2",
+      "Zeldafans"
+   ],
+   "Theterminator":[  
+      "It'smorphintime!",
+      "Zdafeefef 2",
+      "Housestark"
+   ],
+   "Housestark":[  
+      "Animatrix",
+      "Parishilton",
+      "Theterminator"
+   ],
+   "Zeldafans":[  
+      "Parishilton",
+      "Animatrix",
+      "Gangnam"
+   ],
+   "It'smorphintime!":[  
+      "Theterminator",
+      "Gangnam",
+      "Zdafeefef 2"
+   ],
+   "Animatrix":[  
+      "Zeldafans",
+      "Housestark",
+      "Gangnam"
+   ]
+}';
+*/
 ?>
