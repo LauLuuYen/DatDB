@@ -60,6 +60,7 @@
     	
     	private function submitReport($content)
     	{
+    		$timestamp = date("Y-m-d H:i:s");
     		$string = $content. " ". $this->userID. " ". $timestamp. " ".$this->reportID;
     		 result(true, $string);
     		return true;
