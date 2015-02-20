@@ -63,7 +63,7 @@
     		$this->conn = connectDB();
 		$stmt = $this->conn->prepare("UPDATE reports SET content=?, userid=?, statusid=?, timestamp=? WHERE id=?");
 		$timestamp = date("Y-m-d H:i:s");
-		$stmt->bind_param("siis", $content, $this->userID,11, $timestamp, $this->reportID);
+		$stmt->bind_param("siisi", $content, $this->userID,11, $timestamp, $this->reportID);
 		if ($stmt->execute()) 
 		{
 		  $stmt->close();
