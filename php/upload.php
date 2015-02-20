@@ -61,7 +61,7 @@
     	private function submitReport($content)
     	{
     		$this->conn = connectDB();
-		$stmt = $this->conn->prepare("UPDATE reports SET content=?, userid=?, statusid=?, timestamp=? WHERE id=?";
+		$stmt = $this->conn->prepare("UPDATE reports SET content=?, userid=?, statusid=?, timestamp=? WHERE id=?");
 		$timestamp = date("Y-m-d H:i:s");
 		$stmt->bind_param("siis", $content, $this->userID,11, $timestamp);
 		if ($stmt->execute()) 
@@ -72,8 +72,6 @@
 	        } 
 		closeDB($this->conn);
 	        return false;
-
-}
     		
     		
     	}
