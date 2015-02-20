@@ -15,8 +15,10 @@
     
     
     class FileParser {
-    	public function __construct($txtfile)
+    	public function __construct($userID, $reportID, $txtfile)
     	{
+    		$this->userID = $userID;
+    		$this->reportID = $reportID;
 	        $this->txtfile = $txtfile;
     	}
     	
@@ -55,11 +57,11 @@ if (!empty($_FILES["myFile"])) {
         result(false, "An error occured uploading.");
         exit;
     }
-$i = $_POST['userID'];
-$j = $_FILES["userID"];
-    //$parser = new FileParser($myFile);
-    //$parser->checkXML();
-    result(true, $i. ", success, ".$j);
+	$userID = $_POST['userID'];
+	$reportID = $_POST['reportID']; 
+	$parser = new FileParser($userID,$reportID, $myFile);
+	$parser->checkXML();
+
     
 } else {
     result(false, "nothing");
