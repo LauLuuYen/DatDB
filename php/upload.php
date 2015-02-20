@@ -55,8 +55,8 @@ if (!empty($_FILES["myFile"])) {
         result(false, "An error occured uploading.");
         exit;
     }
-$i = 	$_POST['userID'];
-$j = 	$_FILES["userID"]
+$i = $_POST['userID'];
+$j = $_FILES["userID"];
     //$parser = new FileParser($myFile);
     //$parser->checkXML();
     result(true, $i. ", success, ".$j);
