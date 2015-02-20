@@ -118,7 +118,6 @@ private function createReports($assignmentID)
 		$groupID = $row["groupid"];
 		$reportID = $this->createReport($assignmentID, $groupID);
 		$row["reportid"] = $reportID;
-		echo "reprrtID:" .$reportID;
 	}
 
 
