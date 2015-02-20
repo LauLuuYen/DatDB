@@ -128,11 +128,15 @@ private function createReports($assignmentID)
 		foreach($grouplist as $groupname)
 		{
 			$reportID = $data["".$groupname]["reportid"];
-			echo $groupID. " assesses ". $reportID. "<br>";
+			//echo $groupID. " assesses ". $reportID. "<br>";
+			if ($this->createAssessment($groupID, $reportID) <= 0) {
+				result(false, "Error creating assessment");	
+				return;
+			}
 		}
  
 	}
-	
+	result(true, "Success");
 }
 
 private function createReport($assignmentID, $groupid)
@@ -178,11 +182,21 @@ private function getGroupIDs()
 	
 }
 
-    /*
-    *   Check if user already exist in the database.
-    *   @params: none
-    *   @return: bool - $exist
-    */
+private function createAssessment($groupID, $reportID) {
+	$statusid = 1;
+	$stmt = $this->conn->prepare("INSERT INTO assessments (groupid, reportid, statusid) values (?,?,?)");
+	$stmt->bind_param("iii", $groupID, $reportID, $statusid);
+	if ($stmt->execute()) 
+	{
+	  $ID = mysqli_insert_id($this->conn);
+	  return $ID;
+        } 
+        else 
+        {
+            die("An error occurred performing a request");
+        }
+	
+}
 
 }
 /*
