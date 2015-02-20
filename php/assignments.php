@@ -214,16 +214,16 @@ $json_str = '{
    ],
    "Gangnam":[  
       "Parishilton",
-      "It'smorphintime!",
+      "It\'smorphintime!",
       "Housestark"
    ],
    "Parishilton":[  
-      "It'smorphintime!",
+      "It\'smorphintime!",
       "Zdafeefef 2",
       "Zeldafans"
    ],
    "Theterminator":[  
-      "It'smorphintime!",
+      "It\'smorphintime!",
       "Zdafeefef 2",
       "Housestark"
    ],
@@ -237,7 +237,7 @@ $json_str = '{
       "Animatrix",
       "Gangnam"
    ],
-   "It'smorphintime!":[  
+   "It\'smorphintime!":[  
       "Theterminator",
       "Gangnam",
       "Zdafeefef 2"
