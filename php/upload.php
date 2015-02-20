@@ -43,12 +43,39 @@
        		$json = json_encode($xml);
        		$array = json_decode($json, true);
        		
-       		$content = $array['0'];
-                result(true, $content . ", " . $this->userID .", " . $this->reportID);
-
+       		$content = trim($array['0']);
+               
+                if($this->submitReport($content))
+                {
+                	 result(true, "success");
+                }
+		else
+		{
+			result(false, "failed to submit report");	
+		}
             }
             
             
+    	}
+    	
+    	private function submitReport($content)
+    	{
+    		$this->conn = connectDB();
+		$stmt = $this->conn->prepare("UPDATE reports SET content=?, userid=?, statusid=?, timestamp=? WHERE id=?"
+		$timestamp = date("Y-m-d H:i:s");
+		$stmt->bind_param("siis", $content, $this->userID,11, $timestamp);
+		if ($stmt->execute()) 
+		{
+		  $stmt->close();
+		  closeDB($this->conn);
+		  return true;
+	        } 
+		closeDB($this->conn);
+	        return false;
+
+}
+    		
+    		
     	}
     	
     }
