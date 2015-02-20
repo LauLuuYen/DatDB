@@ -18,6 +18,7 @@
 .input_text.content {
     box-sizing: content-box;
     height:250px;
+    padding-right:5px;
 }
 
 .input_text.login {
