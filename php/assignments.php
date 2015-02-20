@@ -114,10 +114,11 @@ private function createReports($assignmentID)
 	$data = $this->getGroupIDs();
 
 
-	foreach ($data as $row) {
+	foreach ($data as &$row) {
 		$groupID = $row["groupid"];
 		$reportID = $this->createReport($assignmentID, $groupID);
 		$row["reportid"] = $reportID;
+		echo "reprrtID:" .$reportID;
 	}
 
 
