@@ -13,12 +13,13 @@
     height:25px;
     font-size:15px;
     padding-left:5px;
+    padding-right:5px;
 }
 
 .input_text.content {
-    box-sizing: content-box;
+    box-sizing: border-box;
     height:250px;
-    padding-right:5px;
+    
 }
 
 .input_text.login {
