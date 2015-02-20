@@ -82,7 +82,8 @@ app.controller("Submit", function ($scope, master) {
     $scope.send = function() {
     	
         var formData = new FormData($('form')[0]);
-	formData.append("userID", 21);
+	formData.append("userID", 51);
+	formData.append("reportID", 2001);
         $.ajax({
             type: "POST",
             url: "http://lauluuyen.azurewebsites.net/php/upload.php",
