@@ -56,9 +56,9 @@ if (!empty($_FILES["myFile"])) {
         exit;
     }
 
-    $parser = new FileParser($myFile);
-    $parser->checkXML();
-    
+    //$parser = new FileParser($myFile);
+    //$parser->checkXML();
+    result(true, "success");
     
 } else {
     result(false, "nothing");
