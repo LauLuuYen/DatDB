@@ -113,13 +113,13 @@ private function createReports($assignmentID)
 {	
 	$data = $this->getGroupIDs();
 
-	foreach ($data as &$row) {
-		foreach ($data as &$row) {
-			$groupID = $row["groupid"];
-			$reportID = $this->createReport($assignmentID, $groupID);
-			$row["reportid"] = $reportID;
-		}
+
+	foreach ($data as $row) {
+		$groupID = $row["groupid"];
+		$reportID = $this->createReport($assignmentID, $groupID);
+		$row["reportid"] = $reportID;
 	}
+
 
 	echo json_encode($data);
 
@@ -157,8 +157,6 @@ private function getGroupIDs()
 			$row["reportid"] = -1;
 	   		$data["" . $name] = $row;	
 	   	}
-	   	
-	   	echo json_encode($data);
 	   	
 	   	$stmt->free_result();
             	$stmt->close();
