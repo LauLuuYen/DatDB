@@ -32,11 +32,11 @@ class Assignments {
     *            string - $password, string - $groupname, string - $role
     *   @return: none
     */
-	public function __construct($title, $task, $deadline) {
+	public function __construct($title, $task, $deadline, $assessmentlist) {
 		$this->title = $title;
 		$this->task = $task;
 		$this->deadline = $deadline;
-		
+		$this->assessmentlist = $assessmentlist;
 	}
 	
     
@@ -119,10 +119,20 @@ private function createReports($assignmentID)
 		$reportID = $this->createReport($assignmentID, $groupID);
 		$row["reportid"] = $reportID;
 	}
+	$assessmentlist = json_decode($this->assessmentlist, true);
 
-
-	echo json_encode($data);
-
+	foreach($assessmentlist as $key => $grouplist)
+	{
+		$groupID = $data["".$key]["groupid"];
+    
+		foreach($grouplist as $groupname)
+		{
+			$reportID = $data["".$groupname]["reportid"];
+			echo $groupID. " assesses ". $reportID. "<br>";
+		}
+ 
+	}
+	
 }
 
 private function createReport($assignmentID, $groupid)
@@ -196,118 +206,53 @@ else
 }
 
 */
-
+$json_str = '{  
+   "Zdafeefef 2":[  
+      "Animatrix",
+      "Zeldafans",
+      "Theterminator"
+   ],
+   "Gangnam":[  
+      "Parishilton",
+      "It\'smorphintime!",
+      "Housestark"
+   ],
+   "Parishilton":[  
+      "It\'smorphintime!",
+      "Zdafeefef 2",
+      "Zeldafans"
+   ],
+   "Theterminator":[  
+      "It\'smorphintime!",
+      "Zdafeefef 2",
+      "Housestark"
+   ],
+   "Housestark":[  
+      "Animatrix",
+      "Parishilton",
+      "Theterminator"
+   ],
+   "Zeldafans":[  
+      "Parishilton",
+      "Animatrix",
+      "Gangnam"
+   ],
+   "It\'smorphintime!":[  
+      "Theterminator",
+      "Gangnam",
+      "Zdafeefef 2"
+   ],
+   "Animatrix":[  
+      "Zeldafans",
+      "Housestark",
+      "Gangnam"
+   ]
+}';
 $title = "lggflex2";
 $task = "Exampletext";
 $deadline = "02/02/02";
-$assignment = new Assignments($title, $task, $deadline);
+$assignment = new Assignments($title, $task, $deadline, $json_str);
 $assignment->create();
 
-
-$json_str = '{  
-   "Zdafeefef 2":[  
-      "Animatrix",
-      "Zeldafans",
-      "Theterminator"
-   ],
-   "Gangnam":[  
-      "Parishilton",
-      "It\'smorphintime!",
-      "Housestark"
-   ],
-   "Parishilton":[  
-      "It\'smorphintime!",
-      "Zdafeefef 2",
-      "Zeldafans"
-   ],
-   "Theterminator":[  
-      "It\'smorphintime!",
-      "Zdafeefef 2",
-      "Housestark"
-   ],
-   "Housestark":[  
-      "Animatrix",
-      "Parishilton",
-      "Theterminator"
-   ],
-   "Zeldafans":[  
-      "Parishilton",
-      "Animatrix",
-      "Gangnam"
-   ],
-   "It\'smorphintime!":[  
-      "Theterminator",
-      "Gangnam",
-      "Zdafeefef 2"
-   ],
-   "Animatrix":[  
-      "Zeldafans",
-      "Housestark",
-      "Gangnam"
-   ]
-}';
-/*
-
-$json_str = '{  
-   "Zdafeefef 2":[  
-      "Animatrix",
-      "Zeldafans",
-      "Theterminator"
-   ],
-   "Gangnam":[  
-      "Parishilton",
-      "It\'smorphintime!",
-      "Housestark"
-   ],
-   "Parishilton":[  
-      "It\'smorphintime!",
-      "Zdafeefef 2",
-      "Zeldafans"
-   ],
-   "Theterminator":[  
-      "It\'smorphintime!",
-      "Zdafeefef 2",
-      "Housestark"
-   ],
-   "Housestark":[  
-      "Animatrix",
-      "Parishilton",
-      "Theterminator"
-   ],
-   "Zeldafans":[  
-      "Parishilton",
-      "Animatrix",
-      "Gangnam"
-   ],
-   "It\'smorphintime!":[  
-      "Theterminator",
-      "Gangnam",
-      "Zdafeefef 2"
-   ],
-   "Animatrix":[  
-      "Zeldafans",
-      "Housestark",
-      "Gangnam"
-   ]
-}';
-
-
-$data = '{"Zdafeefef 2":{"groupid":21,"reportid":1681},"Gangnam":{"groupid":71,"reportid":1691},"Parishilton":{"groupid":81,"reportid":1701},"Theterminator":{"groupid":91,"reportid":1711},"Housestark":{"groupid":101,"reportid":1721},"Zeldafans":{"groupid":111,"reportid":1731},"It\'smorphintime!":{"groupid":121,"reportid":1741},"Animatrix":{"groupid":131,"reportid":1751}}';
-$data1 = json_decode($data, true);
-$data2 = json_decode($json_str, true);
-
-foreach($data2 as $key => $grouplist)
-{
-$groupID = $data1["".$key]["groupid"];
-    
-foreach($grouplist as $groupname)
-{
-$reportID = $data1["".$groupname]["reportid"];
-echo $groupID. " assesses ". $reportID;
-}
- 
-}
-
-*/
 ?>
 
