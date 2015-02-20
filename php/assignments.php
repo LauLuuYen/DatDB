@@ -129,7 +129,7 @@ private function createReports($assignmentID)
 		{
 			$reportID = $data["".$groupname]["reportid"];
 			//echo $groupID. " assesses ". $reportID. "<br>";
-			if ($this->createAssessment($groupID, $reportID) <= 0) {
+			if (!$this->createAssessment($groupID, $reportID)) {
 				result(false, "Error creating assessment");	
 				return;
 			}
@@ -146,6 +146,7 @@ private function createReport($assignmentID, $groupid)
 	$stmt->bind_param("iii", $groupid, $assignmentID, $statusid);
 	if ($stmt->execute()) 
 	{
+		$stmt->close();
 	  $ID = mysqli_insert_id($this->conn);
 	  return $ID;
         } 
@@ -188,14 +189,10 @@ private function createAssessment($groupID, $reportID) {
 	$stmt->bind_param("iii", $groupID, $reportID, $statusid);
 	if ($stmt->execute()) 
 	{
-	  $ID = mysqli_insert_id($this->conn);
-	  return $ID;
+		$stmt->close();
+		return true;
         } 
-        else 
-        {
-            die("An error occurred performing a request");
-        }
-	
+	return false;
 }
 
 }
