@@ -47,7 +47,7 @@
                
                 if($this->submitReport($content))
                 {
-                	 result(true, "success");
+                	 //result(true, "success");
                 }
 		else
 		{
@@ -60,6 +60,9 @@
     	
     	private function submitReport($content)
     	{
+    		$string = $content. " ". $this->userID. " ". $timestamp. " ".$this->reportID;
+    		 result(true, $string);
+    		return true;
     		$this->conn = connectDB();
 		$stmt = $this->conn->prepare("UPDATE reports SET content=?, userid=?, statusid=?, timestamp=? WHERE id=?");
 		$timestamp = date("Y-m-d H:i:s");
