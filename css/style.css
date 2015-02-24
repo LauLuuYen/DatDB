@@ -158,6 +158,21 @@ a:active{
      color:#FFFFFF; 
      text-decoration:none; 
 }
+h1 {
+    text-decoration:none;
+    border:0;
+    width : 264px;
+    height : 108px;
+    margin : 0;
+    padding : 0;
+    background : url(/images/logo.gif) no-repeat 0 0;
+}
+ 
+h1 a {
+    display : block;
+    height : 113px;
+    text-indent : -9999px; 
+}
 
 
 
