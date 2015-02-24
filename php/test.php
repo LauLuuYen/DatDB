@@ -52,19 +52,10 @@ class Assignment {
 
 
 
-if(!empty($_GET))
-{
-    $assignment = new Assignment();
-    if ($assignment->verifyUser()) {
-        $assignment->getAllAssignments();
-    }
-
+$assignment = new Assignment();
+if ($assignment->verifyUser()) {
+    $assignment->getAllAssignments();
 }
-else
-{
-	result(false, "Permission Denied");
-}
-
 
 
 ?>
