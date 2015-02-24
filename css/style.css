@@ -5,6 +5,8 @@ html, body {
     margin: 0;
     background-image: url("/img/innerbg.jpg");
     background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     background-color: #dddddd;
 }
 
