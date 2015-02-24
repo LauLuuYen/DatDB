@@ -93,6 +93,7 @@ html, body {
     background-color:#3779D5;
     line-height:50px;
     color:white;
+    text-decoration: none;
 }
 
 .panel.btn {
