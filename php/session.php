@@ -40,7 +40,12 @@ class Session {
     *   @return: none
     */
     public function destroySession() {
-        echo "Destroy TODO";
+    	
+    	if(!session_destroy())
+    	{
+    		$this->setSessionVal("userID", -1);	
+    	}
+        //echo "Session destroyed";
     }
     
 }
