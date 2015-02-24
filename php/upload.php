@@ -78,6 +78,7 @@
     	}
     	
     }
+    
 if (!empty($_FILES["myFile"])) {
     $myFile = $_FILES["myFile"];
  
