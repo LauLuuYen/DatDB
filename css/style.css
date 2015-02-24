@@ -136,9 +136,9 @@ html, body {
     top:100px;
     left:8%;
     right:8%;
-    -webkit-box-shadow: 0px 0px 98px -13px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 98px -13px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 98px -13px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px #888888;
+    border: 2px solid #6AA2EF;
+    border-radius: 10px;
 }
 
 a:link {
