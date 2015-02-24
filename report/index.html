@@ -14,7 +14,34 @@
     <script src="../js/report.js"></script>
     <script >
     	$(document).ready(function(){
-    	alert ("ready");	
+    	
+   	$.ajax({
+            type: "GET",
+            url:"http://lauluuyen.azurewebsites.net/php/getassignments.php" ,
+            crossDomain: true,
+            dataType: "json",
+            async: false,
+            timeout: 10000,
+
+            success: function (result)
+            {
+               if(result.success)
+               {
+               		
+               }
+               else
+               {
+               	 window.location.href="index.html";
+               }
+            },
+
+            error: function(xhr, status, error)
+            {
+                window.location.href="index.html";
+            }
+        });
+    	
+    	
     	});
     </script>
 
