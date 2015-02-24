@@ -19,13 +19,13 @@ html, body {
 }
 
 .login.box {
-    background-color:#A1C5F7;
+    background-color:#6AA2EF;
     position: fixed;
     margin: 14% 40%;
     height:280px;
     width:320px;
     box-shadow: 10px 10px 5px #888888;
-    border: 2px solid #A1C5F7;
+    border: 2px solid #6AA2EF;
     border-radius: 10px;
     
 }
