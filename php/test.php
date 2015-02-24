@@ -9,11 +9,62 @@ if (DEBUG) {
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-require_once "session.php";
+
+/*
+*   Echoes to the client the result of the process.
+*   @params: bool - $success, string - $msg
+*   @return: none
+*/
+function result($success, $msg) {
+    $response["success"] = $success;
+    $response["message"] = $msg;
+    echo json_encode($response);
+}
 
 
 
-echo "f: ". $userSession->getSessionVal("test");
+class Assignment {
+
+
+	public function __construct() {
+        //
+	}
+	
+    public function verifyUser() {
+        require_once "session.php";
+        
+        $userID = $userSession->getSessionVal("userID");
+        if (is_null($userID)) {
+            result(false, "No userID");
+            return false;
+        }
+        
+        
+        //More checks
+        return true;
+        
+    }
+    
+    public function getAllAssignments() {
+        echo "all assignments";
+    }
+}
+
+
+
+if(!empty($_GET))
+{
+    $assignment = new Assignment();
+    if ($assignment->verifyUser()) {
+        $assignment->getAllAssignments();
+    }
+
+}
+else
+{
+	result(false, "Permission Denied");
+}
+
 
 
 ?>
