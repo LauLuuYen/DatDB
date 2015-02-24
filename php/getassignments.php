@@ -46,7 +46,9 @@ class Assignment {
     }
     
     public function getAllAssignments() {
-        echo "all assignments";
+
+        result(true, "Data");
+
     }
 }
 
