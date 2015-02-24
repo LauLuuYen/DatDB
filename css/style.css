@@ -109,6 +109,7 @@ html, body {
     -moz-box-shadow: 0px 27px 109px -27px rgba(0,0,0,0.75);
     box-shadow: 0px 27px 109px -27px rgba(0,0,0,0.75);
     text-decoration: none !important;
+    border-radius: 5px;
 }
 
 .panel.btn:hover {
