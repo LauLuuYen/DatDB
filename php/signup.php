@@ -188,8 +188,18 @@ class Signup {
         $stmt->bind_param("ssssiis", $this->name, $this->lastname, $this->email, $password, $roleID, $groupID, $timestamp);
 
         if ($stmt->execute()) {
-            $success = mysqli_insert_id($this->conn) > 0;
+       		$id = mysqli_insert_id($this->conn);
+            $success = $id > 0;
             $stmt->close();
+            
+            
+            require_once "session.php";
+       		$userSession->setSessionVal("userID", $id);
+       		$userSession->setSessionVal("name", $this->name);
+       		$userSession->setSessionVal("lastname", $this->lastname);
+       		$userSession->setSessionVal("email", $this->email);
+       		$userSession->setSessionVal("roleID", $roleID);
+       		$userSession->setSessionVal("groupID", $groupID);
             return $success;
             
         } else {
