@@ -61,33 +61,33 @@ html, body {
 
 
 .banner {
-    position:absolute;
-    top:0px;
     width:100%;
     height:100px;
     background-color:#50B5D1;
     z-index:2;
 }
 
+.innerbody {
+    width:100%;
+    min-height:500px;
+    background-color:rgb(230,230,230);
+}
+
 .left_panel {
-    position:absolute;
-    width:250px;
-    height:100%;
-    background-color:grey;
-    border-radius: 5px;
+    width:100%;
+    height:40px;
+    margin-right:0;
 }
 
 .left_panel .panel{
-    display:block;
-    float:left;
-    width:250px;
-    font-size:20px;
-    margin:0;
-    padding-left:10px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    width:100%;
+    height:40px;
+    font-size:18px;
+    text-align:center;
+    margin-top:0;
+    margin-bottom:2px;
 }
+
 
 .panel.header{
     height:50px;
@@ -95,15 +95,9 @@ html, body {
     line-height:50px;
     color:white;
     border-radius: 5px;
-    
 }
 
 .panel.btn {
-    float:right;
-    height:60px;
-    background-color:rgb(243,243,243);
-    line-height:60px;
-    border-bottom: 1px solid black;
     color:black;
     -webkit-box-shadow: 0px 27px 109px -27px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 27px 109px -27px rgba(0,0,0,0.75);
@@ -112,35 +106,21 @@ html, body {
     border-radius: 5px;
 }
 
+
 .panel.btn:hover {
     background-color: #80C1F6;
     color:white;
 }
 
-.panel.btn.onSelect {
-    color:rgb(179,200,51);
+
+.right_content {
+    width:100%;
+    margin-left:0px;
+    margin-right:0px;
 }
 
 
-.content_panel {
-    position:absolute;
-    right:0;
-    left:250px;
-    height:100%;
-    margin:10px;
-}
 
-
-.innerbox {
-    position:relative;
-    width:84%;
-    min-height:80%;
-    background-color:rgb(229,229,229);
-    top:100px;
-    left:8%;
-    right:8%;
-    border-radius: 10px;
-}
 
 a:link {
     color: #FFFFFF;
@@ -160,7 +140,84 @@ a:active{
 }
 
 
- 
+/*
+*   Assessment page
+*/
+
+.assessments .container {
+    width:100%;
+    padding: 10px 10px;
+}
+
+.assessments .box {
+    position:relative;
+    width:100%;
+    min-height:70px;
+    background-color:white;
+    padding:0;
+    border-radius:20px;
+    border:8px solid red;
+    margin: 10px 0;
+}
+
+.assessments .box.complete {
+    border:8px solid green;
+}
+
+
+.assessments .box:hover {
+    background-color:yellow;
+}
+
+.assessments .name {
+    position:absolute;
+    top:5px;
+    left:10px;
+}
+
+.assessments .name span {
+    font-size:24px;
+}
+
+.assessments .linebreak {
+    position:absolute;
+    top:40px;
+    width:100%;
+    height:1px;
+    background-color:black;
+}
+
+
+.assessments .feedback {
+    position:absolute;
+    left:10px;
+    top:50px;
+}
+
+
+.assessments .assignment {
+    position:absolute;
+    left:10px;
+    bottom:30px;
+}
+
+.assessments .status {
+    position:absolute;
+    left:10px;
+    bottom:10px;
+}
+
+.assessments .score {
+    position:absolute;
+    right:10px;
+    bottom:10px;
+}
+
+.assessments .more {
+    position:absolute;
+    right:10px;
+    top:10px;
+}
 
 
 

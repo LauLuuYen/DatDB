@@ -5,9 +5,34 @@ var app = angular.module("myApp", ["ngRoute"]);
 */
 app.factory("master", function() {
 	var data = {
-        //No data yet
+        "profile" : {
+            "userID": 123,
+            "name": "tuan",
+            "lastname": "nguyen",
+            "groupid": 3
+        },
+        "assignments": [
+            {
+                "id": 123,
+                "title": "LG FLEX 2",
+                "deadline": "08/06/2015",
+                "timestamp": "06/03/2015",
+                "report": {
+                    "id": 12321,
+                    "status": "Incomplete",
+                    "content": "Cunt",
+                    "timestamp": "06/04/2015"
+                },
+                "assessments": [
+                    { "reportid": 1234, "status": "Incomplete", "content":"knsfgjndfg s dfkjnf1", "feedback": "Good", "score": 4, "timestamp": "07/06/2015" },
+                    { "reportid": 3434, "status": "Incomplete", "content":"knsfgjndfg s dfkjnf2", "feedback": "Good", "score": 2, "timestamp": "08/06/2015" },
+                    { "reportid": 4544, "status": "Incomplete", "content":"knsfgjndfg s dfkjnf3", "feedback": "Good", "score": 4, "timestamp": "09/06/2015" }
+                ]
+            }
+            
+        ]
 	};
-
+    
 	return data;
 });
 
@@ -40,6 +65,7 @@ app.config(function($routeProvider) {
 );
 
 app.controller("Main", function ($scope, master) {
+    $scope.profile = master.profile;
 
 
 });
