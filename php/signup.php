@@ -123,6 +123,21 @@ class Signup {
             die("An error occurred performing a request");
         }
 	}
+	
+	private function createForum($groupID)
+	{
+		$stmt = $this->conn->prepare("INSERT INTO forum (groupid) VALUES(?)");
+	        $stmt->bind_param("i", $groupID);
+	
+	        if ($stmt->execute()) {
+	            $forumID = mysqli_insert_id($this->conn);
+	            $stmt->close();
+	            return $forumID;
+	            
+	        } else {
+	            die("An error occurred performing a request");
+	        }
+	}
     
 
     /*
@@ -218,7 +233,8 @@ class Signup {
 
 		} else if ($count == 0) {
 			$groupID = $this->createGroup();
-            
+            		$forumID = $this->createForum($groupID);
+            		
 		} else {
 			$groupID = $this->getGroupID();
 		}
