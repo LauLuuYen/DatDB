@@ -63,13 +63,24 @@ class Assessment{
   
 }
 
-  $groupID = 21;
+  //$groupID = 21;
+  //$reportID = 2071;
+  //$feedback = "Princess Latifa";
+  //$score = 4;
+  //$userID = 51;
+  
+  $groupID = null;
   $reportID = 2071;
   $feedback = "Princess Latifa";
   $score = 4;
   $userID = 51;
   
+  $assessment = new Assessment($groupID, $reportID, $feedback, $score, $userID);
   
+  if($assessment->checkInputs())
+  {
+    echo "checkInputs function run";
+  }
   
   
 ?>
