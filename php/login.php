@@ -94,8 +94,8 @@ class Login
                 require_once "session.php";
                 $data = array(
                     "userID" => $id,
-                    "name" => $this->name,
-                    "lastname" => $this->lastname,
+                    "name" => $name,
+                    "lastname" => $lastname,
                     "roleID"=>$roleID,
                     "groupID"=>$groupID
                 );

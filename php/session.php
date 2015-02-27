@@ -29,9 +29,7 @@ class Session {
     
     public function isLoggedIn() {
         session_start();
-        echo $_SESSION["userID"]. " " . $_SESSION["name"];
-        
-        
+                
         return (isset($_SESSION["userID"]) &&
                 isset($_SESSION["name"]));
     }
