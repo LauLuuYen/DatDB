@@ -61,6 +61,8 @@ class Assessment{
     return false;
   }
   
+  //TODO block update when assessment is already complete
+  
   public function submitAssessment()
   {
     $statusID = 21;
@@ -89,11 +91,11 @@ class Assessment{
   //$score = 4;
   //$userID = 51;
   
-  $groupID = 21;
-  $reportID = 2071;
-  $feedback = "Princess Latifa";
+  $groupID = 71;
+  $reportID = 2041;
+  $feedback = "Ladies vs Gentlemen";
   $score = 4;
-  $userID = 51;
+  $userID = 91;
   
   $assessment = new Assessment($groupID, $reportID, $feedback, $score, $userID);
   
