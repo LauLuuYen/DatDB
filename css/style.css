@@ -251,6 +251,7 @@ a:active{
 }
  
 .exit-btn-4 {
+    right: 0px;
     background-color: #282F8A;
     color: #fff;
     border-radius: 7px;
