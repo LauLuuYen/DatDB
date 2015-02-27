@@ -1,5 +1,7 @@
 var app = angular.module("myApp", ["ngRoute"]);
 
+
+
 /*
 *
 */
@@ -169,7 +171,7 @@ app.controller("Assessments", function ($scope, master) {
 
 });
 
-app.controller("MakeAssessment", function ($scope, master, $location) {
+app.controller("MakeAssessment", function ($scope, master) {
     $scope.reroute = function(assign_no) {
         var assessments = master.assignments[assign_no].assessments;
         
@@ -178,14 +180,14 @@ app.controller("MakeAssessment", function ($scope, master, $location) {
         }
         
         //Couldn't find a matching reportid
-        $location.url("/assessments")
+        window.location.href = "/";
     };
     
     //TODO find right assigment index
     $scope.reroute(0);
-    
-    
+        
 });
+
 
 app.controller("Marks", function ($scope, master) {
 
