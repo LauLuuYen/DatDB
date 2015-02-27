@@ -34,12 +34,13 @@ class Assignment {
     public function getAllAssignments() {
         require_once "session.php";
         
-        if (!$userSession->isLoggedIn());
+        if ($userSession->isLoggedIn()) {
+            result(true, "Data");
+
+        } else {
             result(false, "No userID");
-            return;
+
         }
-    
-        result(true, "Data");
     }
 }
 
