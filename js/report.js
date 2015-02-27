@@ -180,7 +180,7 @@ app.controller("MakeAssessment", function ($scope, master) {
         }
         
         //Couldn't find a matching reportid
-        window.location.href = "/";
+        window.location.href = "/report";
     };
     
     //TODO find right assigment index
