@@ -172,9 +172,13 @@ app.controller("Assessments", function ($scope, master) {
 app.controller("MakeAssessment", function ($scope, master) {
     
     var assessments = master.assignments.assessments;
+    console.log(JSON.stringify(assessments));
+    /*
     for (i = 0; i < assessments.length; i++) {
         console.log(assessments.reportid);
     }
+    */
+    
 });
 
 app.controller("Marks", function ($scope, master) {
