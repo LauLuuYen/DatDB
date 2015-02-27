@@ -170,11 +170,8 @@ app.controller("Assessments", function ($scope, master) {
 });
 
 app.controller("MakeAssessment", function ($scope, master) {
-    
-    var assessments = master.assignments.assessments;
-    console.log(JSON.stringify(master));
-
-    console.log(JSON.stringify(master.assessments));
+    //TODO find right assigment index
+    var assessments = master.assignments[0].assessments;
 
     console.log(JSON.stringify(assessments));
     /*
