@@ -231,6 +231,7 @@ a:active{
 }
 .exit-btn { 
     border: none;
+    right: 0px;
     font-family: inherit;
     font-size: inherit;
     color: inherit;
