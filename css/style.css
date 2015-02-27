@@ -224,7 +224,6 @@ a:active{
 .exit-btn:after {
     content: '';
     position: absolute;
-    right: 0px;
     z-index: -1;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -260,7 +259,7 @@ a:active{
  
 .exit-btn-4:before {
     position: absolute;
-    right: 0px;
+    left: 0;
     width: 40%;
     font-size: 160%;
     line-height: 0.8;
