@@ -99,7 +99,7 @@ class Assessment{
   
   if($assessment->checkInputs())
   {
-    echo "checkInputs function run";
+    $assessment->submitAssessment();
   }
   
   
