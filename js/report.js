@@ -171,14 +171,12 @@ app.controller("Assessments", function ($scope, master) {
 
 app.controller("MakeAssessment", function ($scope, master) {
     //TODO find right assigment index
-    var assessments = master.assignments[0].assessments;
-
-    console.log(JSON.stringify(assessments));
-    /*
+    var assign_no = 0;
+    var assessments = master.assignments[assign_no].assessments;
+    
     for (i = 0; i < assessments.length; i++) {
         console.log(assessments.reportid);
     }
-    */
     
 });
 
