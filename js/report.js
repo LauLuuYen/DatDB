@@ -174,11 +174,12 @@ app.controller("Assessments", function ($scope, master) {
 app.controller("MakeAssessment", function ($scope, master, $routeParams) {
     $scope.reroute = function(assign_no) {
         var assessments = master.assignments[assign_no].assessments;
+        var id = $routeParams.id;
         
-        alert($routeParams.id);
         for (i = 0; i < assessments.length; i++) {
-            return;
-            
+            if (id == assessments[i].reportid) {
+                return;
+            }
         }
         
         //Couldn't find a matching reportid
