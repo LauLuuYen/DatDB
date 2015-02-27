@@ -172,6 +172,10 @@ app.controller("Assessments", function ($scope, master) {
 app.controller("MakeAssessment", function ($scope, master) {
     
     var assessments = master.assignments.assessments;
+    console.log(JSON.stringify(master));
+
+    console.log(JSON.stringify(master.assessments));
+
     console.log(JSON.stringify(assessments));
     /*
     for (i = 0; i < assessments.length; i++) {
