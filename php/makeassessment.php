@@ -42,7 +42,7 @@ class Assessment{
     {
       result(false, "reportID must be set");
     }
-    else if(strlen($this->feedback) === 0)
+    else if(strlen($this->feedback) === 0 || is_null($this->feedback)) 
     {
       result(false, "feedback must be set");
     }
@@ -70,8 +70,8 @@ class Assessment{
   //$userID = 51;
   
   $groupID = 21;
-  $reportID = null;
-  $feedback = "Princess Latifa";
+  $reportID = 2071;
+  $feedback = null;
   $score = 4;
   $userID = 51;
   
