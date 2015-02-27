@@ -169,7 +169,7 @@ app.controller("Assessments", function ($scope, master) {
 
 });
 
-app.controller("MakeAssessment", function ($scope, master) {
+app.controller("MakeAssessment", function ($scope, master, $location) {
     $scope.reroute = function(assign_no) {
         var assessments = master.assignments[assign_no].assessments;
         
@@ -178,7 +178,7 @@ app.controller("MakeAssessment", function ($scope, master) {
         }
         
         //Couldn't find a matching reportid
-        $location.path("/assessments")
+        $location.url("/assessments")
     };
     
     //TODO find right assigment index
