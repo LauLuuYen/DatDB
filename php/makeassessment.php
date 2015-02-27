@@ -44,7 +44,7 @@ class Assessment{
     }
     else if(strlen($this->feedback) === 0 || is_null($this->feedback)) 
     {
-      result(false, "feedback must be set");
+      result(false, "Feedback must be set");
     }
     else if(!is_int($this->score))
     {
@@ -71,7 +71,7 @@ class Assessment{
   
   $groupID = 21;
   $reportID = 2071;
-  $feedback = null;
+  $feedback = "";
   $score = 4;
   $userID = 51;
   
