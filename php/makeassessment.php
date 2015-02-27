@@ -66,7 +66,19 @@ class Assessment{
     $statusID = 21;
     $timestamp = date("Y-m-d H:i:s");
     $this->conn = connectDB();
-    $stmt = $this->conn->prepare("UPDATE assessments SET statusid=?,feedback=?,score=?,userid=?,timestamp=? WHERE groupid=? AND reportid=?");
+    $stmt = $this->conn->prepare("UPDATE assessments SET statusid=?,feedback=?,score=?,userid=?,timestamp=? 
+                                  WHERE groupid=? AND reportid=?");
+    $stmt->bind_param("isiisii",$statusID,$this->feedback,$this->score,$this->userID,$timestamp,$this->groupID,$this->reportID);
+    if($stmt->execute())
+    {
+      $stmt->close();
+      result(true,"Success");
+    }
+    else
+    {
+      result(false,"Failed to submit assessment");
+    }
+    closeDB($this->conn);
   }
   
 }
