@@ -161,7 +161,7 @@ app.controller("Submit", function ($scope, master) {
         $scope.$apply(function() {
             $scope.feedback = message;
         });
-    }
+    };
     
 });
 
@@ -170,13 +170,20 @@ app.controller("Assessments", function ($scope, master) {
 });
 
 app.controller("MakeAssessment", function ($scope, master) {
-    //TODO find right assigment index
-    var assign_no = 0;
-    var assessments = master.assignments[assign_no].assessments;
+    $scope.reroute = function(assign_no) {
+        var assessments = master.assignments[assign_no].assessments;
+        
+        for (i = 0; i < assessments.length; i++) {
+            console.log(assessments[i].reportid);
+        }
+        
+        //Couldn't find a matching reportid
+        $location.path("/assessments")
+    };
     
-    for (i = 0; i < assessments.length; i++) {
-        console.log(assessments[i].reportid);
-    }
+    //TODO find right assigment index
+    $scope.reroute(0);
+    
     
 });
 
