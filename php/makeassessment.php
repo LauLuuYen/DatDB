@@ -61,6 +61,14 @@ class Assessment{
     return false;
   }
   
+  public function submitAssessment()
+  {
+    $statusID = 21;
+    $timestamp = date("Y-m-d H:i:s");
+    $this->conn = connectDB();
+    $stmt = $this->conn->prepare("UPDATE assessments SET statusid=?,feedback=?,score=?,userid=?,timestamp=? WHERE groupid=? AND reportid=?");
+  }
+  
 }
 
   //$groupID = 21;
@@ -71,7 +79,7 @@ class Assessment{
   
   $groupID = 21;
   $reportID = 2071;
-  $feedback = "";
+  $feedback = "Princess Latifa";
   $score = 4;
   $userID = 51;
   
