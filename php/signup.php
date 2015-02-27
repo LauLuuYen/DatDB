@@ -192,14 +192,8 @@ class Signup {
             $success = $id > 0;
             $stmt->close();
             
-            
-            require_once "session.php";
-       		$userSession->setSessionVal("userID", $id);
-       		$userSession->setSessionVal("name", $this->name);
-       		$userSession->setSessionVal("lastname", $this->lastname);
-       		$userSession->setSessionVal("email", $this->email);
-       		$userSession->setSessionVal("roleID", $roleID);
-       		$userSession->setSessionVal("groupID", $groupID);
+            //Signing up is done by admin
+
             return $success;
             
         } else {

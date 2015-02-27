@@ -30,34 +30,24 @@ class Assignment {
         //
 	}
 	
-    public function verifyUser() {
-        require_once "session.php";
-        
-        $userID = $userSession->getSessionVal("userID");
-        if (is_null($userID)) {
-            result(false, "No userID");
-            return false;
-        }
-        
-        
-        //More checks
-        return true;
-        
-    }
     
     public function getAllAssignments() {
-
+        require_once "session.php";
+        
+        if (!$userSession->isLoggedIn());
+            result(false, "No userID");
+            return;
+        }
+    
         result(true, "Data");
-
     }
 }
 
 
 
 $assignment = new Assignment();
-if ($assignment->verifyUser()) {
-    $assignment->getAllAssignments();
-}
+$assignment->getAllAssignments();
+
 
 
 ?>

@@ -4,35 +4,35 @@
 class Session {
 
     /*
-    *   Start session instance
+    *
     *   @params: none
     *   @return: none
     */
 	public function __construct() {
-        session_start();
+        //
 	}
-	
 
     /*
-    *   Get the session value at the key.
-    *   @params: none
-    *   @return: ? - $value
-    */
-	public function getSessionVal($key) {
-        $value = $_SESSION["".$key];
-        return $value;
-	}
-	
-
-    /*
-    *   Set the session value at the key.
-    *   @params: string - $key, ? - $value
+    *
+    *   @params:
     *   @return: none
     */
-    public function setSessionVal($key, $value) {
-        $_SESSION["".$key] = $value;
+    public function login($data) {
+        session_start();
+        $_SESSION["userID"] = $data["userID"];
+        $_SESSION["name"] = $data["name"];
+        $_SESSION["lastname"] = $data["lastname"];
+        $_SESSION["roleID"] = $data["roleID"];
+        $_SESSION["groupID"] = $data["groupID"];
     }
     
+    
+    public function isLoggedIn() {
+        session_start();
+        return (isset($_SESSION["userID"]) &&
+                isset($_SESSION["name"]));
+    }
+
 
     /*
     *   Destroy the session.

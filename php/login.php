@@ -91,16 +91,16 @@ class Login
                 result(false, "Invalid email/password combination");
             } else {
             	
-            	require_once "session.php";
-            	$userSession->setSessionVal("userID",$id);
-            	$userSession->setSessionVal("name",$name);
-            	$userSession->setSessionVal("lastname",$lastname);
-            	$userSession->setSessionVal("email",$email);
-            	$userSession->setSessionVal("groupID",$groupID);
-            	$userSession->setSessionVal("roleID",$roleID);
-            	
-            	
-  
+                require_once "session.php";
+                $data = array(
+                    "userID" => $id,
+                    "name" => $this->name,
+                    "lastname" => $this->lastname,
+                    "roleID"=>$roleID,
+                    "groupID"=>$groupID
+                );
+                $userSession->login($data);
+            
                 result(true, "Success!");
                 //TODO return back other stuff
                 
