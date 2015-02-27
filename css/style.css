@@ -259,9 +259,9 @@ a:active{
  
 .exit-btn-4:before {
     position: absolute;
-    left: 0;
-    width: 40%;
-    font-size: 160%;
+    right: 0px;
+    width: 20%;
+    font-size: 80%;
     line-height: 0.8;
     color: #fff;
     content: "\e163";
