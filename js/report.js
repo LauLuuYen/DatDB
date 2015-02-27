@@ -170,7 +170,11 @@ app.controller("Assessments", function ($scope, master) {
 });
 
 app.controller("MakeAssessment", function ($scope, master) {
-    alert("z");
+    
+    var assessments = master.assignments.assessments;
+    for (i = 0; i < assessments.length; i++) {
+        console.log(assessments.reportid);
+    }
 });
 
 app.controller("Marks", function ($scope, master) {
