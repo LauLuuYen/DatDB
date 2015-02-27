@@ -69,8 +69,8 @@ class Assessment{
   //$score = 4;
   //$userID = 51;
   
-  $groupID = null;
-  $reportID = 2071;
+  $groupID = 21;
+  $reportID = null;
   $feedback = "Princess Latifa";
   $score = 4;
   $userID = 51;
