@@ -54,6 +54,11 @@ app.config(function($routeProvider) {
             controller: "Assessments"
         })
         
+        .when("/assessments/:id", {
+            templateUrl: "makeassessment.html",
+            controller: "MakeAssessment"
+        })
+        
         .when("/marks", {
             templateUrl: "marks.html",
             controller: "Marks"
@@ -162,6 +167,10 @@ app.controller("Submit", function ($scope, master) {
 
 app.controller("Assessments", function ($scope, master) {
 
+});
+
+app.controller("MakeAssessment", function ($scope, master) {
+    alert("z");
 });
 
 app.controller("Marks", function ($scope, master) {
