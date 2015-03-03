@@ -100,9 +100,9 @@ class Comment {
 	
 }
 
-$threadID = 51;
-$userID = 31;
-$input = "comments";
+$threadID = $_POST["threadID"];
+$userID = $_POST["userID"];
+$input = $_POST["comment"];
 $comment = new Comment($userID, $input, $threadID);
 
 if($comment->checkInputs())
