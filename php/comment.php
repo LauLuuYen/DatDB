@@ -32,15 +32,13 @@ class Comment {
     *   @return: none
     */
 	public function __construct($userID, $comment, $threadID) {
-        $this->userID = $userID;
-        $this->comment = $comment;
-        $this->threadID = $threadID;
+	        $this->userID = (int) $userID;
+	        $this->comment = trim($comment);
+	        $this->threadID = (int) $threadID;
 	}
 	
 	public function checkInputs()
 	{	
-		echo $this->userID . " " . $this->comment . " " . $this->threadID;
-		return false;
 		if(!is_int($this->userID))
 		{
 			result(false, "userID must be set");
