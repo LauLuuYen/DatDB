@@ -12,18 +12,7 @@ header("Access-Control-Allow-Origin: *");
     error_reporting(E_ALL & ~E_NOTICE);
 
 	$url = 'http://lauluuyen.azurewebsites.net/php/comment.php';
-	//$post =
-	/*
-	//$request = json_encode($post);
-	$ch = curl_init($url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-	curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
-	//curl_setopt($ch, CURLOPT_HEADER, true);
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-	*/
+
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
 		CURLOPT_URL => $url,
@@ -32,9 +21,9 @@ header("Access-Control-Allow-Origin: *");
 		CURLOPT_SSL_VERIFYHOST => 0,
 		CURLOPT_POST => true,
 		CURLOPT_POSTFIELDS => array(
-			userID => 23,
-			threadID => 325,
-			comment => "testst"
+			userID => "wrg",
+			threadID => 13,
+			comment => "gay"
 		)
 	));
 
