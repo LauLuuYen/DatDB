@@ -103,7 +103,7 @@ class Comment {
 $threadID = 51;
 $userID = 31;
 $input = "comments";
-$comment = new Comment($userID, $comment, $threadID);
+$comment = new Comment($userID, $input, $threadID);
 
 if($comment->checkInputs())
 {
