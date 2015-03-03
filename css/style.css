@@ -149,7 +149,7 @@ a:active{
     padding: 10px 10px;
 }
 
-.assessments .box {
+.assessments .item {
     position:relative;
     width:100%;
     min-height:70px;
@@ -160,12 +160,12 @@ a:active{
     margin: 10px 0;
 }
 
-.assessments .box.complete {
+.assessments .item.complete {
     border:8px solid green;
 }
 
 
-.assessments .box:hover {
+.assessments .item:hover {
     background-color:yellow;
 }
 

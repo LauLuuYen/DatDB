@@ -172,6 +172,7 @@ app.controller("Assessments", function ($scope, master) {
 });
 
 app.controller("MakeAssessment", function ($scope, master, $routeParams) {
+
     $scope.reroute = function(assign_no) {
         var assessments = master.assignments[assign_no].assessments;
         var id = $routeParams.id;
@@ -188,6 +189,9 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams) {
     
     //TODO find right assigment index
     $scope.reroute(0);
+    
+    
+    
         
 });
 
