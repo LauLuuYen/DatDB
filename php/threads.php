@@ -74,7 +74,6 @@ class Thread {
 		$this->conn = connectDB();
 		$forumID = $this->getForumID();
 		$threadID = $this->createThread($forumID);
-
 		closeDB($this->conn);
 		
 		$response = $this->createComment($threadID);
@@ -124,7 +123,7 @@ class Thread {
 	        }
 	}
 	
-	private createComment($threadID) {
+	private function createComment($threadID) {
 		$post_request = array (
 			threadID => $threadID,
 			userID => $this->userID,
