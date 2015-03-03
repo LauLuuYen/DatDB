@@ -37,13 +37,46 @@ class Thread {
         $this->comment = $comment;
 
 	}
+	
+	public function checkInputs()
+	{
+		if(!is_int($this->userID))
+		{
+			result(false, "userID must be set");
+		}
+		else if(strlen($this->title) === 0) || is_null($this->title))
+		{
+			result(false, "title must be set");
+		}
+		else if(strlen($this->title) > 50))
+		{
+			result(false, "title too long");
+		}
+		else if(strlen($this->comment) === 0) || is_null($this->comment))
+		{
+			result(false, "comment must be set");
+		}
+		/*
+		else if(strlen($this->comment) > 50))
+		{
+			result(false, "comment too long");
+		}
+		*/
+		else
+		{
+			return true;
+		}
+		return false;
+	}
 }
+
 
 
 $userID = 31;
 $title = "title";
 $comment = "comments";
 
+$thread = new Thread($userID, $title, $comment);
 
 
 
