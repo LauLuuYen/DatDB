@@ -195,6 +195,9 @@ app.controller("Assessments", function ($scope, master) {
         }
     };
     
+    //TODO find right assigment index
+    $scope.injectScript(0);
+    
     
     $scope.next = function(id) {
         alert("next");
