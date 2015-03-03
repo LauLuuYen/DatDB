@@ -12,13 +12,14 @@ header("Access-Control-Allow-Origin: *");
     error_reporting(E_ALL & ~E_NOTICE);
 
 	$url = 'http://lauluuyen.azurewebsites.net/php/comment.php';
+	/*
 	$post = array(
 		"threadID"=>82,
 		"userID"=>41,
 		"comment"=>"teststing curl"
-	);
+	);*/
 	
-	$request = json_encode($post);
+	$request = json_encode(['request' => 41]);
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -33,7 +34,7 @@ header("Access-Control-Allow-Origin: *");
 	curl_close($ch);
 	
 	echo "output:" . $response . "<br>";
-	echo "json:" . json_encode($obj);
+	echo "jso1n:" . json_encode($obj);
 	
 ?>
 
