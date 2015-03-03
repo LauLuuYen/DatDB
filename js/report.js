@@ -184,7 +184,17 @@ app.directive("dynamic", function ($compile) {
 });
 
 app.controller("Assessments", function ($scope, master) {
+    
+
     $scope.itemlist = '<a ng-click="next(1)" href="#">Click me</a>';
+    
+    $scope.injectScript(assign_no) {
+        var assessments = master.assignments[assign_no].assessments;
+        for (i = 0; i < assessments.length; i++) {
+            console.log(assessments[i]);
+        }
+    };
+    
     
     $scope.next = function(id) {
         alert("next");
