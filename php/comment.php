@@ -38,7 +38,9 @@ class Comment {
 	}
 	
 	public function checkInputs()
-	{
+	{	
+		echo $this->userID . " " . $this->comment . " " . $this->threadID;
+		return false;
 		if(!is_int($this->userID))
 		{
 			result(false, "userID must be set");
