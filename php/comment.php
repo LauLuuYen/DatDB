@@ -39,7 +39,7 @@ class Comment {
 	
 	public function checkInputs()
 	{	
-		if(!is_int($this->userID) && $this->userID <= 0)
+		if(!is_int($this->userID) || $this->userID <= 0)
 		{
 			result(false, "userID must be set");
 		}
