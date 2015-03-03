@@ -71,7 +71,10 @@ class Thread {
 	
 	public function makeThread()
 	{
-			
+		$this->conn = connectDB();
+		$forumID =  getForumID();
+		
+		closeDB($this->conn);
 	}
 	
 	private function createThread()
@@ -81,7 +84,21 @@ class Thread {
 	
 	private function getForumID()
 	{
-		
+		$stmt = $this->conn->prepare("SELECT id FROM forum WHERE groupid=(SELECT groupid FROM users WHERE id=?);");
+	        $stmt->bind_param("i", $this->userID);
+	
+	        if ($stmt->execute()) {
+	            $stmt->store_result();
+	            $stmt->bind_result($userID);
+	            
+	            $registrant = $stmt->fetch();//Bind result with row
+	            $stmt->close();
+	
+	            return $userID;
+	            
+	        } else {
+	            die("An error occurred performing a request");
+	        }
 	}
 	
 }
