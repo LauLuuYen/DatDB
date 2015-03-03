@@ -192,7 +192,7 @@ app.controller("Assessments", function ($scope, master) {
         var script = "";
         
         //Dynamically construct the assessments
-        for (i = 0; i < 1; i++) {
+        for (i = 0; i < assessments.length; i++) {
             console.log(assessments[i]);
             script += "<div class='item' ng-click='next("+assessments[i].reportid+")'>" +
                         "<div class='name'>Group: <span>"+assessments[i].groupname+"</span></div>"+
