@@ -73,13 +73,28 @@ class Thread {
 	{
 		$this->conn = connectDB();
 		$forumID = $this->getForumID();
-		echo "forumid: ". $forumID;
+		$threadid = $this->createThread($forumID);
+		echo "threadid: ". $threadid;
 		closeDB($this->conn);
 	}
 	
-	private function createThread()
+	private function createThread($forumID )
 	{
-		
+		$timestamp = date("Y-m-d H:i:s");
+        
+		$stmt = $this->conn->prepare("INSERT INTO thread (forumid, title, timestamp) VALUES(?,?,?)");
+       		$stmt->bind_param("iss", $forumID, $this->title, $timestamp);
+        	if ($stmt->execute()) {
+	       		$threadid = mysqli_insert_id($this->conn);
+	            	$stmt->close();
+	  
+	            	return $threadid;
+	            
+	        } 
+	        else 
+	        {
+	            	die("An error occurred performing a request");
+	        }
 	}
 	
 	private function getForumID()
