@@ -113,6 +113,7 @@ $thread = new Thread($userID, $title, $comment);
 
 if($threads->checkInputs())
 {
+	echo "making thread\n";
 	$thread->makeThread();
 }
 
