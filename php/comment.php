@@ -100,15 +100,24 @@ class Comment {
 	
 }
 
-$threadID = $_POST["threadID"];
-$userID = $_POST["userID"];
-$input = $_POST["comment"];
-$comment = new Comment($userID, $input, $threadID);
-
-if($comment->checkInputs())
+if(!empty($_POST)
 {
-	$comment->makeComment();
+	$threadID = $_POST["threadID"];
+	$userID = $_POST["userID"];
+	$input = $_POST["comment"];
+	$comment = new Comment($userID, $input, $threadID);
+
+	if($comment->checkInputs())
+	{
+		$comment->makeComment();
+	}
 }
+else
+{
+	result(false, "Permission Denied");
+}
+
+
 
 
 ?>
