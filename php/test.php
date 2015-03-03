@@ -12,13 +12,9 @@ header("Access-Control-Allow-Origin: *");
     error_reporting(E_ALL & ~E_NOTICE);
 
 	$url = 'http://lauluuyen.azurewebsites.net/php/comment.php';
-	$post = array(
-		"threadID"=>urlencode(82),
-		"userID"=>urlencode(41),
-		"comment"=>urlencode("teststing curl")
-	);
-	
-	$request = json_encode($post);
+	//$post =
+	/*
+	//$request = json_encode($post);
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -27,14 +23,29 @@ header("Access-Control-Allow-Origin: *");
 	//curl_setopt($ch, CURLOPT_HEADER, true);
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
-	
-	$response = curl_exec($ch);
+	*/
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => $url,
+		CURLOPT_RETURNTRANSFER => 1,
+		CURLOPT_SSL_VERIFYPEER => 0,
+		CURLOPT_SSL_VERIFYHOST => 0,
+		CURLOPT_POST => true,
+		CURLOPT_POSTFIELDS => array(
+			userID => 23,
+			threadID => 325,
+			comment => "testst"
+		)
+	));
+
+
+	$response = curl_exec($curl);
 	$obj = json_decode($response, true);	
-	curl_close($ch);
+	curl_close($curl);
 	
 	
 	echo "output:" . $response . "<br>";
-	echo "jss3n:" . json_encode($obj);
+	echo "jn:" . json_encode($obj);
 	
 ?>
 
