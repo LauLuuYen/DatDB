@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", false);
+define("DEBUG", true);
 
 if (DEBUG) {
     ini_set("display_errors",1);
