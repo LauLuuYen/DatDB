@@ -196,8 +196,8 @@ app.controller("Assessments", function ($scope, master) {
             console.log(assessments[i]);
             script += "<div class='item' ng-click='next("+assessments[i].reportid+")'>" +
                         "<div class='name'>Group: <span>"+assessments[i].groupname+"</span></div>"+
-                        "<div class='linebreak'></div>";
-                        //"<div class='assignment'>Assignment:"+assignment.title+"</div>"+
+                        "<div class='linebreak'></div>"+
+                        "<div class='assignment'>Assignment:"+assignment.title+"</div>"+
                         "<div class='feedback'>" +assessments[i].feedback+ "</div>"+
                         "<div class='status'>Status: "+assessments[i].status+"</div>"+
                         "<div class='score'>Score: "+assessments[i].score+"/5</div>"+
