@@ -19,7 +19,7 @@ header("Access-Control-Allow-Origin: *");
 		"comment"=>"teststing curl"
 	);*/
 	
-	$request = json_encode(['request' => 41]);
+	$request = json_encode(['userID' => 41]);
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
