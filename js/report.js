@@ -167,9 +167,31 @@ app.controller("Submit", function ($scope, master) {
     
 });
 
-app.controller("Assessments", function ($scope, master) {
-
+/*
+*   Compile angularjs scripts
+*/
+app.directive("dynamic", function ($compile) {
+  return {
+    restrict: 'A',
+    replace: true,
+    link: function (scope, ele, attrs) {
+      scope.$watch(attrs.dynamic, function(html) {
+        ele.html(html);
+        $compile(ele.contents())(scope);
+      });
+    }
+  };
 });
+
+app.controller("Assessments", function ($scope, master) {
+    $scope.itemlist = '<a ng-click="next(1)" href="#">Click me</a>';
+    
+    $scope.next = function(id) {
+        alert("next");
+    };
+    
+});
+
 
 app.controller("MakeAssessment", function ($scope, master, $routeParams) {
 
