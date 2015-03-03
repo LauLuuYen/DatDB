@@ -151,7 +151,7 @@ a:active{
 
 .assessments .item {
     position:relative;
-    width:400px;
+    max-width:60%;
     min-height:155px;
     background-color:white;
     padding:0;
