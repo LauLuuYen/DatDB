@@ -30,7 +30,7 @@ header("Access-Control-Allow-Origin: *");
 	curl_close($ch);
 	
 	echo "output:" . $response . "<br>";
-	echo "jso2n:" . json_encode($obj);
+	echo "jso3n:" . json_encode($obj);
 	
 ?>
 
