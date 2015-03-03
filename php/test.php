@@ -5,7 +5,11 @@ require_once "session.php";
 echo $userSession->getSessionVal("userID");
 $userSession->destroySession();
 */
+header("Access-Control-Allow-Origin: *");
 
+    ini_set("display_errors",1);
+    ini_set("display_startup_errors",1);
+    error_reporting(E_ALL & ~E_NOTICE);
 
 	$url = 'http://lauluuyen.azurewebsites.net/php/comment.php';
 	$post = array(
@@ -28,8 +32,8 @@ $userSession->destroySession();
 	$obj = json_decode($response, true);	
 	curl_close($ch);
 	
-	echo "output:" . $obj;
-	
+	echo "output:" . $response . "<br>";
+	echo "json:" . json_encode($obj);
 	
 ?>
 
