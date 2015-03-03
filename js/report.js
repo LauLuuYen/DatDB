@@ -192,15 +192,15 @@ app.controller("Assessments", function ($scope, master) {
         var script = "";
         
         //Dynamically construct the assessments
-        for (i = 0; i < assessments.length; i++) {
-
-            script += "<div class='item' ng-click='next("+assessments.reportid+")'>" +
-                        "<div class='name'>Group: <span>"+assessments.groupname+"</span></div>"+
+        for (i = 0; i < 1; i++) {
+            console.log(assessments[i]);
+            script += "<div class='item' ng-click='next("+assessments[i].reportid+")'>" +
+                        "<div class='name'>Group: <span>"+assessments[i].groupname+"</span></div>"+
                         "<div class='linebreak'></div>";
                         "<div class='assignment'>Assignment:"+assignment.title+"</div>"+
-                        "<div class='feedback'>" +assessments.feedback+ "</div>"+
-                        "<div class='status'>Status: "+assessments.status+"</div>"+
-                        "<div class='score'>Score: "+assessments.score+"/5</div>"+
+                        "<div class='feedback'>" +assessments[i].feedback+ "</div>"+
+                        "<div class='status'>Status: "+assessments[i].status+"</div>"+
+                        "<div class='score'>Score: "+assessments[i].score+"/5</div>"+
                         "<div class='more'>More ></div>"+
                       "</div>";
         }
