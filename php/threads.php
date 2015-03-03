@@ -44,7 +44,7 @@ class Thread {
 		{
 			result(false, "userID must be set");
 		}
-		else if(strlen($this->title) === 0) || is_null($this->title))
+		else if(strlen($this->title) === 0 || is_null($this->title))
 		{
 			result(false, "title must be set");
 		}
@@ -52,7 +52,7 @@ class Thread {
 		{
 			result(false, "title too long");
 		}
-		else if(strlen($this->comment) === 0) || is_null($this->comment))
+		else if(strlen($this->comment) === 0 || is_null($this->comment))
 		{
 			result(false, "comment must be set");
 		}
