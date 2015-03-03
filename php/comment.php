@@ -67,47 +67,34 @@ class Comment {
 	public function makeComment()
 	{
 		$this->conn = connectDB();
-		$forumID = $this->getForumID();
-		$threadid = $this->createThread($forumID);
-		echo "threadid: ". $threadid;
+		if($this->createComment())
+		{
+			result(true, "success");
+		}
+		else
+		{
+			result(false, "failed to create comment");
+		}
 		closeDB($this->conn);
 	}
 	
-	private function createThread($forumID )
+	private function createComment()
 	{
 		$timestamp = date("Y-m-d H:i:s");
         
-		$stmt = $this->conn->prepare("INSERT INTO thread (forumid, title, timestamp) VALUES(?,?,?)");
-       		$stmt->bind_param("iss", $forumID, $this->title, $timestamp);
+		$stmt = $this->conn->prepare("INSERT INTO comment (threadid, comment, userid, timestamp) VALUES(?,?,?,?)");
+       		$stmt->bind_param("isis", $this->threadID, $this->comment, $this->userID, $timestamp);
         	if ($stmt->execute()) {
-	       		$threadid = mysqli_insert_id($this->conn);
-	            	$stmt->close();
+	       		$commentid = mysqli_insert_id($this->conn);
+	            	$success = $commentid > 0;
+	            	stmt->close();
 	  
-	            	return $threadid;
+	            	return $success;
 	            
 	        } 
 	        else 
 	        {
 	            	die("An error occurred performing a request");
-	        }
-	}
-	
-	private function getForumID()
-	{
-		$stmt = $this->conn->prepare("SELECT id FROM forum WHERE groupid=(SELECT groupid FROM users WHERE id=?);");
-	        $stmt->bind_param("i", $this->userID);
-	
-	        if ($stmt->execute()) {
-	            $stmt->store_result();
-	            $stmt->bind_result($userID);
-	            
-	            $registrant = $stmt->fetch();//Bind result with row
-	            $stmt->close();
-	
-	            return $userID;
-	            
-	        } else {
-	            die("An error occurred performing a request");
 	        }
 	}
 	
