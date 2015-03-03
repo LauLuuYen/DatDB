@@ -48,7 +48,7 @@ class Thread {
 		{
 			result(false, "title must be set");
 		}
-		else if(strlen($this->title) > 50))
+		else if(strlen($this->title) > 50)
 		{
 			result(false, "title too long");
 		}
