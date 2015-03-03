@@ -68,6 +68,22 @@ class Thread {
 		}
 		return false;
 	}
+	
+	public function makeThread()
+	{
+			
+	}
+	
+	private function createThread()
+	{
+		
+	}
+	
+	private function getForumID()
+	{
+		
+	}
+	
 }
 
 
@@ -78,7 +94,10 @@ $comment = "comments";
 
 $thread = new Thread($userID, $title, $comment);
 
-
+if($threads->checkInputs())
+{
+	$thread->makeThread();
+}
 
 
 ?>
