@@ -100,7 +100,7 @@ class Comment {
 	
 }
 
-if(!empty($_POST)
+if(!empty($_POST))
 {
 	$threadID = $_POST["threadID"];
 	$userID = $_POST["userID"];
