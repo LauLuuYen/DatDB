@@ -73,9 +73,17 @@ class Thread {
 	{
 		$this->conn = connectDB();
 		$forumID = $this->getForumID();
-		$threadid = $this->createThread($forumID);
-		echo "threadid: ". $threadid;
+		$threadID = $this->createThread($forumID);
+
 		closeDB($this->conn);
+		
+		$response = $this->createComment($threadID);
+		if ($reponse.success) {
+			result(true, "success");
+		} else {
+			result(false, $reponse.message);
+		}
+		
 	}
 	
 	private function createThread($forumID )
@@ -114,6 +122,30 @@ class Thread {
 	        } else {
 	            die("An error occurred performing a request");
 	        }
+	}
+	
+	private createComment($threadID) {
+		$post_request = array (
+			threadID => $threadID,
+			userID => $this->userID,
+			comment => $this->comment
+		);
+		
+		$url = 'http://lauluuyen.azurewebsites.net/php/comment.php';
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_SSL_VERIFYPEER => 0,
+			CURLOPT_SSL_VERIFYHOST => 0,
+			CURLOPT_POST => true,
+			CURLOPT_POSTFIELDS => $post_request
+		));
+		$response = curl_exec($curl);
+		$obj = json_decode($response, true);	
+		curl_close($curl);
+		
+		return $obj;
 	}
 	
 }
