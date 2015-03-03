@@ -146,12 +146,13 @@ a:active{
 
 .assessments .container {
     width:100%;
+    margin: 0 auto;
     padding: 10px 10px;
 }
 
 .assessments .item {
     position:relative;
-    width:450px;
+    width:420px;
     min-height:155px;
     background-color:white;
     padding:0;
