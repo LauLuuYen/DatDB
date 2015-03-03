@@ -72,8 +72,8 @@ class Thread {
 	public function makeThread()
 	{
 		$this->conn = connectDB();
-		$forumID =  getForumID();
-		
+		$forumID = $this->getForumID();
+		echo "forumid: ". $forumID;
 		closeDB($this->conn);
 	}
 	
