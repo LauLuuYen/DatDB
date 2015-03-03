@@ -26,9 +26,9 @@ app.factory("master", function() {
                     "timestamp": "06/04/2015"
                 },
                 "assessments": [
-                    { "reportid": 1234, "groupname":"powerranger1", "status": "Incomplete", "content":"knsfgjndfg s dfkjnf1", "feedback": "Good", "score": 4, "timestamp": "07/06/2015" },
-                    { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "content":"knsfgjndfg s dfkjnf2", "feedback": "Good", "score": 2, "timestamp": "08/06/2015" },
-                    { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "content":"knsfgjndfg s dfkjnf3", "feedback": "Good", "score": 4, "timestamp": "09/06/2015" }
+                    { "reportid": 1234, "groupname":"powerranger1", "status": "Incomplete", "feedback":"Good", "content":"knsfgjndfg s dfkjnf1", "feedback": "Good", "score": 4, "timestamp": "07/06/2015" },
+                    { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "feedback":"sljdfsjlg sdfjnl l sds", "content":"knsfgjndfg s dfkjnf2", "feedback": "Good", "score": 2, "timestamp": "08/06/2015" },
+                    { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "feedback":"sfglknsdf lndfsf", "content":"knsfgjndfg s dfkjnf3", "feedback": "Good", "score": 4, "timestamp": "09/06/2015" }
                 ]
             }
             
@@ -198,7 +198,7 @@ app.controller("Assessments", function ($scope, master) {
                         "<div class='name'>Group: <span>"+assessments.groupname+"</span></div>"+
                         "<div class='linebreak'></div>";
                         "<div class='assignment'>Assignment:"+assignment.title+"</div>"+
-                        "<div class='feedback'>" ++ "</div>"+
+                        "<div class='feedback'>" +assessments.feedback+ "</div>"+
                         "<div class='status'>Status: "+assessments.status+"</div>"+
                         "<div class='score'>Score: "+assessments.score+"/5</div>"+
                         "<div class='more'>More ></div>"+
