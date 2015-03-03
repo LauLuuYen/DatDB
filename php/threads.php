@@ -111,7 +111,7 @@ $comment = "comments";
 
 $thread = new Thread($userID, $title, $comment);
 
-if($threads->checkInputs())
+if($thread->checkInputs())
 {
 	echo "making thread\n";
 	$thread->makeThread();
