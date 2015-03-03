@@ -146,19 +146,18 @@ a:active{
 
 .assessments .container {
     width:100%;
-    margin: 0 auto;
     padding: 10px 10px;
 }
 
 .assessments .item {
     position:relative;
-    width:420px;
+    width:410px;
     min-height:155px;
     background-color:white;
     padding:0;
     border-radius:20px;
     border:8px solid red;
-    margin: 10px 0;
+    margin: 10px auto;
 }
 
 .assessments .item.complete {
