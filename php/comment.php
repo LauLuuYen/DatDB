@@ -87,7 +87,7 @@ class Comment {
         	if ($stmt->execute()) {
 	       		$commentid = mysqli_insert_id($this->conn);
 	            	$success = $commentid > 0;
-	            	stmt->close();
+	            	$stmt->close();
 	  
 	            	return $success;
 	            
