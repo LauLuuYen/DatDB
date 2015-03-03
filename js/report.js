@@ -26,9 +26,9 @@ app.factory("master", function() {
                     "timestamp": "06/04/2015"
                 },
                 "assessments": [
-                    { "reportid": 1234, "status": "Incomplete", "content":"knsfgjndfg s dfkjnf1", "feedback": "Good", "score": 4, "timestamp": "07/06/2015" },
-                    { "reportid": 3434, "status": "Incomplete", "content":"knsfgjndfg s dfkjnf2", "feedback": "Good", "score": 2, "timestamp": "08/06/2015" },
-                    { "reportid": 4544, "status": "Incomplete", "content":"knsfgjndfg s dfkjnf3", "feedback": "Good", "score": 4, "timestamp": "09/06/2015" }
+                    { "reportid": 1234, "groupname":"powerranger1", "status": "Incomplete", "content":"knsfgjndfg s dfkjnf1", "feedback": "Good", "score": 4, "timestamp": "07/06/2015" },
+                    { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "content":"knsfgjndfg s dfkjnf2", "feedback": "Good", "score": 2, "timestamp": "08/06/2015" },
+                    { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "content":"knsfgjndfg s dfkjnf3", "feedback": "Good", "score": 4, "timestamp": "09/06/2015" }
                 ]
             }
             
@@ -185,22 +185,35 @@ app.directive("dynamic", function ($compile) {
 
 app.controller("Assessments", function ($scope, master) {
     
-
-    $scope.itemlist = '<a ng-click="next(1)" href="#">Click me</a>';
     
     $scope.injectScript = function(assign_no) {
-        var assessments = master.assignments[assign_no].assessments;
+        var assignment = master.assignments[assign_no];
+        var assessments = assignment.assessments;
+        var script = "";
+        
+        //Dynamically construct the assessments
         for (i = 0; i < assessments.length; i++) {
-            console.log(assessments[i]);
+
+            script += "<div class='item' ng-click='next("+assessments.reportid+")'>" +
+                        "<div class='name'>Group: <span>"+assessments.groupname+"</span></div>"+
+                        "<div class='linebreak'></div>";
+                        "<div class='assignment'>Assignment:"+assignment.title+"</div>"+
+                        "<div class='feedback'>" ++ "</div>"+
+                        "<div class='status'>Status: "+assessments.status+"</div>"+
+                        "<div class='score'>Score: "+assessments.score+"/5</div>"+
+                        "<div class='more'>More ></div>"+
+                      "</div>";
         }
+        
+        $scope.itemlist = script;
     };
     
-    //TODO find right assigment index
+    //TODO find for all assessments and right assign
     $scope.injectScript(0);
     
     
     $scope.next = function(id) {
-        alert("next");
+        alert("next: " + id);
     };
     
 });
