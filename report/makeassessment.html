@@ -1,25 +1,28 @@
-<div>
+<div class="makeassessment">
     <div>Group: <span id="groupname"></span></div>
     <div>Assessment Status: <span id="status"></span></div>
     
     <div id="report" class="fullreport"></div>
     
-    <div>Your rating</div>
-    <span class="starRating">
-        <input id="rating5" type="radio" name="rating" value="5">
-        <label for="rating5">5</label>
-        <input id="rating4" type="radio" name="rating" value="4">
-        <label for="rating4">4</label>
-        <input id="rating3" type="radio" name="rating" value="3">
-        <label for="rating3">3</label>
-        <input id="rating2" type="radio" name="rating" value="2">
-        <label for="rating2">2</label>
-        <input id="rating1" type="radio" name="rating" value="1">
-        <label for="rating1">1</label>
-    </span>
+    <!--View/Edit mode-->
+    
+    <div class="rating">
+        <div>Please give a rating:</div>
+        <span class="starRating">
+            <input id="r1" type="radio" name="rating" value="5"></input>
+            <label for="r1"></label>
+            <input id="r2" type="radio" name="rating" value="4"></input>
+            <label for="r2"></label>
+            <input id="r3" type="radio" name="rating" value="3"></input>
+            <label for="r3"></label>
+            <input id="r4" type="radio" name="rating" value="2"></input>
+            <label for="r4"></label>
+            <input id="r5" type="radio" name="rating" value="1"></input>
+            <label for="r5"></label>
+        </span>
+    </div>
 
     <div>Your feedback</div>
-    <!--Real feedback-->
     <div>
         <input type="text"></input>
     </div>

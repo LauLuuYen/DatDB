@@ -229,12 +229,20 @@ a:active{
     top:10px;
 }
 
+/*
+*   Make Assessment page
+*/
+
+.makeassessment .rating {
+    margin:10px 0;
+}
+
 
 /* Star rating */
 .starRating:not(old){
   display        : inline-block;
-  width          : 7.5em;
-  height         : 1.5em;
+  width          : 200px;
+  height         : 40px;
   overflow       : hidden;
   vertical-align : bottom;
 }
@@ -255,8 +263,8 @@ a:active{
 .starRating:not(old) > label:before{
   content         : '';
   display         : block;
-  width           : 1.5em;
-  height          : 1.5em;
+  width           : 40px;
+  height          : 40px;
   background      : url('../img/star_on.png');
   background-size : contain;
   opacity         : 0;
