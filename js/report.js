@@ -206,18 +206,29 @@ app.controller("Assessments", function ($scope, master, $location) {
 
 app.controller("MakeAssessment", function ($scope, master, $routeParams, $location) {
 
+    var assessment = null;
+    
     $scope.reroute = function(assign_no) {
         var assessments = master.assignments[assign_no].assessments;
         var id = $routeParams.id;
         
         for (i = 0; i < assessments.length; i++) {
             if (id == assessments[i].reportid) {
+                assessment = assessments[i];
+                $scope.injectScript();
                 return;
             }
         }
         
         //Couldn't find a matching reportid
         $location.path("/assessments");
+    };
+    
+    $scope.injectScript = function() {
+        $("#groupname").html(assessment["groupname"]);
+        $("#status").html(assessment["status"]);
+        $("#report").html(assessment["content"]);
+
     };
     
     //TODO find right assigment index
