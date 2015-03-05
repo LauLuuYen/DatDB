@@ -39,7 +39,7 @@ app.factory("master", function() {
 });
 
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "main.html",
@@ -183,7 +183,7 @@ app.directive("dynamic", function ($compile) {
   };
 });
 
-app.controller("Assessments", function ($scope, master) {
+app.controller("Assessments", function ($scope, master, $location) {
     
     
     $scope.injectScript = function(assign_no) {
@@ -213,6 +213,8 @@ app.controller("Assessments", function ($scope, master) {
     
     $scope.next = function(id) {
         alert("next: " + id);
+        $location.path("/assessments/1234");
+
     };
     
 });
