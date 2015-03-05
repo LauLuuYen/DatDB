@@ -167,21 +167,6 @@ app.controller("Submit", function ($scope, master) {
     
 });
 
-/*
-*   Compile angularjs scripts
-*/
-app.directive("dynamic", function ($compile) {
-  return {
-    restrict: 'A',
-    replace: true,
-    link: function (scope, ele, attrs) {
-      scope.$watch(attrs.dynamic, function(html) {
-        ele.html(html);
-        $compile(ele.contents())(scope);
-      });
-    }
-  };
-});
 
 app.controller("Assessments", function ($scope, master, $location) {
     
@@ -212,8 +197,7 @@ app.controller("Assessments", function ($scope, master, $location) {
     
     
     $scope.next = function(id) {
-        alert("next: " + id);
-        $location.path("/assessments/1234");
+        $location.path("/assessments/"+id);
 
     };
     
@@ -233,7 +217,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams) {
         }
         
         //Couldn't find a matching reportid
-        window.location.href = "/report";
+        $location.path("/assessments");
     };
     
     //TODO find right assigment index
@@ -247,5 +231,21 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams) {
 
 app.controller("Marks", function ($scope, master) {
 
+});
+
+/*
+*   Compile angularjs scripts
+*/
+app.directive("dynamic", function ($compile) {
+  return {
+    restrict: 'A',
+    replace: true,
+    link: function (scope, ele, attrs) {
+      scope.$watch(attrs.dynamic, function(html) {
+        ele.html(html);
+        $compile(ele.contents())(scope);
+      });
+    }
+  };
 });
 
