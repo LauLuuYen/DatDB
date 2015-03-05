@@ -204,7 +204,7 @@ app.controller("Assessments", function ($scope, master, $location) {
 });
 
 
-app.controller("MakeAssessment", function ($scope, master, $routeParams) {
+app.controller("MakeAssessment", function ($scope, master, $routeParams, $location) {
 
     $scope.reroute = function(assign_no) {
         var assessments = master.assignments[assign_no].assessments;
