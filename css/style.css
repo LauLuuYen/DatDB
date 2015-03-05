@@ -248,7 +248,7 @@ a:active{
   display         : block;
   float           : right;
   position        : relative;
-  background      : url('../img/star_off.svg');
+  background      : url('../img/star_off.png');
   background-size : contain;
 }
 
@@ -257,7 +257,7 @@ a:active{
   display         : block;
   width           : 1.5em;
   height          : 1.5em;
-  background      : url('../img/star_on.svg');
+  background      : url('../img/star_on.png');
   background-size : contain;
   opacity         : 0;
   transition      : opacity 0.2s linear;
