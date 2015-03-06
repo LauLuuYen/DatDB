@@ -1,26 +1,9 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", true);
-if (DEBUG) {
-    ini_set("display_errors",1);
-    ini_set("display_startup_errors",1);
-    error_reporting(E_ALL & ~E_NOTICE);
-}
 
-class Helper {
 
-    /*
-    *
-    *   @params: none
-    *   @return: none
-    */
-	public function __construct() {
-
-	}
-	
-
-	public function getForumID($conn, $id)
+function getForumID($conn, $id)
 	{
 		$stmt = $conn->prepare("SELECT id FROM forum WHERE groupid=(SELECT groupid FROM users WHERE id=?);");
         $stmt->bind_param("i", $id);
@@ -41,8 +24,6 @@ class Helper {
     
     
 }
-
-$helper = new Helper();
 
 
 

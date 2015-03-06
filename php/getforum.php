@@ -45,7 +45,7 @@ class Forum
         echo "step1";
       $this->conn = connectDB();
       echo "step2";
-      $forumID = $helper->getForumID($this->conn, $this->userID);
+      $forumID = getForumID($this->conn, $this->userID);
       echo "forum :"  .$forumID;
       closeDB($this->conn);
   }
