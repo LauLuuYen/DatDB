@@ -139,6 +139,21 @@ a:active{
      text-decoration:none; 
 }
 
+// Classes
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+
+// Usage as mixins
+.element {
+  .pull-left();
+}
+.another-element {
+  .pull-right();
+}
 
 .fullreport {
     margin: 5px auto;
