@@ -29,4 +29,16 @@ class Forum
   
 }
 
+require_once("session.php");
+
+    if($userSession->isLoggedIn())
+    {
+        echo "Logged in";
+    }
+    else
+    {
+        echo "Not logged in";
+    }
+
+
 ?>
