@@ -296,8 +296,7 @@ a:active{
   opacity : 1;
 }
 
-.navbar-brand,
-.navbar-nav a {
+.navbar-brand {
     line-height: 100px;
     height: 100px;
     padding-top: 0;
