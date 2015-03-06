@@ -104,6 +104,7 @@ class Thread {
 	        }
 	}
 	
+    //TODO remove
 	private function getForumID()
 	{
 		$stmt = $this->conn->prepare("SELECT id FROM forum WHERE groupid=(SELECT groupid FROM users WHERE id=?);");
