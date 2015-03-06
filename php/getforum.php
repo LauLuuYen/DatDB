@@ -37,7 +37,8 @@ require_once("session.php");
     }
     else
     {
-        echo "Not logged in";
+        result(false, "Not logged in");
+        
     }
 
 
