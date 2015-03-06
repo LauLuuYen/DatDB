@@ -147,6 +147,10 @@ a:active{
   float: right;
 }
 
+.pull-right .top {
+  height: 20%;
+}
+
 // Usage as mixins
 .element {
   .pull-left();
