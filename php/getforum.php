@@ -43,7 +43,7 @@ class Forum
   {
       $this->conn = connectDB();
       
-      require_once("helper.php");
+      require_once "helper.php";
 
       $forumID = $helper->getForumID($this->conn, $this->userID);
       echo $forumID;
