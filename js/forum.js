@@ -6,9 +6,49 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-	var data = {
-
-	};
+	var data =
+        {
+            "userID": 234,
+            "name": "Keiten",
+            "lastname": "Luu",
+            "groupID": 13,
+            "forum": {
+                "threads": [
+                    {
+                        "threadID": 12,
+                        "title": "gayboy",
+                        "timestamp": "06/07/2015",
+                        "comments": [
+                            {
+                                "commentID": 41,
+                                "fullname": "Rex Lau",
+                                "content": "sdgsfgsdf sfd sdf is fuuk",
+                                "timestamp": "06/06/2015"
+                            },
+                            {
+                                "commentID": 51,
+                                "fullname": "Kei Lau",
+                                "content": "sdfgdfgm efkle f",
+                                "timestamp": "06/06/2015"
+                            }
+                        ]
+                    },
+                    {
+                        "threadID": 12,
+                        "title": "gayboy2",
+                        "timestamp": "06/08/2015",
+                        "comments": [
+                            {
+                                "commentID": 41,
+                                "fullname": "Tuan Ng",
+                                "content": "sdgsfgsdf sfd sdf is fuuk",
+                                "timestamp": "06/06/2015"
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
     
 	return data;
 });
