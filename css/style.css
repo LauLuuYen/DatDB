@@ -4,9 +4,9 @@ html, body {
     width:100%;
     margin: 0;
     background-image: url("/img/innerbg.gif");
-    background-position: left bottom;
+    /*background-position: left bottom;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%; */
     background-color: #dddddd;
 }
 
