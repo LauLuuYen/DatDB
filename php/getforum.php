@@ -42,10 +42,11 @@ class Forum
   
   public function retrieve()
   {
+        echo "step1";
       $this->conn = connectDB();
-      
+      echo "step2";
       $forumID = $helper->getForumID($this->conn, $this->userID);
-      echo $forumID;
+      echo "forum :"  .$forumID;
       closeDB($this->conn);
   }
   
