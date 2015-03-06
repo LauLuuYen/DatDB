@@ -55,8 +55,11 @@ class Forum
 
 if($userSession->isLoggedIn())
 {
-    echo "Logged in";
     $forum = new Forum();
+    if($forum->checkInputs())
+    {
+        $forum->retrieve();
+    }
 }
 else
 {
