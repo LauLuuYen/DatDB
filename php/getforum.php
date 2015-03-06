@@ -45,6 +45,7 @@ class Forum
       $this->conn = connectDB();
       $forumID = $helper->getForumID($this->conn, $this->userID);
       echo $forumID;
+      closeDB($this->conn);
   }
   
   
