@@ -42,11 +42,11 @@ class Forum
   
   public function retrieve()
   {
-        echo "step1";
       $this->conn = connectDB();
-      echo "step2 userID: " . $this->userID;
       $forumID = getForumID($this->conn, $this->userID);
-      echo "forum :"  .$forumID;
+      $data = getAllThreads($this->conn, 1);
+      
+      echo json_encode($data);
       closeDB($this->conn);
   }
   
