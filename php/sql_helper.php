@@ -8,7 +8,7 @@ class SQL_Helper {
     *   @params: mysqli - $conn
     *   @return: none
     */
-	public function __construct($conn) {
+	public function __construct() {
         $this->conn = connectDB();
 	}
 
