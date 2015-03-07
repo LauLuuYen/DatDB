@@ -1,15 +1,15 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 define("DEBUG", true);
+
 if (DEBUG) {
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-require_once("include/config.php");
-require_once("helper.php");
-require_once("session.php");
+require_once "include/config.php";
+require_once "session.php";
 
 /*
 *   Echoes to the client the result of the process.
@@ -42,11 +42,15 @@ class Forum
   
   public function retrieve()
   {
-      $this->conn = connectDB();
-      $forumID = getForumID($this->conn, $this->userID);
-      $data = getAllThreads($this->conn, 1);
+        require_once "sql_helper.php";
       
-      echo json_encode($data);
+      $this->conn = connectDB();
+      echo "test";
+      $forumID = $sql_helper->getForumID($this->conn, $this->userID);
+      echo $forumID;
+      //$data = getAllThreads($this->conn, 1);
+      
+      //echo json_encode($data);
       closeDB($this->conn);
   }
   

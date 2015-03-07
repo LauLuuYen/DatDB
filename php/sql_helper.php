@@ -1,8 +1,37 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
 
+class SQL_Helper {
 
+    /*
+    *
+    *   @params: none
+    *   @return: none
+    */
+	public function __construct() {
+        //
+	}
+
+    public function getForumID($conn, $userid) {
+        $stmt = $conn->prepare("SELECT id FROM forum WHERE groupid=(SELECT groupid FROM users WHERE id=?);");
+        $stmt->bind_param("i", $userid);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($forumID);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $forumID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+}
+/*
 function getForumID($conn, $userid) {
     $stmt = $conn->prepare("SELECT id FROM forum WHERE groupid=(SELECT groupid FROM users WHERE id=?);");
     $stmt->bind_param("i", $userid);
@@ -50,6 +79,8 @@ function getAllThreads($conn, $forumID)
     }
     
 }
+*/
 
+$sql_helper = new SQL_Helper();
 
 ?>
