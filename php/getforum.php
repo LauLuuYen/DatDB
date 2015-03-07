@@ -21,9 +21,8 @@ function result($success, $msg) {
     echo json_encode($response);
 }
 
-require_once "include/config.php";
-require_once "session.php";
 
+require_once "session.php";
 
 class Forum
 {

@@ -9,8 +9,6 @@ if (DEBUG) {
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-include "include/config.php";
-
 
 /*
 *   Echoes to the client the result of the process.
@@ -24,16 +22,14 @@ function result($success, $msg) {
 }
 
 
-class Login
-{
+class Login {
 
     /*
     *   Constructor.
     *   @params: string - $email, string - $password
     *   @return: none
     */
-	public function __construct($email, $password)
-    {
+	public function __construct($email, $password) {
 		$this->email = strtolower(trim($email));
 		$this->password = $password;		
 	}
@@ -68,50 +64,37 @@ class Login
     *   @params: none
     *   @return: none
     */
-	public function authenticate()
-	{
-	    $this->conn = connectDB();
+	public function authenticate() {
 	    
-		$stmt = $this->conn->prepare("SELECT * FROM Users WHERE email = ?");
-        $stmt->bind_param("s", $this->email);
+        require_once "sql_helper.php";
+        $this->sql_helper = new SQL_Helper();
+        
+        //Retrieve the login details
+        $data = $this->sql_helper->getLoginDetails($this->email);
+        
+        //Check if email exist
+        if (is_null($data)) {
+            result(false, "Invalid email/password combination!");
+            
+        } else {
 
-        if ($stmt->execute()) {
-            $stmt->store_result();
-            $stmt->bind_result($id, $name, $lastname, $email, $password, $roleID, $groupID, $timestamp);
-            
-            $registrant = $stmt->fetch();
-            
-            if (count($registrant) == 0) {
-                //No user found
-                result(false, "Email does not exist");
-                return;
-            }
-            
-            if (md5($this->password) != $password) {
+            //Check password match
+            if (md5($this->password) != $data->password) {
                 result(false, "Invalid email/password combination");
+                
             } else {
-            	
-                require_once "session.php";
-                $data = array(
-                    "userID" => $id,
-                    "name" => $name,
-                    "lastname" => $lastname,
-                    "roleID"=>$roleID,
-                    "groupID"=>$groupID
-                );
-                $userSession->login($data);
             
+                //Store user data in a session
+                require_once "session.php";
+                unset($data["password"]); //Remove password
+                $userSession->login($data);
+                
                 result(true, "Success!");
-                //TODO return back other stuff
                 
             }
-            
-            $stmt->close();
-            closeDB($this->conn);
-
-        } else {
-            die("An error occurred performing the request");
         }
+            
+        $this->sql_helper->close();
     }
 
 }

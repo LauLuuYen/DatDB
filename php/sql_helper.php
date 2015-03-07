@@ -1,5 +1,6 @@
 <?php
 
+require_once "include/config.php";
 
 class SQL_Helper {
 
@@ -24,8 +25,45 @@ class SQL_Helper {
     
     
     /*
+    *   Get Login details given an email
+    *   @params: string - $email
+    *   @return: array - $data
+    */
+    public function getLoginDetails($email) {
+        $stmt = $this->conn->prepare("SELECT id, password, name, lastname, roleID, groupID FROM users WHERE email=?;");
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($id, $password, $name, $lastname, $roleID, $groupID);
+
+            $registrant = $stmt->fetch();
+            $stmt->close();
+            
+            if (count($registrant) == 0) {
+                return null;
+            }
+
+            $data = array(
+                "userID" => $id,
+                "name" => $name,
+                "lastname" => $lastname,
+                "roleID"=>$roleID,
+                "groupID"=>$groupID,
+                "password"=>$password
+            );
+            return $data;
+
+        } else {
+            die("An error occurred performing the request");
+        }
+        
+    }
+    
+    
+    /*
     *   Get all assignments given a groupID
-    *   @params: mysqli - $conn, int - $groupID
+    *   @params: int - $groupID
     *   @return: array - $data
     */
     public function getReportAssignments($groupID) {

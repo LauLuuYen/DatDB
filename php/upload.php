@@ -5,7 +5,7 @@
     ini_set("display_errors",1);
     ini_set("display_startup_errors",1);
     error_reporting(E_ALL & ~E_NOTICE);
-    include "include/config.php";
+    include "include/config.php";//TODO remove
 
     function result($success, $message) {
         $response["success"] = $success;

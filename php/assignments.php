@@ -9,7 +9,7 @@ if (DEBUG) {
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-include "include/config.php";
+include "include/config.php";//TODO remove
 
 
 /*
