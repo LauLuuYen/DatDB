@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", false);
+define("DEBUG", true);
 
 if (DEBUG) {
     ini_set("display_errors",1);
@@ -77,7 +77,9 @@ class Login {
             result(false, "Invalid email/password combination!");
             
         } else {
-
+            echo "d";
+            echo " f:". $data->password;
+            
             //Check password match
             if (md5($this->password) != $data->password) {
                 result(false, "Invalid email/password combination");
@@ -100,7 +102,7 @@ class Login {
 }
 
 
-
+/*
 if(!empty($_POST))
 {
 	$email = $_POST["email"];
@@ -114,7 +116,14 @@ else
 {
 	result(false, "Permission Denied");
 }
+*/
 
+	$email = "mario@castle.com";
+	$password = "abc123";
+    $login = new Login($email, $password);
+    if ($login->checkInputs()) {
+        $login->authenticate();
+    }
 
 
 ?>
