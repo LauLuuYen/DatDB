@@ -46,10 +46,13 @@ class Forum
         $this->conn = connectDB();
         
         $data = array();
-        $data["userID"] = $this->userID;
-        $data["name"] = $this->name;
-        $data["lastname"] = $this->lastname;
-        $data["groupID"] = $this->groupID;
+        $profile = array();
+        $profile["userID"] = $this->userID;
+        $profile["name"] = $this->name;
+        $profile["lastname"] = $this->lastname;
+        $profile["groupID"] = $this->groupID;
+        
+        $data["profile"] = $profile;
         
         //Get forumID
         $forumID = $sql_helper->getForumID($this->conn, $this->userID);

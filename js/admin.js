@@ -5,7 +5,14 @@ var app = angular.module("myApp", ["ngRoute"]);
 */
 app.factory("master", function() {
 	var data = {
-        //No data yet
+        "profile" : {
+            "userID": 123,
+            "name": "tuan",
+            "lastname": "nguyen",
+            "groupid": 3
+        }
+        
+        
 	};
 
 	return data;

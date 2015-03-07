@@ -5,7 +5,9 @@ var app = angular.module('myApp', []);
 */
 app.factory('master', function() {  
 	var data = {
-        //No data yet
+
+        
+        
 	};
 
 	return data;
