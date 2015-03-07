@@ -74,14 +74,12 @@ class Login {
         
         //Check if email exist
         if (is_null($data)) {
-            result(false, "Invalid email/password combination!");
+            result(false, "Invalid email/password combination");
             
         } else {
-            echo "d";
-            echo " f:". $data->password;
             
             //Check password match
-            if (md5($this->password) != $data->password) {
+            if (md5($this->password) != $data["password"]) {
                 result(false, "Invalid email/password combination");
                 
             } else {
@@ -102,7 +100,7 @@ class Login {
 }
 
 
-/*
+
 if(!empty($_POST))
 {
 	$email = $_POST["email"];
@@ -116,14 +114,7 @@ else
 {
 	result(false, "Permission Denied");
 }
-*/
 
-	$email = "mario@castle.com";
-	$password = "abc123";
-    $login = new Login($email, $password);
-    if ($login->checkInputs()) {
-        $login->authenticate();
-    }
 
 
 ?>
