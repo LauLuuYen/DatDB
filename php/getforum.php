@@ -41,8 +41,8 @@ class Forum
     {
          //TODO check role
         require_once "sql_helper.php";
-        $conn = connectDB();
-        $this->sql_helper = new SQL_Helper($conn);
+        $this->sql_helper = new SQL_Helper();
+
         
         $data = array();
         $profile = array();
@@ -68,7 +68,7 @@ class Forum
         
         result(true, $data);
         
-        closeDB($conn);
+        $this->sql_helper->close();
     }
   
   

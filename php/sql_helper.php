@@ -9,17 +9,17 @@ class SQL_Helper {
     *   @return: none
     */
 	public function __construct($conn) {
-        $this->conn;
+        $this->conn = connectDB();
 	}
 
 
     /*
-    *   Getter method
+    *   Close database connection
     *   @params: none
-    *   @return: mysqli - $conn
+    *   @return: none
     */
-    public function getConn() {
-        return $this->conn;
+    public function close() {
+        closeDB($this->conn);
     }
     
     
