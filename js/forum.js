@@ -61,7 +61,9 @@ app.config(function($routeProvider, $locationProvider) {
             controller: "Main"
         })
 
-
+        .otherwise({
+            redirectTo: "/"
+        });
 
     }
 );
