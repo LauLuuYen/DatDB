@@ -9,19 +9,8 @@ if (DEBUG) {
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-
-/*
-*   Echoes to the client the result of the process.
-*   @params: bool - $success, string - $msg
-*   @return: none
-*/
-function result($success, $msg) {
-    $response["success"] = $success;
-    $response["message"] = $msg;
-    return $response;
-}
-
 require_once "include/config.php";
+
 
 class Assignment {
 
@@ -56,14 +45,11 @@ class Assignment {
         foreach($data["assignments"] as &$assignment) {
             $assignmentID = $assignment["id"];
             $assignment["assessments"] = $sql_helper->getAssessments($this->conn, $this->groupID, $assignmentID);
-            //
         }
 
-
-
-        result(true, $data);
-        
         closeDB($this->conn);
+        
+        return $data;
     }
     
 }

@@ -1,35 +1,5 @@
 var app = angular.module("myApp", ["ngRoute"]);
 
-var data = {
-    "profile" : {
-        "userID": 123,
-        "name": "tuan",
-        "lastname": "nguyen",
-        "groupid": 3
-    },
-    "assignments": [
-        {
-            "id": 123,
-            "title": "LG FLEX 2",
-            "deadline": "08/06/2015",
-            "timestamp": "06/03/2015",
-            "report": {
-                "reportid": 12321,
-                "status": "Incomplete",
-                "content": "Cunt",
-                "timestamp": "06/04/2015"
-            },
-            "assessments": [
-                { "reportid": 1234, "groupname":"powerrangerx", "status": "Incomplete", "feedback":"Good", "content":"knsfgjndfg s dfkjnf1", "score": 4, "timestamp": "07/06/2015" },
-                
-                { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "feedback":"sljdfsjlg sdfjnl l sds", "content":"knsfgjndfg s dfkjnf2", "score": 2, "timestamp": "08/06/2015" },
-                
-                { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "feedback":"sfglknsdf lndfsf", "content":"knsfgjndfg s dfkjnf3", "score": 4, "timestamp": "09/06/2015" }
-            ]
-        }
-        
-    ]
-};
 
 app.factory("master", function() {
     
@@ -176,7 +146,7 @@ app.controller("Assessments", function ($scope, master, $location) {
         
         //Dynamically construct the assessments
         for (i = 0; i < assessments.length; i++) {
-            script += "<div class='item' ng-click='next("+assessments[i].reportid+")'>" +
+            script += "<div class='item' ng-click='next("+assessments[i].reportID+")'>" +
                         "<div class='name'>Group: <span>"+assessments[i].groupname+"</span></div>"+
                         "<div class='linebreak'></div>"+
                         "<div class='assignment'>Assignment:"+assignment.title+"</div>"+
@@ -211,7 +181,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
         var id = $routeParams.id;
         
         for (i = 0; i < assessments.length; i++) {
-            if (id == assessments[i].reportid) {
+            if (id == assessments[i].reportID) {
                 assessment = assessments[i];
                 $scope.injectScript();
                 return;
