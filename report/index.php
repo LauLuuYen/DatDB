@@ -1,4 +1,9 @@
-<!doctype html>
+<?php
+    
+
+
+?>
+<!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 
 <head>
@@ -51,7 +56,7 @@
                                     <a class="panel btn" href="#/submit">Submit Report</a>
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
-                                    <a class="panel btn" href="#/assessments">Assessments</a>
+                                    <a class="panel btn" href="#/assessments">Assessment</a>
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
                                     <a class="panel btn" href="#/marks">Marks</a>

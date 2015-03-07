@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", true);
+define("DEBUG", false);
 
 if (DEBUG) {
     ini_set("display_errors",1);
@@ -18,12 +18,10 @@ if (DEBUG) {
 function result($success, $msg) {
     $response["success"] = $success;
     $response["message"] = $msg;
-    echo json_encode($response);
+    return $response;
 }
 
 require_once "include/config.php";
-require_once "session.php";
-
 
 class Assignment {
 
@@ -70,6 +68,7 @@ class Assignment {
     
 }
 
+require_once "session.php";
 
 if($userSession->isLoggedIn()) {
     $assignment = new Assignment();

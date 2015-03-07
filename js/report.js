@@ -1,40 +1,36 @@
 var app = angular.module("myApp", ["ngRoute"]);
 
+var data = {
+    "profile" : {
+        "userID": 123,
+        "name": "tuan",
+        "lastname": "nguyen",
+        "groupid": 3
+    },
+    "assignments": [
+        {
+            "id": 123,
+            "title": "LG FLEX 2",
+            "deadline": "08/06/2015",
+            "timestamp": "06/03/2015",
+            "report": {
+                "reportid": 12321,
+                "status": "Incomplete",
+                "content": "Cunt",
+                "timestamp": "06/04/2015"
+            },
+            "assessments": [
+                { "reportid": 1234, "groupname":"powerrangerx", "status": "Incomplete", "feedback":"Good", "content":"knsfgjndfg s dfkjnf1", "score": 4, "timestamp": "07/06/2015" },
+                
+                { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "feedback":"sljdfsjlg sdfjnl l sds", "content":"knsfgjndfg s dfkjnf2", "score": 2, "timestamp": "08/06/2015" },
+                
+                { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "feedback":"sfglknsdf lndfsf", "content":"knsfgjndfg s dfkjnf3", "score": 4, "timestamp": "09/06/2015" }
+            ]
+        }
+        
+    ]
+};
 
-	var data = {
-        "profile" : {
-            "userID": 123,
-            "name": "tuan",
-            "lastname": "nguyen",
-            "groupid": 3
-        },
-        "assignments": [
-            {
-                "id": 123,
-                "title": "LG FLEX 2",
-                "deadline": "08/06/2015",
-                "timestamp": "06/03/2015",
-                "report": {
-                    "reportid": 12321,
-                    "status": "Incomplete",
-                    "content": "Cunt",
-                    "timestamp": "06/04/2015"
-                },
-                "assessments": [
-                    { "reportid": 1234, "groupname":"powerrangerx", "status": "Incomplete", "feedback":"Good", "content":"knsfgjndfg s dfkjnf1", "score": 4, "timestamp": "07/06/2015" },
-                    
-                    { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "feedback":"sljdfsjlg sdfjnl l sds", "content":"knsfgjndfg s dfkjnf2", "score": 2, "timestamp": "08/06/2015" },
-                    
-                    { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "feedback":"sfglknsdf lndfsf", "content":"knsfgjndfg s dfkjnf3", "score": 4, "timestamp": "09/06/2015" }
-                ]
-            }
-            
-        ]
-	};
-    
-/*
-*
-*/
 app.factory("master", function() {
     
 	return data;
@@ -44,27 +40,27 @@ app.factory("master", function() {
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "main.html",
+            templateUrl: "main.php",
             controller: "Main"
         })
 
         .when("/submit", {
-            templateUrl: "submit.html",
+            templateUrl: "submit.php",
             controller: "Submit"
         })
         
         .when("/assessments", {
-            templateUrl: "assessments.html",
+            templateUrl: "assessments.php",
             controller: "Assessments"
         })
         
         .when("/assessments/:id", {
-            templateUrl: "makeassessment.html",
+            templateUrl: "makeassessment.php",
             controller: "MakeAssessment"
         })
         
         .when("/marks", {
-            templateUrl: "marks.html",
+            templateUrl: "marks.php",
             controller: "Marks"
         })
         .otherwise({
