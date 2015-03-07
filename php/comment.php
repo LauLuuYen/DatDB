@@ -82,7 +82,7 @@ class Comment {
 	{
 		$timestamp = date("Y-m-d H:i:s");
         
-		$stmt = $this->conn->prepare("INSERT INTO comment (threadid, comment, userid, timestamp) VALUES(?,?,?,?)");
+		$stmt = $this->conn->prepare("INSERT INTO comment (threadid, content, userid, timestamp) VALUES(?,?,?,?)");
        		$stmt->bind_param("isis", $this->threadID, $this->comment, $this->userID, $timestamp);
         	if ($stmt->execute()) {
 	       		$commentid = mysqli_insert_id($this->conn);

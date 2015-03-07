@@ -40,19 +40,34 @@ class Forum
       return true;
   }
   
-  public function retrieve()
-  {
+    public function retrieve()
+    {
         require_once "sql_helper.php";
-      
-      $this->conn = connectDB();
-      echo "test";
-      $forumID = $sql_helper->getForumID($this->conn, $this->userID);
-      echo $forumID;
-      //$data = getAllThreads($this->conn, 1);
-      
-      //echo json_encode($data);
-      closeDB($this->conn);
-  }
+        $this->conn = connectDB();
+        
+        $data = array();
+        $data["userID"] = $this->userID;
+        $data["name"] = $this->name;
+        $data["lastname"] = $this->lastname;
+        $data["groupID"] = $this->groupID;
+        
+        //Get forumID
+        $forumID = $sql_helper->getForumID($this->conn, $this->userID);
+        
+        //Get all threads
+        $data["forum"] = $sql_helper->getAllThreads($this->conn, $forumID);
+        
+        //Go through every thread, find comments
+        foreach($data["forum"] as &$thread) {
+            $threadID = $thread["threadID"];
+            $thread["comments"] = $sql_helper->getAllComments($this->conn, $threadID);
+            
+        }
+        
+        result(true, $data);
+        
+        closeDB($this->conn);
+    }
   
   
 }
