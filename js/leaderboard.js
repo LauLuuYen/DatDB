@@ -17,7 +17,7 @@ app.factory("master", function() {
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "main.html",
+            templateUrl: "main.php",
             controller: "Main"
         })
 
