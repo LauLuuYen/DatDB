@@ -61,7 +61,7 @@ class SQL_Helper {
         
         if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($reportid, $groupname, $status, $content, $feedback, $score, $userID, $timestamp);
+            $stmt->bind_result($reportID, $groupname, $status, $content, $feedback, $score, $userID, $timestamp);
             
             $data = array();
             while($stmt->fetch())
