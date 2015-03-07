@@ -68,15 +68,9 @@ class Assignment {
     
 }
 
-require_once "session.php";
 
-if($userSession->isLoggedIn()) {
-    $assignment = new Assignment();
-    $assignment->retrieve();
+$assignment = new Assignment();
 
-} else {
-    result(false, "Not logged in");
-}
 
 
 ?>

@@ -1,6 +1,14 @@
 <?php
     
+require_once "session.php";
 
+if($userSession->isLoggedIn()) {
+    $assignment->retrieve();
+
+} else {
+    $url = "http://" . $_SERVER["HTTP_HOST"];
+    header("Location: " . $url);
+}
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +30,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
     <script src="../js/report.js"></script>
-
 
 </head>
 
