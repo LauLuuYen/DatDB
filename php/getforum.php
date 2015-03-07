@@ -41,7 +41,8 @@ class Forum
     {
          //TODO check role
         require_once "sql_helper.php";
-        $this->conn = connectDB();
+        $conn = connectDB();
+        $this->sql_helper = new SQL_Helper($conn);
         
         $data = array();
         $profile = array();
@@ -53,21 +54,21 @@ class Forum
         $data["profile"] = $profile;
         
         //Get forumID
-        $forumID = $sql_helper->getForumID($this->conn, $this->groupID);
+        $forumID = $this->sql_helper->getForumID($this->groupID);
         
         //Get all threads
-        $data["forum"] = $sql_helper->getAllThreads($this->conn, $forumID);
+        $data["forum"] = $this->sql_helper->getAllThreads($forumID);
         
         //Go through every thread, find comments
         foreach($data["forum"] as &$thread) {
             $threadID = $thread["threadID"];
-            $thread["comments"] = $sql_helper->getAllComments($this->conn, $threadID);
+            $thread["comments"] = $this->sql_helper->getAllComments($threadID);
             //
         }
         
         result(true, $data);
         
-        closeDB($this->conn);
+        closeDB($conn);
     }
   
   

@@ -27,7 +27,8 @@ class Assignment {
     public function retrieve() {
          //TODO check role
         require_once "sql_helper.php";
-        $this->conn = connectDB();
+        $conn = connectDB();
+        $this->sql_helper = new SQL_Helper($conn);
         
         $data = array();
         $profile = array();
@@ -39,15 +40,15 @@ class Assignment {
         $data["profile"] = $profile;
         
         //Get all assignments
-        $data["assignments"] = $sql_helper->getReportAssignments($this->conn, $this->groupID);
+        $data["assignments"] = $this->sql_helper->getReportAssignments($this->groupID);
         
         //Go through every assignment, find assessment
         foreach($data["assignments"] as &$assignment) {
             $assignmentID = $assignment["id"];
-            $assignment["assessments"] = $sql_helper->getAssessments($this->conn, $this->groupID, $assignmentID);
+            $assignment["assessments"] = $this->sql_helper->getAssessments($this->groupID, $assignmentID);
         }
 
-        closeDB($this->conn);
+        closeDB($conn);
         
         return $data;
     }

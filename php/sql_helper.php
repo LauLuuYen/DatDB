@@ -3,18 +3,33 @@
 
 class SQL_Helper {
 
-	public function __construct() {
-        //
+    /*
+    *   Constructor
+    *   @params: mysqli - $conn
+    *   @return: none
+    */
+	public function __construct($conn) {
+        $this->conn;
 	}
 
 
+    /*
+    *   Getter method
+    *   @params: none
+    *   @return: mysqli - $conn
+    */
+    public function getConn() {
+        return $this->conn;
+    }
+    
+    
     /*
     *   Get all assignments given a groupID
     *   @params: mysqli - $conn, int - $groupID
     *   @return: array - $data
     */
-    public function getReportAssignments($conn, $groupID) {
-        $stmt = $conn->prepare("SELECT A.id, title, task, deadline, A.timestamp AS a_timestamp, R.id AS reportid, content, current_status AS status, userid, R.timestamp AS r_timestamp FROM assignments A JOIN reports R ON A.id = R.assignmentID JOIN status S ON R.statusid = S.id WHERE groupid=?");
+    public function getReportAssignments($groupID) {
+        $stmt = $this->conn->prepare("SELECT A.id, title, task, deadline, A.timestamp AS a_timestamp, R.id AS reportid, content, current_status AS status, userid, R.timestamp AS r_timestamp FROM assignments A JOIN reports R ON A.id = R.assignmentID JOIN status S ON R.statusid = S.id WHERE groupid=?");
         $stmt->bind_param("i", $groupID);
         
         if ($stmt->execute()) {
@@ -52,11 +67,11 @@ class SQL_Helper {
     
     /*
     *   Get all assessments given a groupID
-    *   @params: mysqli - $conn, int - $groupID
+    *   @params: int - $groupID
     *   @return: array - $data
     */
-    public function getAssessments($conn, $groupID, $assignmentID) {
-        $stmt = $conn->prepare("SELECT reportid, name, current_status AS status, R.content, feedback, score, A.userid, A.timestamp FROM assessments A JOIN reports R ON A.reportID=R.id JOIN groups G ON R.groupid=G.id JOIN status S ON A.statusid=S.id WHERE A.groupid=? AND R.assignmentid=?;");
+    public function getAssessments($groupID, $assignmentID) {
+        $stmt = $this->conn->prepare("SELECT reportid, name, current_status AS status, R.content, feedback, score, A.userid, A.timestamp FROM assessments A JOIN reports R ON A.reportID=R.id JOIN groups G ON R.groupid=G.id JOIN status S ON A.statusid=S.id WHERE A.groupid=? AND R.assignmentid=?;");
         $stmt->bind_param("ii", $groupID, $assignmentID);
         
         if ($stmt->execute()) {
@@ -91,11 +106,11 @@ class SQL_Helper {
 
     /*
     *   Get the forumID given a userID
-    *   @params: mysqli - $conn, int - $groupID
+    *   @params: int - $groupID
     *   @return: int - $forumID
     */
-    public function getForumID($conn, $groupID) {
-        $stmt = $conn->prepare("SELECT id FROM forum WHERE groupid=?");
+    public function getForumID($groupID) {
+        $stmt = $this->conn->prepare("SELECT id FROM forum WHERE groupid=?");
         $stmt->bind_param("i", $groupID);
 
         if ($stmt->execute()) {
@@ -115,12 +130,12 @@ class SQL_Helper {
 
     /*
     *   Get all the threads given a forumID.
-    *   @params: mysqli - $conn, int - $forumID
+    *   @params: int - $forumID
     *   @return: array - $data
     */
-    public function getAllThreads($conn, $forumID)
+    public function getAllThreads($forumID)
     {
-        $stmt = $conn->prepare("SELECT id,title,timestamp FROM thread WHERE forumid=?");
+        $stmt = $this->conn->prepare("SELECT id,title,timestamp FROM thread WHERE forumid=?");
         $stmt->bind_param("i", $forumID);
         
          if ($stmt->execute()) {
@@ -151,12 +166,12 @@ class SQL_Helper {
 
     /*
     *   Get all the comments given a threadID
-    *   @params: mysqli - $conn, int - $threadID
+    *   @params: int - $threadID
     *   @return: array - $data
     */
-    public function getAllComments($conn, $threadID)
+    public function getAllComments($threadID)
     {
-        $stmt = $conn->prepare("SELECT C.id, U.name, U.lastname, C.content, C.timestamp FROM comment C JOIN users U ON U.id = C.userID WHERE threadID=?;");
+        $stmt = $this->conn->prepare("SELECT C.id, U.name, U.lastname, C.content, C.timestamp FROM comment C JOIN users U ON U.id = C.userID WHERE threadID=?;");
         $stmt->bind_param("i", $threadID);
         
          if ($stmt->execute()) {
@@ -187,15 +202,15 @@ class SQL_Helper {
     
     /*
     *   Get user's name given userID
-    *   @params: mysqli - $conn, int - $userID
+    *   @params: int - $userID
     *   @return: string - $fullname
     */
-    public function getFullname($conn, $userID) {
+    public function getFullname($userID) {
         if (is_null($userID)) {
             return "";
         }
         
-        $stmt = $conn->prepare("SELECT name, lastname WHERE id=?;");
+        $stmt = $this->conn->prepare("SELECT name, lastname WHERE id=?;");
         $stmt->bind_param("i", $userID);
         
          if ($stmt->execute()) {
@@ -218,6 +233,5 @@ class SQL_Helper {
 }
 
 
-$sql_helper = new SQL_Helper();
 
 ?>
