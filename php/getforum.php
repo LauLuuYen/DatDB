@@ -1,6 +1,7 @@
 <?php
+
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", true);
+define("DEBUG", false);
 
 if (DEBUG) {
     ini_set("display_errors",1);
@@ -8,8 +9,6 @@ if (DEBUG) {
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-require_once "include/config.php";
-require_once "session.php";
 
 /*
 *   Echoes to the client the result of the process.
@@ -22,6 +21,10 @@ function result($success, $msg) {
     echo json_encode($response);
 }
 
+require_once "include/config.php";
+require_once "session.php";
+
+
 class Forum
 {
   public function __construct()
@@ -31,17 +34,12 @@ class Forum
     $this->lastname = $_SESSION["lastname"];
     $this->roleID = $_SESSION["roleID"];
     $this->groupID = $_SESSION["groupID"];
-    
   }
   
-  public function checkInputs()
-  {
-      //TODO check role
-      return true;
-  }
-  
+
     public function retrieve()
     {
+         //TODO check role
         require_once "sql_helper.php";
         $this->conn = connectDB();
         
@@ -55,7 +53,7 @@ class Forum
         $data["profile"] = $profile;
         
         //Get forumID
-        $forumID = $sql_helper->getForumID($this->conn, $this->userID);
+        $forumID = $sql_helper->getForumID($this->conn, $this->groupID);
         
         //Get all threads
         $data["forum"] = $sql_helper->getAllThreads($this->conn, $forumID);
@@ -64,7 +62,7 @@ class Forum
         foreach($data["forum"] as &$thread) {
             $threadID = $thread["threadID"];
             $thread["comments"] = $sql_helper->getAllComments($this->conn, $threadID);
-            
+            //
         }
         
         result(true, $data);
@@ -80,15 +78,12 @@ class Forum
 if($userSession->isLoggedIn())
 {
     $forum = new Forum();
-    if($forum->checkInputs())
-    {
-        $forum->retrieve();
-    }
+    $forum->retrieve();
+    
 }
 else
 {
     result(false, "Not logged in");
-    
 }
 
 

@@ -1,11 +1,6 @@
 var app = angular.module("myApp", ["ngRoute"]);
 
 
-
-/*
-*
-*/
-app.factory("master", function() {
 	var data = {
         "profile" : {
             "userID": 123,
@@ -20,20 +15,27 @@ app.factory("master", function() {
                 "deadline": "08/06/2015",
                 "timestamp": "06/03/2015",
                 "report": {
-                    "id": 12321,
+                    "reportid": 12321,
                     "status": "Incomplete",
                     "content": "Cunt",
                     "timestamp": "06/04/2015"
                 },
                 "assessments": [
-                    { "reportid": 1234, "groupname":"powerranger1", "status": "Incomplete", "feedback":"Good", "content":"knsfgjndfg s dfkjnf1", "feedback": "Good", "score": 4, "timestamp": "07/06/2015" },
-                    { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "feedback":"sljdfsjlg sdfjnl l sds", "content":"knsfgjndfg s dfkjnf2", "feedback": "Good", "score": 2, "timestamp": "08/06/2015" },
-                    { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "feedback":"sfglknsdf lndfsf", "content":"knsfgjndfg s dfkjnf3", "feedback": "Good", "score": 4, "timestamp": "09/06/2015" }
+                    { "reportid": 1234, "groupname":"powerrangerx", "status": "Incomplete", "feedback":"Good", "content":"knsfgjndfg s dfkjnf1", "score": 4, "timestamp": "07/06/2015" },
+                    
+                    { "reportid": 3434, "groupname":"powerranger2", "status": "Complete", "feedback":"sljdfsjlg sdfjnl l sds", "content":"knsfgjndfg s dfkjnf2", "score": 2, "timestamp": "08/06/2015" },
+                    
+                    { "reportid": 4544, "groupname":"powerranger3", "status": "Incomplete", "feedback":"sfglknsdf lndfsf", "content":"knsfgjndfg s dfkjnf3", "score": 4, "timestamp": "09/06/2015" }
                 ]
             }
             
         ]
 	};
+    
+/*
+*
+*/
+app.factory("master", function() {
     
 	return data;
 });

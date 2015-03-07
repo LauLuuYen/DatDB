@@ -21,34 +21,63 @@ function result($success, $msg) {
     echo json_encode($response);
 }
 
+require_once "include/config.php";
+require_once "session.php";
 
 
 class Assignment {
 
 
-	public function __construct() {
-        //
-	}
+    public function __construct() {
+        $this->userID = $_SESSION["userID"];
+        $this->name = $_SESSION["name"];
+        $this->lastname = $_SESSION["lastname"];
+        $this->roleID = $_SESSION["roleID"];
+        $this->groupID = $_SESSION["groupID"];
+    }
 	
     
-    public function getAllAssignments() {
-        require_once "session.php";
+    public function retrieve() {
+         //TODO check role
+        require_once "sql_helper.php";
+        $this->conn = connectDB();
         
-        if ($userSession->isLoggedIn()) {
-            result(true, "Data");
-
-        } else {
-            result(false, "No userID");
-
+        $data = array();
+        $profile = array();
+        $profile["userID"] = $this->userID;
+        $profile["name"] = $this->name;
+        $profile["lastname"] = $this->lastname;
+        $profile["groupID"] = $this->groupID;
+        
+        $data["profile"] = $profile;
+        
+        //Get all assignments
+        $data["assignments"] = $sql_helper->getReportAssignments($this->conn, $this->groupID);
+        
+        //Go through every assignment, find assessment
+        foreach($data["assignments"] as &$assignment) {
+            $assignmentID = $assignment["id"];
+            $assignment["assessments"] = $sql_helper->getAssessments($this->conn, $this->groupID, $assignmentID);
+            //
         }
+
+
+
+        result(true, $data);
+        
+        closeDB($this->conn);
     }
+    
 }
 
 
+if($userSession->isLoggedIn()) {
+    $assignment = new Assignment();
+    $assignment->retrieve();
 
-$assignment = new Assignment();
-$assignment->getAllAssignments();
-
+} else {
+    result(false, "Not logged in");
+}
 
 
 ?>

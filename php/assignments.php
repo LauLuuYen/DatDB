@@ -96,6 +96,7 @@ public function create()
 }
 
 private function createAssignment() {
+    //TODO add timestamp
 	$stmt = $this->conn->prepare("INSERT INTO assignments (title, task, deadline) values(?,?,?)");
 	$stmt->bind_param("sss", $this->title, $this->task, $this->deadline);
 	if ($stmt->execute()) 

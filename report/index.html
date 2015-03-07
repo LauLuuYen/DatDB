@@ -17,38 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
     <script src="../js/report.js"></script>
-    <script >
-    	//$(document).ready(function(){
-    	
-   	$.ajax({
-            type: "GET",
-            url:"http://lauluuyen.azurewebsites.net/php/getassignments.php" ,
-            crossDomain: true,
-            dataType: "json",
-            async: false,
-            timeout: 10000,
 
-            success: function (result)
-            {
-               if(result.success)
-               {
-               		
-               }
-               else
-               {
-               	 window.location.href="../index.html";
-               }
-            },
-
-            error: function(xhr, status, error)
-            {
-                window.location.href="../index.html";
-            }
-        });
-    	
-    	
-    	//});
-    </script>
 
 </head>
 
