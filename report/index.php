@@ -1,9 +1,9 @@
 <?php
-    
-require_once "session.php";
+
+require_once "../php/session.php";
 
 if($userSession->isLoggedIn()) {
-    $assignment->retrieve();
+    //$assignment->retrieve();
 
 } else {
     $url = "http://" . $_SERVER["HTTP_HOST"];
