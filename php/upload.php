@@ -63,7 +63,7 @@ class FileParser {
         require_once "sql_helper.php";
         $this->sql_helper = new SQL_Helper();
             
-        $success = $this->sql_helper->submitReport($content, $this->userID, $this->reportID);
+        $success = $this->sql_helper->updateReport($content, $this->userID, $this->reportID);
         
         if($success) {
             result(true, "success");

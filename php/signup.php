@@ -330,7 +330,6 @@ if(!empty($_POST))
 	if ($signup->checkInputs()) {
 	    $signup->register();
 	}
-
 }
 else
 {

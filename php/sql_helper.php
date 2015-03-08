@@ -275,7 +275,7 @@ class SQL_Helper {
     *   @params: string - $content, int - $userID, int - $reportID
     *   @return: boolean - $success
     */
-    public function submitReport($content, $userID, $reportID) {
+    public function updateReport($content, $userID, $reportID) {
         $statusid = 11; //TODO user right status
         $timestamp = date("Y-m-d H:i:s");
 
@@ -299,7 +299,7 @@ class SQL_Helper {
     *   @params: string - $feedback, int - $score, int - $userID, int - $groupID, int - $reportID
     *   @return: boolean - $success
     */
-    public function createAssessment($feedback, $score, $userID, $groupID, $reportID) {
+    public function updateAssessment($feedback, $score, $userID, $groupID, $reportID) {
         $statusID = 21; //TODO Use right status
         $timestamp = date("Y-m-d H:i:s");
 

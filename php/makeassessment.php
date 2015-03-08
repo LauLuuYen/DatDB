@@ -60,7 +60,7 @@ class Assessment{
         require_once "sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
-        $success = $this->sql_helper->createAssessment($this->feedback, $this->score, $this->userID, $this->groupID, $this->reportID);
+        $success = $this->sql_helper->updateAssessment($this->feedback, $this->score, $this->userID, $this->groupID, $this->reportID);
         if ($success) {
             result(true,"Success!");
         } else {
