@@ -85,10 +85,10 @@ class SQL_Helper {
                 $row["timestamp"] = $a_timestamp;
                 $report = array();
                 $report["reportID"] = $reportID;
-                $report["content"] = $content;
+                $report["content"] = is_null($content) ? "":$content;
                 $report["status"] = $status;
                 $report["fullname"] = $this->getFullname($conn, $userID);
-                $report["timestamp"] = $r_timestamp;
+                $report["timestamp"] = is_null($r_timestamp) ? "":$r_timestamp;
                 $row["report"] = $report;
                 $data[] = $row;
             }
@@ -123,11 +123,11 @@ class SQL_Helper {
                 $row["reportID"] = $reportID;
                 $row["groupname"] = $groupname;
                 $row["status"] = $status;
-                $row["content"] = $content;
-                $row["feedback"] = $feedback;
-                $row["score"] = $score;
+                $row["content"] = is_null($content) ? "":$content;
+                $row["feedback"] = is_null($feedback) ? "":$feedback;
+                $row["score"] = is_null($score) ? "":$score;
                 $row["fullname"] = $this->getFullname($conn, $userID);
-                $row["timestamp"] = $timestamp;
+                $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $data[] = $row;
             }
             $stmt->free_result();
