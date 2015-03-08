@@ -66,7 +66,7 @@ class FileParser {
         $success = $this->sql_helper->submitReport($content, $this->userID, $this->reportID);
         
         if($success) {
-            result(true, "Success");
+            result(true, "success");
         } else {
             result(false, "failed to submit report");
         }
