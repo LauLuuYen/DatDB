@@ -125,7 +125,7 @@ class SQL_Helper {
                 $row["status"] = $status;
                 $row["content"] = is_null($content) ? "":$content;
                 $row["feedback"] = is_null($feedback) ? "":$feedback;
-                $row["score"] = is_null($score) ? "":$score;
+                $row["score"] = is_null($score) ? "-":$score;
                 $row["fullname"] = $this->getFullname($conn, $userID);
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $data[] = $row;
