@@ -271,18 +271,43 @@ class SQL_Helper {
     
     
     /*
-    *   Insert assessment of the user for the group
-    *   @params: int - $userID
+    *   Update the report with new content and the user who submitted it.
+    *   @params: string - $content, int - $userID, int - $reportID
+    *   @return: boolean - $success
+    */
+    public function submitReport($content, $userID, $reportID) {
+        $statusid = 11; //TODO user right status
+        $timestamp = date("Y-m-d H:i:s");
+
+        $stmt = $this->conn->prepare("UPDATE reports SET statusid=?, content=?, userid=?, timestamp=? WHERE id=?");
+        $stmt->bind_param("isisi", $statusid, $content, $userID, $timestamp, $reportID);
+        
+        if($stmt->execute()) {
+            $stmt->close();
+
+            //TODO check update succeeded.
+            return true;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+
+    /*
+    *   Update assessment of the user for the group
+    *   @params: string - $feedback, int - $score, int - $userID, int - $groupID, int - $reportID
     *   @return: boolean - $success
     */
     public function createAssessment($feedback, $score, $userID, $groupID, $reportID) {
-        $statusID = 21; //Use right status
+        $statusID = 21; //TODO Use right status
         $timestamp = date("Y-m-d H:i:s");
 
         $stmt = $this->conn->prepare("UPDATE assessments SET statusid=?,feedback=?,score=?,userid=?,timestamp=? WHERE groupid=? AND reportid=?");
         $stmt->bind_param("isiisii", $statusID, $feedback, $score, $userID, $timestamp, $groupID, $reportID);
         
         if($stmt->execute()) {
+            $stmt->close();
 
             //TODO check update succeeded.
             return true;
