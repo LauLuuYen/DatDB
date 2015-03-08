@@ -62,6 +62,16 @@ app.config(function($routeProvider, $locationProvider) {
             controller: "Main"
         })
 
+        .when("/thread", {
+            templateUrl: "createthread.php",
+            controller: "CreateThread"
+        })
+        
+        .when("/thread/:id", {
+            templateUrl: "viewthread.php",
+            controller: "ViewThread"
+        })
+        
         .otherwise({
             redirectTo: "/"
         });
@@ -69,8 +79,24 @@ app.config(function($routeProvider, $locationProvider) {
     }
 );
 
-app.controller("Main", function ($scope, master) {
+app.controller("Main", function ($scope, master, $location) {
 
+    $scope.newThread = function() {
+        $location.path("/thread");
+    };
+
+    $scope.viewThread = function(id) {
+        $location.path("/thread/"+id);
+    };
+});
+
+app.controller("CreateThread", function ($scope, master) {
+    console.log("creating thread");
+
+});
+
+app.controller("ViewThread", function ($scope, master) {
+    console.log("view thread");
 
 });
 

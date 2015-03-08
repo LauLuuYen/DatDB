@@ -124,6 +124,10 @@ class Thread {
 	        }
 	}
 	
+    /*
+    *
+    *
+    */
 	private function createComment($threadID) {
 		$post_request = array (
 			threadID => $threadID,
@@ -131,7 +135,7 @@ class Thread {
 			comment => $this->comment
 		);
 		
-		$url = 'http://lauluuyen.azurewebsites.net/php/comment.php';
+		$url = "http://lauluuyen.azurewebsites.net/php/comment.php";
 		$curl = curl_init();
 		curl_setopt_array($curl, array(
 			CURLOPT_URL => $url,
@@ -151,7 +155,7 @@ class Thread {
 }
 
 
-
+/*
 $userID = 31;
 $title = "title";
 $comment = "comments";
@@ -161,7 +165,7 @@ $thread = new Thread($userID, $title, $comment);
 if($thread->checkInputs())
 {
 	$thread->makeThread();
-}
+}*/
 
 
 ?>
