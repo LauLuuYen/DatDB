@@ -238,6 +238,7 @@ class SQL_Helper {
         
     }
     
+    
     /*
     *   Get user's name given userID
     *   @params: int - $userID
@@ -268,8 +269,79 @@ class SQL_Helper {
         }
     }
     
-}
+    
+    /*
+    *   Insert assessment of the user for the group
+    *   @params: int - $userID
+    *   @return: boolean - $success
+    */
+    public function createAssessment($feedback, $score, $userID, $groupID, $reportID) {
+        $statusID = 21; //Use right status
+        $timestamp = date("Y-m-d H:i:s");
 
+        $stmt = $this->conn->prepare("UPDATE assessments SET statusid=?,feedback=?,score=?,userid=?,timestamp=? WHERE groupid=? AND reportid=?");
+        $stmt->bind_param("isiisii", $statusID, $feedback, $score, $userID, $timestamp, $groupID, $reportID);
+        
+        if($stmt->execute()) {
+
+            //TODO check update succeeded.
+            return true;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+
+    }
+  
+  
+    /*
+    *   Insert a thread given the forumID and title
+    *   @params: int - $userID
+    *   @return: int - $threadID
+    */
+	public function createThread($forumID, $title)
+	{
+		$timestamp = date("Y-m-d H:i:s");
+        
+        $stmt = $this->conn->prepare("INSERT INTO thread (forumid, title, timestamp) VALUES(?,?,?)");
+        $stmt->bind_param("iss", $forumID, $title, $timestamp);
+        
+        if ($stmt->execute()) {
+            $threadID = mysqli_insert_id($this->conn);
+            $stmt->close();
+
+            return $threadID;
+
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+    
+
+    /*
+    *   Insert a comment given the threadID, the user who made the comment
+    *   @params: int - $threadID, int
+    *   @return: boolean - $success
+    */
+    public function createComment($threadID, $comment, $userID) {
+        $timestamp = date("Y-m-d H:i:s");
+
+        $stmt = $this->conn->prepare("INSERT INTO comment (threadid, content, userid, timestamp) VALUES(?,?,?,?)");
+        $stmt->bind_param("isis", $threadID, $comment, $userID, $timestamp);
+        
+        if ($stmt->execute()) {
+            $commentID = mysqli_insert_id($this->conn);
+            $success = $commentID > 0;
+            $stmt->close();
+
+            return $success;
+
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+}
 
 
 ?>

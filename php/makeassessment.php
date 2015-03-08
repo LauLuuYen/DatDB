@@ -1,44 +1,40 @@
 <?php
 
-  header("Access-Control-Allow-Origin: *");
-  define("DEBUG", true);
-  if (DEBUG) {
-      ini_set("display_errors",1);
-      ini_set("display_startup_errors",1);
-      error_reporting(E_ALL & ~E_NOTICE);
-  }
-  include "include/config.php";
-  /*
-  *   Echoes to the client the result of the process.
-  *   @params: bool - $success, string - $msg
-  *   @return: none
-  */
-  function result($success, $msg) {
+header("Access-Control-Allow-Origin: *");
+define("DEBUG", true);
+
+if (DEBUG) {
+    ini_set("display_errors",1);
+    ini_set("display_startup_errors",1);
+    error_reporting(E_ALL & ~E_NOTICE);
+}
+
+
+/*
+*   Echoes to the client the result of the process.
+*   @params: bool - $success, string - $msg
+*   @return: none
+*/
+function result($success, $msg) {
       $response["success"] = $success;
       $response["message"] = $msg;
       echo json_encode($response);
-  }
+}
+
 
 class Assessment{
 
-  public function __construct($groupID, $reportID, $feedback, $score, $userID)
-  {
-    $this->groupID = $groupID;
-    $this->reportID = $reportID;
-    $this->feedback = $feedback;
-    $this->score = $score;
-    $this->userID = $userID;
-  }   
+    public function __construct($reportID, $feedback, $score) {
+        $this->userID = $_SESSION["userID"];
+        $this->groupID = $_SESSION["groupID"];
+        $this->reportID = $reportID;
+        $this->feedback = $feedback;
+        $this->score = $score;
+    }
   
   public function checkInputs()
   {
-    
-    if(!is_int($this->groupID))
-    {
-      result(false, "groupID must be set");
-      
-    }
-    else if(!is_int($this->reportID))
+    if(!is_int($this->reportID))
     {
       result(false, "reportID must be set");
     }
@@ -50,10 +46,6 @@ class Assessment{
     {
       result(false, "score must be set");
     }
-    else if(!is_int($this->userID))
-    {
-      result(false, "userID must be set");
-    }
     else
     {
       return true;
@@ -61,49 +53,47 @@ class Assessment{
     return false;
   }
   
-  //TODO block update when assessment is already complete
-  //TODO block update if deadline timestamp is due
-  
-  public function submitAssessment()
-  {
-    $statusID = 21;
-    $timestamp = date("Y-m-d H:i:s");
-    $this->conn = connectDB();
-    $stmt = $this->conn->prepare("UPDATE assessments SET statusid=?,feedback=?,score=?,userid=?,timestamp=? 
-                                  WHERE groupid=? AND reportid=?");
-    $stmt->bind_param("isiisii",$statusID,$this->feedback,$this->score,$this->userID,$timestamp,$this->groupID,$this->reportID);
-    if($stmt->execute())
+    //TODO block update when assessment is already complete
+    //TODO block update if deadline timestamp is due
+    public function submitAssessment()
     {
-      $stmt->close();
-      result(true,"Success");
+        require_once "sql_helper.php";
+        $this->sql_helper = new SQL_Helper();
+
+        $success = $this->sql_helper->createAssessment($this->feedback, $this->score, $this->userID, $this->groupID, $this->reportID);
+        if ($success) {
+            result(true,"Success!");
+        } else {
+            result(false, "Failed to create assessment");
+        }
+
+        $this->sql_helper->close();
+
     }
-    else
-    {
-      result(false,"Failed to submit assessment");
-    }
-    closeDB($this->conn);
-  }
   
 }
 
-  //$groupID = 21;
-  //$reportID = 2071;
-  //$feedback = "Princess Latifa";
-  //$score = 4;
-  //$userID = 51;
-  
-  $groupID = 71;
-  $reportID = 2041;
-  $feedback = "Ladies vs Gentlemen";
-  $score = 4;
-  $userID = 91;
-  
-  $assessment = new Assessment($groupID, $reportID, $feedback, $score, $userID);
-  
-  if($assessment->checkInputs())
-  {
-    $assessment->submitAssessment();
-  }
-  
+
+require_once "session.php";
+
+if($userSession->isLoggedIn()) {
+
+    if(empty($_POST)) {
+        $reportID = $_POST["reportID"];
+        $feedback = $_POST["feedback"];
+        $score = $_POST["score"];
+
+        $assessment = new Assessment($reportID, $feedback, $score);
+        if($assessment->checkInputs()) {
+            $assessment->submitAssessment();
+        }
+        
+    } else {
+        result(false, "Error in request!");
+    }
+    
+} else {
+    result(false, "Session timeout");
+}
   
 ?>
