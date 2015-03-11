@@ -66,7 +66,7 @@ class Login {
     */
 	public function authenticate() {
 	    
-        require_once "sql_helper.php";
+        require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
         
         //Retrieve the login details

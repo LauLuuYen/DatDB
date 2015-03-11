@@ -60,7 +60,7 @@ class FileParser {
     }
     
     private function submitReport($content) {
-        require_once "sql_helper.php";
+        require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
             
         $success = $this->sql_helper->updateReport($content, $this->userID, $this->reportID);

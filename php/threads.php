@@ -67,7 +67,7 @@ class Thread {
 	public function makeThread()
 	{
         //TODO checkrole
-        require_once "sql_helper.php";
+        require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
         //Get forum ID

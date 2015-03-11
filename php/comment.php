@@ -60,7 +60,7 @@ class Comment {
 	
 	public function makeComment()
 	{
-        require_once "sql_helper.php";
+        require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
         
         $success = $this->sql_helper->createComment($this->threadID, $this->comment, $this->userID);

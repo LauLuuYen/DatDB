@@ -57,7 +57,7 @@ class Assessment{
     //TODO block update if deadline timestamp is due
     public function submitAssessment()
     {
-        require_once "sql_helper.php";
+        require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
         $success = $this->sql_helper->updateAssessment($this->feedback, $this->score, $this->userID, $this->groupID, $this->reportID);

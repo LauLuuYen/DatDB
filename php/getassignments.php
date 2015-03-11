@@ -24,7 +24,7 @@ class Assignment {
     
     public function retrieve() {
          //TODO check role
-        require_once "sql_helper.php";
+        require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
         
         $data = array();
