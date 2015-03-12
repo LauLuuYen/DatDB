@@ -50,10 +50,11 @@ app.controller("Submit", function ($scope, master) {
     $scope.selection = null;
     $scope.feedback = "";
     
-    if (master.assessments.length == 0) {
+    if (master.assignments.length == 0) {
         alert("FIX no assignments");
     }
-    for (i = 0; i<master.assessments.length; i++) {
+    for (i = 0; i<master.assignments.length; i++) {
+        console.log("i:"+i);
         $scope.assignment.push({name:i});
     }
 
