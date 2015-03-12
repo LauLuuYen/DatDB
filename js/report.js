@@ -163,7 +163,8 @@ app.controller("Submit", function ($scope, master) {
     };
     
     $scope.submit = function() {
-
+        $(".finalsubmit").addAttr("disabled");
+        
         $.ajax({
             type: "POST",
             url:"http://lauluuyen.azurewebsites.net/php/finalisereport.php" ,
@@ -175,17 +176,16 @@ app.controller("Submit", function ($scope, master) {
 
             success: function (result) {
                 if (result.success) {
-                    window.location.href="/forum/";
+                    window.location.href="/report/";
                
                 } else {
-                    $("#submitbtn").removeAttr("disabled");
+                    $(".finalsubmit").removeAttr("disabled");
                     alert(result.message);
                 }
             },
 
             error: function(xhr, status, error) {
-                alert(JSON.stringify(xhr));
-                $("#submitbtn").removeAttr("disabled");
+                $(".finalsubmit").removeAttr("disabled");
                 alert("An error occured. Please try again in a few moments.");
             }
         });
