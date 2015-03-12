@@ -180,6 +180,10 @@ a:active{
     margin-bottom:15px;
 }
 
+.submitreport .finalise {
+    float:right;
+}
+
 .submitreport .upload {
     position:relative;
     width:90%;
