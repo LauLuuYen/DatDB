@@ -79,6 +79,10 @@ app.controller("CreateThread", function ($scope, master) {
     $scope.thread = {
         title:"", comment:""
     };
+    
+    $scope.back=function(){
+    window.location.href="/forum/";
+    };
 
     $scope.onChange = function(id) {
         var id = "#"+id;
