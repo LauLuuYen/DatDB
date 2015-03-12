@@ -80,7 +80,7 @@ class Thread {
 		if ($success) {
 			result(true, "Success");
 		} else {
-			result(false, $reponse.message);
+			result(false, "Failed to make thread");
 		}
         
         $this->sql_helper->close();

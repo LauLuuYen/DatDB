@@ -51,14 +51,12 @@ class Report {
         require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
-        //Get forum ID
-        $forumID = $this->sql_helper->updateFinalReport($this->reportID);
-        
+        $success = $this->sql_helper->updateFinalReport($this->reportID);
 
 		if ($success) {
 			result(true, "Success");
 		} else {
-			result(false, $reponse.message);
+			result(false, "Failed to finalise report");
 		}
         
         $this->sql_helper->close();
