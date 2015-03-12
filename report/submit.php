@@ -35,8 +35,9 @@
         </div>
 
         <div class="input_wrapper">
-            <br><div class="heading2">Upload/ Update your Group Report:</div>
-
+            <br><div class="heading2">Upload your Group Report:</div>
+            <div>You can upload or update your group report as much you like until the deadline or
+                when you finalise the report after uploading it.
             <div class="upload">
                 <form enctype="multipart/form-data" ng-submit="send()">
                     <input id="uploadfile" name="myFile" type="file" accept=".xml"></input>
@@ -46,8 +47,8 @@
                 </form>
             </div>
 
-            <div class="heading2">Upload Guidelines:</div>
-
+            <div class="heading2">Report Guidelines:</div>
+            <div>Max limit 5000 characters</div>
         </div>
 
     </div>

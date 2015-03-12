@@ -60,6 +60,11 @@ class FileParser {
     }
     
     private function submitReport($content) {
+        if (strlen($content) > 5000) {
+            result(false, "Report has exceeded 5000 characters");
+            return;
+        }
+        
         require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
             
