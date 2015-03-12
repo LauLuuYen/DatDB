@@ -3,6 +3,8 @@
     <div class="container2">
         <button ng-click="back()" class="btn">Back</button>
     </div>
+    
+    <div class="linebreak"></div>
 
     <div class="heading">Create New Thread</div>
 
