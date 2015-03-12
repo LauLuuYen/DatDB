@@ -163,7 +163,7 @@ app.controller("Submit", function ($scope, master) {
     };
     
     $scope.submit = function() {
-        $(".finalsubmit").addAttr("disabled");
+        $(".finalsubmit").attr("disabled","disabled");
         
         $.ajax({
             type: "POST",
