@@ -165,7 +165,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     };
     
     $scope.injectScript = function(title, comments) {
-        $(".heading").html(title);
+        $(".heading").html("Title:" + title);
         $("#txt").html(comments[0].content);
         $("#date").html("By " + comments[0].fullname +" at " +comments[0].timestamp);
         var script = "<div>Comments:</div>";
