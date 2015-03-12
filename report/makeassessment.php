@@ -30,7 +30,7 @@
     -->
     
     <div class="input_wrapper">
-        <textarea cols="95" rows="3" class="input_text content" style="width: 90%" ng-model="assessment.feedback" ng-change="onChange('feedback_e')" placeholder="Assessment feedback (500 characters maximum)" maxlength="500"></textarea>        
+        <textarea cols="95" rows="3" class="input_text content" style="width: 93%" ng-model="assessment.feedback" ng-change="onChange('feedback_e')" placeholder="Assessment feedback (500 characters maximum)" maxlength="500"></textarea>        
         <div id="feedback_e" class="error invisible">Error: Please type in a assessment feedback</div>
     </div>
     
