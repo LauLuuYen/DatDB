@@ -91,7 +91,9 @@ app.controller("Main", function ($scope, master, $location) {
 });
 
 app.controller("CreateThread", function ($scope, master) {
-    console.log("creating thread");
+    $scope.thread = {
+        title:"t", comment:"c"
+    };
 
 });
 

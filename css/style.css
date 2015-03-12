@@ -313,12 +313,19 @@ a:active{
     padding:10px 5px;
 }
 
+.forum .linebreak {
+    width:100%;
+    height:1px;
+    background-color:black;
+    margin:20px 0;
+}
+
 .forum .newthread {
     width:200px;
     height:50px;
     line-height: 50px;
     background-color:red;
-    color:white;
+    border:2px solid lightblue;
     border-radius:5px;
     font-size:20px;
     margin: 0 auto;
@@ -326,14 +333,8 @@ a:active{
     cursor:pointer;
 }
 
-.forum .linebreak {
-    width:100%;
-    height:1px;
-    background-color:black;
-    margin-top:10px;
-    -webkit-box-shadow: 0 4px 2px -2px gray;
-    -moz-box-shadow: 0 4px 2px -2px gray;
-    box-shadow: 0 4px 2px -2px gray;
+.forum .newthread:hover {
+    background-color:yellow;
 }
 
 .forum .container {
@@ -343,9 +344,48 @@ a:active{
 
 .forum .item {
     background-color:white;
-    width:85%;
-    height:130px;
+    width:90%;
+    height:90px;
     margin:10px auto;
-    border-radius:10px;
     cursor:pointer;
+    border: 2px solid lightblue;
+}
+
+.forum .item:hover {
+    background-color:yellow;
+}
+
+.forum .item ._left {
+    position: relative;
+    width:calc(100% - 100px);
+    height:100%;
+    float:left;
+    padding:5px;
+}
+
+.forum .item ._right {
+    width:100px;
+    height:100%;
+    float:right;
+    border-left:2px solid lightblue;
+    text-align:center;
+}
+
+.forum .item .title {
+    font-size:17px;
+}
+
+.forum .item .date {
+    font-size:12px;
+    position: absolute;
+    bottom:2px;
+}
+
+.forum .item .n {
+    margin-top:10px;
+    font-size:28px;
+}
+
+.forum .item .post {
+    font-size:15px;
 }

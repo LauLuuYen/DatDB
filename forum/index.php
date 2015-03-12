@@ -43,10 +43,9 @@ if(!$userSession->isLoggedIn()) {
         <div class="col-sm-offset-1 col-sm-10
                     col-md-offset-1 col-md-10">
             <div class="innerbody">
-
-                <div ng-view></div>
-                
             
+                <div ng-view></div>
+
             </div>
         </div>
     </div>
