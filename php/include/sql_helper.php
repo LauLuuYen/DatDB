@@ -285,7 +285,7 @@ class SQL_Helper {
         if($stmt->execute()) {
             $stmt->close();
             
-            return mysqli_affected_rows($this->conn) > 0;
+            return mysqli_affected_rows($this->conn) >= 0;
 
         } else {
             die("An error occurred performing a request");
