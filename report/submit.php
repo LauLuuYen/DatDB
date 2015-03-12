@@ -11,16 +11,17 @@
         
     </div>
 
-    <div class="conceal">
+    <div id="submission" class="conceal">
 
         <div class="input_wrapper">
             <div class="heading2">Task:</div>
             <div>Your task is to do this and that...</div>
+            <div>Deadline: <span>23</span></div>
+            <div>Status: Incomplete<div>
         </div>
 
-        <div class="input_wrapper">
+        <div class="input_wrapper conceal">
             <div class="heading2">Group Report:</div>
-            <div>Status: Incomplete<div>
             <div>Uploaded by: Yo mama</div>
 
             <div class="fullreport"></div>
