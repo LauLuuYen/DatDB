@@ -1,13 +1,13 @@
 <div class="makeassessment">
-    <div>Group: <span id="groupname"></span></div>
-    <div>Assessment Status: <span id="status"></span></div>
+    <div class="heading2">Group: <span id="groupname"></span></div>
+    <div class="heading2">Assessment Status: <span id="status"></span></div>
     
     <div id="report" class="fullreport"></div>
     
     <!--View/Edit mode-->
     
     <div class="rating">
-        <div>Please give a rating:</div>
+        <div class="heading2">Please give a rating:</div>
         <span class="starRating">
             <input id="r1" type="radio" name="rating" value="5"></input>
             <label for="r1"></label>
@@ -22,7 +22,7 @@
         </span>
     </div>
 
-    <div>Your feedback</div>
+    <div class="heading2">Your feedback</div>
     <!--
     <div>
         <input type="text"></input>
