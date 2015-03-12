@@ -30,7 +30,7 @@ class Report {
     *   @return: none
     */
 	public function __construct($reportID) {
-        $this->reportID = $reportID
+        $this->reportID = $reportID;
 
 	}
 	
