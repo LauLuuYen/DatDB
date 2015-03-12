@@ -15,9 +15,9 @@
 
         <div class="input_wrapper">
             <div class="heading2">Task:</div>
-            <div>Your task is to do this and that...</div>
-            <div>Deadline: <span>23</span></div>
-            <div>Status: Incomplete<div>
+            <div>Deadline: <span id="deadline"></span></div>
+            <div>Status: <span id="status"></span><div>
+            <div id="task"></div>
         </div>
 
         <div class="input_wrapper conceal">
@@ -39,7 +39,7 @@
             <div class="upload">
                 <form enctype="multipart/form-data" ng-submit="send()">
                     <input id="uploadfile" name="myFile" type="file" accept=".xml"></input>
-                    <div class="error">Error: {{feedback}}</div>
+                    <div class="error invisible">Error: {{feedback}}</div>
                     <button id="btn_uploadfile" type="submit" disabled>Upload</button>
                     <div class="clean"></div>
                 </form>
