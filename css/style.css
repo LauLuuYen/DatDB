@@ -310,9 +310,7 @@ a:active{
     font-size:35px;
 }
 
-/*
-*   Forum page
-*/
+
 
 .forum, .createthread, .viewthread {
     padding:10px 5px;
@@ -324,6 +322,10 @@ a:active{
     background-color:black;
     margin:20px 0;
 }
+
+/*
+*   Forum page
+*/
 
 .forum .newthread {
     width:200px;
@@ -350,7 +352,7 @@ a:active{
 .forum .item {
     background-color:white;
     width:90%;
-    height:90px;
+    height:95px;
     margin:10px auto;
     cursor:pointer;
     border: 2px solid lightblue;
@@ -380,7 +382,7 @@ a:active{
     font-size:17px;
 }
 
-.forum .item .date {
+.forum .date, .viewthread .date {
     font-size:12px;
     position: absolute;
     bottom:2px;
@@ -394,3 +396,29 @@ a:active{
 .forum .item .post {
     font-size:15px;
 }
+
+/*
+*   View thread page
+*/
+
+.viewthread .heading {
+    margin-bottom:10px;
+}
+
+.viewthread .container {
+    width:90%;
+    margin-bottom:10px;
+}
+
+.viewthread .container2 {
+    width:90%;
+    margin: 0 auto;
+    margin-top:25px
+}
+
+.viewthread .comment {
+    background-color:white;
+    border:2px solid lightblue;
+    min-height:65px;
+}
+

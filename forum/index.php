@@ -26,6 +26,11 @@ if(!$userSession->isLoggedIn()) {
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script type="text/javascript">
+        //var response = '<?php require_once "../php/getforum.php"; echo json_encode($assignment->retrieve()); ?>';
+        //console.log(response);
+        //var data = JSON.parse(response);
+    </script>
     <script src="../js/forum.js?v=1.0"></script>
 
 </head>

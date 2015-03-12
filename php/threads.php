@@ -51,12 +51,10 @@ class Thread {
 		{
 			result(false, "comment must be set");
 		}
-		/*
-		else if(strlen($this->comment) > 50))
+		else if (strlen($this->comment) > 500)
 		{
 			result(false, "comment too long");
 		}
-		*/
 		else
 		{
 			return true;

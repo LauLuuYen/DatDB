@@ -29,14 +29,14 @@ app.factory("master", function() {
                         {
                             "commentID": 51,
                             "fullname": "Kei Lau",
-                            "content": "sdfgdfgm efkle f",
+                            "content": "I am testing with me",
                             "timestamp": "06/06/2015 00:00:01"
                         }
                     ]
                 },
                 {
                     "threadID": 21,
-                    "title": "Rage quitting",
+                    "title": "sd skljfgnjs fgls fgsfg ksfgsdlfk  dsglks fglks fg",
                     "timestamp": "06/08/2015",
                     "comments": [
                         {
@@ -184,14 +184,18 @@ app.controller("CreateThread", function ($scope, master) {
 });
 
 app.controller("ViewThread", function ($scope, master, $routeParams) {
-
+    $scope.thread = {
+        comment:""
+    };
+    
     $scope.reroute = function() {
         var threads = master.forum.threads;
         var id = $routeParams.id;
         
         for (i = 0; i < threads.length; i++) {
-            if (id == threads[i].threadID) {
-                var thread = threads[i];
+            var thread = threads[i];
+            if (id == thread.threadID) {
+                $scope.injectScript(thread.title, thread.comments);
                 return;
             }
         }
@@ -200,11 +204,78 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         window.location.href="/forum/";
     };
     
-    $scope.injectScript = function() {
+    $scope.injectScript = function(title, comments) {
+        $(".heading").html(title);
+        $("#txt").html(comments[0].content);
+        $("#date").html("By " + comments[0].fullname +" at " +comments[0].timestamp);
+        var script = "<div>Comments:</div>";
 
-
+        for (i = 1;i<comments.length; i++) {
+            script += "<div class='comment'>"+
+                        "<div>"+comments[i].content+"</div><br>"+
+                        "<div>By " + comments[i].fullname +" at " +comments[i].timestamp+"</div>"+
+                      "</div>";
+        }
+        
+        if (comments.length > 1){
+            $scope.itemlist = script;
+        }
     };
     
+    $scope.onChange = function(id) {
+        var id = "#"+id;
+        if (!$(id).hasClass("invisible")) {
+            $(id).addClass("invisible");
+        }
+    };
+    
+    $scope.validate = function() {
+        var pass = true;
+        if ($scope.thread.comment == "") {
+            $("#comment_e").removeClass("invisible");
+            pass = false;
+        }
+        return pass;
+    };
+    
+    $scope.submit = function() {
+        if ($scope.validate()) {
+            //Disable button
+            $("#submitbtn").attr("disabled","disabled");
+            
+            var id = $routeParams.id;
+            var comment = $scope.thread.comment;
+
+            $.ajax({
+                type: "POST",
+                url:"http://lauluuyen.azurewebsites.net/php/comment.php" ,
+                crossDomain: true,
+                data: {threadID: id, comment: comment},
+                dataType: "json",
+                async: true,
+                timeout: 10000,
+
+                success: function (result) {
+                    if (result.success) {
+                        window.location.href="/forum/";
+                   
+                    } else {
+                        $("#submitbtn").removeAttr("disabled");
+                        alert(result.message);
+                    }
+                },
+
+                error: function(xhr, status, error) {
+                
+                    $("#submitbtn").removeAttr("disabled");
+                    alert("An error occured. Please try again in a few moments.");
+                }
+            });
+            
+        }
+    };
+
+
     $scope.reroute();
         
 });

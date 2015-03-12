@@ -15,7 +15,7 @@
         </div>
 
         <div class="input_wrapper">
-            <textarea cols="95" rows="3" class="input_text content" ng-model="thread.comment" ng-change="onChange('comment_e')" placeholder="Comment"></textarea>
+            <textarea cols="95" rows="3" class="input_text content" ng-model="thread.comment" ng-change="onChange('comment_e')" placeholder="Comment" maxlength="500"></textarea>
             <div id="comment_e" class="error invisible">Error: Please type in a comment</div>
             <br>
         </div>

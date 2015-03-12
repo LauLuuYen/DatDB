@@ -32,7 +32,7 @@ class Comment {
 	public function __construct($comment, $threadID) {
         $this->userID = $_SESSION["userID"];
         $this->comment = trim($comment);
-        $this->threadID = (int) $threadID;
+        $this->threadID = $threadID;
 	}
 	
 	public function checkInputs()
@@ -41,13 +41,11 @@ class Comment {
 		{
 			result(false, "comment must be set");
 		}
-		/*
-		else if(strlen($this->comment) > 50))
+		else if (strlen($this->comment) > 500)
 		{
 			result(false, "comment too long");
 		}
-		*/
-		else if(!is_int($this->threadID))
+		else if(is_null($this->threadID))
 		{
 			result(false, "threadID must be set");
 		}
