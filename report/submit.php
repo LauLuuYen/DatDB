@@ -45,6 +45,9 @@
                     <div class="clean"></div>
                 </form>
             </div>
+
+            <div class="heading2">Upload Guidelines:</div>
+
         </div>
 
     </div>

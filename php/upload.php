@@ -35,17 +35,17 @@ class FileParser {
         $xml = @simplexml_load_file($this->txtfile['tmp_name']);
 
         if ($xml === FALSE) {
-            result(false, "shit xml");
+            result(false, "Not a VALID XML file.");
         } else {
             $rootname = $xml->getName();
 
             if ($rootname != "Content" && $rootname != "content") {
-                result(false, "fuck you");
+                result(false, "Please check the XML file guidelines");
                 return;
             }
 
             if (count($xml->children()) < 0) {
-                result(false, "has children");
+                result(false, "Please check the XML file guidelines");
                 return;
             }
             
@@ -66,9 +66,9 @@ class FileParser {
         $success = $this->sql_helper->updateReport($content, $this->userID, $this->reportID);
         
         if($success) {
-            result(true, "success");
+            result(true, "Success");
         } else {
-            result(false, "failed to submit report");
+            result(false, "Failed to submit report");
         }
         
         $this->sql_helper->close();
