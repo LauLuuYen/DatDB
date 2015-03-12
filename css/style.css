@@ -197,20 +197,21 @@ a:active{
 #btn_uploadfile {
     width:100px;
     height:30px;
-    background-color:red;
-    color:white;
+    background-color:white;
+    color:black;
     font-size:15px;
     float: right;
+}
+
+#btn_uploadfile:disabled {
+    background-color:grey;
+    color:white;
 }
 
 .clean {
     content:'';
     display:block;
     clear: both;
-}
-
-#btn_uploadfile:disabled {
-    color:grey;
 }
 
 
