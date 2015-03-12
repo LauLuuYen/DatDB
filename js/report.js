@@ -55,7 +55,7 @@ app.controller("Submit", function ($scope, master) {
     }
     for (i = 0; i<master.assignments.length; i++) {
         console.log("i:"+i);
-        $scope.assignment.push({name:i});
+        $scope.assignments.push({name:i});
     }
 
 
