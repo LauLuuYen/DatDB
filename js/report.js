@@ -51,6 +51,7 @@ app.controller("Submit", function ($scope, master) {
       {name:'blue'},
       {name:'yellow'}
     ];
+    $scope.report = null;
     
     $scope.feedback = "";
 

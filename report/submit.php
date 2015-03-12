@@ -7,7 +7,7 @@
 
     <div class="input_wrapper">
         <div class="heading2">Please pick your assignment:</div>
-        <select class="input_text" ng-options="item.name for item in assignments"></select>
+        <select class="input_text" ng-model="report" ng-options="item.name for item in assignments"></select>
         
     </div>
 
