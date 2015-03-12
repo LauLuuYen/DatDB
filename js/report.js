@@ -76,6 +76,11 @@ app.controller("Submit", function ($scope, master) {
         $("#deadline").html(assignment.deadline);
         $("#status").html(assignment.status);
         $("#task").html(assignment.task);
+        
+        //Show report if filled in
+        if (assignment.report.status != "Incomplete") {
+            $("#report").show();
+        }
     };
 
     $("#uploadfile").change(function() {
@@ -103,7 +108,6 @@ app.controller("Submit", function ($scope, master) {
         //var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
 
         $("#btn_uploadfile").removeAttr("disabled");
-
 
     });
     
@@ -139,8 +143,7 @@ app.controller("Submit", function ($scope, master) {
             
             success: function(data) {
                 if (data.success) {
-               	alert(data.message);
-                    $scope.updatefeedback("Upload Complete");
+                    window.location.href="/report/";
 
                 } else {
                     //Error occurred
@@ -150,8 +153,7 @@ app.controller("Submit", function ($scope, master) {
             },
             
             error:  function(xhr, status, error) {
-                //alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
-                $scope.updatefeedback("Error: occured uploading the file");
+                $scope.updatefeedback("Please try again in a few moments");
             }
 
         });
@@ -162,9 +164,15 @@ app.controller("Submit", function ($scope, master) {
     };
     
     $scope.updatefeedback = function(message) {
-        $scope.$apply(function() {
-            $scope.feedback = message;
-        });
+        $(".error").html("Error: "+ message);
+        $(".error").removeClass("invisible");
+    };
+    
+    $scope.onChange = function(id) {
+        var id = "#"+id;
+        if (!$(id).hasClass("invisible")) {
+            $(id).addClass("invisible");
+        }
     };
     
 });
