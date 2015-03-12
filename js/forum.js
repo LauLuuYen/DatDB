@@ -17,33 +17,33 @@ app.factory("master", function() {
             "threads": [
                 {
                     "threadID": 12,
-                    "title": "gayboy",
+                    "title": "Why do you like eating so muhc?",
                     "timestamp": "06/07/2015",
                     "comments": [
                         {
                             "commentID": 41,
                             "fullname": "Rex Lau",
                             "content": "sdgsfgsdf sfd sdf is fuuk",
-                            "timestamp": "06/06/2015"
+                            "timestamp": "06/06/2015 00:00:00"
                         },
                         {
                             "commentID": 51,
                             "fullname": "Kei Lau",
                             "content": "sdfgdfgm efkle f",
-                            "timestamp": "06/06/2015"
+                            "timestamp": "06/06/2015 00:00:01"
                         }
                     ]
                 },
                 {
-                    "threadID": 12,
-                    "title": "gayboy2",
+                    "threadID": 21,
+                    "title": "Rage quitting",
                     "timestamp": "06/08/2015",
                     "comments": [
                         {
                             "commentID": 41,
                             "fullname": "Tuan Ng",
                             "content": "sdgsfgsdf sfd sdf is fuuk",
-                            "timestamp": "06/06/2015"
+                            "timestamp": "06/06/2015 00:00:03"
                         }
                     ]
                 }
@@ -81,6 +81,32 @@ app.config(function($routeProvider, $locationProvider) {
 
 app.controller("Main", function ($scope, master, $location) {
 
+    $scope.injectScript = function() {
+        var threads = master.forum.threads;
+        var script = "";
+        
+        //Dynamically construct the thread list
+        for (i = 0; i < threads.length; i++) {
+            var thread = threads[i];
+            var c_len = thread.comments.length;
+            var comment = thread.comments[c_len-1];
+
+            script += "<div class='item' ng-click='viewThread("+thread.threadID+");'>"+
+                        "<div class='_left'>"+
+                        "<div class='title'>"+thread.title+"</div>"+
+                        "<div class='date'>Last post: "+comment.fullname+" at "+comment.timestamp+"</div>"+
+                        "</div>"+
+                        "<div class='_right'>" +
+                        "<div class='n'>"+c_len+"</div>"+
+                        "<div class='post'>Post(s)</div>"+
+                        "</div>"+
+                      "</div>";
+        }
+        
+        $scope.itemlist = script;
+    };
+    
+    
     $scope.newThread = function() {
         $location.path("/thread");
     };
@@ -88,18 +114,99 @@ app.controller("Main", function ($scope, master, $location) {
     $scope.viewThread = function(id) {
         $location.path("/thread/"+id);
     };
+    
+    $scope.injectScript();
+    
 });
 
 app.controller("CreateThread", function ($scope, master) {
     $scope.thread = {
-        title:"t", comment:"c"
+        title:"", comment:""
     };
 
+    $scope.onChange = function(id) {
+        var id = "#"+id;
+        if (!$(id).hasClass("invisible")) {
+            $(id).addClass("invisible");
+        }
+    };
+    
+    $scope.validate = function() {
+        var pass = true;
+        if ($scope.thread.title == "") {
+            $("#title_e").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.thread.comment == "") {
+            $("#comment_e").removeClass("invisible");
+            pass = false;
+        }
+        return pass;
+    }
+    
+    $scope.submit = function() {
+        if ($scope.validate()) {
+            //Disable button
+            $("#submitbtn").attr("disabled","disabled");
+            
+            var title =  $scope.thread.title;
+            var comment =  $scope.thread.comment;
+
+            
+            $.ajax({
+                type: "POST",
+                url:"http://lauluuyen.azurewebsites.net/php/threads.php" ,
+                crossDomain: true,
+                data: {title: title, comment: comment},
+                dataType: "json",
+                async: true,
+                timeout: 10000,
+
+                success: function (result) {
+                    if (result.success) {
+                        window.location.href="/forum/";
+                   
+                    } else {
+                        $("#submitbtn").removeAttr("disabled");
+                        alert(result.message);
+                    }
+                },
+
+                error: function(xhr, status, error) {
+                
+                    $("#submitbtn").removeAttr("disabled");
+                    alert("An error occured. Please try again in a few moments.");
+                }
+            });
+
+        }
+    };
 });
 
-app.controller("ViewThread", function ($scope, master) {
-    console.log("view thread");
+app.controller("ViewThread", function ($scope, master, $routeParams) {
 
+    $scope.reroute = function() {
+        var threads = master.forum.threads;
+        var id = $routeParams.id;
+        
+        for (i = 0; i < threads.length; i++) {
+            if (id == threads[i].threadID) {
+                var thread = threads[i];
+                return;
+            }
+        }
+        
+        //Couldn't find a matching forum id
+        window.location.href="/forum/";
+    };
+    
+    $scope.injectScript = function() {
+
+
+    };
+    
+    $scope.reroute();
+        
 });
 
 

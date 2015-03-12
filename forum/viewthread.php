@@ -1,3 +1,7 @@
 <div class="viewthread">
-    view thread
+
+    <div class="heading">Thread</div>
+
+    <div class="linebreak"></div>
+
 </div>

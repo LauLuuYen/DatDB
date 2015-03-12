@@ -18,7 +18,7 @@
 
 .input_text.content {
     box-sizing: border-box;
-    height:250px;
+    height:200px;
     
 }
 
@@ -49,6 +49,14 @@
 
 textarea {
     resize: none;
+}
+
+.error {
+    color:red;
+}
+
+.invisible {
+    visibility: hidden;
 }
 
 

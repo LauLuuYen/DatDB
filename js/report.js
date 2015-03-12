@@ -201,9 +201,6 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
     
     //TODO find right assigment index
     $scope.reroute(0);
-    
-    
-    
         
 });
 
