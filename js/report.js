@@ -72,8 +72,9 @@ app.controller("Submit", function ($scope, master) {
     $scope.showAssignment = function(index) {
         $("#submission").show();
         var assignment = master.assignments[index];
-        $("#title").html(assignment.title);
+        
         $("#deadline").html(assignment.deadline);
+        $("#status").html(assignment.status);
         $("#task").html(assignment.task);
     };
 
