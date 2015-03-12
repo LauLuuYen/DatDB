@@ -36,7 +36,7 @@ class Report {
 	
 	public function checkInputs()
 	{
-        if(!is_integer($this->reportID) || is_null($this->reportID)) {
+        if(is_null($this->reportID)) {
 			result(false, "reportID must be set");
             
 		} else {
