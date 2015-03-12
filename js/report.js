@@ -49,6 +49,7 @@ app.controller("Submit", function ($scope, master) {
     $scope.assignments = [];
     $scope.selection = null;
     $scope.feedback = "";
+    $scope.reportID = -1;
     
 
     for (i = 0; i<master.assignments.length; i++) {
@@ -69,6 +70,7 @@ app.controller("Submit", function ($scope, master) {
     $scope.showAssignment = function(index) {
         $("#submission").show();
         var assignment = master.assignments[index];
+        $scope.reportID = assignment.report.reportID;
         
         $("#deadline").html(assignment.deadline);
         $("#status").html(assignment.report.status);
@@ -114,7 +116,8 @@ app.controller("Submit", function ($scope, master) {
     	
         var formData = new FormData($('form')[0]);
         
-        formData.append("reportID", 2001);
+        formData.append("reportID", $scope.reportID);
+        
         $.ajax({
             type: "POST",
             url: "http://lauluuyen.azurewebsites.net/php/upload.php",
