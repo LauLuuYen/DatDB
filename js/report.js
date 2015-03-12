@@ -59,6 +59,15 @@ app.controller("Submit", function ($scope, master) {
     
     $scope.selectAssignment = function() {
         console.log($scope.selection);
+        for (i = 0; i<master.assignments.length; i++) {
+            if ($scope.selection.name == master.assignments[i].title) {
+            
+                alert("found");
+                return;
+            }
+        }
+        
+        alert("hide");
     };
 
     $("#uploadfile").change(function() {
