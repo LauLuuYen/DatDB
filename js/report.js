@@ -144,7 +144,7 @@ app.controller("Submit", function ($scope, master) {
             
             success: function(data) {
                 if (data.success) {
-                    window.location.href="/report/#/submit/";
+                    window.location.href="/report/";
 
                 } else {
                     //Error occurred
