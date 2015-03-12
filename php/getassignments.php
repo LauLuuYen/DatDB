@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", false);
+define("DEBUG", true);
 
 if (DEBUG) {
     ini_set("display_errors",1);
@@ -54,6 +54,8 @@ class Assignment {
 
 
 $assignment = new Assignment();
+
+echo "D:".json_encode($assignment->retrieve);
 
 
 

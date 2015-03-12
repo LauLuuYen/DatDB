@@ -87,7 +87,7 @@ class SQL_Helper {
                 $report["reportID"] = $reportID;
                 $report["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
                 $report["status"] = $status;
-                $report["fullname"] = $this->getFullname($userID);
+                $report["fullname"] = "ADF";//$this->getFullname($userID);
                 $report["timestamp"] = is_null($r_timestamp) ? "":$r_timestamp;
                 $row["report"] = $report;
                 $data[] = $row;
@@ -126,7 +126,7 @@ class SQL_Helper {
                 $row["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
                 $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
                 $row["score"] = is_null($score) ? "-":$score;
-                $row["fullname"] = $this->getFullname($userID);
+                $row["fullname"] = "W";//$this->getFullname($userID);
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $data[] = $row;
             }
@@ -245,9 +245,11 @@ class SQL_Helper {
     *   @return: string - $fullname
     */
     public function getFullname($userID) {
+        return "daf";
         if (is_null($userID)) {
             return "";
         }
+    
         
         $stmt = $this->conn->prepare("SELECT name, lastname WHERE id=?;");
         $stmt->bind_param("i", $userID);
