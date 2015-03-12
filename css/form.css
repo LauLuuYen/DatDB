@@ -58,4 +58,8 @@ textarea {
     visibility: hidden;
 }
 
+.conceal {
+    display:none;
+}
+
 

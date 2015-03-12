@@ -56,7 +56,10 @@ app.controller("Submit", function ($scope, master) {
     for (i = 0; i<master.assignments.length; i++) {
         $scope.assignments.push({name:master.assignments[i].title});
     }
-
+    
+    $scope.selectAssignment = function() {
+        console.log($scope.selection);
+    };
 
     $("#uploadfile").change(function() {
     
