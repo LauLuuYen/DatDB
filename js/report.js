@@ -163,7 +163,32 @@ app.controller("Submit", function ($scope, master) {
     };
     
     $scope.submit = function() {
-        alert("TODO submit");
+
+        $.ajax({
+            type: "POST",
+            url:"http://lauluuyen.azurewebsites.net/php/finalisereport.php" ,
+            crossDomain: true,
+            data: {reportID: $scope.reportID},
+            dataType: "json",
+            async: true,
+            timeout: 10000,
+
+            success: function (result) {
+                if (result.success) {
+                    window.location.href="/forum/";
+               
+                } else {
+                    $("#submitbtn").removeAttr("disabled");
+                    alert(result.message);
+                }
+            },
+
+            error: function(xhr, status, error) {
+            
+                $("#submitbtn").removeAttr("disabled");
+                alert("An error occured. Please try again in a few moments.");
+            }
+        });
     };
     
     $scope.updatefeedback = function(message) {
