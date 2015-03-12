@@ -181,7 +181,13 @@ a:active{
 }
 
 .submitreport .finalise {
+    text-align:right;
+}
+
+.submitreport .finalsubmit {
     float:right;
+    width:70px;
+    height:40px;
 }
 
 .submitreport .upload {

@@ -29,7 +29,7 @@
 
             <div class="finalise">
                 <div>Press submit to finalise the report</div>
-                <button ng-click="submit()">Submit</button>
+                <button class="finalsubmit" ng-click="submit()">Submit</button>
             </div>
             <div class="clean"></div>
         </div>
