@@ -154,6 +154,7 @@ app.controller("Submit", function ($scope, master) {
             },
             
             error:  function(xhr, status, error) {
+                alert(JSON.stringify(xhr));
                 $scope.updatefeedback("Please try again in a few moments");
             }
 
