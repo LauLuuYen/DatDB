@@ -182,12 +182,18 @@ a:active{
 
 .submitreport .finalise {
     text-align:right;
+    margin-right:10px;
 }
 
 .submitreport .finalsubmit {
     float:right;
-    width:70px;
+    width:100px;
     height:40px;
+    background-color:yellow;
+}
+
+.submitreport .finalsubmit:hover {
+    background-color:red;
 }
 
 .submitreport .upload {
@@ -214,7 +220,7 @@ a:active{
     float: right;
 }
 
-#btn_uploadfile:disabled {
+#btn_uploadfile:disabled, .submitreport .finalsubmit:disabled {
     background-color:grey;
     color:white;
 }

@@ -25,7 +25,7 @@
             <div class="heading2">Group Report:</div>
 
             <div class="fullreport"></div>
-            <div>Uploaded by:<span id="name"></span></div>
+            <div>Uploaded by : <span id="name"></span></div>
 
             <div class="finalise">
                 <div>Press submit to finalise the report</div>
