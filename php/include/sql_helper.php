@@ -283,9 +283,10 @@ class SQL_Helper {
         $stmt->bind_param("isisi", $statusid, $content, $userID, $timestamp, $reportID);
         
         if($stmt->execute()) {
+            $success = mysqli_affected_rows($this->conn) > 0;
             $stmt->close();
             
-            return mysqli_affected_rows($this->conn) >= 0;
+            return $success;
 
         } else {
             die("An error occurred performing a request");
