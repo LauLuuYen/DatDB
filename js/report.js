@@ -46,14 +46,17 @@ app.controller("Main", function ($scope, master) {
 });
 
 app.controller("Submit", function ($scope, master) {
-    $scope.assignments = [
-      {name:'red'},
-      {name:'blue'},
-      {name:'yellow'}
-    ];
-    $scope.report = null;
-    
+    $scope.assignments = [];
+    $scope.selection = null;
     $scope.feedback = "";
+    
+    if (master.assessments.length == 0) {
+        alert("FIX no assignments");
+    }
+    for (i = 0; i<master.assessments.length; i++) {
+        $scope.assignment.push({name:i});
+    }
+
 
     $("#uploadfile").change(function() {
     
