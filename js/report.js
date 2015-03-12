@@ -54,8 +54,7 @@ app.controller("Submit", function ($scope, master) {
         alert("FIX no assignments");
     }
     for (i = 0; i<master.assignments.length; i++) {
-        console.log("i:"+i);
-        $scope.assignments.push({name:i});
+        $scope.assignments.push({name:master.assignments[i].title});
     }
 
 
