@@ -69,7 +69,7 @@ html, body {
 
 .innerbody {
     width:100%;
-    min-height:75%px;
+    height:75%;
     background-color:rgb(230,230,230);
 }
 
