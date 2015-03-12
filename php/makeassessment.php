@@ -42,6 +42,10 @@ class Assessment{
     {
       result(false, "Feedback must be set");
     }
+    else if(strlen($this->feedback) > 500)
+    {
+      result(false, "Feedback is too long");
+    }
     else if(!is_int($this->score))
     {
       result(false, "score must be set");

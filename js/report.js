@@ -50,15 +50,12 @@ app.controller("Submit", function ($scope, master) {
     $scope.selection = null;
     $scope.feedback = "";
     
-    if (master.assignments.length == 0) {
-        alert("FIX no assignments");
-    }
+
     for (i = 0; i<master.assignments.length; i++) {
         $scope.assignments.push({name:master.assignments[i].title});
     }
     
     $scope.selectAssignment = function() {
-        console.log($scope.selection);
         for (i = 0; i<master.assignments.length; i++) {
             if ($scope.selection.name == master.assignments[i].title) {
                 $scope.showAssignment(i);
@@ -74,7 +71,7 @@ app.controller("Submit", function ($scope, master) {
         var assignment = master.assignments[index];
         
         $("#deadline").html(assignment.deadline);
-        $("#status").html(assignment.status);
+        $("#status").html(assignment.report.status);
         $("#task").html(assignment.task);
         
         //Show report if filled in
