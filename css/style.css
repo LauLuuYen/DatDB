@@ -71,6 +71,7 @@ html, body {
     width:100%;
     min-height:750px;
     background-color:rgb(230,230,230);
+    border-radius: 10px;
 }
 
 .left_panel {
