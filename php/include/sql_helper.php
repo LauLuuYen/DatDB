@@ -85,7 +85,7 @@ class SQL_Helper {
                 $row["timestamp"] = $a_timestamp;
                 $report = array();
                 $report["reportID"] = $reportID;
-                $report["content"] = is_null($content) ? "":$content;
+                $report["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
                 $report["status"] = $status;
                 $report["fullname"] = $this->getFullname($conn, $userID);
                 $report["timestamp"] = is_null($r_timestamp) ? "":$r_timestamp;
@@ -123,8 +123,8 @@ class SQL_Helper {
                 $row["reportID"] = $reportID;
                 $row["groupname"] = $groupname;
                 $row["status"] = $status;
-                $row["content"] = is_null($content) ? "":$content;
-                $row["feedback"] = is_null($feedback) ? "":$feedback;
+                $row["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
+                $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
                 $row["score"] = is_null($score) ? "-":$score;
                 $row["fullname"] = $this->getFullname($conn, $userID);
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;

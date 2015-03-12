@@ -75,6 +75,7 @@ app.controller("Submit", function ($scope, master) {
         $("#deadline").html(assignment.deadline);
         $("#status").html(assignment.report.status);
         $("#task").html(assignment.task);
+        $(".fullreport").html(assignment.report.content);
         
         //Show report if filled in
         if (assignment.report.status != "Incomplete") {
