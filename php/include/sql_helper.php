@@ -222,7 +222,7 @@ class SQL_Helper {
                 $row = array();
                 $row["commentID"] = $id;
                 $row["fullname"] = $name . " " . $lastname;
-                $row["content"] = $content;
+                $row["content"] = nl2br($content);
                 $row["timestamp"] = $timestamp;
                 $data[] = $row;
                

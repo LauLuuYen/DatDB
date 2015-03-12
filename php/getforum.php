@@ -10,34 +10,17 @@ if (DEBUG) {
 }
 
 
-/*
-*   Echoes to the client the result of the process.
-*   @params: bool - $success, string - $msg
-*   @return: none
-*/
-function result($success, $msg) {
-    $response["success"] = $success;
-    $response["message"] = $msg;
-    echo json_encode($response);
-}
-
-
-require_once "session.php";
-
-class Forum
-{
-  public function __construct()
-  {
-    $this->userID = $_SESSION["userID"];
-    $this->name = $_SESSION["name"];
-    $this->lastname = $_SESSION["lastname"];
-    $this->roleID = $_SESSION["roleID"];
-    $this->groupID = $_SESSION["groupID"];
-  }
+class Forum {
+    public function __construct() {
+        $this->userID = $_SESSION["userID"];
+        $this->name = $_SESSION["name"];
+        $this->lastname = $_SESSION["lastname"];
+        $this->roleID = $_SESSION["roleID"];
+        $this->groupID = $_SESSION["groupID"];
+    }
   
 
-    public function retrieve()
-    {
+    public function retrieve() {
          //TODO check role
         require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
@@ -56,35 +39,26 @@ class Forum
         $forumID = $this->sql_helper->getForumID($this->groupID);
         
         //Get all threads
-        $data["forum"] = $this->sql_helper->getAllThreads($forumID);
+        $threads = $this->sql_helper->getAllThreads($forumID);
         
         //Go through every thread, find comments
-        foreach($data["forum"] as &$thread) {
+        foreach($threads as &$thread) {
             $threadID = $thread["threadID"];
             $thread["comments"] = $this->sql_helper->getAllComments($threadID);
             //
         }
         
-        result(true, $data);
+        $data["forum"]["threads"] = $threads;
         
         $this->sql_helper->close();
+        
+        return $data;
     }
   
-  
 }
 
 
-
-if($userSession->isLoggedIn())
-{
-    $forum = new Forum();
-    $forum->retrieve();
-    
-}
-else
-{
-    result(false, "Not logged in");
-}
+$forum = new Forum();
 
 
 ?>

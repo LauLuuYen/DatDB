@@ -6,50 +6,6 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-	var data = {
-        "profile" : {
-            "userID": 123,
-            "name": "tuan",
-            "lastname": "nguyen",
-            "groupid": 3
-        },
-        "forum": {
-            "threads": [
-                {
-                    "threadID": 12,
-                    "title": "Why do you like eating so muhc?",
-                    "timestamp": "06/07/2015",
-                    "comments": [
-                        {
-                            "commentID": 41,
-                            "fullname": "Rex Lau",
-                            "content": "sdgsfgsdf sfd sdf is fuuk",
-                            "timestamp": "06/06/2015 00:00:00"
-                        },
-                        {
-                            "commentID": 51,
-                            "fullname": "Kei Lau",
-                            "content": "I am testing with me",
-                            "timestamp": "06/06/2015 00:00:01"
-                        }
-                    ]
-                },
-                {
-                    "threadID": 21,
-                    "title": "sd skljfgnjs fgls fgsfg ksfgsdlfk  dsglks fglks fg",
-                    "timestamp": "06/08/2015",
-                    "comments": [
-                        {
-                            "commentID": 41,
-                            "fullname": "Tuan Ng",
-                            "content": "sdgsfgsdf sfd sdf is fuuk",
-                            "timestamp": "06/06/2015 00:00:03"
-                        }
-                    ]
-                }
-            ]
-        }
-    };
     
 	return data;
 });

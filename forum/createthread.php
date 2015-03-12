@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 <div class="createthread">
 
     <div class="heading">Create New Thread</div>

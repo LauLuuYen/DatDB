@@ -46,8 +46,13 @@ app.controller("Main", function ($scope, master) {
 });
 
 app.controller("Submit", function ($scope, master) {
+    $scope.assignments = [
+      {name:'red'},
+      {name:'blue'},
+      {name:'yellow'}
+    ];
     
-    $scope.feedback = "Please upload something";
+    $scope.feedback = "";
 
     $("#uploadfile").change(function() {
     
@@ -83,8 +88,8 @@ app.controller("Submit", function ($scope, master) {
     $scope.send = function() {
     	
         var formData = new FormData($('form')[0]);
-	formData.append("userID", 51);
-	formData.append("reportID", 2001);
+        
+        formData.append("reportID", 2001);
         $.ajax({
             type: "POST",
             url: "http://lauluuyen.azurewebsites.net/php/upload.php",
@@ -121,11 +126,16 @@ app.controller("Submit", function ($scope, master) {
             },
             
             error:  function(xhr, status, error) {
-                alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+                //alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+                $scope.updatefeedback("Error: occured uploading the file");
             }
 
         });
-    }
+    };
+    
+    $scope.submit = function() {
+        alert("TODO submit");
+    };
     
     $scope.updatefeedback = function(message) {
         $scope.$apply(function() {
