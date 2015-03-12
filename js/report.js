@@ -122,7 +122,7 @@ app.controller("Submit", function ($scope, master) {
         
         $.ajax({
             type: "POST",
-            url: "http://lauluuyen.azurewebsites.net/php/upload.php",
+            url: "http://lauluuyen.azurewebsites.net/php/uploadreport.php",
             data: formData,
             dataType: "json",
             cache: false,

@@ -278,7 +278,7 @@ class SQL_Helper {
     *   @return: boolean - $success
     */
     public function updateReport($content, $userID, $reportID) {
-        $statusid = 11; //TODO user right status
+        $statusid = $this->getStatusID("Draft");
         $timestamp = date("Y-m-d H:i:s");
 
         $stmt = $this->conn->prepare("UPDATE reports SET statusid=?, content=?, userid=?, timestamp=? WHERE id=?");
@@ -295,6 +295,30 @@ class SQL_Helper {
         }
     }
     
+    
+    /*
+    *   Finalise the report into the complete state
+    *   @params: int - $reportID
+    *   @return: boolean - $success
+    */
+    public function updateFinalReport($reportID) {
+        $statusid = $this->getStatusID("Complete");
+        $timestamp = date("Y-m-d H:i:s");
+
+        $stmt = $this->conn->prepare("UPDATE reports SET statusid=?, timestamp=? WHERE id=?");
+        $stmt->bind_param("isi", $statusid, $timestamp, $reportID);
+        
+        if($stmt->execute()) {
+
+            $stmt->close();
+            return true;
+
+        } else {
+            die("An error occurred performing a request");
+        }
+
+    }
+    
 
     /*
     *   Update assessment of the user for the group
@@ -302,7 +326,7 @@ class SQL_Helper {
     *   @return: boolean - $success
     */
     public function updateAssessment($feedback, $score, $userID, $groupID, $reportID) {
-        $statusID = 21; //TODO Use right status
+        $statusID = $this->getStatusID("Complete");
         $timestamp = date("Y-m-d H:i:s");
 
         $stmt = $this->conn->prepare("UPDATE assessments SET statusid=?,feedback=?,score=?,userid=?,timestamp=? WHERE groupid=? AND reportid=?");
@@ -311,7 +335,6 @@ class SQL_Helper {
         if($stmt->execute()) {
             $stmt->close();
 
-            //TODO check update succeeded.
             return true;
             
         } else {
@@ -367,6 +390,32 @@ class SQL_Helper {
             die("An error occurred performing a request");
         }
     }
+    
+    /*
+    *   Get statusID
+    *   @params: string - $status
+    *   @return: int - $statusID
+    */
+    public function getStatusID($status) {
+    
+        $stmt = $this->conn->prepare("SELECT id FROM status WHERE current_status=?;");
+        $stmt->bind_param("s", $status);
+        
+         if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($statusID);
+            $stmt->fetch();
+            
+            $stmt->close();
+
+            return $statusID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+        
+    }
+    
     
 }
 
