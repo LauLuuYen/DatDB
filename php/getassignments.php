@@ -1,19 +1,12 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", true);
-
-if (DEBUG) {
-    ini_set("display_errors",1);
-    ini_set("display_startup_errors",1);
-    error_reporting(E_ALL & ~E_NOTICE);
-}
 
 
 class Assignment {
 
-
     public function __construct() {
+        session_start();
         $this->userID = $_SESSION["userID"];
         $this->name = $_SESSION["name"];
         $this->lastname = $_SESSION["lastname"];
@@ -54,9 +47,6 @@ class Assignment {
 
 
 $assignment = new Assignment();
-
-echo "D:".json_encode($assignment->retrieve);
-
 
 
 ?>
