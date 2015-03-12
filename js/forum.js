@@ -144,6 +144,10 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         comment:""
     };
     
+    $scope.back=function(){
+    	window.location.href="/forum/";
+    };
+    
     $scope.reroute = function() {
         var threads = master.forum.threads;
         var id = $routeParams.id;
