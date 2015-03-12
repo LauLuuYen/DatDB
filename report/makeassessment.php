@@ -23,9 +23,18 @@
     </div>
 
     <div>Your feedback</div>
+    <!--
     <div>
         <input type="text"></input>
     </div>
+    -->
+    
+    <div class="input_wrapper">
+        <textarea cols="95" rows="3" class="input_text content" ng-model="assessment.feedback" ng-change="onChange('feedback_e')" placeholder="Assessment feedback" maxlength="500"></textarea>        
+        <div id="feedback_e" class="error invisible">Error: Please type in a assessment feedback</div>
+        <br>
+    </div>
+    
     
     <button>Submit Feedback</button>
     
