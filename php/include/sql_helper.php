@@ -284,10 +284,9 @@ class SQL_Helper {
         
         if($stmt->execute()) {
             $stmt->close();
-
-            //TODO check update succeeded.
-            return true;
             
+            return $this->conn->affected_rows() >= 0;
+
         } else {
             die("An error occurred performing a request");
         }
