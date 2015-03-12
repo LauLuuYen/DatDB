@@ -1,6 +1,6 @@
 <div class="viewthread">
 
-    <div class="input_wrapper">
+    <div class="container2">
         <button ng-click="back()" class="btn">Back</button>
     </div>
 
