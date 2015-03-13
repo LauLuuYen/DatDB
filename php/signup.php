@@ -72,7 +72,7 @@ class Signup {
         //A student needs to have a group
         } else if ($this->role == $this->ROLES[1] &&
             (strlen($this->groupname) == 0 || is_null($this->groupname))) {
-            result(false, "Group name must be set1");
+            result(false, "Group name must be set");
             
             
 		} else {
@@ -88,137 +88,65 @@ class Signup {
     *   @params: none
     *   @return: none
     */
-	public function register() {
-        //Connect to DB
-	    $this->conn = connectDB();
+    public function registerUser() {
+        require_once "include/sql_helper.php";
+        $this->sql_helper = new SQL_Helper();
+        
+        //Check if user exist
+        $exist = $this->sql_helper->checkExist($this->email);
+        if ($exist) {
+            result(false, "User already exist!");
+            return;
+        }
+        
+        //Get RoleID
+        $roleID = $this->sql_helper->getRoleID($this->role);
+        
+        //Create Admin account
+        if ($this->role == $this->ROLES[0]) {
+            
+            $this->createAdmin($roleID, $sql_helper);
+            
+        //Create Student account
+        } else {
+            
+            $this->createStudent($roleID, $sql_helper);
+        
+        
+        }
+        
+        
+        $this->sql_helper->close();
+    }
+
+    /*
+    *   Create admin account only
+    *   @params: int - $roleID
+    *   @return: none
+    */
+    private function createAdmin($roleID, $sql_helper) {
+    
+        if ($sql_helper->createUser($this->name, $this->lastname, $this->email, $this->password, $roleID, null)){
+            result(true, "Success");
+        
+        } else {
+            result(false, "Failed to create user account");
+        }
+
+    }
+    
+    
+    /*
+    *   Create student account, assign to group with forum
+    *   @params: int - $roleID
+    *   @return: none
+    */
+    private function createStudent($roleID, $sql_helper) {
+    
+        echo "create student";
+
+    }
 	    
-        //If user does not exist, create account and assign their roles
-        if (!$this->checkExist()) {
-        	$this->assignGroup();
-        }
-
-        //TODO consider admin
-        
-        //Close DB connection
-        closeDB($this->conn);
-	}
-	
-
-
-    /*
-    *   Create an empty group.
-    *   @params: none
-    *   @return: int - $groupID
-    */
-	private function createGroup()
-	{
-		$stmt = $this->conn->prepare("INSERT INTO groups (name) VALUES(?)");
-        $stmt->bind_param("s", $this->groupname);
-
-        if ($stmt->execute()) {
-            $groupID = mysqli_insert_id($this->conn);
-            $stmt->close();
-            return $groupID;
-            
-        } else {
-            die("An error occurred performing a request");
-        }
-	}
-	
-	private function createForum($groupID)
-	{
-		$stmt = $this->conn->prepare("INSERT INTO forum (groupid) VALUES(?)");
-	        $stmt->bind_param("i", $groupID);
-	
-	        if ($stmt->execute()) {
-	            $forumID = mysqli_insert_id($this->conn);
-	            $stmt->close();
-	            return $forumID;
-	            
-	        } else {
-	            die("An error occurred performing a request");
-	        }
-	}
-    
-
-    /*
-    *   Get groupID of an existing group
-    *   @params: none
-    *   @return: int - $groupID
-    */
-	private function getGroupID()
-	{
-		$stmt = $this->conn->prepare("SELECT id FROM groups WHERE name=?");
-        $stmt->bind_param("s", $this->groupname);
-
-        if ($stmt->execute()) {
-            $stmt->store_result();
-            $stmt->bind_result($groupID);
-            
-            $registrant = $stmt->fetch();//Bind result with row
-            $stmt->close();
-
-            return $groupID;
-            
-        } else {
-            die("An error occurred performing a request");
-        }
-	}
-	
-    
-    /*
-    *   Get roleID of the role
-    *   @params: none
-    *   @return: int - $roleID
-    */
-	private function getRoleID() {
-		$stmt = $this->conn->prepare("SELECT id FROM roles WHERE name=?");
-        $stmt->bind_param("s", $this->role);
-
-        if ($stmt->execute()) {
-            $stmt->store_result();
-            $stmt->bind_result($roleID);
-            
-            $registrant = $stmt->fetch();//Bind result with row
-            $stmt->close();
-
-            return $roleID;
-            
-        } else {
-            die("An error occurred performing a request");
-        }
-	}
-	
-
-    /*
-    *   Create user into the database
-    *   @params: none
-    *   @return: bool - $success
-    */
-	private function createUser($roleID, $groupID)
-	{
-        $password = md5($this->password);
-        $timestamp = date("Y-m-d H:i:s");
-        
-		$stmt = $this->conn->prepare("INSERT INTO users (name, lastname, email, password, roleid, groupid, timestamp) VALUES(?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssiis", $this->name, $this->lastname, $this->email, $password, $roleID, $groupID, $timestamp);
-
-        if ($stmt->execute()) {
-       		$id = mysqli_insert_id($this->conn);
-            $success = $id > 0;
-            $stmt->close();
-            
-            //Signing up is done by admin
-
-            return $success;
-            
-        } else {
-            die("An error occurred performing a request");
-        }
-	}
-	
-
-    
     /*
     *   Attempt to assign user to a group
     *   @params: none
@@ -240,11 +168,13 @@ class Signup {
 			$groupID = $this->getGroupID();
 		}
 
-        $roleID = $this->getRoleID();
         
         //RoleID and groupID gathered, now create user.
 		if ($this->createUser($roleID, $groupID)) {
+        
+
             result(true, "User has been created successfully");
+            
         } else {
             result(false, "Error creating User");
         }
@@ -252,69 +182,20 @@ class Signup {
 	}
 	
     
-    /*
-    *   Count the number of users in that specified group
-    *   @params: none
-    *   @return: bool - $exist
-    */
-	private function getGroupSize()
-	{
-		$stmt = $this->conn->prepare("SELECT count(*) AS groupcount FROM users WHERE groupid = (SELECT id FROM groups WHERE name=?)");
-        $stmt->bind_param("s", $this->groupname);
-
-        if ($stmt->execute()) {
-            $stmt->store_result();
-            $stmt->bind_result($groupcount);
-            
-            $registrant = $stmt->fetch();//Bind result with row
-            $stmt->close();
-
-            return $groupcount;
-            
-        } else {
-            die("An error occurred performing a request");
-        }
-	}
-
-
-    /*
-    *   Check if user already exist in the database.
-    *   @params: none
-    *   @return: bool - $exist
-    */
-    private function checkExist() {
-		$stmt = $this->conn->prepare("SELECT email FROM Users WHERE email = ?");
-        $stmt->bind_param("s", $this->email);
-
-        if ($stmt->execute()) {
-            $registrant = $stmt->fetch();
-            $stmt->close();
-
-            if (count($registrant) > 0) {
-                result(false, "User already exist");
-                return true;
-            }
-            return false;
-            
-        } else {
-            die("An error occurred performing a request");
-        }
-    }
-    
 }
 
 
+//Only admins allowed to assign
 $name = "Jack2";
 $lastname = "Black2";
-$email = "jacafd@sdf.com";
+$email = "mario@castlsg.com";
 $password = "abc123";
-$groupname= null;
+$groupname= "Zdafeefef 2";
 $role = "Student";
 
 $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
 if ($signup->checkInputs()) {
-    echo "To register";
-    //$signup->register();
+    $signup->registerUser();
 }
 
 
@@ -329,7 +210,7 @@ if(!empty($_POST))
 	$role = $_POST['role'];
 	$signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
 	if ($signup->checkInputs()) {
-	    $signup->register();
+	    $signup->registerUser();
 	}
 }
 else

@@ -61,6 +61,93 @@ class SQL_Helper {
         
     }
     
+
+    /*
+    *   Check if user already exist.
+    *   @params: string - $email
+    *   @return: bool - $exist
+    */
+    public function checkExist($email) {
+		$stmt = $this->conn->prepare("SELECT email FROM Users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $registrant = $stmt->fetch();
+            $stmt->close();
+            $exist = count($registrant) > 0;
+            return $exist;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+
+    /*
+    *   Create user account
+    *   @params: string - $name, string - $lastname, string - $email, 
+    *            string - $password, int - $roleID, int - $groupID
+    *   @return: bool - $success
+    */
+	public function createUser($name, $lastname, $email, $password, $roleID, $groupID) {
+        $password_md5 = md5($this->password);
+        $timestamp = date("Y-m-d H:i:s");
+        
+		$stmt = $this->conn->prepare("INSERT INTO users (name, lastname, email, password, roleid, groupid, timestamp) VALUES(?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssiis", $name, $lastname, $email, $password_md5, $roleID, $groupID, $timestamp);
+
+        if ($stmt->execute()) {
+       		$id = mysqli_insert_id($this->conn);
+            $success = $id > 0;
+            $stmt->close();
+        
+            return $success;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+	
+    
+    /*
+    *   Create an empty group.
+    *   @params: none
+    *   @return: int - $groupID
+    */
+	public function createGroup($groupname) {
+		$stmt = $this->conn->prepare("INSERT INTO groups (name) VALUES(?)");
+        $stmt->bind_param("s", $groupname);
+
+        if ($stmt->execute()) {
+            $groupID = mysqli_insert_id($this->conn);
+            $stmt->close();
+            return $groupID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+	
+
+    /*
+    *   Create an forum
+    *   @params: int - $groupID
+    *   @return: int - $forumID
+    */
+	public function createForum($groupID) {
+		$stmt = $this->conn->prepare("INSERT INTO forum (groupid) VALUES(?)");
+	        $stmt->bind_param("i", $groupID);
+	
+	        if ($stmt->execute()) {
+	            $forumID = mysqli_insert_id($this->conn);
+	            $stmt->close();
+	            return $forumID;
+	            
+	        } else {
+	            die("An error occurred performing a request");
+	        }
+	}
+    
     
     /*
     *   Get all assignments given a groupID
@@ -416,6 +503,77 @@ class SQL_Helper {
         
     }
     
+    
+    /*
+    *   Get roleID
+    *   @params: string - $role
+    *   @return: int - $roleID
+    */
+	public function getRoleID($role) {
+		$stmt = $this->conn->prepare("SELECT id FROM roles WHERE name=?");
+        $stmt->bind_param("s", $role);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($roleID);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $roleID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+    
+
+    /*
+    *   Get groupID of an existing group
+    *   @params: none
+    *   @return: int - $groupID
+    */
+	public function getGroupID($groupname) {
+		$stmt = $this->conn->prepare("SELECT id FROM groups WHERE name=?");
+        $stmt->bind_param("s", $groupname);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($groupID);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $groupID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+    
+    
+    /*
+    *   Count the number of users in that specified group
+    *   @params: string - $groupname
+    *   @return: int - $groupcount
+    */
+	public function getGroupSize($groupname) {
+		$stmt = $this->conn->prepare("SELECT count(*) AS groupcount FROM users WHERE groupid = (SELECT id FROM groups WHERE name=?)");
+        $stmt->bind_param("s", $groupname);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($groupcount);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $groupcount;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
     
 }
 
