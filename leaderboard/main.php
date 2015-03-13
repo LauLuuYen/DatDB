@@ -8,39 +8,49 @@ test
 test
 test
 
-
-	<?php
-	
-	 //$query = "SELECT * FROM friends WHERE friendid = '".$_SESSION['user_id']."' AND allow = 1 ORDER BY first_name ASC";
-	
-	//$result = mysql_query($query) or die ("Query failed");
-	
-	
-	
-	echo "<table width = 100% border = '0' cellspacing = '2' cellpadding = '0'>";
-	
-	
-	
-	// loop to create rows
-	
-	//if(mysql_affected_rows() > 0){
-	
-	//while ($friendList = mysql_fetch_array($result)) {
-	
-	
-	
-	echo "<tr>"
-	
-	echo "<td>testrow</td>"
-	//. "<td><a href='memberindex.php?id = ".$friendList['id']."'><img src='".$friendList['friendImg']."' title='".$friendList['first_name']."' alt='".$friendList['first_name']."'/><br />".$friendList['first_name']."</a><br /></td> " 
-	
-	. "</tr> ";
-	
-	}
-	
-	
-	
-	echo "</table> "; ?>
+<input type="button" value="Generate Table" onclick="GenerateTable()" />
+<hr />
+<div id="dvTable">
+</div>
+<script type="text/javascript">
+function GenerateTable() {
+    //Build an array containing Customer records.
+    var customers = new Array();
+    customers.push(["Customer Id", "Name", "Country"]);
+    customers.push([1, "John Hammond", "United States"]);
+    customers.push([2, "Mudassar Khan", "India"]);
+    customers.push([3, "Suzanne Mathews", "France"]);
+    customers.push([4, "Robert Schidner", "Russia"]);
+ 
+    //Create a HTML Table element.
+    var table = document.createElement("TABLE");
+    table.border = "1";
+ 
+    //Get the count of columns.
+    var columnCount = customers[0].length;
+ 
+    //Add the header row.
+    var row = table.insertRow(-1);
+    for (var i = 0; i < columnCount; i++) {
+        var headerCell = document.createElement("TH");
+        headerCell.innerHTML = customers[0][i];
+        row.appendChild(headerCell);
+    }
+ 
+    //Add the data rows.
+    for (var i = 1; i < customers.length; i++) {
+        row = table.insertRow(-1);
+        for (var j = 0; j < columnCount; j++) {
+            var cell = row.insertCell(-1);
+            cell.innerHTML = customers[i][j];
+        }
+    }
+ 
+    var dvTable = document.getElementById("dvTable");
+    dvTable.innerHTML = "";
+    dvTable.appendChild(table);
+}
+</script>
 
 
 </body>
