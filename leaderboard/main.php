@@ -58,7 +58,6 @@ class LeaderboardClass
 	$this->sql_helper = new SQL_Helper();
 	
 	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
-	echo "Hello world";
 	$this->sql_helper->close();
 	}
 	
