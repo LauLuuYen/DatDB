@@ -46,22 +46,10 @@
 
 </head>
 <body >
-test 
-test
-test
-
-	  <script>
-    GenerateTable();
-  </script>
-
-
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
-
-<hr />
-<div id="dvTable">
-</div>
-
-
+	<script>
+    		GenerateTable();
+	</script>
 
 </body>
 </html>
