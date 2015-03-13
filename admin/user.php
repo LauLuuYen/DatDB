@@ -37,16 +37,17 @@
             User Role<br>
             <input type="radio" ng-model="account.role" value="student"> Student</input><br>
             <input type="radio" ng-model="account.role" value="admin"> Admin</input>
+            <div class="error">Error: Please select a user role</div>
         </div>
 
         <div class="input_wrapper">
             Select an available group
             <select type="text" class="input_text" ng-model="account.grouplist"
                 ng-options="item.name for item in grouplist"></select>
-            <br>--or--<br><br>
+            <br>--or--<br>
             Assign user to a new group
             <input type="text" class="input_text" ng-model="account.groupname"></input>
-            <div class="error">Error: Please fill either of these entrie</div>
+            <div class="error">Error: Please fill either of these entries</div>
         </div>
         
         
