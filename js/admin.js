@@ -60,14 +60,6 @@ app.controller("User", function ($scope, master) {
         role:"", grouplist:{name:""}
     };
 
-    $scope.empty = function (list) {
-        if (list && $scope.account.grouplist.name != "") {
-            $scope.account.grouplist.name = "";
-        } else if (!list && $scope.account.groupname != "") {
-            $scope.account.groupname = "";
-        }
-    };
-    
     $scope.onChange = function(id) {
         var id = "#"+id;
         if (!$(id).hasClass("invisible")) {
@@ -114,6 +106,24 @@ app.controller("User", function ($scope, master) {
     $scope.submit = function() {
         if ($scope.validate()) {
             alert("pass");
+            var firstname = $scope.account.firstname;
+            var lastname = $scope.account.lastname;
+            var email = $scope.account.email;
+            var password = $scope.account.password;
+            var role = $scope.account.role;
+            var groupname = $scope.account.grouplist.name;
+            if ($scope.account.groupname != "") {
+                groupname = $scope.account.groupname;
+            }
+            var data =  {
+                    name: firstname,
+                    lastname: lastname,
+                    email: email,
+                    password: password,
+                    groupname: groupname,
+                    role:role
+            };
+            console.log(data);
         }
         return;
         $.ajax({
@@ -123,7 +133,6 @@ app.controller("User", function ($scope, master) {
             data: { name:$scope.account.firstname,
                     lastname:$scope.account.lastname,
                     email: $scope.account.email,
-                    password:$scope.account.password,
                     password:$scope.account.password,
                     groupname:$scope.account.groupname,
                     role:$scope.account.role
