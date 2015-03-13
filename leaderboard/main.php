@@ -6,11 +6,11 @@
         {
             //Build an array containing Customer records.
             var customers = new Array();
-            customers.push(["Assignment Title", "Group Name", "Average mark"]);
-            customers.push(["LG flex", "Parishilton", "4.5"]);
-            customers.push(["LG flex", "Animatrix", "1.7"]);
-            customers.push(["LG flex", "Mario Cart fans", "2.2"]);
-            customers.push(["LG flex", "Cosplayer over9k", "5"]);
+            customers.push(["Rank", "Group Name", "Average mark"]);
+            customers.push([1, "Parishilton", "4.5"]);
+            customers.push([2, "Animatrix", "1.7"]);
+            customers.push([3, "Mario Cart fans", "2.2"]);
+            customers.push([4, "Cosplayer over9k", "5"]);
          
             //Create a HTML Table element.
             var table = document.createElement("TABLE");
