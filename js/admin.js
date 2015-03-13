@@ -52,13 +52,17 @@ app.controller("Main", function ($scope, master) {
 
 app.controller("User", function ($scope, master) {
     $scope.navigation = "Home > Admin > Create User";
-    
+    $scope.grouplist = {
+        {name: "Zordon"}
+    };
     $scope.account = {
         firstname:"", lastname:"", email:"", password: "", groupname:"",
-        role:"student"
+        role:"", grouplist:{name:""}
     };
 
+
     $scope.submit = function() {
+        return;
         $.ajax({
             type: "POST",
             url:"http://lauluuyen.azurewebsites.net/php/signup.php" ,
