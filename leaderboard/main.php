@@ -84,6 +84,7 @@
 	}
 	
 	fetchLeaderBoard();
+	echo $data;
 ?>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
