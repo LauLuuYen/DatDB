@@ -1,13 +1,13 @@
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      changeMonth: true,
-      changeYear: true
+<script>
+    $(function() {
+        $( "#datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true
+        });
     });
-  });
-  </script>
+</script>
 
-<div>
+<div class="createassignment">
   <form ng-submit="submit()">
     
         <div class="input_wrapper">

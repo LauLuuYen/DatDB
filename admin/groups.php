@@ -1,3 +1,5 @@
+<div class="viewgroups">
+    View groups
 
-<div>View groups</div>
+</div>
 

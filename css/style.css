@@ -377,7 +377,8 @@ a:active{
     margin-top:5px;
 }
 
-.forum, .createthread, .viewthread, .submitreport {
+.forum, .createthread, .viewthread, .submitreport,
+.createuser, .viewgroups, .createassignment {
     padding:10px 5px;
 }
 
