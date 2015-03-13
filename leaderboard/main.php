@@ -95,7 +95,6 @@
 
 <div id="dvTable"></div>
 
-echo $data;
 
 </body>
 </html>
