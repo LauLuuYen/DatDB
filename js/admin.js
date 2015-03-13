@@ -63,7 +63,7 @@ app.controller("User", function ($scope, master) {
     $scope.empty = function (list) {
         if (list && $scope.account.grouplist.name != "") {
             $scope.account.grouplist.name = "";
-        } else if (!list && $scope.account.groupname != "" {
+        } else if (!list && $scope.account.groupname != "") {
             $scope.account.groupname = "";
         }
     };
