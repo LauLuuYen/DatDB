@@ -22,22 +22,22 @@ app.factory("master", function() {
 app.config(function($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "main.html",
+            templateUrl: "main.php",
             controller: "Main"
         })
 
         .when("/user", {
-            templateUrl: "user.html",
+            templateUrl: "user.php",
             controller: "User"
         })
         
         .when("/assignments", {
-            templateUrl: "assignment.html",
+            templateUrl: "assignment.php",
             controller: "Assignment"
         })
         
         .when("/groups", {
-            templateUrl: "groups.html",
+            templateUrl: "groups.php",
             controller: "Groups"
         })
         .otherwise({
@@ -75,14 +75,11 @@ app.controller("User", function ($scope, master) {
             async: true,
             timeout: 10000,
 
-            success: function (result)
-            {
+            success: function (result) {
                 alert("result: " + result.success + ", message: " +result.message);
             },
-
-            error: function(xhr, status, error)
-            {
-                alert("error:" + JSON.stringify(xhr) + "," + status + "," + error);
+            error: function(xhr, status, error) {
+                alert("An error occurred.  Please try again in a few moments.");
             }
         });
     };

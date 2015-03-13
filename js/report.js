@@ -69,8 +69,8 @@ app.controller("Submit", function ($scope, master) {
     
     $scope.showAssignment = function(index) {
         $("#submission").show();
-        var status = assignment.report.status;
         var assignment = master.assignments[index];
+        var status = assignment.report.status;
         $scope.reportID = assignment.report.reportID;
         
         $("#deadline").html(assignment.deadline);
@@ -83,6 +83,7 @@ app.controller("Submit", function ($scope, master) {
         if (status != "Incomplete") {
             $("#report").show();
         }
+
         if (status == "Complete") {
             $("#submitsection").hide();
             $("#uploadsection").hide();

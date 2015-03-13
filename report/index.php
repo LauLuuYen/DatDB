@@ -34,7 +34,7 @@ if(!$userSession->isLoggedIn()) {
         console.log(response);
         var data = JSON.parse(response);
     </script>
-    <script src="../js/report.js"></script>
+    <script src="../js/report.js?v=1.0"></script>
 
 </head>
 
