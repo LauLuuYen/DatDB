@@ -58,21 +58,20 @@
 		
 		if ($stmt->execute()) 
 		{
-			/*
+		
 	            $stmt->store_result();
-	            $stmt->bind_result($id,$title,$timestamp);
+	            $stmt->bind_result($groupName,$groupID,$reportID, $averageMark);
 	            
 	            $data = array();
 	            while($stmt->fetch())
 	            {
 	                $row = array();
-	                $row["threadID"] = $id;
-	                $row["title"] = $title;
-	                $row["timestamp"] = $timestamp;
+	                $row["groupName"] = $groupName;
+	                $row["groupID"] = $groupID;
+	                $row["averageMark"] = $averageMark;
 	                $data[] = $row;
-	               
 	            }
-	          */
+	          
 	            $stmt->free_result();
 	            $stmt->close();
 	            return $data;
