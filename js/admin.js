@@ -53,7 +53,7 @@ app.controller("Main", function ($scope, master) {
 app.controller("User", function ($scope, master) {
     $scope.navigation = "Home > Admin > Create User";
     $scope.grouplist = [
-        {name: "Zordon"}
+        {name: "TODO pull real data"}
     ];
     $scope.account = {
         firstname:"", lastname:"", email:"", password: "", groupname:"",
@@ -78,6 +78,11 @@ app.controller("User", function ($scope, master) {
             pass = false;
         }
         if ($scope.account.email == "") {
+            $("#e3").html("Error: Please type in the email address");
+            $("#e3").removeClass("invisible");
+            pass = false;
+        } else if (!validateEmail($scope.account.email)) {
+            $("#e3").html("Error: Please type in a valid email address");
             $("#e3").removeClass("invisible");
             pass = false;
         }
@@ -88,6 +93,11 @@ app.controller("User", function ($scope, master) {
         if ($scope.account.role == "") {
             $("#e5").removeClass("invisible");
             pass = false;
+        } else if ($scope.account.role == "student") {
+            if ($scope.groupname == "") {
+                $("#e6").removeClass("invisible");
+                pass = false;
+            }
         }
         
         return pass;
