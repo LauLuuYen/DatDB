@@ -123,31 +123,31 @@ app.controller("User", function ($scope, master) {
                     groupname: groupname,
                     role:role
             };
-            console.log(data);
-        }
-        return;
-        $.ajax({
-            type: "POST",
-            url:"http://lauluuyen.azurewebsites.net/php/signup.php" ,
-            crossDomain: true,
-            data: { name:$scope.account.firstname,
-                    lastname:$scope.account.lastname,
-                    email: $scope.account.email,
-                    password:$scope.account.password,
-                    groupname:$scope.account.groupname,
-                    role:$scope.account.role
-                },
-            dataType: "json",
-            async: true,
-            timeout: 10000,
 
-            success: function (result) {
-                alert("result: " + result.success + ", message: " +result.message);
-            },
-            error: function(xhr, status, error) {
-                alert("An error occurred.  Please try again in a few moments.");
-            }
-        });
+            $.ajax({
+                type: "POST",
+                url:"http://lauluuyen.azurewebsites.net/php/signup.php" ,
+                crossDomain: true,
+                data: data,
+                dataType: "json",
+                async: true,
+                timeout: 10000,
+
+                success: function (result) {
+                    if (result.success) {
+                        window.location.href="/admin/";
+                    } else {
+                        alert(result.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert("An error occurred.  Please try again in a few moments.");
+                }
+            });
+        
+        
+        }
+
     };
     
     
