@@ -8,6 +8,12 @@
 </script>
 
 <div class="createassignment">
+    <div class="heading">Create Assignment</div>
+
+    <div class="linebreak"></div>
+
+    <div>Here you can create an assignment for all the available groups.</div>
+    
   <form ng-submit="submit()">
     
         <div class="input_wrapper">
