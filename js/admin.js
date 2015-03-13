@@ -167,41 +167,13 @@ app.controller("Assignment", function ($scope, master) {
             "test6":["aadf", "aadaff", "aadfsaf"]
         };
 
-/*
-        <table class="randomtable">
-            <tr class="head">
-                <td>Group</td>
-                <td>Assessment 1</td>
-                <td>Assessment 2</td>
-                <td>Assessment 3</td>
-            </tr>
-            <tr class="r0">
-                <td>Jill</td>
-                <td>Smith</td>		
-                <td>50</td>
-                <td>50</td>
-            </tr>
-            <tr class="r1">
-                <td>Eve</td>
-                <td>1</td>
-                <td>Jackson</td>		
-                <td>94</td>
-            </tr>
-            <tr class="r0">
-                <td>John</td>
-                <td>1</td>
-                <td>Doe</td>		
-                <td>80</td>
-            </tr>
-        </table>
-*/
         var script = "<table class='randomtable'>"+
                         "<tr class='head'>"+
                         "<td>Group</td>"+
                         "<td>Assessment 1</td>"+
                         "<td>Assessment 2</td>"+
                         "<td>Assessment 3</td>"+
-                        "</tr>"+
+                        "</tr>";
         
         var i=0;
         for (var key in data) {
