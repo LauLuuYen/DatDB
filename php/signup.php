@@ -9,8 +9,6 @@ if (DEBUG) {
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-include "include/config.php";//TODO remove
-
 
 /*
 *   Echoes to the client the result of the process.
@@ -68,11 +66,14 @@ class Signup {
         } else if (strlen($this->password) <= 5) {
             result(false, "Password too short");
 
-        } else if (strlen($this->groupname) == 0) {
-            result(false, "Group name must be set");
-            
 		} else if (!in_array($this->role, $this->ROLES)) {
 			result(false, "Role not found");
+        
+        //A student needs to have a group
+        } else if ($this->role == $this->ROLES[1] &&
+            (strlen($this->groupname) == 0 || is_null($this->groupname))) {
+            result(false, "Group name must be set1");
+            
             
 		} else {
             return true;
@@ -302,22 +303,22 @@ class Signup {
     
 }
 
-/*
-$name = "Jack";
-$lastname = "Black";
-$email = "jackblack@ucl.ac.uk";
+
+$name = "Jack2";
+$lastname = "Black2";
+$email = "jacafd@sdf.com";
 $password = "abc123";
-$groupname= "ParisHilton";
-$role = "studENt";
+$groupname= null;
+$role = "Student";
 
 $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
 if ($signup->checkInputs()) {
-    $signup->register();
+    echo "To register";
+    //$signup->register();
 }
 
-*/
 
-
+/*
 if(!empty($_POST))
 {
 	$name = $_POST['name'];
@@ -335,7 +336,7 @@ else
 {
 	result(false, "Permission Denied");
 }
-
+*/
 
 
 ?>
