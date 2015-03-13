@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", true);
+define("DEBUG", false);
 
 if (DEBUG) {
     ini_set("display_errors",1);
@@ -166,7 +166,7 @@ class Signup {
     
 }
 
-
+/*
 //Only admins allowed to assign
 $name = "Jack2";
 $lastname = "Black2";
@@ -179,27 +179,32 @@ $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
 if ($signup->checkInputs()) {
     $signup->registerUser();
 }
-
-
-/*
-if(!empty($_POST))
-{
-	$name = $_POST['name'];
-	$lastname = $_POST['lastname'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	$groupname= $_POST['groupname'];
-	$role = $_POST['role'];
-	$signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
-	if ($signup->checkInputs()) {
-	    $signup->registerUser();
-	}
-}
-else
-{
-	result(false, "Permission Denied");
-}
 */
+require_once "session.php";
+
+if($userSession->isLoggedIn()) { //TODO make admin only in session
+
+    if(!empty($_POST)) {
+        $name = $_POST["name"];
+        $lastname = $_POST["lastname"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $groupname= $_POST["groupname"];
+        $role = $_POST["role"];
+        
+        $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
+        if ($signup->checkInputs()) {
+            $signup->registerUser();
+        }
+        
+    } else {
+        result(false, "Permission Denied");
+    }
+
+} else {
+    result(false, "Session timeout");
+}
+
 
 
 ?>
