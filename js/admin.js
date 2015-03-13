@@ -159,7 +159,7 @@ app.controller("Assignment", function ($scope, master) {
     };
     
     $scope.randomise = function() {
-        var list = ["GroupA", "GroupE", "GroupB","GroupD","GroupE"];
+        var list = ["GroupA", "GroupG", "GroupB","GroupD","GroupE"];
         var data =  getAssignList(list, 3);
 
         var script = "<table class='randomtable'>"+
