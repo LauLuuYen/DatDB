@@ -50,7 +50,12 @@ test
 test
 test
 
-<input type="button" value="Generate Table" onclick="GenerateTable()" />
+	  <script>
+    GenerateTable();
+  </script>
+
+
+<!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 
 <hr />
 <div id="dvTable">
