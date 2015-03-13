@@ -166,9 +166,55 @@ app.controller("Assignment", function ($scope, master) {
             "test5":["aadf", "aadaff", "aadfsaf"],
             "test6":["aadf", "aadaff", "aadfsaf"]
         };
-        
-        console.log(data);
 
+/*
+        <table class="randomtable">
+            <tr class="head">
+                <td>Group</td>
+                <td>Assessment 1</td>
+                <td>Assessment 2</td>
+                <td>Assessment 3</td>
+            </tr>
+            <tr class="r0">
+                <td>Jill</td>
+                <td>Smith</td>		
+                <td>50</td>
+                <td>50</td>
+            </tr>
+            <tr class="r1">
+                <td>Eve</td>
+                <td>1</td>
+                <td>Jackson</td>		
+                <td>94</td>
+            </tr>
+            <tr class="r0">
+                <td>John</td>
+                <td>1</td>
+                <td>Doe</td>		
+                <td>80</td>
+            </tr>
+        </table>
+*/
+        var script = "<table class='randomtable'>"+
+                        "<tr class='head'>"+
+                        "<td>Group</td>"+
+                        "<td>Assessment 1</td>"+
+                        "<td>Assessment 2</td>"+
+                        "<td>Assessment 3</td>"+
+                        "</tr>"+
+        
+        var i=0;
+        for (var key in data) {
+            var row = data[""+key];
+            script += "<tr class='r"+i+"'>"+
+                        "<td>"+key+"</td><td>"+row[0]+"</td><td>"+row[1]+"</td><td>"+row[2]+"</td>"+
+                      "</tr>";
+            i = (i+1)%2;
+        }
+        
+        script += "</table>";
+
+        $("#randomsection").html(script);
     };
 });
 
