@@ -84,17 +84,18 @@
 	}
 	
 	fetchLeaderBoard();
-	echo $data;
+	
 ?>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	<script>
     		createLeaderboard();
 	</script>
+	
 
 <div id="dvTable"></div>
 
-
+echo $data;
 
 </body>
 </html>
