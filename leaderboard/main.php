@@ -1,50 +1,47 @@
 <html>
 <head>
 <title>Demo</title>
-<style>
-#div1 {margin:10px;font-size:1.25em;}
-table {border-collapse:collapse;border:1px solid #7f7f7f;}
-td {border:1px solid #7f7f7f;width:50px;height:50px;text-align:center;}
-</style>
+
 </head>
 <body >
 test 
 test
 test
-<div id="div1"></div>
 
-<script>
-var totalRows = 5;
-var cellsInRow = 5;
-var min = 1;
-var max = 10;
 
-    function drawTable() {
-        // get the reference for the body
-        var div1 = document.getElementById('div1');
- 
-        // creates a <table> element
-        var tbl = document.createElement("table");
- 
-        // creating rows
-        for (var r = 0; r < totalRows; r++) {
-            var row = document.createElement("tr");
-	     
-	     // create cells in row
-             for (var c = 0; c < cellsInRow; c++) {
-                var cell = document.createElement("td");
-		getRandom = Math.floor(Math.random() * (max - min + 1)) + min;
-                var cellText = document.createTextNode(Math.floor(Math.random() * (max - min + 1)) + min);
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-            }           
-            
-	tbl.appendChild(row); // add the row to the end of the table body
-        }
-    
-     div1.appendChild(tbl); // appends <table> into <div1>
-}
-window.onload=drawTable; 
-</script>
+	<?php
+	
+	 //$query = "SELECT * FROM friends WHERE friendid = '".$_SESSION['user_id']."' AND allow = 1 ORDER BY first_name ASC";
+	
+	//$result = mysql_query($query) or die ("Query failed");
+	
+	
+	
+	echo "<table width = 100% border = '0' cellspacing = '2' cellpadding = '0'>";
+	
+	
+	
+	// loop to create rows
+	
+	//if(mysql_affected_rows() > 0){
+	
+	//while ($friendList = mysql_fetch_array($result)) {
+	
+	
+	
+	echo "<tr>"
+	
+	echo "<td>testrow</td>"
+	//. "<td><a href='memberindex.php?id = ".$friendList['id']."'><img src='".$friendList['friendImg']."' title='".$friendList['first_name']."' alt='".$friendList['first_name']."'/><br />".$friendList['first_name']."</a><br /></td> " 
+	
+	. "</tr> ";
+	
+	}
+	
+	
+	
+	echo "</table> "; ?>
+
+
 </body>
 </html>
