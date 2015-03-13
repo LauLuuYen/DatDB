@@ -84,6 +84,7 @@ app.controller("User", function ($scope, master) {
         } else if (!validateEmail($scope.account.email)) {
             $("#e3").html("Error: Please type in a valid email address");
             $("#e3").removeClass("invisible");
+            alert("email test");
             pass = false;
         }
         if ($scope.account.password == "") {
@@ -94,7 +95,7 @@ app.controller("User", function ($scope, master) {
             $("#e5").removeClass("invisible");
             pass = false;
         } else if ($scope.account.role == "student") {
-            if ($scope.groupname == "") {
+            if ($scope.account.groupname == "") {
                 $("#e6").removeClass("invisible");
                 pass = false;
             }
