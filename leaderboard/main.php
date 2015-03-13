@@ -1,50 +1,62 @@
 <html>
 <head>
-<title>Demo</title>
-<style>
-#div1 {margin:10px;font-size:1.25em;}
-table {border-collapse:collapse;border:1px solid #7f7f7f;}
-td {border:1px solid #7f7f7f;width:50px;height:50px;text-align:center;}
-</style>
+
+    <script type="text/javascript">
+        function GenerateTable() 
+        {
+            //Build an array containing Customer records.
+            var customers = new Array();
+            customers.push(["Customer Id", "Name", "Country"]);
+            customers.push([1, "John Hammond", "United States"]);
+            customers.push([2, "Mudassar Khan", "India"]);
+            customers.push([3, "Suzanne Mathews", "France"]);
+            customers.push([4, "Robert Schidner", "Russia"]);
+         
+            //Create a HTML Table element.
+            var table = document.createElement("TABLE");
+            table.border = "1";
+         
+            //Get the count of columns.
+            var columnCount = customers[0].length;
+         
+            //Add the header row.
+            var row = table.insertRow(-1);
+            for (var i = 0; i < columnCount; i++) {
+                var headerCell = document.createElement("TH");
+                headerCell.innerHTML = customers[0][i];
+                row.appendChild(headerCell);
+            }
+         
+            //Add the data rows.
+            for (var i = 1; i < customers.length; i++) 
+            {
+                row = table.insertRow(-1);
+                for (var j = 0; j < columnCount; j++) 
+                {
+                    var cell = row.insertCell(-1);
+                    cell.innerHTML = customers[i][j];
+                }
+            }   
+     
+            var dvTable = document.getElementById("dvTable");
+            dvTable.innerHTML = "";
+            dvTable.appendChild(table);
+        }
+    </script>
+
 </head>
 <body >
 test 
 test
 test
-<div id="div1"></div>
 
-<script>
-var totalRows = 5;
-var cellsInRow = 5;
-var min = 1;
-var max = 10;
+<input type="button" value="Generate Table" onclick="GenerateTable()" />
 
-    function drawTable() {
-        // get the reference for the body
-        var div1 = document.getElementById('div1');
- 
-        // creates a <table> element
-        var tbl = document.createElement("table");
- 
-        // creating rows
-        for (var r = 0; r < totalRows; r++) {
-            var row = document.createElement("tr");
-	     
-	     // create cells in row
-             for (var c = 0; c < cellsInRow; c++) {
-                var cell = document.createElement("td");
-		getRandom = Math.floor(Math.random() * (max - min + 1)) + min;
-                var cellText = document.createTextNode(Math.floor(Math.random() * (max - min + 1)) + min);
-                cell.appendChild(cellText);
-                row.appendChild(cell);
-            }           
-            
-	tbl.appendChild(row); // add the row to the end of the table body
-        }
-    
-     div1.appendChild(tbl); // appends <table> into <div1>
-}
-window.onload=drawTable; 
-</script>
+<hr />
+<div id="dvTable">
+</div>
+
+
+
 </body>
 </html>
