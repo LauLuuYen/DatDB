@@ -69,18 +69,23 @@ app.controller("Submit", function ($scope, master) {
     
     $scope.showAssignment = function(index) {
         $("#submission").show();
+        var status = assignment.report.status;
         var assignment = master.assignments[index];
         $scope.reportID = assignment.report.reportID;
         
         $("#deadline").html(assignment.deadline);
-        $("#status").html(assignment.report.status);
+        $("#status").html(status);
         $("#task").html(assignment.task);
         $(".fullreport").html(assignment.report.content);
         $("#name").html(assignment.report.fullname);
         
         //Show report if filled in
-        if (assignment.report.status != "Incomplete") {
+        if (status != "Incomplete") {
             $("#report").show();
+        }
+        if (status == "Complete") {
+            $("#submitsection").hide();
+            $("#uploadsection").hide();
         }
     };
 

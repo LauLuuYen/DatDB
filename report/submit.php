@@ -27,14 +27,14 @@
             <div class="fullreport"></div>
             <div>Uploaded by: <span id="name"></span></div>
 
-            <div class="finalise">
+            <div id="submitsection" class="finalise">
                 <div>Press submit to finalise the report</div>
                 <button class="finalsubmit" ng-click="submit()">Submit</button>
             </div>
             <div class="clean"></div>
         </div>
 
-        <div class="input_wrapper">
+        <div id="uploadsection" class="input_wrapper">
             <br><div class="heading2">Upload your Group Report:</div>
             <div>You can upload or update your group report as much you like until the deadline or
                 when you finalise the report after uploading it.
