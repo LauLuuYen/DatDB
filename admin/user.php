@@ -21,35 +21,37 @@
     
         <div class="input_wrapper">
             First Name:
-            <input type="text" class="input_text" ng-model="account.firstname" maxlength="40"></input>
+            <input type="text" class="input_text" ng-model="account.firstname" ng-change="onChange('e1')" maxlength="40"></input>
             <div id="e1" class="error invisible">Error: Please type in the first name</div>
         </div>
         
         <div class="input_wrapper">
             Last Name:
-            <input type="text" class="input_text" ng-model="account.lastname" maxlength="40"></input>
+            <input type="text" class="input_text" ng-model="account.lastname" ng-change="onChange('e2')"  maxlength="40"></input>
             <div id="e2" class="error invisible">Error: Please type in the last name</div>
         </div>
         
         <div class="input_wrapper">
             Email:
-            <input type="email" class="input_text" ng-model="account.email" maxlength="100"></input>
+            <input type="email" class="input_text" ng-model="account.email" ng-change="onChange('e3')" maxlength="100"></input>
             <div id="e3" class="error invisible">Error: Please type in the email address</div>
         </div>
         
         <div class="input_wrapper">
             Password:
-            <input type="password" class="input_text" ng-model="account.password" maxlength="40"></input>
+            <input type="password" class="input_text" ng-model="account.password" ng-change="onChange('e4')" maxlength="40"></input>
             <div id="e4" class="error invisible">Error: Please type in the password</div>
         </div>
 
         <div class="input_wrapper">
             User Role:<br>
             <label>
-                <input type="radio" ng-model="account.role" value="student" onclick="showGroup(true)"> Student</input>
+                <input type="radio" ng-model="account.role" value="student"
+                    ng-change="onChange('e5')" onclick="showGroup(true)"> Student</input>
             </label><br>
             <label>
-                <input type="radio" ng-model="account.role" value="admin" onclick="showGroup(false)"> Admin</input>
+                <input type="radio" ng-model="account.role" value="admin"
+                    ng-change="onChange('e5')" onclick="showGroup(false)"> Admin</input>
             </label>
             <div id="e5" class="error invisible">Error: Please select a user role</div>
         </div>
