@@ -6,7 +6,7 @@
         {
             //Build an array containing Customer records.
             var customers = new Array();
-            customers.push(["Customer Id", "Name", "Country"]);
+            customers.push(["Assignment Title", "Group Name", "Average mark"]);
             customers.push([1, "John Hammond", "United States"]);
             customers.push([2, "Mudassar Khan", "India"]);
             customers.push([3, "Suzanne Mathews", "France"]);
