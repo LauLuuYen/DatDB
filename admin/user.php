@@ -65,12 +65,12 @@
         <div id="groupsection" class="input_wrapper conceal">
             Select an available group:
             <select type="text" class="input_text" ng-model="account.grouplist"
-                ng-change="onChange('e6'); empty(groupname);"
+                ng-change="onChange('e6'); empty(false);"
                 ng-options="item.name for item in grouplist"></select>
             <br>--or--<br>
             Assign the user to a new group:
             <input type="text" class="input_text" ng-model="account.groupname"
-                ng-change="onChange('e6'); empty(grouplist.name);" maxlength="25"></input>
+                ng-change="onChange('e6'); empty(true);" maxlength="25"></input>
             <div id="e6" class="error invisible">Error: Please fill either of these entries</div>
         </div>
         
