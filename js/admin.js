@@ -94,7 +94,7 @@ app.controller("User", function ($scope, master) {
             $("#e5").removeClass("invisible");
             pass = false;
         } else if ($scope.account.role == "student") {
-            if ($scope.account.groupname == "") {
+            if ($scope.account.groupname == "" || $scope.account.grouplist.name == "") {
                 $("#e6").removeClass("invisible");
                 pass = false;
             }
