@@ -105,12 +105,12 @@ class Signup {
         //Create Admin account
         if ($this->role == $this->ROLES[0]) {
             
-            $this->createAdmin($roleID, $sql_helper);
+            $this->createAdmin($roleID);
             
         //Create Student account
         } else {
             
-            $this->createStudent($roleID, $sql_helper);
+            $this->createStudent($roleID);
         
         }
         
@@ -123,9 +123,9 @@ class Signup {
     *   @params: int - $roleID
     *   @return: none
     */
-    private function createAdmin($roleID, $sql_helper) {
+    private function createAdmin($roleID) {
     
-        if ($sql_helper->createUser($this->name, $this->lastname, $this->email, $this->password, $roleID, null)){
+        if ($this->sql_helper->createUser($this->name, $this->lastname, $this->email, $this->password, $roleID, null)){
             result(true, "Success");
         
         } else {
@@ -140,22 +140,22 @@ class Signup {
     *   @params: int - $roleID
     *   @return: none
     */
-    private function createStudent($roleID, $sql_helper) {
+    private function createStudent($roleID) {
     
-        $count = $sql_helper->getGroupSize();
+        $count = $this->sql_helper->getGroupSize();
 		if ($count >= 3) {
 			result(false, "Group is full");
 			return;
 
 		} else if ($count == 0) {
-			$groupID = $sql_helper->createGroup();
-            $forumID = $sql_helper->createForum($groupID);
+			$groupID = $this->sql_helper->createGroup();
+            $forumID = $this->sql_helper->createForum($groupID);
             		
 		} else {
-			$groupID = $sql_helper->getGroupID();
+			$groupID = $this->sql_helper->getGroupID();
 		}
 
-        if ($sql_helper->createUser($this->name, $this->lastname, $this->email, $this->password, $roleID, $groupID)){
+        if ($this->sql_helper->createUser($this->name, $this->lastname, $this->email, $this->password, $roleID, $groupID)){
             result(true, "Success");
         
         } else {
