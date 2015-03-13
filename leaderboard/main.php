@@ -2,15 +2,15 @@
 <head>
 
     <script type="text/javascript">
-        function GenerateTable() 
+        function createLeaderboard() 
         {
             //Build an array containing Customer records.
             var customers = new Array();
             customers.push(["Assignment Title", "Group Name", "Average mark"]);
-            customers.push([1, "John Hammond", "United States"]);
-            customers.push([2, "Mudassar Khan", "India"]);
-            customers.push([3, "Suzanne Mathews", "France"]);
-            customers.push([4, "Robert Schidner", "Russia"]);
+            customers.push([LG flex, "Parishilton", "4.5"]);
+            customers.push([LG flex, "Animatrix", "1.7"]);
+            customers.push([LG flex, "Mario Cart fans", "2.2"]);
+            customers.push([LG flex, "Cosplayer over9k", "5"]);
          
             //Create a HTML Table element.
             var table = document.createElement("TABLE");
@@ -48,7 +48,7 @@
 <body >
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	<script>
-    		GenerateTable();
+    		createLeaderboard();
 	</script>
 
 <div id="dvTable"></div>
