@@ -84,7 +84,6 @@ app.controller("User", function ($scope, master) {
         } else if (!validateEmail($scope.account.email)) {
             $("#e3").html("Error: Please type in a valid email address");
             $("#e3").removeClass("invisible");
-            alert("email test");
             pass = false;
         }
         if ($scope.account.password == "") {

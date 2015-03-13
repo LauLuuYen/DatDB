@@ -39,7 +39,7 @@
         
         <div class="input_wrapper">
             Email:
-            <input type="email" class="input_text" ng-model="account.email" ng-change="onChange('e3')" maxlength="100"></input>
+            <input type="text" class="input_text" ng-model="account.email" ng-change="onChange('e3')" maxlength="100"></input>
             <div id="e3" class="error invisible">Error: Please type in the email address</div>
         </div>
         
