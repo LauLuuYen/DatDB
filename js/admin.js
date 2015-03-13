@@ -60,8 +60,43 @@ app.controller("User", function ($scope, master) {
         role:"", grouplist:{name:""}
     };
 
-
+    $scope.onChange = function(id) {
+        var id = "#"+id;
+        if (!$(id).hasClass("invisible")) {
+            $(id).addClass("invisible");
+        }
+    };
+    
+    $scope.validate = function() {
+        var pass = true;
+        if ($scope.account.firstname == "") {
+            $("#e1").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.account.lastname == "") {
+            $("#e2").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.account.email == "") {
+            $("#e3").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.account.password == "") {
+            $("#e4").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.account.role == "") {
+            $("#e5").removeClass("invisible");
+            pass = false;
+        }
+        
+        return pass;
+    }
+    
     $scope.submit = function() {
+        if ($scope.validate()) {
+            alert("pass");
+        }
         return;
         $.ajax({
             type: "POST",
