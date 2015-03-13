@@ -142,17 +142,17 @@ class Signup {
     */
     private function createStudent($roleID) {
     
-        $count = $this->sql_helper->getGroupSize();
+        $count = $this->sql_helper->getGroupSize($this->groupname);
 		if ($count >= 3) {
 			result(false, "Group is full");
 			return;
 
 		} else if ($count == 0) {
-			$groupID = $this->sql_helper->createGroup();
+			$groupID = $this->sql_helper->createGroup($this->groupname);
             $forumID = $this->sql_helper->createForum($groupID);
             		
 		} else {
-			$groupID = $this->sql_helper->getGroupID();
+			$groupID = $this->sql_helper->getGroupID($this->groupname);
 		}
 
         if ($this->sql_helper->createUser($this->name, $this->lastname, $this->email, $this->password, $roleID, $groupID)){
