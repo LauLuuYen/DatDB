@@ -52,9 +52,9 @@ app.controller("Main", function ($scope, master) {
 
 app.controller("User", function ($scope, master) {
     $scope.navigation = "Home > Admin > Create User";
-    $scope.grouplist = {
+    $scope.grouplist = [
         {name: "Zordon"}
-    };
+    ];
     $scope.account = {
         firstname:"", lastname:"", email:"", password: "", groupname:"",
         role:"", grouplist:{name:""}
