@@ -1,4 +1,11 @@
 <div class="createuser">
+    <div class="heading">Create User</div>
+
+    <div class="linebreak"></div>
+
+    <div>Here you can create your user accounts for either a student or admin.</div>
+
+
     <!-- Create User form -->
     <form ng-submit="submit()">
     
