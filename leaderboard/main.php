@@ -55,8 +55,10 @@
 	function fetchLeaderBoard()
 	{
 		$stmt = $this->conn->prepare("SELECT groups.name,reports.groupid, reportid, AVG(score) FROM assessments INNER JOIN reports ON (assessments.reportid = reports.id) INNER JOIN groups ON (reports.groupid = groups.id) GROUP BY reportid ORDER BY score DESC;");
-		/*
-		if ($stmt->execute()) {
+		
+		if ($stmt->execute()) 
+		{
+			/*
 	            $stmt->store_result();
 	            $stmt->bind_result($id,$title,$timestamp);
 	            
@@ -80,8 +82,9 @@
 	        {
 	            die("An error occurred performing a request");
 	        }
-	
 	}
+	
+	fetchLeaderBoard();
 ?>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
