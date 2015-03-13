@@ -60,6 +60,10 @@ app.controller("User", function ($scope, master) {
         role:"", grouplist:{name:""}
     };
 
+    $scope.empty = function (elem) {
+        console.log("f:"+elem);
+    };
+    
     $scope.onChange = function(id) {
         var id = "#"+id;
         if (!$(id).hasClass("invisible")) {
