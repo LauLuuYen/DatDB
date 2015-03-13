@@ -172,7 +172,7 @@ $name = "Jack2";
 $lastname = "Black2";
 $email = "mario@castlsg.com";
 $password = "abc123";
-$groupname= "Zdafeefef 2";
+$groupname= "Theterminator";
 $role = "Student";
 
 $signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
