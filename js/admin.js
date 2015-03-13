@@ -105,7 +105,7 @@ app.controller("User", function ($scope, master) {
     
     $scope.submit = function() {
         if ($scope.validate()) {
-            alert("pass");
+
             var firstname = $scope.account.firstname;
             var lastname = $scope.account.lastname;
             var email = $scope.account.email;
