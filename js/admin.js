@@ -60,8 +60,12 @@ app.controller("User", function ($scope, master) {
         role:"", grouplist:{name:""}
     };
 
-    $scope.empty = function (elem) {
-        console.log("f:"+elem);
+    $scope.empty = function (list) {
+        if (list && $scope.account.grouplist.name != "") {
+            $scope.account.grouplist.name = "";
+        } else if (!list && $scope.account.groupname != "" {
+            $scope.account.groupname = "";
+        }
     };
     
     $scope.onChange = function(id) {
