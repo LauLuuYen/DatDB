@@ -20,10 +20,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
     <script src="../js/admin.js"></script>
-    
-    <script >
+    <script src="../js/randomiser.js"></script>
 
-    </script>
 
 </head>
 

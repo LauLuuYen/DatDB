@@ -35,8 +35,7 @@ function getAssignList(list, limit) {
         data[""+list[i]] = getRandomList(list, list[i], limit);
         
     }
-
-    console.log(JSON.stringify(data));
+    
+    return data;
 }
-//var list = ["Zdafeefef 2", "Gangnam", "Parishilton", "Theterminator", "Housestark" ];
-//var newlist = getAssignList(list, 3);
+
