@@ -51,9 +51,7 @@
     		GenerateTable();
 	</script>
 
-<hr />
-<div id="dvTable">
-</div>
+<div id="dvTable"></div>
 
 
 
