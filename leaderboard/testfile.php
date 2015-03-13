@@ -4,6 +4,7 @@
 	SELECT groups.name,reports.groupid, reportid, AVG(score) FROM assessments INNER JOIN reports ON (assessments.reportid = reports.id) INNER JOIN groups ON (reports.groupid = groups.id) GROUP BY reportid ORDER BY score DESC;
 	*/
 	
+	/*
 	function fetchLeaderBoard()
 	{
 		$stmt = $this->conn->prepare("SELECT groups.name,reports.groupid, reportid, AVG(score) FROM assessments INNER JOIN reports ON (assessments.reportid = reports.id) INNER JOIN groups ON (reports.groupid = groups.id) GROUP BY reportid ORDER BY score DESC;");
@@ -34,4 +35,13 @@
 	        }
 	}
 	fetchLeaderBoard();
+	*/
+	
+	
+	function writeMsg() {
+	    echo "Hello world!";
+	}
+	
+	writeMsg(); // call the function
+	
 ?>
