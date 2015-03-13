@@ -112,7 +112,6 @@ class Signup {
             
             $this->createStudent($roleID, $sql_helper);
         
-        
         }
         
         
@@ -143,44 +142,27 @@ class Signup {
     */
     private function createStudent($roleID, $sql_helper) {
     
-        echo "create student";
-
-    }
-	    
-    /*
-    *   Attempt to assign user to a group
-    *   @params: none
-    *   @return: none
-    */
-	private function assignGroup()
-	{
-		$count = $this->getGroupSize();
-        
+        $count = $sql_helper->getGroupSize();
 		if ($count >= 3) {
 			result(false, "Group is full");
 			return;
 
 		} else if ($count == 0) {
-			$groupID = $this->createGroup();
-            		$forumID = $this->createForum($groupID);
+			$groupID = $sql_helper->createGroup();
+            $forumID = $sql_helper->createForum($groupID);
             		
 		} else {
-			$groupID = $this->getGroupID();
+			$groupID = $sql_helper->getGroupID();
 		}
 
+        if ($sql_helper->createUser($this->name, $this->lastname, $this->email, $this->password, $roleID, $groupID)){
+            result(true, "Success");
         
-        //RoleID and groupID gathered, now create user.
-		if ($this->createUser($roleID, $groupID)) {
-        
-
-            result(true, "User has been created successfully");
-            
         } else {
-            result(false, "Error creating User");
+            result(false, "Failed to create user account");
         }
-
-	}
-	
+        
+    }
     
 }
 
