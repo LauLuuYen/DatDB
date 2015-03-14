@@ -721,10 +721,11 @@ class SQL_Helper {
             while($stmt->fetch()) {
                 $row = array();
                 $row["groupID"] = $id;
+                $row["groupname"] = $name;
                 $row["users"] = [];
                 $row["reports"] = [];
                 $row["assessments"] = [];
-                $data["".$name] = $row;
+                $data[] = $row;
             }
 
             $stmt->free_result();

@@ -38,6 +38,8 @@ app.config(function($routeProvider) {
 
 app.controller("Main", function ($scope, master) {
 
+    getData(master);
+    
 });
 
 app.controller("User", function ($scope, master) {

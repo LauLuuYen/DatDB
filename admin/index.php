@@ -32,9 +32,12 @@ if(!$userSession->isLoggedIn()) { //Check admin
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
 
     <script type="text/javascript">
-        //var response = '<?php require_once "../php/getallforadmin.php"; echo json_encode($adminInfo->retrieve()); ?>';
-        //var data = JSON.parse(response);
+        var response = JSON.parse('<?php require_once "../php/get_profile.php";?>');
+        var data = {};
+        data["profile"] = response["profile"];
     </script>
+
+    <script src="../js/loader.js"></script>
     <script src="../js/admin.js"></script>
     <script src="../js/loader.js"></script>
     <script src="../js/randomiser.js"></script>
