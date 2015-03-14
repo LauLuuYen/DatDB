@@ -139,7 +139,7 @@ class Assignments {
 }
 
 
-
+/*
 $json_str = '{  
    "Zdafeefef 2":[  
       "Animatrix",
@@ -182,7 +182,7 @@ $json_str = '{
       "Gangnam"
    ]
 }';
-
+*/
 /*
 $title = "Tit";
 $task = "Exampletext113adfda3";
@@ -204,7 +204,7 @@ if($userSession->isLoggedIn()) {
         $title = $_POST["title"];
         $task = $_POST["task"];
         $deadline = $_POST["deadline"];
-        //$json_str = $_POST["assessment_list"];
+        $json_str = $_POST["assessment_list"];
 
         $assignment = new Assignments($title, $task, $deadline, $json_str);
         if ($assignment->checkInputs()) {

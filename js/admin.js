@@ -225,7 +225,7 @@ app.controller("Assignment", function ($scope, master) {
             var title = $scope.assignment.title;
             var content = $scope.assignment.content;
             var deadline = $scope.assignment.date;
-            var assessment_list = $scope.assignment.assessment_list;
+            var assessment_list = JSON.stringify($scope.assignment.assessment_list);
             console.log(assessment_list);
             
             showLoading();
@@ -239,7 +239,7 @@ app.controller("Assignment", function ($scope, master) {
                 },
                 dataType: "json",
                 async: true,
-                timeout: 60000,
+                timeout: 120000,
 
                 success: function (result) {
                     if (result.success) {
