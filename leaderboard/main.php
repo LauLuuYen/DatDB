@@ -82,7 +82,7 @@ class LeaderboardClass
 		var mycars = [{name:'Susita'}, {name:'BMW'}];
 		for (i in mycars)
 		{
-		  document.write("<br />" + mycars[i].name + "<br />");
+		  document.write("<div><br />" + mycars[i].name + "<br /></div>");
 		}
     		
 	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
