@@ -6,8 +6,8 @@
         {
             //Build an array containing assignment records.
             
-            //var jsLeaderBoardArray = <?php echo json_encode($leaderBoardDataArray) ?>;
-            //alert(JSON.parse(jsLeaderBoardArray));
+            var jsLeaderBoardArray = <?php echo json_encode($leaderBoardDataArray) ?>;
+            alert(jsLeaderBoardArray.join('\n'))
             var assigment = new Array();
             assigment.push(["Rank", "Group Name", "Average mark"]);
             assigment.push([1, "Parishilton", "4.5"]);
