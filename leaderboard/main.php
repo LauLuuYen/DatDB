@@ -75,7 +75,7 @@ class LeaderboardClass
 	<script>
 		
     		createLeaderboard();
-    		var js_array = [<?php echo '"'.implode('","', $$leaderBoardDataArray).'"' ?>];
+    		var js_array = [<?php echo '"'.implode('","', $leaderBoardDataArray).'"' ?>];
     		js_array.toString();
 	</script>
 	
