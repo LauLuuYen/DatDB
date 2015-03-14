@@ -5,6 +5,7 @@
         function createLeaderboard() 
         {
             //Build an array containing assignment records.
+            
             var assigment = new Array();
             assigment.push(["Rank", "Group Name", "Average mark"]);
             assigment.push([1, "Parishilton", "4.5"]);
@@ -66,8 +67,8 @@ class LeaderboardClass
 	$leaderboardinstance = new LeaderboardClass();
 	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
 	//echo json_encode($leaderBoardDataArray);
-	print_r($leaderBoardDataArray);
-	echo "Hello World";
+	//print_r($leaderBoardDataArray);
+	//echo "Hello World";
 ?>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
@@ -77,7 +78,6 @@ class LeaderboardClass
 	
 
 <div id="dvTable"></div>
-
 
 </body>
 </html>
