@@ -76,13 +76,7 @@ class LeaderboardClass
 		
     		createLeaderboard();
     		var js_array = JSON.parse("<?php echo json_encode($array); ?>;
-    		
-    		  for (var key in JSONObject) {
-    		if (JSONObject.hasOwnProperty(key)) {
-      		alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
-    }
-  }
-    		
+
     		//alert(js_array);
 	</script>
 	
