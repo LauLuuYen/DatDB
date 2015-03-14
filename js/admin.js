@@ -38,18 +38,19 @@ app.config(function($routeProvider) {
 
 app.controller("Main", function ($scope, master) {
 
+    /*
     getData(function(data1,data2,data3) {
 
         master["assignments"] = data1["assignments"];
-        master["available_groups"] = data2["available_groups"];
         master["groups"] = data3["groups"];
         console.log(JSON.stringify(master));
     });
-    
+    */
 });
 
 app.controller("User", function ($scope, master) {
-    formatList(master.available_groups);
+
+
     $scope.grouplist = [
         {name: "TODO pull real data"}
     ];
@@ -152,6 +153,10 @@ app.controller("User", function ($scope, master) {
 
     };
     
+    getData(function(groups) {
+        console.log(groups);
+        master["available_groups"] = groups;
+    });
     
 });
 

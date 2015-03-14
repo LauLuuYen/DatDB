@@ -13,10 +13,35 @@
     }
 
     function formatList(list) {
+        console.log("d:" + list);
+        var data = {};
         for (i =0; i<list.length ; i++) {
-            console.log(list[0]);
+            data.push({name:list[0]});
         }
+        console.log(data);
     }
+
+    function getData(callback) {
+        $.ajax({
+            type: "GET",
+            url:"http://lauluuyen.azurewebsites.net/php/get_allavailablegroups.php" ,
+            crossDomain: true,
+            dataType: "json",
+            async: true,
+            timeout: 10000,
+
+            success: function (data) {
+                //callback(data["available_groups"]);
+                console.log("f:" + data);
+                formatList(data["available_groups"]);
+            },
+
+            error: function(xhr, status, error) {
+                getData(callback);
+            }
+        });
+    }
+
 
 </script>
 

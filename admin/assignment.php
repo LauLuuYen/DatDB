@@ -17,6 +17,8 @@
         return date > now;
     }
 
+
+
 </script>
 
 <div class="createassignment">
