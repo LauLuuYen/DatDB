@@ -226,7 +226,7 @@ app.controller("Assignment", function ($scope, master) {
             var content = $scope.assignment.content;
             var deadline = $scope.assignment.date;
             var assessment_list = $scope.assignment.assessment_list;
-            
+            console.log(assessment_list);
             
             showLoading();
             $.ajax({
@@ -239,7 +239,7 @@ app.controller("Assignment", function ($scope, master) {
                 },
                 dataType: "json",
                 async: true,
-                timeout: 10000,
+                timeout: 60000,
 
                 success: function (result) {
                     if (result.success) {

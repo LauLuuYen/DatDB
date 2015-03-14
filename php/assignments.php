@@ -139,7 +139,7 @@ class Assignments {
 }
 
 
-/*
+
 $json_str = '{  
    "Zdafeefef 2":[  
       "Animatrix",
@@ -183,9 +183,9 @@ $json_str = '{
    ]
 }';
 
-
+/*
 $title = "Tit";
-$task = "Exampletext1133";
+$task = "Exampletext113adfda3";
 $deadline = "21/01/2015";
 $assignment = new Assignments($title, $task, $deadline, $json_str);
 if ($assignment->checkInputs()) {
@@ -199,15 +199,18 @@ require_once "session.php";
 if($userSession->isLoggedIn()) {
 
     if(!empty($_POST)) {
+    
+        
         $title = $_POST["title"];
         $task = $_POST["task"];
         $deadline = $_POST["deadline"];
-        $json_str = $_POST["assessment_list"];
+        //$json_str = $_POST["assessment_list"];
 
         $assignment = new Assignments($title, $task, $deadline, $json_str);
         if ($assignment->checkInputs()) {
             $assignment->create();
         }
+        
 
     } else {
         result(false, "Error in request!");
