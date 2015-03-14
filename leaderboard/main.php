@@ -66,7 +66,9 @@ class LeaderboardClass
 }
 	$leaderboardinstance = new LeaderboardClass();
 	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
-	echo json_encode($leaderBoardDataArray);
+	
+	$jsonLeaderboardData = json_encode($leaderBoardDataArray);
+	echo $jsonLeaderboardData;
 	//print_r($leaderBoardDataArray);
 	//echo "Hello World";
 ?>
@@ -75,7 +77,13 @@ class LeaderboardClass
 	<script>
 		
     		createLeaderboard();
-
+		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+		 for (var key in jsLeaderboardJSON) 
+		 {
+		    if (JSONObject.hasOwnProperty(key)) {
+		      console.log(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
+		    }
+		
     		//alert(js_array);
 	</script>
 	
