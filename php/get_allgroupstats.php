@@ -12,7 +12,7 @@ class Get {
     
     public function retrieve() {
         
-        require_once "../include/sql_helper.php";
+        require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
         
         $data = array();
