@@ -66,7 +66,7 @@ class LeaderboardClass
 }
 	$leaderboardinstance = new LeaderboardClass();
 	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
-	//echo json_encode($leaderBoardDataArray);
+	echo json_encode($leaderBoardDataArray);
 	//print_r($leaderBoardDataArray);
 	//echo "Hello World";
 ?>
@@ -74,7 +74,7 @@ class LeaderboardClass
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	<script>
 		var testArray = <?php echo json_encode($leaderBoardDataArray, JSON_PRETTY_PRINT) ?>;
-		alert("WTF");
+		
     		createLeaderboard();
 	</script>
 	
