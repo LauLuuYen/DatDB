@@ -176,19 +176,34 @@ a:active{
 /*
 *  Create Assignment
 */
-.randomtable {
+.createassignment #randombtn {
+    margin:5px 0;
     background-color:white;
-    border:2px solid grey;
-    width:100%;
+    border: 2px solid lightblue;
+    width:100px;
+    padding-left:12px;
+    cursor:pointer;
 }
 
-.randomtable .head {
-    background-color:darkgrey;
+.createassignment #submitbtn {
+    float:right;
+    width:200px;
+    height:45px;
+    margin-top:15px;
+    margin-bottom:50px;
+    background-color:white;
+    border: 2px solid lightblue;
+    cursor:pointer;
+}
+
+.createassignment #randombtn:hover, .createassignment #submitbtn:hover {
+    background-color:yellow;
+}
+
+.createassignment #submitbtn:disabled {
+    background-color:grey;
     color:white;
-}
-
-.randomtable .r1 {
-    background-color:lightblue;
+    border: 2px solid black;
 }
 
 

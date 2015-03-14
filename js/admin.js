@@ -165,9 +165,9 @@ app.controller("Assignment", function ($scope, master) {
         var script = "<table class='randomtable'>"+
                         "<tr class='head'>"+
                         "<td>Group</td>"+
-                        "<td>Assessment 1</td>"+
-                        "<td>Assessment 2</td>"+
-                        "<td>Assessment 3</td>"+
+                        "<td>Assessing (1)</td>"+
+                        "<td>Assessing (2)</td>"+
+                        "<td>Assessing (3)</td>"+
                         "</tr>";
         
         var i=0;
@@ -183,6 +183,42 @@ app.controller("Assignment", function ($scope, master) {
 
         $("#randomsection").html(script);
     };
+    
+    $scope.onChange = function(id) {
+        var id = "#"+id;
+        if (!$(id).hasClass("invisible")) {
+            $(id).addClass("invisible");
+        }
+    };
+    
+    $scope.validate = function() {
+        var pass = true;
+        if ($scope.assignment.title == "") {
+            $("#e1").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.assignment.content == "") {
+            $("#e2").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.assignment.date == "") {
+            $("#e3").html("Error: Please select a date");
+            $("#e3").removeClass("invisible");
+            pass = false;
+        } else if (!isDateAfter($scope.assignment.date)) {
+            $("#e3").html("Error: Please select a future date");
+            $("#e3").removeClass("invisible");
+            pass = false;
+        }
+        return pass;
+    }
+    
+    $scope.submit = function() {
+        if ($scope.validate()) {
+            alert("pass: " + $scope.assignment.date);
+        }
+    };
+    $scope.randomise();
 });
 
 app.controller("Groups", function ($scope, master) {

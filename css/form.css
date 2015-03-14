@@ -18,7 +18,12 @@
 
 .input_text.content {
     box-sizing: border-box;
-    height:200px;
+    height:150px;
+}
+
+.input_text.date {
+    width:150px;
+    cursor:pointer;
 }
 
 .input_text.login {
@@ -63,5 +68,22 @@ textarea {
 .conceal {
     display:none;
 }
+
+.randomtable {
+    background-color:white;
+    border:2px solid grey;
+    width:100%;
+    margin:10px 0;
+}
+
+.randomtable .head {
+    background-color:darkgrey;
+    color:white;
+}
+
+.randomtable .r1 {
+    background-color:lightblue;
+}
+
 
 

@@ -1,5 +1,6 @@
 <?php
 
+date_default_timezone_set("GMT");
 
 require_once "config.php";
 
@@ -149,6 +150,71 @@ class SQL_Helper {
 	}
     
     
+    /*
+    *   Create assignment
+    *   @params: string - $title, string - $task, string - $deadline
+    *   @return: int - $assignmentID
+    */
+    public function createAssignment($title, $task, $deadline) {
+        $timestamp = date("Y-m-d H:i:s");
+
+        $stmt = $this->conn->prepare("INSERT INTO assignments (title, task, deadline, timestamp) values(?,?,?,?)");
+        $stmt->bind_param("ssss", $title, $task, $deadline, $timestamp);
+        
+        if ($stmt->execute())  {
+            $assignmentID = mysqli_insert_id($this->conn);
+            $stmt->close();
+            return $assignmentID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+
+
+    /*
+    *   Create assessment
+    *   @params: int - $groupID, int - $reportID
+    *   @return: bool - $success
+    */
+    public function createAssessment($groupID, $reportID) {
+        $statusid = $this->getStatusID("Incomplete");
+        
+        $stmt = $this->conn->prepare("INSERT INTO assessments (groupid, reportid, statusid) values (?,?,?)");
+        $stmt->bind_param("iii", $groupID, $reportID, $statusid);
+        
+        if ($stmt->execute())  {
+            $stmt->close();
+            return true;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+
+
+    /*
+    *   Create report
+    *   @params: int - $assignmentID, int - $groupid
+    *   @return: int - $reportID
+    */
+    public function createReport($assignmentID, $groupid) {
+        $statusid = $this->getStatusID("Incomplete");
+
+        $stmt = $this->conn->prepare("INSERT INTO reports (groupid, assignmentid, statusid) values (?,?,?)");
+        $stmt->bind_param("iii", $groupid, $assignmentID, $statusid);
+    
+        if ($stmt->execute())  {
+            $reportID = mysqli_insert_id($this->conn);
+            $stmt->close();
+            return $reportID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+
+
     /*
     *   Get all assignments given a groupID
     *   @params: int - $groupID
@@ -550,6 +616,36 @@ class SQL_Helper {
             die("An error occurred performing a request");
         }
 	}
+    
+    
+    /*
+    *   Get groupID and reportIDs
+    *   @params: none
+    *   @return: array - $data
+    */
+    public function getGroupReportIDs() {
+        $stmt = $this->conn->prepare("SELECT * FROM groups");
+
+        if ($stmt->execute())  {
+            $stmt->store_result();
+            $stmt->bind_result($id, $name);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $row = array();
+                $row["groupid"] = $id;
+                $row["reportid"] = -1;
+                $data["" . $name] = $row;	
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
     
     
     /*

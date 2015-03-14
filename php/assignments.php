@@ -9,8 +9,6 @@ if (DEBUG) {
     error_reporting(E_ALL & ~E_NOTICE);
 }
 
-include "include/config.php";//TODO remove
-
 
 /*
 *   Echoes to the client the result of the process.
@@ -33,10 +31,10 @@ class Assignments {
     *   @return: none
     */
 	public function __construct($title, $task, $deadline, $assessmentlist) {
-		$this->title = $title;
-		$this->task = $task;
-		$this->deadline = $deadline;
-		$this->assessmentlist = $assessmentlist;
+		$this->title = strtolower(ucwords(trim($title)));
+		$this->task = trim($task);
+		$this->deadline = trim($deadline);
+		$this->assessmentlist = trim($assessmentlist);
 	}
 	
     
@@ -46,178 +44,102 @@ class Assignments {
     *   @return: none
     */
 	public function checkInputs() {
-	/*
-        if (strlen($this->name) == 0) {
-            result(false, "First name must be set");
-            
-        } else if (strlen($this->lastname) == 0) {
-            result(false, "Last name must be set");
-            
-        } else if (strlen($this->email) == 0) {
-            result(false, "Email must be set");
-            
-        } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            result(false, "Invalid email");
-            
-        } else if (strlen($this->password) == 0) {
-            result(false, "Password must be set");
-            
-        } else if (strlen($this->password) <= 5) {
-            result(false, "Password too short");
 
-        } else if (strlen($this->groupname) == 0) {
-            result(false, "Group name must be set");
+        if (strlen($this->title) == 0 || is_null($this->title)) {
+            result(false, "Title must be set");
+    
+        } else if (strlen($this->title) > 80) {
+            result(false, "Title too long");
+        
+        } else if (strlen($this->task) == 0 || is_null($this->task)) {
+            result(false, "Task must be set");
+
+        } else if (strlen($this->task) > 800) {
+            result(false, "Task too long");
             
-		} else if (!in_array($this->role, $this->ROLES)) {
-			result(false, "Role not found");
-            
+        } else if (strlen($this->deadline) == 0 || is_null($this->deadline)) {
+            result(false, "Deadline must be set");
+        
+        } else if (!$this->validDate($this->deadline)) {
+            result(false, "Deadline not a date");
+        
+        } else if (!$this->validJSON($this->assessmentlist)) {
+            result(false, "Assessment list not a JSON");
+        
 		} else {
             return true;
         }
 
         return false;
-	*/
+
 	}
 
-public function create()
-{
-	$this->conn = connectDB();
-	
-	$assignmentID = $this->createAssignment();
-	if($assignmentID <= 0)
-	{
-		result (false, "error inserting assignment");
-		return;
-	}
-	
-	$this->createReports($assignmentID);
-	closeDB($this->conn);
-	
-}
-
-private function createAssignment() {
-    //TODO add timestamp
-	$stmt = $this->conn->prepare("INSERT INTO assignments (title, task, deadline) values(?,?,?)");
-	$stmt->bind_param("sss", $this->title, $this->task, $this->deadline);
-	if ($stmt->execute()) 
-	{
-	  $ID = mysqli_insert_id($this->conn);
-	  return $ID;
-        } 
-        else 
-        {
-            die("An error occurred performing a request");
-        }
-}
-
-private function createReports($assignmentID)
-{	
-	$data = $this->getGroupIDs();
-
-
-	foreach ($data as &$row) {
-		$groupID = $row["groupid"];
-		$reportID = $this->createReport($assignmentID, $groupID);
-		$row["reportid"] = $reportID;
-	}
-	$assessmentlist = json_decode($this->assessmentlist, true);
-
-	foreach($assessmentlist as $key => $grouplist)
-	{
-		$groupID = $data["".$key]["groupid"];
+    private function validDate($date) {
+        $d = DateTime::createFromFormat("d/m/Y", $date);
+        return $d && $d->format("d/m/Y") == $date;
+    }
     
-		foreach($grouplist as $groupname)
-		{
-			$reportID = $data["".$groupname]["reportid"];
-			//echo $groupID. " assesses ". $reportID. "<br>";
-			if (!$this->createAssessment($groupID, $reportID)) {
-				result(false, "Error creating assessment");	
-				return;
-			}
-		}
- 
-	}
-	result(true, "Success");
-}
+    private function validJSON($json) {
+        $obj = json_decode($json);
+        return $obj !== null;
+    }
+    
+    private function reformatDate($date) {
+        $parts = explode("/", $date);
+        return $parts[2] . "/". $parts[1] . "/". $parts[0];
+    }
+    
+    public function create() {
+    
+        require_once "include/sql_helper.php";
+        $this->sql_helper = new SQL_Helper();
+        
+        //Create the assignment
+        $date = $this->reformatDate($this->deadline);
 
-private function createReport($assignmentID, $groupid)
-{
-	$statusid = 1;
-	$stmt = $this->conn->prepare("INSERT INTO reports (groupid, assignmentid, statusid) values (?,?,?)");
-	$stmt->bind_param("iii", $groupid, $assignmentID, $statusid);
-	if ($stmt->execute()) 
-	{
-		$stmt->close();
-	  $ID = mysqli_insert_id($this->conn);
-	  return $ID;
-        } 
-        else 
-        {
-            die("An error occurred performing a request");
+        $assignmentID = $this->sql_helper->createAssignment($this->title, $this->task, $date);
+        if($assignmentID <= 0) {
+            result (false, "error inserting assignment");
+            return;
         }
-}
 
-private function getGroupIDs()
-{
-	$stmt = $this->conn->prepare("SELECT * FROM groups");
-	
-	if ($stmt->execute()) 
-	   {
-	   	$stmt->store_result();
-	   	$stmt->bind_result($id, $name);
-	   	$data = array();
-	   	while($stmt->fetch())
-	   	{
-	   		$row = array();
-			$row["groupid"] = $id;
-			$row["reportid"] = -1;
-	   		$data["" . $name] = $row;	
-	   	}
-	   	
-	   	$stmt->free_result();
-            	$stmt->close();
-            	return $data;
-            	
-        } else {
-            die("An error occurred performing a request");
+        //Get Group reportIDs
+        $data = $this->sql_helper->getGroupReportIDs();
+        
+        //Create a report for each group
+        foreach ($data as &$row) {
+            $groupID = $row["groupid"];
+            $reportID = $this->sql_helper->createReport($assignmentID, $groupID);
+            $row["reportid"] = $reportID;
         }
-	
+        
+        //Decode the assessment list to start assigning
+        $assessmentlist = json_decode($this->assessmentlist, true);
+        
+        //Create assessement report link
+        foreach($assessmentlist as $key => $grouplist) {
+            $groupID = $data["".$key]["groupid"];
+        
+            foreach($grouplist as $groupname) {
+                $reportID = $data["".$groupname]["reportid"];
+                
+                if (!$this->sql_helper->createAssessment($groupID, $reportID)) {
+                    result(false, "Error creating assessment");	
+                    return;
+                }
+            }
+     
+        }
+        
+        result(true, "Success");
+
+        $this->sql_helper->close();
+    }
+
 }
 
-private function createAssessment($groupID, $reportID) {
-	$statusid = 1;
-	$stmt = $this->conn->prepare("INSERT INTO assessments (groupid, reportid, statusid) values (?,?,?)");
-	$stmt->bind_param("iii", $groupID, $reportID, $statusid);
-	if ($stmt->execute()) 
-	{
-		$stmt->close();
-		return true;
-        } 
-	return false;
-}
 
-}
 /*
-if(!empty($_POST))
-{
-	$name = $_POST['name'];
-	$lastname = $_POST['lastname'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	$groupname= $_POST['groupname'];
-	$role = $_POST['role'];
-	$signup = new Signup($name, $lastname, $email, $password, $groupname, $role);
-	if ($signup->checkInputs()) {
-	    $signup->register();
-	}
-
-}
-else
-{
-	result(false, "Permission Denied");
-}
-
-*/
 $json_str = '{  
    "Zdafeefef 2":[  
       "Animatrix",
@@ -260,11 +182,42 @@ $json_str = '{
       "Gangnam"
    ]
 }';
-$title = "lggflex2";
-$task = "Exampletext";
-$deadline = "02/02/02";
+
+
+$title = "Tit";
+$task = "Exampletext1133";
+$deadline = "21/01/2015";
 $assignment = new Assignments($title, $task, $deadline, $json_str);
-$assignment->create();
+if ($assignment->checkInputs()) {
+    $assignment->create();
+}
+*/
+
+
+require_once "session.php";
+
+if($userSession->isLoggedIn()) {
+
+    if(!empty($_POST)) {
+        $title = $_POST["title"];
+        $task = $_POST["task"];
+        $deadline = $_POST["deadline"];
+        $json_str = $_POST["assessment_list"];
+
+        $assignment = new Assignments($title, $task, $deadline, $json_str);
+        if ($assignment->checkInputs()) {
+            $assignment->create();
+        }
+
+    } else {
+        result(false, "Error in request!");
+    }
+
+} else {
+    result(false, "Session timeout");
+}
+
+
 
 ?>
 
