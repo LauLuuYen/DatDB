@@ -327,12 +327,12 @@ class SQL_Helper {
     */
     public function getAllThreads($forumID)
     {
-        $stmt = $this->conn->prepare("SELECT id,title,timestamp FROM thread WHERE forumid=?");
+        $stmt = $this->conn->prepare("SELECT id,title FROM thread WHERE forumid=?");
         $stmt->bind_param("i", $forumID);
         
          if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($id,$title,$timestamp);
+            $stmt->bind_result($id,$title);
             
             $data = array();
             while($stmt->fetch())
@@ -340,7 +340,6 @@ class SQL_Helper {
                 $row = array();
                 $row["threadID"] = $id;
                 $row["title"] = $title;
-                $row["timestamp"] = $timestamp;
                 $data[] = $row;
                
             }
@@ -358,10 +357,10 @@ class SQL_Helper {
 
     /*
     *   Get all the comments given a threadID
-    *   @params: int - $threadID
+    *   @params: int - $threadID, bool - $full
     *   @return: array - $data
     */
-    public function getAllComments($threadID)
+    public function getAllComments($threadID, $full)
     {
         $stmt = $this->conn->prepare("SELECT C.id, U.name, U.lastname, C.content, C.timestamp FROM comment C JOIN users U ON U.id = C.userID WHERE threadID=?;");
         $stmt->bind_param("i", $threadID);
@@ -371,13 +370,14 @@ class SQL_Helper {
             $stmt->bind_result($id, $name, $lastname, $content, $timestamp);
             
             $data = array();
-            while($stmt->fetch())
-            {
+            while($stmt->fetch()) {
                 $row = array();
-                $row["commentID"] = $id;
                 $row["fullname"] = $name . " " . $lastname;
-                $row["content"] = str_replace("\n", "<br/>", $content);
                 $row["timestamp"] = $timestamp;
+                if ($full) {
+                    $row["commentID"] = $id;
+                    $row["content"] = str_replace("\n", "<br/>", $content);
+                }
                 $data[] = $row;
                
             }
@@ -707,7 +707,7 @@ class SQL_Helper {
     
     /*
     *   Get all groups for the admin
-    *   @params: none
+    *   @params: bool - $stats
     *   @return: array - $data
     */
     public function getAllGroups($stats) {
