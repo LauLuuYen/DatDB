@@ -673,7 +673,7 @@ class SQL_Helper {
 	
     
     /*
-    *   Get all assignments
+    *   Get all assignments for the admin
     *   @params: none
     *   @return: array - $data
     */
@@ -692,7 +692,39 @@ class SQL_Helper {
                 $row["task"] = str_replace("\n", "<br/>", $task);
                 $row["deadline"] = $deadline;
                 $row["created"] = $timestamp;
-                $data["" . $name] = $row;	
+                $data[] = $row;
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+
+    
+    /*
+    *   Get all groups for the admin
+    *   @params: none
+    *   @return: array - $data
+    */
+    public function getAllGroups() {
+        $stmt = $this->conn->prepare("SELECT id, name FROM groups;");
+        
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($id, $name);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $row = array();
+                $row["groupID"] = $id;
+                $row["users"] = [];
+                $row["reports"] = [];
+                $row["assessments"] = [];
+                $data["".$name] = $row;
             }
 
             $stmt->free_result();
@@ -704,6 +736,129 @@ class SQL_Helper {
         }
     }
     
+    
+    /*
+    *   Get all students in a group
+    *   @params: none
+    *   @return: array - $data
+    */
+    public function getAllStudentInGroup($groupID) {
+        $stmt = $this->conn->prepare("SELECT id, name, lastname, email, timestamp FROM users WHERE groupID=?;");
+        $stmt->bind_param("i", $groupID);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($id, $name, $lastname, $email, $timestamp);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $row = array();
+                $row["userID"] = $id;
+                $row["fullname"] = $name . " " . $lastname;
+                $row["email"] = $email;
+                $row["created"] = $timestamp;
+                $data[] = $row;
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+
+
+    /*
+    *   Get all assessments made by a group
+    *   @params: none
+    *   @return: array - $data
+    */
+    public function getAllAssessmentsInGroup($groupID) {
+        $stmt = $this->conn->prepare("SELECT reportID, current_status, feedback, score, userid, timestamp FROM assessments A JOIN status S ON A.statusID = S.id WHERE groupID=?");
+        $stmt->bind_param("i", $groupID);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($reportID, $status, $feedback, $score, $userID, $timestamp);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $row = array();
+                $row["reportID"] = $reportID;
+                $row["status"] = $status;
+                $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
+                $row["score"] = is_null($score) ? "-":$score;
+                $row["userID"] = is_null($userID) ? "":$userID;
+                $row["created"] = is_null($timestamp) ? "":$timestamp;
+                $data[] = $row;
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    
+    /*
+    *   Get all reports made by a group
+    *   @params: none
+    *   @return: array - $data
+    */
+    public function getAllReportsInGroup($groupID) {
+        $stmt = $this->conn->prepare("SELECT R.id, assignmentid, current_status, content, userid, timestamp FROM reports R JOIN status S ON R.statusid = S.id WHERE groupid =?;");
+        $stmt->bind_param("i", $groupID);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($reportID, $assignmentID, $status, $content, $userID, $timestamp);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $row = array();
+                $row["reportID"] = $reportID;
+                $row["assignmentID"] = $assignmentID;
+                $row["status"] = $status;
+                $row["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
+                $row["userID"] = is_null($userID) ? "":$userID;
+                $row["created"] = is_null($timestamp) ? "":$timestamp;
+                $data[] = $row;
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    public function getAvailableGroups() {
+        $stmt = $this->conn->prepare("SELECT G.name, COUNT(*) FROM users U JOIN groups G ON U.groupid = G.id GROUP BY groupid HAVING COUNT(*) < 3;");
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($name, $count);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $data[] = $name;
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
     
 	//Leaderboard function -----------------------------------------
 	public function fetchLeaderBoard()

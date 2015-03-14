@@ -4,16 +4,6 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-	var data = {
-        "profile" : {
-            "userID": 123,
-            "name": "tuan",
-            "lastname": "nguyen",
-            "groupid": 3
-        }
-        
-        
-	};
 
 	return data;
 });
@@ -47,11 +37,11 @@ app.config(function($routeProvider) {
 );
 
 app.controller("Main", function ($scope, master) {
-    $scope.navigation = "Home > Admin";
+
 });
 
 app.controller("User", function ($scope, master) {
-    $scope.navigation = "Home > Admin > Create User";
+
     $scope.grouplist = [
         {name: "TODO pull real data"}
     ];
@@ -232,7 +222,6 @@ app.controller("Assignment", function ($scope, master) {
 });
 
 app.controller("Groups", function ($scope, master) {
-    $scope.navigation = "Home > Admin > View groups";
 
     //alert("Testff");
 });

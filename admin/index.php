@@ -1,3 +1,13 @@
+<?php
+
+require_once "../php/session.php";
+
+if(!$userSession->isLoggedIn()) { //Check admin
+    $url = "http://" . $_SERVER["HTTP_HOST"];
+    header("Location: " . $url);
+}
+
+?>
 <!doctype html>
 <html lang="en" ng-app="myApp">
 
@@ -20,6 +30,11 @@
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+
+    <script type="text/javascript">
+        var response = '<?php require_once "../php/getallforadmin.php"; echo json_encode($adminInfo->retrieve()); ?>';
+        var data = JSON.parse(response);
+    </script>
     <script src="../js/admin.js"></script>
     <script src="../js/loader.js"></script>
     <script src="../js/randomiser.js"></script>
