@@ -231,7 +231,7 @@ app.controller("Assignment", function ($scope, master) {
             showLoading();
             $.ajax({
                 type: "POST",
-                url:"http://lauluuyen.azurewebsites.net/php/signup.php" ,
+                url:"http://lauluuyen.azurewebsites.net/php/assignment.php" ,
                 crossDomain: true,
                 data: {
                     title:title, task:content,
