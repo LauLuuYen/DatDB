@@ -20,17 +20,20 @@ if(!$userSession->isLoggedIn()) {
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link rel="stylesheet" type="text/css" href="../css/loader.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     
     
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+
     <script type="text/javascript">
         var response = '<?php require_once "../php/getforum.php"; echo json_encode($forum->retrieve()); ?>';
         console.log(response);
         var data = JSON.parse(response);
     </script>
+    <script src="../js/loader.js"></script>
     <script src="../js/forum.js?v=1.0"></script>
 
 </head>
