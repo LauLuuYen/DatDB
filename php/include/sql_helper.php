@@ -671,6 +671,40 @@ class SQL_Helper {
         }
 	}
 	
+    
+    /*
+    *   Get all assignments
+    *   @params: none
+    *   @return: array - $data
+    */
+    public function getAllAssignments() {
+        $stmt = $this->conn->prepare("SELECT id, title, task, deadline, timestamp FROM assignments;");
+        
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($id, $title, $task, $deadline, $timestamp);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $row = array();
+                $row["assignmentID"] = $id;
+                $row["title"] = $title;
+                $row["task"] = str_replace("\n", "<br/>", $task);
+                $row["deadline"] = $deadline;
+                $row["created"] = $timestamp;
+                $data["" . $name] = $row;	
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    
 	//Leaderboard function -----------------------------------------
 	public function fetchLeaderBoard()
 	{
