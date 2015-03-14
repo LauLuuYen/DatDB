@@ -83,7 +83,7 @@ class LeaderboardClass
 		    if (JSONObject.hasOwnProperty(key)) {
 		      console.log(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
 		    }
-		
+		 }
     		//alert(js_array);
 	</script>
 	
