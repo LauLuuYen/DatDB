@@ -1,5 +1,6 @@
 <html>
 <head>
+
     <script type="text/javascript">
         function createLeaderboard() 
         {
@@ -43,10 +44,12 @@
             dvTable.appendChild(table);
         }
     </script>
+
 </head>
 <body >
 
 <?php
+
 class LeaderboardClass 
 {
 	
@@ -68,14 +71,8 @@ class LeaderboardClass
 	//echo "Hello World";
 ?>
 
-
-
-
-
-
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	<script>
-		var book = <?php echo json_encode($leaderBoardDataArray, JSON_PRETTY_PRINT) ?>;
     		createLeaderboard();
 	</script>
 	
