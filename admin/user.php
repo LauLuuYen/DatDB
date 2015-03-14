@@ -12,6 +12,12 @@
         return re.test(email);
     }
 
+    function formatList(list) {
+        for (i =0; i<list.length ; i++) {
+            console.log(list[0]);
+        }
+    }
+
 </script>
 
 <div class="createuser">

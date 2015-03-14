@@ -849,6 +849,7 @@ class SQL_Helper {
             $data = array();
             
             while($stmt->fetch()) {
+                $row = array();
                 $data[] = $name;
             }
 

@@ -98,6 +98,7 @@ class Signup {
             result(false, "User already exist!");
             return;
         }
+        //TODO check group exist!
         
         //Get RoleID
         $roleID = $this->sql_helper->getRoleID($this->role);
