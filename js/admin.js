@@ -50,10 +50,6 @@ app.controller("Main", function ($scope, master) {
 
 app.controller("User", function ($scope, master) {
 
-
-    $scope.grouplist = [
-        {name: "TODO pull real data"}
-    ];
     $scope.account = {
         firstname:"", lastname:"", email:"", password: "", groupname:"",
         role:"", grouplist:{name:""}
@@ -155,7 +151,9 @@ app.controller("User", function ($scope, master) {
     
     getData(function(groups) {
         console.log(groups);
-        master["available_groups"] = groups;
+        $scope.$apply(function() {
+            $scope.grouplist = groups;
+        });
     });
     
 });

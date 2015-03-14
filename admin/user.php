@@ -13,12 +13,12 @@
     }
 
     function formatList(list) {
-        console.log("d:" + list);
-        var data = {};
+
+        var data = [];
         for (i =0; i<list.length ; i++) {
             data.push({name:list[0]});
         }
-        console.log(data);
+        console.log(JSON.stringify(data));
     }
 
     function getData(callback) {
@@ -31,9 +31,8 @@
             timeout: 10000,
 
             success: function (data) {
-                //callback(data["available_groups"]);
-                console.log("f:" + data);
-                formatList(data["available_groups"]);
+                var d = formatList(data["available_groups"]);
+                callback(d);
             },
 
             error: function(xhr, status, error) {
