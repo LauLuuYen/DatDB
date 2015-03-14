@@ -3,7 +3,7 @@
         showLoading();
         $.ajax({
             type: "GET",
-            url:"http://lauluuyen.azurewebsites.net/php/get_assignments.php" ,
+            url:"http://lauluuyen.azurewebsites.net/php/get_forum.php" ,
             crossDomain: true,
             dataType: "json",
             async: true,
@@ -11,14 +11,13 @@
 
             success: function (data) {
                 hideLoading();
-                alert(JSON.stringify(data));
+                callback(data["forum"]);
             },
 
             error: function(xhr, status, error) {
                 getData(callback);
             }
         });
-
     }
 </script>
 <div class="forum">

@@ -40,7 +40,8 @@ app.controller("Main", function ($scope, master, $location) {
     $scope.injectScript = function() {
         var threads = master.forum.threads;
         var script = "";
-        
+        console.log(JSON.stringify(master.forum));
+
         //Dynamically construct the thread list
         for (i = 0; i < threads.length; i++) {
             var thread = threads[i];
@@ -59,7 +60,10 @@ app.controller("Main", function ($scope, master, $location) {
                       "</div>";
         }
         
-        $scope.itemlist = script;
+        console.log(script);
+        $scope.$apply(function() {
+            $scope.itemlist = script;
+        });
     };
     
     
@@ -73,7 +77,7 @@ app.controller("Main", function ($scope, master, $location) {
     
 
     getData(function(forum) {
-        master.forum = forum;
+        master["forum"] = forum;
         $scope.injectScript();
     });
 });

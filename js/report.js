@@ -40,7 +40,10 @@ app.config(function($routeProvider, $locationProvider) {
 );
 
 app.controller("Main", function ($scope, master) {
-    $scope.profile = master.profile;
+
+    getData(function(assignments) {
+        master["assignments"] = assignments;
+    });
 
 
 });
