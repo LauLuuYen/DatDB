@@ -4,7 +4,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-
+    var data = null;
 	return data;
 });
 
