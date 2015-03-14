@@ -9,7 +9,8 @@ class LeaderboardClass
 	$this->sql_helper = new SQL_Helper();
 	
 	$leaderboardArray1 = $this->sql_helper->fetchLeaderBoard();	
-	echo $leaderboardArray1;
+	//echo $leaderboardArray1;
+	print_r($leaderboardArray1);
 	$this->sql_helper->close();
 	}
 	
