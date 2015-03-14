@@ -227,7 +227,33 @@ app.controller("Assignment", function ($scope, master) {
             var deadline = $scope.assignment.date;
             var assessment_list = $scope.assignment.assessment_list;
             
-            console.log (title + ", " + content +", " +deadline + ", " +assessment_list);
+            
+            showLoading();
+            $.ajax({
+                type: "POST",
+                url:"http://lauluuyen.azurewebsites.net/php/signup.php" ,
+                crossDomain: true,
+                data: {
+                    title:title, task:content,
+                    deadline:deadline, assessment_list:assessment_list
+                },
+                dataType: "json",
+                async: true,
+                timeout: 10000,
+
+                success: function (result) {
+                    if (result.success) {
+                        window.location.href="/admin/";
+                    } else {
+                        hideLoading();
+                        alert(result.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    hideLoading();
+                    alert("An error occurred.  Please try again in a few moments.");
+                }
+            });
         }
     };
     

@@ -17,6 +17,14 @@
         return date > now;
     }
 
+    function formatList(list) {
+        var data = [];
+        for (i =0; i<list.length ; i++) {
+            data.push(list[i].groupname);
+        }
+        return data;
+    }
+
     function getData(callback) {
         $.ajax({
             type: "GET",
@@ -27,7 +35,8 @@
             timeout: 10000,
 
             success: function (data) {
-                callback(data["grouplist"]);
+                var d = formatList(data["grouplist"]);
+                callback(d);
             },
 
             error: function(xhr, status, error) {
