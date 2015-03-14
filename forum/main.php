@@ -3,7 +3,7 @@
         showLoading();
         $.ajax({
             type: "GET",
-            url:"http://lauluuyen.azurewebsites.net/php/get_forum.php" ,
+            url:"http://lauluuyen.azurewebsites.net/php/get_threads.php" ,
             crossDomain: true,
             dataType: "json",
             async: true,
