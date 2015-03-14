@@ -2,7 +2,8 @@
 body {
     position: relative
 }
-body .overlay {
+
+._overlay {
     position:absolute;
     left:0;
     top:0;
@@ -11,6 +12,7 @@ body .overlay {
     background-color:rgba(0,0,0,0.3);
     z-index:999;
 }
+
 
 .whirly {
     position:absolute;

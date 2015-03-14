@@ -106,6 +106,8 @@ app.controller("User", function ($scope, master) {
     $scope.submit = function() {
         if ($scope.validate()) {
 
+            showLoading();
+            
             var firstname = $scope.account.firstname;
             var lastname = $scope.account.lastname;
             var email = $scope.account.email;
@@ -137,10 +139,12 @@ app.controller("User", function ($scope, master) {
                     if (result.success) {
                         window.location.href="/admin/";
                     } else {
+                        hideLoading();
                         alert(result.message);
                     }
                 },
                 error: function(xhr, status, error) {
+                    hideLoading();
                     alert("An error occurred.  Please try again in a few moments.");
                 }
             });
@@ -155,12 +159,13 @@ app.controller("User", function ($scope, master) {
 
 app.controller("Assignment", function ($scope, master) {
     $scope.assignment = {
-        title:"", content:"", date:""
+        title:"", content:"", date:"", assessment_list: "",
     };
     
     $scope.randomise = function() {
         var list = ["GroupA", "GroupG", "GroupB","GroupD","GroupE"];
         var data =  getAssignList(list, 3);
+        $scope.assignment.assessment_list = data;
 
         var script = "<table class='randomtable'>"+
                         "<tr class='head'>"+
@@ -215,7 +220,12 @@ app.controller("Assignment", function ($scope, master) {
     
     $scope.submit = function() {
         if ($scope.validate()) {
-            alert("pass: " + $scope.assignment.date);
+            var title = $scope.assignment.title;
+            var content = $scope.assignment.content;
+            var deadline = $scope.assignment.deadline;
+            var assessment_list = $scope.assignment.assessment_list;
+            
+            console.log (title + ", " + content +", " +deadline + ", " +assessment_list);
         }
     };
     $scope.randomise();
