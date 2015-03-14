@@ -77,14 +77,22 @@ class LeaderboardClass
 	<script>
 		
     		createLeaderboard();
-		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-		 for (var key in jsLeaderboardJSON) 
-		 {
-		    if (JSONObject.hasOwnProperty(key)) {
-		      alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
-		    }
-		 }
-    		//alert(js_array);
+    		
+    		var arr = [ {"id":"10", "class": "child-of-9"}, {"id":"11", "classd": "child-of-10"}];
+		var mycars = [{name:'Susita'}, {name:'BMW'}];
+		for (i in mycars)
+		{
+		  document.write("<br />" + mycars[i].name + "<br />");
+		}
+    		
+	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+	//	 for (var key in jsLeaderboardJSON) 
+	//	 {
+	//	    if (JSONObject.hasOwnProperty(key)) {
+	//	      alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
+	//	    }
+	//	 }
+    	//	alert(js_array);
 	</script>
 	
 
