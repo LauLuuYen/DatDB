@@ -71,8 +71,11 @@ app.controller("Main", function ($scope, master, $location) {
         $location.path("/thread/"+id);
     };
     
-    $scope.injectScript();
-    
+
+    getData(function(forum) {
+        master.forum = forum;
+        $scope.injectScript();
+    }
 });
 
 app.controller("CreateThread", function ($scope, master) {

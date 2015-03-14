@@ -31,9 +31,11 @@ if(!$userSession->isLoggedIn()) {
 
 
     <script type="text/javascript">
-        var response = '<?php require_once "../php/getassignments.php"; echo json_encode($assignment->retrieve()); ?>';
-        console.log(response);
-        var data = JSON.parse(response);
+        var profile = JSON.parse('<?php require_once "../php/get_profile.php";?> ');
+        var assignments = JSON.parse('<?php require_once "../php/get_assignments.php";?>');
+        var data = {};
+        data["profile"] = profile["profile"];
+        data["assignments"] = assignments["assignments"];
     </script>
     <script src="../js/report.js?v=1.0"></script>
     <script src="../js/loader.js"></script>
