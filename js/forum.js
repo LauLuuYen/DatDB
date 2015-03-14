@@ -75,7 +75,7 @@ app.controller("Main", function ($scope, master, $location) {
     getData(function(forum) {
         master.forum = forum;
         $scope.injectScript();
-    }
+    });
 });
 
 app.controller("CreateThread", function ($scope, master) {
