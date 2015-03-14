@@ -3,32 +3,20 @@
 header("Access-Control-Allow-Origin: *");
 
 
-class Forum {
+class Get {
 
     public function __construct() {
         session_start();
-        $this->userID = $_SESSION["userID"];
-        $this->name = $_SESSION["name"];
-        $this->lastname = $_SESSION["lastname"];
-        $this->roleID = $_SESSION["roleID"];
         $this->groupID = $_SESSION["groupID"];
     }
   
 
     public function retrieve() {
          //TODO check role
-        require_once "include/sql_helper.php";
+        require_once "../include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
-        
         $data = array();
-        $profile = array();
-        $profile["userID"] = $this->userID;
-        $profile["name"] = $this->name;
-        $profile["lastname"] = $this->lastname;
-        $profile["groupID"] = $this->groupID;
-        
-        $data["profile"] = $profile;
         
         //Get forumID
         $forumID = $this->sql_helper->getForumID($this->groupID);
@@ -51,6 +39,7 @@ class Forum {
   
 }
 
-$forum = new Forum();
+$data = new Get();
+
 
 ?>

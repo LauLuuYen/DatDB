@@ -18,7 +18,15 @@ class Get {
         $data = array();
         
         //Get all assignments
-        $data["assignments"] = $this->sql_helper->getAllAssignments();
+        $data["groups"] = $this->sql_helper->getAllGroups();
+        
+        foreach($data["groups"] as &$group) {
+            $groupID = $group["groupID"];
+            //Get users in group
+            $group["users"] = $this->sql_helper->getAllStudentInGroup($groupID);
+            $group["assessments"] = $this->sql_helper->getAllAssessmentsInGroup($groupID);
+            $group["reports"] = $this->sql_helper->getAllReportsInGroup($groupID);
+        }
         
         $this->sql_helper->close();
         

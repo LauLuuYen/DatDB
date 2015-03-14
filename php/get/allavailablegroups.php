@@ -17,8 +17,8 @@ class Get {
         
         $data = array();
         
-        //Get all assignments
-        $data["assignments"] = $this->sql_helper->getAllAssignments();
+        //Get all available groups;
+        $data["available_groups"] =$this->sql_helper->getAvailableGroups();
         
         $this->sql_helper->close();
         

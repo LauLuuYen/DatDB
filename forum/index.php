@@ -29,7 +29,7 @@ if(!$userSession->isLoggedIn()) {
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
 
     <script type="text/javascript">
-        var response = '<?php require_once "../php/getforum.php"; echo json_encode($forum->retrieve()); ?>';
+        var response = '<?php require_once "../php/get/forum.php"; echo json_encode($data->retrieve());?>';
         console.log(response);
         var data = JSON.parse(response);
     </script>
