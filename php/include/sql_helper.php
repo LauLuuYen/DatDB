@@ -710,7 +710,7 @@ class SQL_Helper {
     *   @params: none
     *   @return: array - $data
     */
-    public function getAllGroups() {
+    public function getAllGroups($stats) {
         $stmt = $this->conn->prepare("SELECT id, name FROM groups;");
         
         if ($stmt->execute()) {
@@ -722,9 +722,11 @@ class SQL_Helper {
                 $row = array();
                 $row["groupID"] = $id;
                 $row["groupname"] = $name;
-                $row["users"] = [];
-                $row["reports"] = [];
-                $row["assessments"] = [];
+                if ($stats) {
+                    $row["users"] = [];
+                    $row["reports"] = [];
+                    $row["assessments"] = [];
+                }
                 $data[] = $row;
             }
 

@@ -16,9 +16,9 @@
 
         var data = [];
         for (i =0; i<list.length ; i++) {
-            data.push({name:list[0]});
+            data.push({name:list[i]});
         }
-        console.log(JSON.stringify(data));
+        return data;
     }
 
     function getData(callback) {
