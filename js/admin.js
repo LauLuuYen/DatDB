@@ -222,7 +222,7 @@ app.controller("Assignment", function ($scope, master) {
         if ($scope.validate()) {
             var title = $scope.assignment.title;
             var content = $scope.assignment.content;
-            var deadline = $scope.assignment.deadline;
+            var deadline = $scope.assignment.date;
             var assessment_list = $scope.assignment.assessment_list;
             
             console.log (title + ", " + content +", " +deadline + ", " +assessment_list);

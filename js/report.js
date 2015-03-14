@@ -69,6 +69,9 @@ app.controller("Submit", function ($scope, master) {
     
     $scope.showAssignment = function(index) {
         $("#submission").show();
+        $("#report").show();
+        $("#uploadsection").show();
+        
         var assignment = master.assignments[index];
         var status = assignment.report.status;
         $scope.reportID = assignment.report.reportID;
@@ -78,10 +81,11 @@ app.controller("Submit", function ($scope, master) {
         $("#task").html(assignment.task);
         $(".fullreport").html(assignment.report.content);
         $("#name").html(assignment.report.fullname);
+
         
         //Show report if filled in
-        if (status != "Incomplete") {
-            $("#report").show();
+        if (status == "Incomplete") {
+            $("#report").hide();
         }
 
         if (status == "Complete") {
@@ -123,8 +127,9 @@ app.controller("Submit", function ($scope, master) {
     $scope.send = function() {
     	
         var formData = new FormData($('form')[0]);
-        
         formData.append("reportID", $scope.reportID);
+        
+        showLoading();
         
         $.ajax({
             type: "POST",
@@ -154,14 +159,14 @@ app.controller("Submit", function ($scope, master) {
                     window.location.href="/report/";
 
                 } else {
-                    //Error occurred
+                    hideLoading();
                     $scope.updatefeedback(data.message);
 
                 }
             },
             
             error:  function(xhr, status, error) {
-                //alert(JSON.stringify(xhr));
+                hideLoading();
                 $scope.updatefeedback("Please try again in a few moments");
             }
 
@@ -169,7 +174,7 @@ app.controller("Submit", function ($scope, master) {
     };
     
     $scope.submit = function() {
-        $(".finalsubmit").attr("disabled","disabled");
+        showLoading();
         
         $.ajax({
             type: "POST",
@@ -185,13 +190,13 @@ app.controller("Submit", function ($scope, master) {
                     window.location.href="/report/";
                
                 } else {
-                    $(".finalsubmit").removeAttr("disabled");
+                    hideLoading();
                     alert(result.message);
                 }
             },
 
             error: function(xhr, status, error) {
-                $(".finalsubmit").removeAttr("disabled");
+                hideLoading();
                 alert("An error occured. Please try again in a few moments.");
             }
         });
