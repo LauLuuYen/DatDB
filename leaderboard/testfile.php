@@ -48,28 +48,6 @@
 </head>
 <body >
 
-<?php
-
-class LeaderboardClass 
-{
-	
-	public function retrieveLeaderboard() 
-	{
-	require_once "../php/include/sql_helper.php";
-	$this->sql_helper = new SQL_Helper();
-	
-	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
-	$this->sql_helper->close();
-	return $leaderboardArray;
-	}
-	
-}
-	$leaderboardinstance = new LeaderboardClass();
-	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
-	//echo json_encode($leaderBoardDataArray);
-	//print_r($leaderBoardDataArray);
-	//echo "Hello World";
-?>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	<script>
