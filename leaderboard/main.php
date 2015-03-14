@@ -63,8 +63,8 @@ class LeaderboardClass
 	
 }
 	$leaderboardinstance = new LeaderboardClass();
-	$leaderboardinstance->retrieveLeaderboard();
-	
+	$leaderBoardarray = $leaderboardinstance->retrieveLeaderboard();
+	print_r($leaderBoardarray);
 ?>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
