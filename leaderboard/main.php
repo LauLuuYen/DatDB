@@ -59,13 +59,14 @@ class LeaderboardClass
 	
 	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
 	$this->sql_helper->close();
+	return $leaderboardArray;
 	}
 	
 }
 	$leaderboardinstance = new LeaderboardClass();
-	$leaderBoardarray = $leaderboardinstance->retrieveLeaderboard();
-	echo json_encode($leaderBoardarray);
-	//print_r($leaderBoardarray);
+	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
+	//echo json_encode($leaderBoardDataArray);
+	print_r($leaderBoardDataArray);
 	echo "Hello World";
 ?>
 
