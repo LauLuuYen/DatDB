@@ -75,7 +75,7 @@ class LeaderboardClass
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	<script>
-		var book = <?php echo json_encode($leaderBoardDataArray, JSON_PRETTY_PRINT) ?>;
+		//var book = <?php echo json_encode($leaderBoardDataArray, JSON_PRETTY_PRINT) ?>;
     		createLeaderboard();
 	</script>
 	
