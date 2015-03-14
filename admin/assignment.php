@@ -17,7 +17,26 @@
         return date > now;
     }
 
+    function getData(callback) {
+        $.ajax({
+            type: "GET",
+            url:"http://lauluuyen.azurewebsites.net/php/get_allgroups.php" ,
+            crossDomain: true,
+            dataType: "json",
+            async: true,
+            timeout: 10000,
 
+            success: function (data) {
+            
+                console.log(data["grouplist"]);
+                callback(data["grouplist"]);
+            },
+
+            error: function(xhr, status, error) {
+                getData(callback);
+            }
+        });
+    }
 
 </script>
 

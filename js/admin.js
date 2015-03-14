@@ -230,6 +230,11 @@ app.controller("Assignment", function ($scope, master) {
         }
     };
     $scope.randomise();
+    
+    getData(function(groups) {
+        console.log(groups);
+
+    });
 });
 
 app.controller("Groups", function ($scope, master) {
