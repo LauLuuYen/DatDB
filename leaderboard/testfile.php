@@ -14,6 +14,8 @@ class LeaderboardClass
 	}
 	
 }
+	
+	$leaderboardinstance = new LeaderboardClass();
 	$leaderBoardarray = $leaderboardinstance->retrieveLeaderboard();
 	echo json_encode($leaderBoardarray);
 	//print_r($leaderBoardarray);
