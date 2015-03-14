@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link rel="stylesheet" type="text/css" href="../css/loader.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="//jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -20,7 +21,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
     <script src="../js/admin.js"></script>
+    <script src="../js/loader.js"></script>
     <script src="../js/randomiser.js"></script>
+
 
 
 </head>

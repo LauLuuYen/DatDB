@@ -21,6 +21,7 @@ if(!$userSession->isLoggedIn()) {
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link rel="stylesheet" type="text/css" href="../css/loader.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     
     
@@ -35,6 +36,7 @@ if(!$userSession->isLoggedIn()) {
         var data = JSON.parse(response);
     </script>
     <script src="../js/report.js?v=1.0"></script>
+    <script src="../js/loader.js"></script>
 
 </head>
 

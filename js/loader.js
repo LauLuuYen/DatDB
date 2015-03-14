@@ -1,14 +1,15 @@
 
-function showSpinner () {
+function showLoading() {
     $("#body_overlay").show();
-    $("#body_overlay").html("<div class='loadSpinner'></div>");
+    $("#body_overlay").html("<div class='whirly'></div>");
 }
 
-function hideSpinner() {
+function hideLoading() {
     $("#body_overlay").hide();
     $("#body_overlay").html("");
 }
 
 $( document ).ready(function() {
-    console.log("ready");
-};
+    $("body").append("<div id='body_overlay' class='overlay'></div>");
+    showLoading();
+});

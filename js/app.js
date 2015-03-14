@@ -18,6 +18,8 @@ app.factory('master', function() {
 *   Login Controller
 */
 app.controller('Login', function ($scope, master) {
+
+
     $scope.account = {
         email:"", password: ""
     };
