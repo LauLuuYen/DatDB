@@ -5,6 +5,9 @@
         function createLeaderboard() 
         {
             //Build an array containing assignment records.
+            
+            //var jsLeaderBoardArray = <?php echo json_encode($leaderBoardDataArray) ?>;
+            //alert(JSON.parse(jsLeaderBoardArray));
             var assigment = new Array();
             assigment.push(["Rank", "Group Name", "Average mark"]);
             assigment.push([1, "Parishilton", "4.5"]);
@@ -77,13 +80,6 @@ class LeaderboardClass
 	
 
 <div id="dvTable"></div>
-
-<script type="text/javascript">
-
-            var jsLeaderBoardArray = <?php echo json_encode($leaderBoardDataArray) ?>;
-            alert(JSON.parse(jsLeaderBoardArray));
-
-</script>
 
 </body>
 </html>
