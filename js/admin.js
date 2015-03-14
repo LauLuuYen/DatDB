@@ -230,11 +230,10 @@ app.controller("Assignment", function ($scope, master) {
             console.log (title + ", " + content +", " +deadline + ", " +assessment_list);
         }
     };
-    $scope.randomise();
     
     getData(function(groups) {
         $scope.groups = groups;
-
+        $scope.randomise();
     });
 });
 
