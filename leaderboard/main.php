@@ -54,15 +54,16 @@ class LeaderboardClass
 	
 	public function retrieveLeaderboard() 
 	{
-	require_once "include/sql_helper.php";
+	require_once "../php/include/sql_helper.php";
 	$this->sql_helper = new SQL_Helper();
 	
 	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
-	echo print_r($leaderboardArray);
+	$this->sql_helper->close();
 	}
 	
 }
-	retrieveLeaderboard();
+	$leaderboardinstance = new LeaderboardClass();
+	$leaderboardinstance->retrieveLeaderboard();
 	
 ?>
 
