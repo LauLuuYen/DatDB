@@ -75,7 +75,6 @@ class LeaderboardClass
 	<script>
 		
     		createLeaderboard();
-    		var js_array = JSON.parse("<?php echo json_encode($array); ?>;
 
     		//alert(js_array);
 	</script>
