@@ -163,9 +163,10 @@ app.controller("Assignment", function ($scope, master) {
         title:"", content:"", date:"", assessment_list: "",
     };
     
+    
     $scope.randomise = function() {
-        var list = ["GroupA", "GroupG", "GroupB","GroupD","GroupE"];
-        var data =  getAssignList(list, 3);
+
+        var data =  getAssignList($scope.groups, 3);
         $scope.assignment.assessment_list = data;
 
         var script = "<table class='randomtable'>"+
@@ -232,7 +233,7 @@ app.controller("Assignment", function ($scope, master) {
     $scope.randomise();
     
     getData(function(groups) {
-        console.log(groups);
+        $scope.groups = groups;
 
     });
 });

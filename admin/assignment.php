@@ -27,8 +27,6 @@
             timeout: 10000,
 
             success: function (data) {
-            
-                console.log(data["grouplist"]);
                 callback(data["grouplist"]);
             },
 
