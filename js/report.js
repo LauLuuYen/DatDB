@@ -41,27 +41,20 @@ app.config(function($routeProvider, $locationProvider) {
 
 app.controller("Main", function ($scope, master) {
 
-    getData(function(assignments) {
-        master["assignments"] = assignments;
-    });
-
 
 });
 
 app.controller("Submit", function ($scope, master) {
-    $scope.assignments = [];
+    $scope.assignments = null;
     $scope.selection = null;
     $scope.feedback = "";
     $scope.reportID = -1;
+    $scope.list = [];
     
-
-    for (i = 0; i<master.assignments.length; i++) {
-        $scope.assignments.push({name:master.assignments[i].title});
-    }
     
     $scope.selectAssignment = function() {
         for (i = 0; i<master.assignments.length; i++) {
-            if ($scope.selection.name == master.assignments[i].title) {
+            if ($scope.selection.name == $scope.assignments[i].title) {
                 $scope.showAssignment(i);
                 return;
             }
@@ -75,7 +68,7 @@ app.controller("Submit", function ($scope, master) {
         $("#report").show();
         $("#uploadsection").show();
         
-        var assignment = master.assignments[index];
+        var assignment = $scope.assignments[index];
         var status = assignment.report.status;
         $scope.reportID = assignment.report.reportID;
         
@@ -216,6 +209,20 @@ app.controller("Submit", function ($scope, master) {
             $(id).addClass("invisible");
         }
     };
+    
+    getData(function(assignments) {
+        console.log(JSON.stringify(assignments));
+        $scope.assignments = assignments;
+        var temp = [];
+        
+        for (i = 0; i< assignments.length; i++) {
+            
+        }
+        
+        $scope.$apply(function() {
+            $scope.list = temp;
+        });
+    });
     
 });
 

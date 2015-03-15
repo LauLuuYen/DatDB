@@ -1,20 +1,20 @@
 <script>
 
-/*
+
     function getData(callback) {
         showLoading();
         $.ajax({
             type: "GET",
-            url:"http://lauluuyen.azurewebsites.net/php/get_allassignments.php" ,
+            url:"http://lauluuyen.azurewebsites.net/php/get_allusers.php" ,
             crossDomain: true,
             dataType: "json",
             async: true,
-            timeout: 10000,
+            timeout: 25000,
 
             success: function (data) {
-                console.log("loading: 1/1");
-                getData2(data, callback);
-               
+                hideLoading();
+                callback(data["users"]);
+
             },
 
             error: function(xhr, status, error) {
@@ -22,7 +22,7 @@
             }
         });
     }
-*/
+
 </script>
 
 <div class="searchusers">
@@ -43,7 +43,6 @@
             <td>Lastname</td>
             <td>Email</td>
             <td>GroupID</td>
-            <td>Created</td>
         </tr>
 
 
@@ -53,7 +52,6 @@
             <td>{{user.lastname}}</td>
             <td>{{user.email}}</td>
             <td>{{user.groupID}}</td>
-            <td>{{user.created}}</td>
         </tr>
             
 
