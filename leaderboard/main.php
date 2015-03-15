@@ -47,7 +47,7 @@
 
 </head>
 <body >
-<div id="dvTestTable"></div>
+
 <?php
 
 class LeaderboardClass 
@@ -78,19 +78,20 @@ class LeaderboardClass
 		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
     		
-    		var jsTable = "<table>";
-		for (i in jsLeaderboardJSON)
-		{
+    		var jsTable = "Hello world!";
+    		//var jsTable = "<table>";
+		//for (i in jsLeaderboardJSON)
+		//{
 		  //alert("<div><br />" + jsLeaderboardJSON[i].groupName + "<br /></div>");
-		jsTable = jsTable + "<tr><td>" +
-	        jsLeaderboardJSON[i].groupName +
-	        "</td><td>" +
-	        jsLeaderboardJSON[i].groupID +
-	        "</td><td>" +
-	        jsLeaderboardJSON[i].averageMark +
-	        "</td></tr>";
-		}
-	    	jsTable = jstTable + "</table>";
+		//jsTable = jsTable + "<tr><td>" +
+	        //jsLeaderboardJSON[i].groupName +
+	        //"</td><td>" +
+	        //jsLeaderboardJSON[i].groupID +
+	        //"</td><td>" +
+	        //jsLeaderboardJSON[i].averageMark +
+	        //"</td></tr>";
+		//}
+	    	//jsTable = jstTable + "</table>";
 		document.getElementById("dvTestTable").innerHTML = jsTable;	
     		
 	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
@@ -106,7 +107,7 @@ class LeaderboardClass
 
 <div id="dvTable"></div>
 
-
+<div id="dvTestTable"></div>
 
 </body>
 </html>
