@@ -61,7 +61,7 @@ table tr:nth-child(even) {
             assigment.push(["Rank", "Group Name", "Average mark"]);
             for (i in jsLeaderboardJSON) 
 		 {
-		 	//alert(jsLeaderboardJSON[i].groupName);
+		 	alert(jsLeaderboardJSON[0].groupName);
 		     assigment.push(["WTF", "Parishilton", "4.5"]);
 		 }
             
