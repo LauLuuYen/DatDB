@@ -18,9 +18,6 @@ class LeaderboardClass
 	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
 	
 	$jsonLeaderboardData = json_encode($leaderBoardDataArray);
-	//echo $jsonLeaderboardData;
-	//print_r($leaderBoardDataArray);
-	//echo "Hello World";
 ?>
 
 <html>
@@ -61,56 +58,47 @@ table tr:nth-child(even) {
         function createLeaderboard() 
         {
             //Build an array containing assignment records.
-            
-            var assigment = new Array();
+            var leadingboardArray = new Array();
             var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-            //alert(jsLeaderboardJSON[0].groupName);
-            assigment.push(["Rank", "Group Name", "Average mark"]);
+            leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
             var j = 0;
             for (i in jsLeaderboardJSON) 
 		 {
 		 	if(!jsLeaderboardJSON[j].averageMark)
 		 	{
-		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
+		 		leadingboardArray.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
 		 	}
 		 	else
 		 	{
-		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 		leadingboardArray.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
 		 	}
-		 	//alert(jsLeaderboardJSON[0].groupName);
 		     j++;
 		 }
-            
-            /*
-            assigment.push([1, "Parishilton", "4.5"]);
-            assigment.push([2, "gooo", "1.7"]);
-            assigment.push([3, "Mario Cart fans", "2.2"]);
-            assigment.push([4, "Cosplayer over9k", "5"]);
-            */
+ 
          
             //Create a HTML Table element.
             var table = document.createElement("TABLE");
             table.border = "1";
          
             //Get the count of columns.
-            var columnCount = assigment[0].length;
+            var columnCount = leadingboardArray[0].length;
          
             //Add the header row.
             var row = table.insertRow(-1);
             for (var i = 0; i < columnCount; i++) {
                 var headerCell = document.createElement("TH");
-                headerCell.innerHTML = assigment[0][i];
+                headerCell.innerHTML = leadingboardArray[0][i];
                 row.appendChild(headerCell);
             }
          
             //Add the data rows.
-            for (var i = 1; i < assigment.length; i++) 
+            for (var i = 1; i < leadingboardArray.length; i++) 
             {
                 row = table.insertRow(-1);
                 for (var j = 0; j < columnCount; j++) 
                 {
                     var cell = row.insertCell(-1);
-                    cell.innerHTML = assigment[i][j];
+                    cell.innerHTML = leadingboardArray[i][j];
                 }
             }   
      
@@ -124,48 +112,9 @@ table tr:nth-child(even) {
 	 <script>
 		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
-    		
-    		//var jsTable = jsLeaderboardJSON[1].groupName;
-    		//var jsTable = "Hello world!";
-    		//var jsTable = "<table>";
-    		
-    		//jsTable += "<tr><td>" + "Hello world!" +
-    		//"</td><td>" +
-    		//"Hello you!" +
-    		//jsLeaderboardJSON[0].groupName +
-    		//"</td></tr>";
-    		
-		//for (i in jsLeaderboardJSON)
-		//{
-		  //alert("<div><br />" + jsLeaderboardJSON[i].groupName + "<br /></div>");
-		//jsTable = jsTable + "<tr><td>" +
-	        //jsLeaderboardJSON[i].groupName +
-	        //"</td><td>" +
-	        //jsLeaderboardJSON[i].groupID +
-	        //"</td><td>" +
-	        //jsLeaderboardJSON[i].averageMark +
-	        //"</td></tr>";
-		//}
-		
-	    	//jsTable += "</table>";
-		//document.getElementById("dvTestTable").innerHTML = jsTable;
-		
-    	/*	
-		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-		 for (var key in jsLeaderboardJSON) 
-		 {
-		    if (JSONObject.hasOwnProperty(key)) {
-		      alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
-		    }
-		 }
-    		alert(js_array);
-    	*/
 	</script>
 	
-
 <div id="dvTable"></div>
-
-<!-- <div id="dvTestTable"></div> -->
 
 </body>
 </html>
