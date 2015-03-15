@@ -72,23 +72,23 @@ table tr:nth-child(even) {
             var nextMark = -1;
             for (i in jsLeaderboardJSON) 
 		 {
-		 	currentMark = jsLeaderboardJSON[j].averageMark;
+		 //	currentMark = jsLeaderboardJSON[j].averageMark;
 		 
 		 	if(!jsLeaderboardJSON[j].averageMark)
 		 	{
 		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
 		 	}
-		 	else if(currentMark == nextMark)
-		 	{
-		 		assigment.push([j, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
-		 	}
+		 	//else if(currentMark == nextMark)
+		 	//{
+		 	//	assigment.push([j, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 	//}
 		 	else
 		 	{
 		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
 		 	}
 		 	//alert(jsLeaderboardJSON[0].groupName);
 		     j++;
-		     nextMark = jsLeaderboardJSON[j].averageMark;
+		     //nextMark = jsLeaderboardJSON[j].averageMark;
 		 }
             
             /*
