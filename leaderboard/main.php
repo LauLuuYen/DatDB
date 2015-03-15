@@ -53,7 +53,7 @@ table tr:nth-child(even) {
 
 </head>
 <body >
-
+<div class="heading">LEADERBOARD</div>
     <script type="text/javascript">
         function createLeaderboard() 
         {
