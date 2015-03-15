@@ -67,10 +67,12 @@ table tr:nth-child(even) {
 		     j++;
 		 }
             
+            /*
             assigment.push([1, "Parishilton", "4.5"]);
             assigment.push([2, "gooo", "1.7"]);
             assigment.push([3, "Mario Cart fans", "2.2"]);
             assigment.push([4, "Cosplayer over9k", "5"]);
+            */
          
             //Create a HTML Table element.
             var table = document.createElement("TABLE");
@@ -105,19 +107,19 @@ table tr:nth-child(even) {
     </script>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
-	<script>
+	//<script>
 		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
     		
     		//var jsTable = jsLeaderboardJSON[1].groupName;
     		//var jsTable = "Hello world!";
-    		var jsTable = "<table>";
+    		//var jsTable = "<table>";
     		
-    		jsTable += "<tr><td>" + "Hello world!" +
-    		"</td><td>" +
-    		"Hello you!" +
+    		//jsTable += "<tr><td>" + "Hello world!" +
+    		//"</td><td>" +
+    		//"Hello you!" +
     		//jsLeaderboardJSON[0].groupName +
-    		"</td></tr>";
+    		//"</td></tr>";
     		
 		//for (i in jsLeaderboardJSON)
 		//{
@@ -130,23 +132,26 @@ table tr:nth-child(even) {
 	        //jsLeaderboardJSON[i].averageMark +
 	        //"</td></tr>";
 		//}
-	    	jsTable += "</table>";
-		document.getElementById("dvTestTable").innerHTML = jsTable;	
-    		
-	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-	//	 for (var key in jsLeaderboardJSON) 
-	//	 {
-	//	    if (JSONObject.hasOwnProperty(key)) {
-	//	      alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
-	//	    }
-	//	 }
-    	//	alert(js_array);
-	</script>
+		
+	    	//jsTable += "</table>";
+		//document.getElementById("dvTestTable").innerHTML = jsTable;
+		
+    	/*	
+		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+		 for (var key in jsLeaderboardJSON) 
+		 {
+		    if (JSONObject.hasOwnProperty(key)) {
+		      alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
+		    }
+		 }
+    		alert(js_array);
+    	*/
+	//</script>
 	
 
 <div id="dvTable"></div>
 
-<div id="dvTestTable"></div>
+<!-- <div id="dvTestTable"></div> -->
 
 </body>
 </html>
