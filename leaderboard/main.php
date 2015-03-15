@@ -10,7 +10,7 @@
             assigment.push(["Rank", "Group Name", "Average mark"]);
             for (i in jsLeaderboardDataJSON)
 		{
-			assigment.push([jsLeaderboardDataJSON[1].groupName, jsLeaderboardDataJSON[1].groupID, jsLeaderboardDataJSON[1].averageMark]);;
+			assigment.push([jsLeaderboardDataJSON[i].groupName, jsLeaderboardDataJSON[i].groupID, jsLeaderboardDataJSON[i].averageMark]);;
 		}
          
             //Create a HTML Table element.
