@@ -53,7 +53,7 @@ app.controller("Submit", function ($scope, master) {
     
     
     $scope.selectAssignment = function() {
-        for (i = 0; i<master.assignments.length; i++) {
+        for (i = 0; i<scope.assignments.length; i++) {
             if ($scope.selection.name == $scope.assignments[i].title) {
                 $scope.showAssignment(i);
                 return;
