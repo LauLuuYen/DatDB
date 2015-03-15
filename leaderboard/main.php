@@ -77,7 +77,6 @@ table tr:nth-child(even) {
 		 	}
 		 	else if(!jsLeaderboardJSON[j].averageMark)
 		 	{
-		 		n--;
 		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "-"]);
 		 		
 		 	}
