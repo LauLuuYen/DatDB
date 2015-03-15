@@ -59,7 +59,7 @@ table tr:nth-child(even) {
             var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
             //alert(jsLeaderboardJSON[0].groupName);
             assigment.push(["Rank", "Group Name", "Average mark"]);
-            for each (i in jsLeaderboardJSON) 
+            for (i in jsLeaderboardJSON) 
 		 {
 		 	alert(jsLeaderboardJSON[i].groupName);
 		     //assigment.push([jsLeaderboardJSON.groupName, "Parishilton", "4.5"]);
