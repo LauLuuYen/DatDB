@@ -107,7 +107,7 @@ table tr:nth-child(even) {
     </script>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
-	//<script>
+	<!-- <script>
 		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
     		
@@ -146,7 +146,7 @@ table tr:nth-child(even) {
 		 }
     		alert(js_array);
     	*/
-	//</script>
+	</script> -->
 	
 
 <div id="dvTable"></div>
