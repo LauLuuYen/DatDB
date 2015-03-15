@@ -88,7 +88,7 @@ table tr:nth-child(even) {
 		 	}
 		 	//alert(jsLeaderboardJSON[0].groupName);
 		     j++;
-		     nextMark = jsLeaderboardJSON[j].averageMark;
+		     //nextMark = jsLeaderboardJSON[j].averageMark;
 		 }
             
             /*
