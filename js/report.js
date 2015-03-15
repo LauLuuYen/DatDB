@@ -228,8 +228,8 @@ app.controller("Submit", function ($scope, master) {
 
 
 app.controller("Assessments", function ($scope, master, $location) {
-    
-    
+    $scope.assessments = []
+    /*
     $scope.injectScript = function(assign_no) {
         var assignment = master.assignments[assign_no];
         var assessments = assignment.assessments;
@@ -250,14 +250,17 @@ app.controller("Assessments", function ($scope, master, $location) {
         
         $scope.itemlist = script;
     };
-    
-    //TODO find for all assessments and right assign
-    $scope.injectScript(0);
-    
-    
+    */
     $scope.next = function(id) {
         $location.path("/assessments/"+id);
     };
+    
+    getData(function(assessments) {
+        console.log(JSON.stringify(assessments));
+        $scope.$apply(function() {
+            $scope.assessments = assessments;
+        });
+    });
     
 });
 
