@@ -327,12 +327,12 @@ class SQL_Helper {
     */
     public function getAllThreads($forumID)
     {
-        $stmt = $this->conn->prepare("SELECT id,title FROM thread WHERE forumid=?");
+        $stmt = $this->conn->prepare("SELECT id,title,timestamp FROM thread WHERE forumid=?");
         $stmt->bind_param("i", $forumID);
         
          if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($id,$title);
+            $stmt->bind_result($id, $title, $timestamp);
             
             $data = array();
             while($stmt->fetch())
@@ -340,6 +340,7 @@ class SQL_Helper {
                 $row = array();
                 $row["threadID"] = $id;
                 $row["title"] = $title;
+                $row["timestamp"] = $timestamp;
                 $data[] = $row;
                
             }

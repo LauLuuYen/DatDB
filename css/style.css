@@ -442,19 +442,28 @@ a:active{
     border:2px solid lightblue;
     border-radius:5px;
     font-size:20px;
-    margin: 0 auto;
     text-align:center;
     cursor:pointer;
+    float:right;
 }
 
 .forum .newthread:hover {
     background-color:yellow;
 }
 
+ul#container {
+    list-style-type: none;
+    padding:0;
+}
+
+.forum #query {
+    width:250px;
+    border:2px solid lightblue;
+}
 .forum .container {
     width:100%;
+    padding:0 40px;
     margin-top:15px;
-    list-style-type: none;
 }
 
 .forum .item {

@@ -39,7 +39,7 @@ app.controller("Main", function ($scope, master, $location) {
     console.log("View all threads");
 
     $scope.threads = [];
-    $scope.orderList = "name";
+    $scope.orderList = "started";
   
     $scope.getThreads = function() {
         if (master.forum == null) {
@@ -52,47 +52,23 @@ app.controller("Main", function ($scope, master, $location) {
             var thread = threads[i];
             var c_len = thread.comments.length;
             var comment = thread.comments[c_len-1];
-
+            
+        
             var id = thread.threadID;
             var title = thread.title;
-            var fullname = comment.fullname;
-            var timestamp = comment.timestamp;
+            var timestamp_s = thread.timestamp;
+            var fullname_s = thread.comments[0].fullname;
+            var fullname_l = comment.fullname;
+            var timestamp_l = comment.timestamp;
     
-            temp.push({threadID:id, title:title, fullname:fullname, timestamp:timestamp, count:c_len});
+            var row = {threadID:id, title:title, fullname:fullname_l, timestamp:timestamp_l, count:c_len, started:timestamp_s, started_user:fullname_s};
+            temp.push(row);
         }
-        
+        console.log(JSON.stringify(temp));
         $scope.$apply(function() {
             $scope.threads = temp;
         });
     };
-    /*
-    $scope.injectScript = function() {
-        var threads = master.forum.threads;
-        var script = "";
-
-        //Dynamically construct the thread list
-        for (i = 0; i < threads.length; i++) {
-            var thread = threads[i];
-            var c_len = thread.comments.length;
-            var comment = thread.comments[c_len-1];
-
-            script += "<div class='item' ng-click='viewThread("+thread.threadID+");'>"+
-                        "<div class='_left'>"+
-                        "<div class='title'>"+thread.title+"</div>"+
-                        "<div class='date'>Last post: "+comment.fullname+" at "+comment.timestamp+"</div>"+
-                        "</div>"+
-                        "<div class='_right'>" +
-                        "<div class='n'>"+c_len+"</div>"+
-                        "<div class='post'>Post(s)</div>"+
-                        "</div>"+
-                      "</div>";
-        }
-        
-        $scope.$apply(function() {
-            $scope.itemlist = script;
-        });
-    };
-    */
     
     $scope.newThread = function() {
         $location.path("/thread");
@@ -104,10 +80,8 @@ app.controller("Main", function ($scope, master, $location) {
     
 
     getData(function(forum) {
-        console.log(JSON.stringify(forum));
         master["forum"] = forum;
         $scope.getThreads();
-        //$scope.injectScript();
     });
 
 
