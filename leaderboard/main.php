@@ -70,9 +70,10 @@ table tr:nth-child(even) {
 		 	currentMark = jsLeaderboardJSON[j].averageMark;
 
 		 	if(currentMark == previousMark)
-		 	{
-		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 	{	
 		 		n--;
+		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 		
 		 	}
 		 	else if(!jsLeaderboardJSON[j].averageMark)
 		 	{
