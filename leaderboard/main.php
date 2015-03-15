@@ -57,14 +57,14 @@ table tr:nth-child(even) {
             
             var assigment = new Array();
             var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+            assigment.push(["Rank", "Group Name", "Average mark"]);
             for (var key in jsLeaderboardJSON) 
 		 {
-		 assigment.push([3, "Mario Cart fans", "2.2"]);
-		    //if (JSONObject.hasOwnProperty(key)) {
-		    //  alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
-		    //}
+		    if(JSONObject.hasOwnProperty(key)) {
+		     assigment.push([jsLeaderboardJSON.groupName, "Parishilton", "4.5"]);
+		    }
 		 }
-            assigment.push(["Rank", "Group Name", "Average mark"]);
+            
             assigment.push([1, "Parishilton", "4.5"]);
             assigment.push([2, "gooo", "1.7"]);
             assigment.push([3, "Mario Cart fans", "2.2"]);
