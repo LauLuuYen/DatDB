@@ -1,20 +1,17 @@
 <html>
 <head>
 
-
-	
-	    <script type="text/javascript">
+    <script type="text/javascript">
         function createLeaderboard() 
         {
             //Build an array containing assignment records.
-            var jsLeaderboardDataJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+            
             var assigment = new Array();
             assigment.push(["Rank", "Group Name", "Average mark"]);
-            //for (i in jsLeaderboardDataJSON)
-		//{	
-			assigment.push([1, "Parishilton", "4.5"]);
-			//assigment.push([jsLeaderboardDataJSON[i].groupName, jsLeaderboardDataJSON[i].groupID, jsLeaderboardDataJSON[i].averageMark]);;
-		//}
+            assigment.push([1, "Parishilton", "4.5"]);
+            assigment.push([2, "Animatrix", "1.7"]);
+            assigment.push([3, "Mario Cart fans", "2.2"]);
+            assigment.push([4, "Cosplayer over9k", "5"]);
          
             //Create a HTML Table element.
             var table = document.createElement("TABLE");
@@ -47,7 +44,6 @@
             dvTable.appendChild(table);
         }
     </script>
-
 <style>
 h1 {
     border-bottom: 3px solid #cc9900;
@@ -133,7 +129,7 @@ class LeaderboardClass
 	//	    }
 	//	 }
     	//	alert(js_array);
-
+	</script>
 	
 
 <div id="dvTable"></div>
