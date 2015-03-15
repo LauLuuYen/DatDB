@@ -82,8 +82,8 @@ class LeaderboardClass
     		//var jsTable = "Hello world!";
     		var jsTable = "<table>";
     		
-    		jsTable += "<tr><td>" +
-    		jsLeaderboardJSON[0].groupName +
+    		jsTable += "<tr><td>" + "Hello world!"
+    		//jsLeaderboardJSON[0].groupName +
     		</td></tr>";
     		
 		//for (i in jsLeaderboardJSON)
