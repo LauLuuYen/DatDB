@@ -58,7 +58,7 @@ table tr:nth-child(even) {
             var assigment = new Array();
             assigment.push(["Rank", "Group Name", "Average mark"]);
             assigment.push([1, "Parishilton", "4.5"]);
-            assigment.push([2, "Animatrix", "1.7"]);
+            assigment.push([2, "gooo", "1.7"]);
             assigment.push([3, "Mario Cart fans", "2.2"]);
             assigment.push([4, "Cosplayer over9k", "5"]);
          
