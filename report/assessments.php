@@ -23,8 +23,10 @@
 </script>
 
 <div class="assessments">
-    <div>Please make your assessments:</div>
+    <div class="heading">Group Assessment Task</div>
 
+    <div class="linebreak"></div>
+    <div>Here is the list of reports your group has to give an assessment to.</div>
 
     <div class="container">
         <ul id="container">

@@ -319,7 +319,7 @@ a:active{
 
 .assessments .linebreak {
     position:absolute;
-    top:40px;
+    top:30px;
     width:100%;
     height:1px;
     background-color:black;
@@ -422,7 +422,7 @@ a:active{
     margin-top:5px;
 }
 
-.forum, .createthread, .viewthread, .submitreport,
+.forum, .createthread, .viewthread, .submitreport, .assessments,
 .createuser, .viewall, .createassignment, .searchusers {
     padding:10px 5px;
 }
