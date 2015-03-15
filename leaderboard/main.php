@@ -88,8 +88,9 @@ class LeaderboardClass
 	        "</td><td>" +
 	        jsLeaderboardJSON[i].averageMark +
 	        "</td></tr>";
+		}
 	    	jsTable = jastTable + "</table>";
-		document.getElementById("id01").innerHTML = jsTable;	
+		document.getElementById("dvTestTable").innerHTML = jsTable;	
     		
 	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
 	//	 for (var key in jsLeaderboardJSON) 
