@@ -360,7 +360,7 @@ class SQL_Helper {
     *   @params: int - $threadID, bool - $full
     *   @return: array - $data
     */
-    public function getAllComments($threadID, $full)
+    public function getAllComments($threadID)
     {
         $stmt = $this->conn->prepare("SELECT C.id, U.name, U.lastname, C.content, C.timestamp FROM comment C JOIN users U ON U.id = C.userID WHERE threadID=?;");
         $stmt->bind_param("i", $threadID);
@@ -372,12 +372,10 @@ class SQL_Helper {
             $data = array();
             while($stmt->fetch()) {
                 $row = array();
+                $row["commentID"] = $id;
                 $row["fullname"] = $name . " " . $lastname;
                 $row["timestamp"] = $timestamp;
-                if ($full) {
-                    $row["commentID"] = $id;
-                    $row["content"] = str_replace("\n", "<br/>", $content);
-                }
+                $row["content"] = str_replace("\n", "<br/>", $content);
                 $data[] = $row;
                
             }

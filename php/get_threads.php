@@ -27,7 +27,7 @@ class Get {
         //Go through every thread, find comments
         foreach($threads as &$thread) {
             $threadID = $thread["threadID"];
-            $thread["comments"] = $this->sql_helper->getAllComments($threadID, false);
+            $thread["comments"] = $this->sql_helper->getAllComments($threadID);
         }
         
         $data["forum"]["threads"] = $threads;
