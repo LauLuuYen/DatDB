@@ -22,6 +22,7 @@
     }
 
     function getData(callback) {
+        showLoading();
         $.ajax({
             type: "GET",
             url:"http://lauluuyen.azurewebsites.net/php/get_allavailablegroups.php" ,
@@ -31,6 +32,7 @@
             timeout: 10000,
 
             success: function (data) {
+                hideLoading();
                 var d = formatList(data["available_groups"]);
                 callback(d);
             },

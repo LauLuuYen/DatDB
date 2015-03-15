@@ -50,7 +50,8 @@ app.controller("Main", function ($scope, master) {
 });
 
 app.controller("User", function ($scope, master) {
-
+    console.log("viewing users");
+    
     $scope.account = {
         firstname:"", lastname:"", email:"", password: "", groupname:"",
         role:"", grouplist:{name:""}
@@ -160,14 +161,15 @@ app.controller("User", function ($scope, master) {
 });
 
 app.controller("Assignment", function ($scope, master) {
+    console.log("viewing assignments");
     $scope.assignment = {
         title:"", content:"", date:"", assessment_list: "",
     };
     
-    
+    //Consider when there is no group
     $scope.randomise = function() {
-
-        var data =  getAssignList($scope.groups, 3);
+        console.log("randomising list...");
+        var data =  getAssignList($scope.grouplist, 3);
         $scope.assignment.assessment_list = data;
 
         var script = "<table class='randomtable'>"+
@@ -258,6 +260,14 @@ app.controller("Assignment", function ($scope, master) {
         }
     };
     
+    getData(function(grouplist) {
+        console.log(JSON.stringify(grouplist));
+        $scope.$apply(function() {
+            $scope.grouplist = grouplist;
+            //Todo consider when there is no group
+            $scope.randomise();
+        });
+    });
 
 });
 
