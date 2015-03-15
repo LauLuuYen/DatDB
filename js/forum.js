@@ -160,6 +160,10 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     };
     
     $scope.reroute = function() {
+        if (master.forum.threads == null) {
+            return $scope.back();
+        }
+        
         var threads = master.forum.threads;
         var id = $routeParams.id;
         
