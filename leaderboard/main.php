@@ -88,6 +88,7 @@ class LeaderboardClass
 	        "</td><td>" +
 	        jsLeaderboardJSON[i].averageMark +
 	        "</td></tr>";
+		}
 	    	jsTable = jastTable + "</table>";
 		document.getElementById("dvTestTable").innerHTML = jsTable;	
     		
