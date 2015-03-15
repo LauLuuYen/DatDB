@@ -17,9 +17,8 @@ class Get {
         
         $data = array();
         
-        //Get all assignments
-        $data["groups"] = $this->sql_helper->getAllStudents();
-        
+        //Get all users
+        $data["users"] = $this->sql_helper->getAllStudents();
         $this->sql_helper->close();
         
         return $data;

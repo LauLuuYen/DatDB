@@ -744,20 +744,22 @@ class SQL_Helper {
     *   @return: array - $data
     */
     public function getAllStudents() {
-        $stmt = $this->conn->prepare("SELECT id, name, lastname, email, groupid, timestamp FROM users WHERE roleid=(SELECT id FROM roles WHERE name='Student');");
-
+        $role = "Student";
+        $stmt = $this->conn->prepare("SELECT id, name, lastname, email, groupid, timestamp FROM users WHERE roleid=(SELECT id FROM roles WHERE name=?);");
+        $stmt->bind_param("s", $role);
+        
         if ($stmt->execute()) {
             $stmt->store_result();
             $stmt->bind_result($id, $name, $lastname, $email, $groupid, $timestamp);
             $data = array();
-            
+
             while($stmt->fetch()) {
                 $row = array();
                 $row["userID"] = $id;
                 $row["name"] = $name;
                 $row["lastname"] = $lastname;
                 $row["email"] = $email;
-                $row["groupid"] = $groupid;
+                $row["groupID"] = $groupid;
                 $row["created"] = $timestamp;
                 $data[] = $row;
             }
