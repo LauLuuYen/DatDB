@@ -62,7 +62,7 @@ table tr:nth-child(even) {
             for (i in jsLeaderboardJSON) 
 		 {
 		 	//alert(jsLeaderboardJSON[i].groupName);
-		     assigment.push(["groupName", "Parishilton", "4.5"]);
+		     assigment.push(["WTF", "Parishilton", "4.5"]);
 		 }
             
             assigment.push([1, "Parishilton", "4.5"]);
