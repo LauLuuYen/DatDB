@@ -47,7 +47,7 @@
 
 </head>
 <body >
-<div id="dvTestTable"></div>
+
 <?php
 
 class LeaderboardClass 
@@ -82,9 +82,9 @@ class LeaderboardClass
     		//var jsTable = "Hello world!";
     		var jsTable = "<table>";
     		
-    		jsTable += "<tr><td>" + "Hello world!"
+    		jsTable += "<tr><td>" + "Hello world!" +
     		//jsLeaderboardJSON[0].groupName +
-    		</td></tr>";
+    		"</td></tr>";
     		
 		//for (i in jsLeaderboardJSON)
 		//{
@@ -113,7 +113,7 @@ class LeaderboardClass
 
 <div id="dvTable"></div>
 
-
+<div id="dvTestTable"></div>
 
 </body>
 </html>
