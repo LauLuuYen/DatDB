@@ -229,28 +229,7 @@ app.controller("Submit", function ($scope, master) {
 
 app.controller("Assessments", function ($scope, master, $location) {
     $scope.assessments = []
-    /*
-    $scope.injectScript = function(assign_no) {
-        var assignment = master.assignments[assign_no];
-        var assessments = assignment.assessments;
-        var script = "";
-        
-        //Dynamically construct the assessments
-        for (i = 0; i < assessments.length; i++) {
-            script += "<div class='item' ng-click='next("+assessments[i].reportID+")'>" +
-                        "<div class='name'>Group: <span>"+assessments[i].groupname+"</span></div>"+
-                        "<div class='linebreak'></div>"+
-                        "<div class='assignment'>Assignment:"+assignment.title+"</div>"+
-                        "<div class='feedback'>" +assessments[i].feedback+ "</div>"+
-                        "<div class='status'>Status: "+assessments[i].status+"</div>"+
-                        "<div class='score'>Score: "+assessments[i].score+"/5</div>"+
-                        "<div class='more'>More ></div>"+
-                      "</div>";
-        }
-        
-        $scope.itemlist = script;
-    };
-    */
+
     $scope.next = function(id) {
         $location.path("/assessments/"+id);
     };
@@ -267,10 +246,10 @@ app.controller("Assessments", function ($scope, master, $location) {
 
 
 app.controller("MakeAssessment", function ($scope, master, $routeParams, $location) {
-
-    var assessment = null;
-    
-    $scope.reroute = function(assign_no) {
+    $scope.group = {
+        rating:"", feedback:""
+    };
+    $scope.reroute = function() {
         if (master.assessments == null) {
             $location.path("/assessments");
             return;
@@ -281,8 +260,10 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
         
         for (i = 0; i < assessments.length; i++) {
             if (id == assessments[i].reportID) {
-                assessment = assessments[i];
-                $scope.injectScript();
+               
+                $scope.$apply(function() {
+                    $scope.assessment = assessments[i];
+                });
                 return;
             }
         }
@@ -291,15 +272,65 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
         $location.path("/assessments");
     };
     
-    $scope.injectScript = function() {
-        $("#groupname").html(assessment["groupname"]);
-        $("#status").html(assessment["status"]);
-        $("#report").html(assessment["content"]);
-
+    $scope.onChange = function(id) {
+        var id = "#"+id;
+        if (!$(id).hasClass("invisible")) {
+            $(id).addClass("invisible");
+        }
     };
     
-    //TODO find right assigment index
-    $scope.reroute(0);
+    $scope.validate = function() {
+        var pass = true;
+        if ($scope.group.rating == "") {
+            $("#e1").removeClass("invisible");
+            pass = false;
+        }
+        if ($scope.group.feedback == "") {
+            $("#e2").removeClass("invisible");
+            pass = false;
+        }
+        return pass;
+    }
+    
+    $scope.submit = function() {
+        if ($scope.validate()) {
+            showLoading($scope.group.rating + ", " +$scope.group.feedback);
+            console.log();
+            /*
+            var title =  $scope.thread.title;
+            var comment =  $scope.thread.comment;
+
+            
+            $.ajax({
+                type: "POST",
+                url:"http://lauluuyen.azurewebsites.net/php/threads.php" ,
+                crossDomain: true,
+                data: {title: title, comment: comment},
+                dataType: "json",
+                async: true,
+                timeout: 10000,
+
+                success: function (result) {
+                    if (result.success) {
+                        window.location.href="/forum/";
+                   
+                    } else {
+                        hideLoading();
+                        alert(result.message);
+                    }
+                },
+
+                error: function(xhr, status, error) {
+                    hideLoading();
+                    alert("An error occured. Please try again in a few moments.");
+                }
+            });
+            */
+        }
+    };
+
+
+    $scope.reroute();
         
 });
 
