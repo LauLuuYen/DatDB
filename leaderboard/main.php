@@ -74,7 +74,7 @@ table tr:nth-child(even) {
 		 {
 		 	currentMark = jsLeaderboardJSON[j].averageMark;
 		 
-		 	if(!currentMark)
+		 	if(!jsLeaderboardJSON[j].averageMark)
 		 	{
 		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
 		 	}
