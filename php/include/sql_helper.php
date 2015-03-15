@@ -284,8 +284,8 @@ class SQL_Helper {
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $row["title"] = $title;
                 $row["isdisabled"] = $row["content"] == "";
-                if ($row["isdisabled"]) {
-                    $row["_status"] = "Group hasn't submitted";
+                if ($status) {
+                    $row["_status"] = "Group hasn't submitted final report";
                 }
                 $data[] = $row;
             }
