@@ -68,8 +68,13 @@ table tr:nth-child(even) {
             for (i in jsLeaderboardJSON) 
 		 {
 		 	currentMark = jsLeaderboardJSON[j].averageMark;
-
-		 	if(currentMark == previousMark)
+			
+			if((!jsLeaderboardJSON[j].averageMark) && (currentMark == null) && (previousMark == null))
+		 	{
+		 		n--;
+		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "WTF"]);
+		 	}
+		 	else if(currentMark == previousMark)
 		 	{	
 		 		n--;
 		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
