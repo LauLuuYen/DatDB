@@ -60,9 +60,7 @@ table tr:nth-child(even) {
             assigment.push(["Rank", "Group Name", "Average mark"]);
             for (var key in jsLeaderboardJSON) 
 		 {
-		    if(JSONObject.hasOwnProperty(key)) {
 		     assigment.push([jsLeaderboardJSON.groupName, "Parishilton", "4.5"]);
-		    }
 		 }
             
             assigment.push([1, "Parishilton", "4.5"]);
