@@ -72,13 +72,13 @@ table tr:nth-child(even) {
             var nextMark = -1;
             for (i in jsLeaderboardJSON) 
 		 {
-		 	currentmark = jsLeaderboardJSON[j].averageMark;
+		 	currentMark = jsLeaderboardJSON[j].averageMark;
 		 
-		 	if(!currentmark)
+		 	if(!currentMark)
 		 	{
 		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
 		 	}
-		 	else if(currentmark == nextMark)
+		 	else if(currentMark == nextMark)
 		 	{
 		 		assigment.push([j, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
 		 	}
