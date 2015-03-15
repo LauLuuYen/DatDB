@@ -62,17 +62,31 @@ table tr:nth-child(even) {
             var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
             leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
             var j = 0;
+            var n = 0;
+            var previousMark = -1;
+            var currentMark = -1;
             for (i in jsLeaderboardJSON) 
 		 {
-		 	if(!jsLeaderboardJSON[j].averageMark)
+		 	currentMark = jsLeaderboardJSON[j].averageMark;
+
+		 	if(currentMark == previousMark)
+		 	{	
+		 		n--;
+		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 		
+		 	}
+		 	else if(!jsLeaderboardJSON[j].averageMark)
 		 	{
-		 		leadingboardArray.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
+		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "-"]);	
 		 	}
 		 	else
 		 	{
-		 		leadingboardArray.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 		previousMark = jsLeaderboardJSON[j].averageMark;
 		 	}
+		 	//alert(jsLeaderboardJSON[0].groupName);
 		     j++;
+		     n++;
 		 }
  
          
