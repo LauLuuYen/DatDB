@@ -83,6 +83,8 @@ class LeaderboardClass
     		var jsTable = "<table>";
     		
     		jsTable += "<tr><td>" + "Hello world!" +
+    		"</td><td>" +
+    		"Hello you!" +
     		//jsLeaderboardJSON[0].groupName +
     		"</td></tr>";
     		
