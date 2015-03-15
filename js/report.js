@@ -294,8 +294,8 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
     
     $scope.submit = function() {
         if ($scope.validate()) {
-            showLoading($scope.group.rating + ", " +$scope.group.feedback);
-            console.log();
+            showLoading();
+            console.log($scope.group.rating + ", " +$scope.group.feedback);
             /*
             var title =  $scope.thread.title;
             var comment =  $scope.thread.comment;
