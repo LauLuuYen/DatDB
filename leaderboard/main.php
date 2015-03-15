@@ -68,8 +68,8 @@ table tr:nth-child(even) {
             assigment.push(["Rank", "Group Name", "Average mark"]);
             var j = 0;
             var n = 0;
+            var previousMark = -1;
             var currentMark = -1;
-            var nextMark = -1;
             for (i in jsLeaderboardJSON) 
 		 {
 		 	currentMark = jsLeaderboardJSON[j].averageMark;
@@ -78,17 +78,17 @@ table tr:nth-child(even) {
 		 	{
 		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
 		 	}
-		 	//else if(currentMark == nextMark)
-		 	//{
-		 	//	assigment.push([j, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
-		 	//}
+		 	else if(currentMark == previousMark)
+		 	{
+		 		assigment.push([j, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 	}
 		 	else
 		 	{
 		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 		previousMark = jsLeaderboardJSON[j].averageMark;
 		 	}
 		 	//alert(jsLeaderboardJSON[0].groupName);
 		     j++;
-		     alert(jsLeaderboardJSON[j].averageMark);
 		 }
             
             /*
