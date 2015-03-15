@@ -72,7 +72,7 @@ table tr:nth-child(even) {
             var nextMark = -1;
             for (i in jsLeaderboardJSON) 
 		 {
-		 //	currentMark = jsLeaderboardJSON[j].averageMark;
+		 	currentMark = jsLeaderboardJSON[j].averageMark;
 		 
 		 	if(!jsLeaderboardJSON[j].averageMark)
 		 	{
@@ -88,7 +88,7 @@ table tr:nth-child(even) {
 		 	}
 		 	//alert(jsLeaderboardJSON[0].groupName);
 		     j++;
-		     //nextMark = jsLeaderboardJSON[j].averageMark;
+		     nextMark = jsLeaderboardJSON[j].averageMark;
 		 }
             
             /*
