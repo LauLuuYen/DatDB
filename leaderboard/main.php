@@ -47,7 +47,7 @@
 
 </head>
 <body >
-
+<div id="dvTestTable"></div>
 <?php
 
 class LeaderboardClass 
@@ -113,7 +113,7 @@ class LeaderboardClass
 
 <div id="dvTable"></div>
 
-<div id="dvTestTable"></div>
+
 
 </body>
 </html>
