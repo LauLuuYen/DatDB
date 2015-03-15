@@ -78,11 +78,9 @@ class LeaderboardClass
 		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
     		
-    		var arr = [ {"id":"10", "class": "child-of-9"}, {"id":"11", "classd": "child-of-10"}];
-		var mycars = [{name:'Susita'}, {name:'BMW'}];
 		for (i in jsLeaderboardJSON)
 		{
-		  alert("<div><br />" + jsLeaderboardJSON[i].groupID + "<br /></div>");
+		  alert("<div><br />" + jsLeaderboardJSON[i].groupName + "<br /></div>");
 		}
     		
 	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
