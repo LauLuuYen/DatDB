@@ -1,7 +1,7 @@
 <html>
 <head>
 
-	</script>
+
 	
 	    <script type="text/javascript">
         function createLeaderboard() 
