@@ -85,11 +85,12 @@ class LeaderboardClass
 		jsTable = jsTable + "<tr><td>" +
 	        jsLeaderboardJSON[i].groupName +
 	        "</td><td>" +
+	        jsLeaderboardJSON[i].groupID +
 	        "</td><td>" +
 	        jsLeaderboardJSON[i].averageMark +
 	        "</td></tr>";
 		}
-	    	jsTable = jastTable + "</table>";
+	    	jsTable = jstTable + "</table>";
 		document.getElementById("dvTestTable").innerHTML = jsTable;	
     		
 	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
