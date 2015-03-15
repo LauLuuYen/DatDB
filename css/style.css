@@ -418,7 +418,7 @@ a:active{
 }
 
 .forum, .createthread, .viewthread, .submitreport,
-.createuser, .viewgroups, .createassignment {
+.createuser, .viewall, .createassignment, searchusers {
     padding:10px 5px;
 }
 

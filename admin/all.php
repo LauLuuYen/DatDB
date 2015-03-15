@@ -45,7 +45,7 @@
 */
 </script>
 
-<div class="viewgroups">
+<div class="viewall">
     View groups
 
 </div>

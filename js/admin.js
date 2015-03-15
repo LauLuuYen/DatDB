@@ -27,10 +27,16 @@ app.config(function($routeProvider) {
             controller: "Assignment"
         })
         
-        .when("/groups", {
-            templateUrl: "groups.php",
-            controller: "Groups"
+        .when("/all", {
+            templateUrl: "all.php",
+            controller: "All"
         })
+        
+        .when("/search", {
+            templateUrl: "search.php",
+            controller: "Search"
+        })
+        
         .otherwise({
             redirectTo: "/"
         });
@@ -271,8 +277,12 @@ app.controller("Assignment", function ($scope, master) {
 
 });
 
-app.controller("Groups", function ($scope, master) {
+app.controller("All", function ($scope, master) {
+    console.log("view all");
+});
 
-    //alert("Testff");
+
+app.controller("Search", function ($scope, master) {
+    console.log("search");
 });
 
