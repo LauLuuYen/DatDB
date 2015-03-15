@@ -9,6 +9,7 @@ app.factory("master", function() {
 });
 
 
+
 app.config(function($routeProvider) {
     $routeProvider
         .when("/", {
@@ -257,10 +258,7 @@ app.controller("Assignment", function ($scope, master) {
         }
     };
     
-    getData(function(groups) {
-        $scope.groups = groups;
-        $scope.randomise();
-    });
+
 });
 
 app.controller("Groups", function ($scope, master) {
