@@ -722,7 +722,6 @@ class SQL_Helper {
                 $row["groupID"] = $id;
                 $row["groupname"] = $name;
                 if ($stats) {
-                    $row["users"] = [];
                     $row["reports"] = [];
                     $row["assessments"] = [];
                 }
@@ -740,24 +739,25 @@ class SQL_Helper {
     
     
     /*
-    *   Get all students in a group
+    *   Get all students
     *   @params: none
     *   @return: array - $data
     */
-    public function getAllStudentInGroup($groupID) {
-        $stmt = $this->conn->prepare("SELECT id, name, lastname, email, timestamp FROM users WHERE groupID=?;");
-        $stmt->bind_param("i", $groupID);
+    public function getAllStudents() {
+        $stmt = $this->conn->prepare("SELECT id, name, lastname, email, groupid, timestamp FROM users WHERE roleid=(SELECT id FROM roles WHERE name='Student');");
 
         if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($id, $name, $lastname, $email, $timestamp);
+            $stmt->bind_result($id, $name, $lastname, $email, $groupid, $timestamp);
             $data = array();
             
             while($stmt->fetch()) {
                 $row = array();
                 $row["userID"] = $id;
-                $row["fullname"] = $name . " " . $lastname;
+                $row["name"] = $name;
+                $row["lastname"] = $lastname;
                 $row["email"] = $email;
+                $row["groupid"] = $groupid;
                 $row["created"] = $timestamp;
                 $data[] = $row;
             }

@@ -47,31 +47,16 @@
         </tr>
 
 
-    <ul id="container">
-        <li ng-repeat="user in users | filter:query | orderBy: orderList">
-            <tr class="r0">
-                <td>{{user.userID}}</td>
-                <td>{{user.name}}</td>
-                <td>{{user.lastname}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.groupID}}</td>
-                <td>{{user.created}}</td>
-            </tr>
+        <tr class="r0" ng-repeat="user in users | filter:query">
+            <td>{{user.userID}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.groupID}}</td>
+            <td>{{user.created}}</td>
+        </tr>
             
-            <!--
-            <div class="item" ng-click="viewThread(thread.threadID);">
-                <div class="_left">
-                    <div class="title">{{thread.title}}</div>
-                    <div class="date">Last post: {{thread.fullname_l}} at {{thread.timestamp}}</div>
-                </div>
-                <div class="_right">
-                    <div class="n">{{thread.count}}</div>
-                    <div class="post">Post(s)</div>
-                </div>
-            </div>
-            -->
-        </li>
-    </ul>
+
 
     </table>
 </div>
