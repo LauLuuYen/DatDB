@@ -45,12 +45,18 @@
             <td>GroupID</td>
             <td>Created</td>
         </tr>
-    </table>
-<!--
-        {id:43, name:"linlkf", lastname:"fhsf", email:"sglj2@xv.om", groupid:32, created:"sdlnsg sdo foid"},-->
+
+
     <ul id="container">
         <li ng-repeat="user in users | filter:query | orderBy: orderList">
-            {{user.name}}
+            <tr class="r0">
+                <td>{{user.userID}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.groupID}}</td>
+                <td>{{user.created}}</td>
+            </tr>
             
             <!--
             <div class="item" ng-click="viewThread(thread.threadID);">
@@ -67,5 +73,6 @@
         </li>
     </ul>
 
+    </table>
 </div>
 

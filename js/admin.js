@@ -285,9 +285,9 @@ app.controller("All", function ($scope, master) {
 app.controller("Search", function ($scope, master) {
     console.log("search");
     $scope.users = [
-        {id:12, name:"adf", lastname:"sfg", email:"sfg@sfg", groupid:15, created:"831 usfsdfh d"},
-        {id:432, name:"adsfdf", lastname:"ouyi", email:"@slgdn", groupid:52, created:"sglknsklg f"},
-        {id:43, name:"linlkf", lastname:"fhsf", email:"sglj2@xv.om", groupid:32, created:"sdlnsg sdo foid"},
+        {userID:12, name:"adf", lastname:"sfg", email:"sfg@sfg", groupID:15, created:"831 usfsdfh d"},
+        {userID:432, name:"adsfdf", lastname:"ouyi", email:"@slgdn", groupID:52, created:"sglknsklg f"},
+        {userID:43, name:"linlkf", lastname:"fhsf", email:"sglj2@xv.om", groupID:32, created:"sdlnsg sdo foid"},
     ];
     
     
