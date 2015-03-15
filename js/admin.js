@@ -284,5 +284,10 @@ app.controller("All", function ($scope, master) {
 
 app.controller("Search", function ($scope, master) {
     console.log("search");
+    $scope.users = [
+        {name:"adf"},
+        {name:"adfdf"},
+    
+    ];
 });
 

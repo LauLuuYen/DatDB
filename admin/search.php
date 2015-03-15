@@ -26,7 +26,33 @@
 </script>
 
 <div class="searchusers">
-    Searcj
+
+    <div class="container">
+        <span>
+            Search box:<br>
+            <input type="text" id="query" ng-model="query"/>
+
+        </span>
+    </div>
+
+    <ul id="container">
+        <li ng-repeat="user in users | filter:query | orderBy: orderList">
+            {{user.name}}
+            
+            <!--
+            <div class="item" ng-click="viewThread(thread.threadID);">
+                <div class="_left">
+                    <div class="title">{{thread.title}}</div>
+                    <div class="date">Last post: {{thread.fullname_l}} at {{thread.timestamp}}</div>
+                </div>
+                <div class="_right">
+                    <div class="n">{{thread.count}}</div>
+                    <div class="post">Post(s)</div>
+                </div>
+            </div>
+            -->
+        </li>
+    </ul>
 
 </div>
 
