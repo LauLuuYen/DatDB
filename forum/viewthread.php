@@ -34,7 +34,7 @@
             </div>
 
             <div class="input_wrapper">
-                    <button id="submitbtn" type="submit" class="btn">Create</button>
+                    <button class="submitbtn" type="submit">Create</button>
             </div>
         </form>
     </div>
