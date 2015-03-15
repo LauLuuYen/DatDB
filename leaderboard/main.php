@@ -82,7 +82,7 @@ class LeaderboardClass
     		//var jsTable = "Hello world!";
     		var jsTable = "<table>";
     		
-    		jsTable = jsTable + "<tr><td>" +
+    		jsTable += "<tr><td>" +
     		jsLeaderboardJSON[0].groupName +
     		</td></tr>";
     		
@@ -97,7 +97,7 @@ class LeaderboardClass
 	        //jsLeaderboardJSON[i].averageMark +
 	        //"</td></tr>";
 		//}
-	    	jsTable = jsTable + "</table>";
+	    	jsTable += "</table>";
 		document.getElementById("dvTestTable").innerHTML = jsTable;	
     		
 	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
