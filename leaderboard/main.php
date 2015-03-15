@@ -66,8 +66,11 @@ table tr:nth-child(even) {
 		 	{
 		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
 		 	}
+		 	else
+		 	{
+		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		 	}
 		 	//alert(jsLeaderboardJSON[0].groupName);
-		     //assigment.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
 		     j++;
 		 }
             
