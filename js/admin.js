@@ -285,9 +285,11 @@ app.controller("All", function ($scope, master) {
 app.controller("Search", function ($scope, master) {
     console.log("search");
     $scope.users = [
-        {name:"adf"},
-        {name:"adfdf"},
-    
+        {id:12, name:"adf", lastname:"sfg" email:"sfg@sfg", groupname:"adfg", created:"831 usfsdfh d"},
+        {id:432, name:"adsfdf", lastname:"ouyi", email:"@slgdn", groupname:"rynkln", created:"sglknsklg f"},
+        {id:43, name:"linlkf", lastname:"fhsf", email:"sglj2@xv.om", groupname:"ohwqe", created:"sdlnsg sdo foid"},
     ];
+    
+    
 });
 

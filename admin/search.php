@@ -35,6 +35,15 @@
         </span>
     </div>
 
+
+    <table class="randomtable">
+        <tr class="head">
+            <td>Group</td>
+            <td>Assessing (1)</td>
+            <td>Assessing (2)</td>
+            <td>Assessing (3)</td>
+        </tr>
+    </table>
     <ul id="container">
         <li ng-repeat="user in users | filter:query | orderBy: orderList">
             {{user.name}}
