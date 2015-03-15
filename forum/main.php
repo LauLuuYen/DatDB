@@ -7,7 +7,7 @@
             crossDomain: true,
             dataType: "json",
             async: true,
-            timeout: 10000,
+            timeout: 25000,
 
             success: function (data) {
                 hideLoading();
