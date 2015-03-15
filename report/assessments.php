@@ -29,7 +29,8 @@
     <div class="container">
         <ul id="container">
             <li ng-repeat="assessment in assessments">
-                <button class="item" ng-click="next(assessment.reportID)">
+                <button class="item" ng-click="next(assessment.reportID)"
+                    ng-disabled="assessment.isdisabled">
                     <div class="name">Group: <span>{{assessment.groupname}}</span></div>
                     <div class="linebreak"></div>
                     <div class="assignment">Assignment: {{assessment.title}}</div>

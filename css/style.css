@@ -297,6 +297,9 @@ a:active{
     border:8px solid green;
 }
 
+.assessments .item:disabled {
+    border:8px solid gray;
+}
 
 .assessments .item:hover {
     background-color:yellow;
