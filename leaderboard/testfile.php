@@ -46,10 +46,9 @@
     </script>
 
 </head>
-<body>
+<body >
 
 <?php
-
 class LeaderboardClass 
 {
 	
@@ -66,18 +65,56 @@ class LeaderboardClass
 }
 	$leaderboardinstance = new LeaderboardClass();
 	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
-	//echo json_encode($leaderBoardDataArray);
+	
+	$jsonLeaderboardData = json_encode($leaderBoardDataArray);
+	echo $jsonLeaderboardData;
 	//print_r($leaderBoardDataArray);
 	//echo "Hello World";
 ?>
 
 <!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	<script>
+		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
+    		
+    		//var jsTable = jsLeaderboardJSON[1].groupName;
+    		//var jsTable = "Hello world!";
+    		var jsTable = "<table>";
+    		
+    		jsTable += "<tr><td>" + "Hello world!" +
+    		"</td><td>" +
+    		"Hello you!" +
+    		//jsLeaderboardJSON[0].groupName +
+    		"</td></tr>";
+    		
+		//for (i in jsLeaderboardJSON)
+		//{
+		  //alert("<div><br />" + jsLeaderboardJSON[i].groupName + "<br /></div>");
+		//jsTable = jsTable + "<tr><td>" +
+	        //jsLeaderboardJSON[i].groupName +
+	        //"</td><td>" +
+	        //jsLeaderboardJSON[i].groupID +
+	        //"</td><td>" +
+	        //jsLeaderboardJSON[i].averageMark +
+	        //"</td></tr>";
+		//}
+	    	jsTable += "</table>";
+		document.getElementById("dvTestTable").innerHTML = jsTable;	
+    		
+	//	var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+	//	 for (var key in jsLeaderboardJSON) 
+	//	 {
+	//	    if (JSONObject.hasOwnProperty(key)) {
+	//	      alert(JSONObject[key]["groupName"] + ", " + JSONObject[key]["groupID"]);
+	//	    }
+	//	 }
+    	//	alert(js_array);
 	</script>
 	
 
 <div id="dvTable"></div>
+
+<div id="dvTestTable"></div>
 
 </body>
 </html>
