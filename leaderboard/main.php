@@ -85,7 +85,6 @@ class LeaderboardClass
 		jsTable = jsTable + "<tr><td>" +
 	        jsLeaderboardJSON[i].groupName +
 	        "</td><td>" +
-	        jsLeaderboardJSON[i].groupID +
 	        "</td><td>" +
 	        jsLeaderboardJSON[i].averageMark +
 	        "</td></tr>";
