@@ -62,8 +62,12 @@ table tr:nth-child(even) {
             var j = 0;
             for (i in jsLeaderboardJSON) 
 		 {
+		 	if(!jsLeaderboardJSON[j].averageMark)
+		 	{
+		 		assigment.push([j+1, jsLeaderboardJSON[j].groupName, "-"]);	
+		 	}
 		 	//alert(jsLeaderboardJSON[0].groupName);
-		     assigment.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+		     //assigment.push([j+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
 		     j++;
 		 }
             
