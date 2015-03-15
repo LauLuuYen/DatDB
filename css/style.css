@@ -297,13 +297,15 @@ a:active{
     border:8px solid green;
 }
 
+.assessments .item:hover:enabled {
+    background-color:yellow;
+}
+
 .assessments .item:disabled {
     border:8px solid gray;
 }
 
-.assessments .item:hover {
-    background-color:yellow;
-}
+
 
 .assessments .name {
     position:absolute;

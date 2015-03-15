@@ -263,7 +263,7 @@ class SQL_Helper {
     *   @return: array - $data
     */
     public function getAssessments($groupID) {
-        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, feedback, content, score, A.userid, A.timestamp, title FROM assessments A JOIN reports R JOIN groups G JOIN status S JOIN assignments AI ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id AND AI.id = R.assignmentid WHERE A.groupid=?;");
+        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, content, feedback, score, A.userid, A.timestamp, title FROM assessments A JOIN reports R JOIN groups G JOIN status S JOIN assignments AI ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id AND AI.id = R.assignmentid WHERE A.groupid=?;");
         $stmt->bind_param("i", $groupID);
         
         if ($stmt->execute()) {
@@ -278,7 +278,7 @@ class SQL_Helper {
                 $row["groupname"] = $groupname;
                 $row["_status"] = $status;
                 $row["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
-                $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
+                $row["feedback"] = is_null($feedback) ? "-":str_replace("\n", "<br/>", $feedback);
                 $row["score"] = is_null($score) ? "-":$score;
                 $row["fullname"] = $this->getFullname($userID);
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
