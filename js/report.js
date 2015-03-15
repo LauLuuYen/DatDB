@@ -257,7 +257,6 @@ app.controller("Assessments", function ($scope, master, $location) {
     
     $scope.next = function(id) {
         $location.path("/assessments/"+id);
-
     };
     
 });

@@ -263,12 +263,12 @@ class SQL_Helper {
     *   @return: array - $data
     */
     public function getAssessments($groupID) {
-        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, feedback, content, score, A.userid, A.timestamp FROM assessments A JOIN reports R JOIN groups G JOIN status S ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id WHERE A.groupid=?;");
+        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, feedback, content, score, A.userid, A.timestamp, title FROM assessments A JOIN reports R JOIN groups G JOIN status S JOIN assignments AI ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id AND AI.id = R.assignmentid WHERE A.groupid=21;");
         $stmt->bind_param("i", $groupID);
         
         if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($reportID, $groupname, $status, $content, $feedback, $score, $userID, $timestamp);
+            $stmt->bind_result($reportID, $groupname, $status, $content, $feedback, $score, $userID, $timestamp, $title);
             
             $data = array();
             while($stmt->fetch())
@@ -282,6 +282,7 @@ class SQL_Helper {
                 $row["score"] = is_null($score) ? "-":$score;
                 $row["fullname"] = $this->getFullname($userID);
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
+                $row["title"] = $title;
                 $data[] = $row;
             }
             $stmt->free_result();
