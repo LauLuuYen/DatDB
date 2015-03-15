@@ -91,7 +91,7 @@
         </div>
 
         <div class="input_wrapper">
-            <button id="submitbtn" type="submit">Create Assignment</button>
+            <button class="submitbtn" type="submit">Create Assignment</button>
         </div>
 
     </form>

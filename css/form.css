@@ -55,6 +55,19 @@ textarea {
     resize: none;
 }
 
+.submitbtn {
+    float: right;
+    min-width: 160px;
+    height: 45px;
+    border: 2px solid lightblue;
+    background-color:white;
+    margin-right:5px;
+}
+
+.submitbtn:hover {
+    background-color:yellow;
+}
+
 .error {
     margin-top:-5px;
     line-height:10px;

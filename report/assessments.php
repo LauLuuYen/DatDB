@@ -23,10 +23,10 @@
 </script>
 
 <div class="assessments">
-    <div class="heading">Group Assessment Task</div>
+    <div class="heading">Group Assessment Tasks</div>
 
     <div class="linebreak"></div>
-    <div>Here is the list of reports your group has to give an assessment to.</div>
+    <div>Here is the list of reports your group has to give an assessment to:</div>
 
     <div class="container">
         <ul id="container">
@@ -36,7 +36,6 @@
                     <div class="name">Group: <span>{{assessment.groupname}}</span></div>
                     <div class="linebreak"></div>
                     <div class="assignment">Assignment: {{assessment.title}}</div>
-                    <div class="feedback">{{assessment.feedback}}</div>
                     <div class="status">Status: {{assessment._status}}</div>
                     <div class="score">Score: {{assessment.score}}/5</div>
                     <div class="more">More ></div>
