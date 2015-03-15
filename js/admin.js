@@ -37,6 +37,11 @@ app.config(function($routeProvider) {
             controller: "Search"
         })
         
+        .when("/leaderboard", {
+            templateUrl: "leaderboard.php",
+            controller: "Leaderboard"
+        })
+        
         .otherwise({
             redirectTo: "/"
         });
@@ -279,6 +284,10 @@ app.controller("Assignment", function ($scope, master) {
 
 app.controller("All", function ($scope, master) {
     console.log("view all");
+});
+
+app.controller("Leaderboard", function ($scope, master) {
+    console.log("view leaderboard");
 });
 
 
