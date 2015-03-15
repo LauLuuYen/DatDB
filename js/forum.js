@@ -6,7 +6,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-    
+    data["forum"]["threads"]=[];
 	return data;
 });
 
@@ -113,8 +113,7 @@ app.controller("CreateThread", function ($scope, master) {
     
     $scope.submit = function() {
         if ($scope.validate()) {
-            //Disable button
-            $("#submitbtn").attr("disabled","disabled");
+            showLoading();
             
             var title =  $scope.thread.title;
             var comment =  $scope.thread.comment;
@@ -134,14 +133,13 @@ app.controller("CreateThread", function ($scope, master) {
                         window.location.href="/forum/";
                    
                     } else {
-                        $("#submitbtn").removeAttr("disabled");
+                        hideLoading();
                         alert(result.message);
                     }
                 },
 
                 error: function(xhr, status, error) {
-                
-                    $("#submitbtn").removeAttr("disabled");
+                    hideLoading();
                     alert("An error occured. Please try again in a few moments.");
                 }
             });
@@ -160,6 +158,9 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     };
     
     $scope.reroute = function() {
+        console.log("sgsg");
+        console.log(master.forum.threads);
+        
         if (master.forum.threads == null) {
             return $scope.back();
         }
@@ -215,8 +216,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     
     $scope.submit = function() {
         if ($scope.validate()) {
-            //Disable button
-            $("#submitbtn").attr("disabled","disabled");
+            showLoading();
             
             var id = $routeParams.id;
             var comment = $scope.thread.comment;
@@ -235,14 +235,13 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
                         window.location.href="/forum/";
                    
                     } else {
-                        $("#submitbtn").removeAttr("disabled");
+                        hideLoading();
                         alert(result.message);
                     }
                 },
 
                 error: function(xhr, status, error) {
-                
-                    $("#submitbtn").removeAttr("disabled");
+                    hideLoading();
                     alert("An error occured. Please try again in a few moments.");
                 }
             });
