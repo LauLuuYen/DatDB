@@ -5,13 +5,13 @@
         function createLeaderboard() 
         {
             //Build an array containing assignment records.
-            
+            var jsLeaderboardDataJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
             var assigment = new Array();
             assigment.push(["Rank", "Group Name", "Average mark"]);
-            assigment.push([1, "Parishilton", "4.5"]);
-            assigment.push([2, "Animatrix", "1.7"]);
-            assigment.push([3, "Mario Cart fans", "2.2"]);
-            assigment.push([4, "Cosplayer over9k", "5"]);
+            for (i in jsLeaderboardDataJSON)
+		{
+			assigment.push([jsLeaderboardDataJSON[1].groupName, jsLeaderboardDataJSON[1].groupID, jsLeaderboardDataJSON[1].averageMark]);;
+		}
          
             //Create a HTML Table element.
             var table = document.createElement("TABLE");
