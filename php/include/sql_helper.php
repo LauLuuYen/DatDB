@@ -263,16 +263,16 @@ class SQL_Helper {
     *   @return: array - $data
     */
     public function getAssessments($groupID) {
-        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, content, feedback, score, A.userid, A.timestamp, title FROM assessments A JOIN reports R JOIN groups G JOIN status S JOIN assignments AI ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id AND AI.id = R.assignmentid WHERE A.groupid=?;");
+        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, content, feedback, score, A.userid, A.timestamp, title, R.statusid FROM assessments A JOIN reports R JOIN groups G JOIN status S JOIN assignments AI ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id AND AI.id = R.assignmentid WHERE A.groupid=?;");
         $stmt->bind_param("i", $groupID);
         
         if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($reportID, $groupname, $status, $content, $feedback, $score, $userID, $timestamp, $title);
+            $stmt->bind_result($reportID, $groupname, $status, $content, $feedback, $score, $userID, $timestamp, $title, $r_statusID);
             
             $data = array();
-            while($stmt->fetch())
-            {
+            while($stmt->fetch()) {
+                $reportstatus = $this->getStatus($r_statusID);
                 $row = array();
                 $row["reportID"] = $reportID;
                 $row["groupname"] = $groupname;
@@ -283,8 +283,10 @@ class SQL_Helper {
                 $row["fullname"] = $this->getFullname($userID);
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $row["title"] = $title;
-                $row["isdisabled"] = $row["content"] == "";
-                if ($status) {
+                $row["status"] = $reportstatus;
+                $row["isdisabled"] = $reportstatus != "Complete";
+                
+                if ($row["isdisabled"]) {
                     $row["_status"] = "Group hasn't submitted final report";
                 }
                 $data[] = $row;
@@ -570,7 +572,31 @@ class SQL_Helper {
         } else {
             die("An error occurred performing a request");
         }
+    }
+    
+
+    /*
+    *   Get status name by id
+    *   @params: int - $statusID
+    *   @return: string - $status
+    */
+    public function getStatus($statusID) {
+    
+        $stmt = $this->conn->prepare("SELECT current_status FROM status WHERE id=?;");
+        $stmt->bind_param("i", $statusID);
         
+         if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($status);
+            $stmt->fetch();
+            
+            $stmt->close();
+
+            return $status;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
     }
     
     
