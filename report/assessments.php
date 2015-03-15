@@ -19,30 +19,27 @@
             }
         });
     }
-    
+
 </script>
 
 <div class="assessments">
     <div>Please make your assessments:</div>
 
-    
+
     <div class="container">
-        <div dynamic="itemlist"></div>
+        <ul id="container">
+            <li ng-repeat="assessment in assessments">
+                <button class="item" ng-click="next(assessment.reportID)">
+                    <div class="name">Group: <span>{{assessment.groupname}}</span></div>
+                    <div class="linebreak"></div>
+                    <div class="assignment">Assignment: {{assessment.title}}</div>
+                    <div class="feedback">{{assessment.feedback}}</div>
+                    <div class="status">Status: {{assessments.status}}</div>
+                    <div class="score">Score: {{assessment.score}}/5</div>
+                    <div class="more">More ></div>
+                </button>
+
+            </li>
+        </ul>
     </div>
-
-    <ul id="container">
-        <li ng-repeat="assessment in assessments">
-            <div class="item" ng-click="next(assessment.reportID)">
-                <div class="name">Group: <span>{{assessment.groupname}}</span></div>
-                <div class="linebreak"></div>
-                <div class="assignment">Assignment: {{assessment.title}}</div>
-                <div class="feedback">{{assessment.feedback}}</div>
-                <div class="status">Status: {{assessments.status}}</div>
-                <div class="score">Score: {{assessment.score}}/5</div>
-                <div class="more">More ></div>
-            </div>
-
-        </li>
-    </ul>
-
 </div>

@@ -259,6 +259,7 @@ app.controller("Assessments", function ($scope, master, $location) {
         console.log(JSON.stringify(assessments));
         $scope.$apply(function() {
             $scope.assessments = assessments;
+            master.assessments = assessments;
         });
     });
     
@@ -270,7 +271,12 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
     var assessment = null;
     
     $scope.reroute = function(assign_no) {
-        var assessments = master.assignments[assign_no].assessments;
+        if (master.assessments == null) {
+            $location.path("/assessments");
+            return;
+        }
+        
+        var assessments = master.assessments;
         var id = $routeParams.id;
         
         for (i = 0; i < assessments.length; i++) {
