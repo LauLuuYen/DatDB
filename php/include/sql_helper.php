@@ -262,9 +262,9 @@ class SQL_Helper {
     *   @params: int - $groupID
     *   @return: array - $data
     */
-    public function getAssessments($groupID, $assignmentID) {
-        $stmt = $this->conn->prepare("SELECT reportid, name, current_status AS status, R.content, feedback, score, A.userid, A.timestamp FROM assessments A JOIN reports R ON A.reportID=R.id JOIN groups G ON R.groupid=G.id JOIN status S ON A.statusid=S.id WHERE A.groupid=? AND R.assignmentid=?;");
-        $stmt->bind_param("ii", $groupID, $assignmentID);
+    public function getAssessments($groupID) {
+        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, feedback, content, score, A.userid, A.timestamp FROM assessments A JOIN reports R JOIN groups G JOIN status S ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id WHERE A.groupid=?;");
+        $stmt->bind_param("i", $groupID);
         
         if ($stmt->execute()) {
             $stmt->store_result();
