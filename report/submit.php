@@ -30,7 +30,7 @@
 
     <div class="input_wrapper">
         <div class="heading2">Please pick your assignment:</div>
-        <select class="input_text" ng-model="selection" ng-options="item.name for item in assignments" ng-change="selectAssignment()"></select>
+        <select class="input_text" ng-model="selection" ng-options="item.name for item in list" ng-change="selectAssignment()"></select>
         
     </div>
 

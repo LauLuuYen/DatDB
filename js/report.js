@@ -216,7 +216,7 @@ app.controller("Submit", function ($scope, master) {
         var temp = [];
         
         for (i = 0; i< assignments.length; i++) {
-            
+            temp.push({name:assignments[i].title});
         }
         
         $scope.$apply(function() {
