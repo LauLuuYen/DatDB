@@ -263,7 +263,7 @@ class SQL_Helper {
     *   @return: array - $data
     */
     public function getAssessments($groupID) {
-        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, feedback, content, score, A.userid, A.timestamp, title FROM assessments A JOIN reports R JOIN groups G JOIN status S JOIN assignments AI ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id AND AI.id = R.assignmentid WHERE A.groupid=21;");
+        $stmt = $this->conn->prepare("SELECT reportID, name, current_status, feedback, content, score, A.userid, A.timestamp, title FROM assessments A JOIN reports R JOIN groups G JOIN status S JOIN assignments AI ON A.reportID = R.id AND R.groupid = G.id AND A.statusid = S.id AND AI.id = R.assignmentid WHERE A.groupid=?;");
         $stmt->bind_param("i", $groupID);
         
         if ($stmt->execute()) {
