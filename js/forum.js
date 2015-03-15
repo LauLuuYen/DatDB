@@ -6,7 +6,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-    data["forum"]["threads"]=[];
+
 	return data;
 });
 
@@ -36,7 +36,36 @@ app.config(function($routeProvider, $locationProvider) {
 );
 
 app.controller("Main", function ($scope, master, $location) {
+    console.log("View all threads");
 
+    $scope.threads = [];
+    $scope.orderList = "name";
+  
+    $scope.getThreads = function() {
+        if (master.forum == null) {
+            return;
+        }
+        var threads = master.forum.threads;
+        var temp = [];
+        
+        for (i = 0; i < threads.length; i++) {
+            var thread = threads[i];
+            var c_len = thread.comments.length;
+            var comment = thread.comments[c_len-1];
+
+            var id = thread.threadID;
+            var title = thread.title;
+            var fullname = comment.fullname;
+            var timestamp = comment.timestamp;
+    
+            temp.push({threadID:id, title:title, fullname:fullname, timestamp:timestamp, count:c_len});
+        }
+        
+        $scope.$apply(function() {
+            $scope.threads = temp;
+        });
+    };
+    /*
     $scope.injectScript = function() {
         var threads = master.forum.threads;
         var script = "";
@@ -59,12 +88,11 @@ app.controller("Main", function ($scope, master, $location) {
                       "</div>";
         }
         
-        console.log(script);
         $scope.$apply(function() {
             $scope.itemlist = script;
         });
     };
-    
+    */
     
     $scope.newThread = function() {
         $location.path("/thread");
@@ -76,13 +104,17 @@ app.controller("Main", function ($scope, master, $location) {
     
 
     getData(function(forum) {
-        console.log(forum);
+        console.log(JSON.stringify(forum));
         master["forum"] = forum;
+        $scope.getThreads();
         //$scope.injectScript();
     });
+
+
 });
 
 app.controller("CreateThread", function ($scope, master) {
+    console.log("Create thread");
     $scope.thread = {
         title:"", comment:""
     };
@@ -149,6 +181,7 @@ app.controller("CreateThread", function ($scope, master) {
 });
 
 app.controller("ViewThread", function ($scope, master, $routeParams) {
+    console.log("View thread");
     $scope.thread = {
         comment:""
     };
@@ -158,10 +191,9 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     };
     
     $scope.reroute = function() {
-        console.log("sgsg");
-        console.log(master.forum.threads);
+        console.log(master.forum);
         
-        if (master.forum.threads == null) {
+        if (master.forum == null) {
             return $scope.back();
         }
         
