@@ -72,7 +72,7 @@ table tr:nth-child(even) {
 			if((!jsLeaderboardJSON[j].averageMark) && (j>0) && (jsLeaderboardJSON[j-1].averageMark == null))
 		 	{
 		 		n--;
-		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "WTF"]);
+		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "-"]);
 		 	}
 		 	else if(currentMark == previousMark)
 		 	{	
