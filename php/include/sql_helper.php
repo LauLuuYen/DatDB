@@ -276,13 +276,17 @@ class SQL_Helper {
                 $row = array();
                 $row["reportID"] = $reportID;
                 $row["groupname"] = $groupname;
-                $row["status"] = $status;
+                $row["_status"] = $status;
                 $row["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
                 $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
                 $row["score"] = is_null($score) ? "-":$score;
                 $row["fullname"] = $this->getFullname($userID);
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $row["title"] = $title;
+                $row["isdisabled"] = $row["content"] == "";
+                if ($row["isdisabled"]) {
+                    $row["_status"] = "Group hasn't submitted";
+                }
                 $data[] = $row;
             }
             $stmt->free_result();

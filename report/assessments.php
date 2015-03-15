@@ -34,7 +34,7 @@
                     <div class="linebreak"></div>
                     <div class="assignment">Assignment: {{assessment.title}}</div>
                     <div class="feedback">{{assessment.feedback}}</div>
-                    <div class="status">Status: {{assessments.status}}</div>
+                    <div class="status">Status: {{assessments._status}}</div>
                     <div class="score">Score: {{assessment.score}}/5</div>
                     <div class="more">More ></div>
                 </button>
