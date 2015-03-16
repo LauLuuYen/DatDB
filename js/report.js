@@ -345,7 +345,17 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
 
 
 app.controller("Marks", function ($scope, master) {
-
+    $scope.groupassessments = [
+        {   "assignmentID":"317281", "title":"my name is tan","status":"Incomplete","feedback":"","score":2,"timestamp":"","isdisabled":true
+        },
+        {   "assignmentID":"317281", "title":"my name is tan","status":"Incomplete","feedback":"","score":2,"timestamp":"","isdisabled":true
+        }
+    ];
+    
+    
+    getData(function() {
+        //master
+    });
 });
 
 /*

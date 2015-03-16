@@ -264,35 +264,40 @@ a:active{
 
 
 /*
-*   Assessment page
+*   Assessment/Marks page
 */
 
-.assessments .container {
+.assessments .container, .viewmarks .container {
     width:100%;
     padding: 10px 10px;
 }
 
-.assessments .item {
+.assessments .item, .viewmarks .container {
     position:relative;
     width:100%;
-    min-height:125px;
+    height:125px;
     background-color:white;
     padding:0;
     border-radius:20px;
     border:8px solid red;
     margin: 10px auto;
     cursor:pointer;
+    display:block;
 }
 
-.assessments .item.Complete {
+.viewmarks .container {
+    height:80px;
+}
+
+.assessments .item.Complete, .viewmarks .item.Complete {
     border:8px solid green;
 }
 
-.assessments .item:hover:enabled {
+.assessments .item:hover:enabled, .viewmarks .item:hover:enabled {
     background-color:yellow;
 }
 
-.assessments .item:disabled {
+.assessments .item:disabled, .viewmarks .item:disabled {
     border:8px solid gray;
 }
 
@@ -317,25 +322,31 @@ a:active{
 }
 
 
-.assessments .assignment {
+.assessments .assignment, .viewmarks .assignment {
     position:absolute;
     left:10px;
-    bottom:30px;
 }
 
-.assessments .status {
+.assessments .assignment {
+    bottom:30px;
+}
+.viewmarks .assignment {
+    top:10px;
+}
+
+.assessments .status, .viewmarks .status {
     position:absolute;
     left:10px;
     bottom:10px;
 }
 
-.assessments .score {
+.assessments .score, .viewmarks .score {
     position:absolute;
     right:10px;
     bottom:10px;
 }
 
-.assessments .more {
+.assessments .more, .viewmarks .more {
     position:absolute;
     right:10px;
     top:10px;
@@ -413,7 +424,7 @@ a:active{
 }
 
 .forum, .createthread, .viewthread, .submitreport, .assessments, .makeassessment,
-.createuser, .viewall, .createassignment, .searchusers {
+.createuser, .viewall, .createassignment, .searchusers, viewmarks {
     padding:10px 5px;
 }
 
