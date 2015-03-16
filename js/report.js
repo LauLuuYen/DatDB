@@ -374,7 +374,7 @@ app.controller("Marks", function ($scope, master, $location) {
 });
 
 
-app.controller("ViewAssessment", function ($scope, master) {
+app.controller("ViewAssessment", function ($scope, master, $routeParams, $location) {
     $scope.stars = [{state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}];
     
     $scope.reroute = function() {
