@@ -964,7 +964,7 @@ class SQL_Helper {
 	
     public function deleteComment($commentID, $userID) 
     {
-        $stmt = $this->conn->prepare("DELETE FROM comment WHERE id=? AND userid=?)");
+        $stmt = $this->conn->prepare("DELETE FROM comment WHERE id=? AND userid=?");
         $stmt->bind_param("ii", $commentID, $userID);
         
         if ($stmt->execute()) 
