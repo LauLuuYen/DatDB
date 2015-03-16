@@ -39,14 +39,13 @@ $userSession->isLoggedIn("student");
 
 <body>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12">
             <div class="banner">
-
                 <div class="row">
                     <div class="col-xs-2 no-padding">
-                        <div style="background-color:red; width:100%; height:100px;">
-
-                        </div>
+                        <a href="/report">
+                            <img src="../img/logo.png" class="logo"></img>
+                        </a>
                     </div>
                     <div class="col-xs-2 no-padding">
                         <a href="/forum">
@@ -77,7 +76,6 @@ $userSession->isLoggedIn("student");
                         </a>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
