@@ -35,7 +35,7 @@
     <div class="container">
         <ul id="container">
             <li ng-repeat="assessment in groupassessments">
-                <button class="item" ng-class="assessment.status" ng-click="next(assessment.assignmentID)"
+                <button class="item" ng-class="assessment.status" ng-click="next(assessment.assessmentID)"
                     ng-disabled="assessment.isdisabled">
                     <div class="assignment">Assignment: {{assessment.title}}</div>
                     <div class="status">Status: {{assessment.status}}</div>

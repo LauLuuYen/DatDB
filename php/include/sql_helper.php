@@ -887,7 +887,7 @@ class SQL_Helper {
             
             while($stmt->fetch()) {
                 $row = array();
-                $row["assignmentID"] = $reportID . $o_groupID;
+                $row["assessmentID"] = $reportID . $o_groupID;
                 $row["title"] = $title;
                 $row["status"] = $status;
                 $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);

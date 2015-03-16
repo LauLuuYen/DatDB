@@ -405,8 +405,23 @@ a:active{
 
 
 .viewstar {
+    display: block;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
     height:40px;
     width:40px;
+    border:none;
+    float:left;
+}
+
+.viewstar._off {
+    background: url("../img/star_off.png") no-repeat;
+    background-size : contain;
+}
+
+.viewstar._on {
+    background: url("../img/star_on.png") no-repeat;
+    background-size : contain;
 }
 
 .navbar-brand a {

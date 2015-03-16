@@ -1,5 +1,5 @@
 <div class="makeassessment">
-    <div class="heading">Your Assessment</div>
+    <div class="heading">Your Group Assessment</div>
 
     <div class="linebreak"></div>
     <div>Here you can read your peer's group report.  You can either give your group's assessment with a rating and a feedback or view your assessment:</div><br>
@@ -13,11 +13,10 @@
     <div id="viewmode" class="conceal">
         <div class="input_wrapper">
             <div class="heading2">Your group's rating:</div>
-            <span><img src="../img/star_off.png" class="viewstar"></img><span>
-            <span><img src="../img/star_off.png" class="viewstar"></img><span>
-            <span><img src="../img/star_off.png" class="viewstar"></img><span>
-            <span><img src="../img/star_off.png" class="viewstar"></img><span>
-            <span><img src="../img/star_off.png" class="viewstar"></img><span>
+            <span>
+                <span ng-repeat="star in stars" class="viewstar" ng-class="star.state"></span>
+            </span>
+            <div class="clean"></div>
         </div><br>
         
         <div class="input_wrapper">

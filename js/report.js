@@ -255,7 +255,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
     $scope.group = {
         rating:"", feedback:""
     };
-    
+    $scope.stars = [{state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}];
     
     $scope.reroute = function() {
         if (master.assessments == null) {
@@ -276,6 +276,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
                 } else {
                     $("#viewmode").show();
                     $(".feedback").html($scope.assessment.feedback);
+                    $scope.showStars($scope.assessment.score);
                 }
                
                 return;
@@ -285,6 +286,13 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
         //Couldn't find a matching reportid
         $location.path("/assessments");
     };
+    
+    $scope.showStars = function(count) {
+        //show stars
+        for (i=0; i<count; i++) {
+            $scope.stars[i].state = "_on";
+        }
+    }
     
     $scope.onChange = function(id) {
         var id = "#"+id;
@@ -350,25 +358,57 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
 });
 
 
-app.controller("Marks", function ($scope, master) {
-    $scope.groupassessments = [
-        {   "assignmentID":"317281", "title":"my name is tansfg sfglk sl fskb lf sfk ","status":"Incomplete","feedback":"","score":2,"timestamp":"","isdisabled":true
-        }
-    ];
+app.controller("Marks", function ($scope, master, $location) {
+    $scope.groupassessments = [];
 
     $scope.next = function(id) {
         $location.path("/marks/"+id);
     };
     
-    getData(function() {
-        //master
+    getData(function(data) {
+        $scope.$apply(function() {
+            $scope.groupassessments = data;
+            master.groupassessments = data;
+        });
     });
 });
 
 
 app.controller("ViewAssessment", function ($scope, master) {
-    console.log("viewing assessment");
+    $scope.stars = [{state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}];
     
+    $scope.reroute = function() {
+        if (master.groupassessments == null) {
+            $location.path("/marks");
+            return;
+        }
+        
+        var assessments = master.groupassessments;
+        var id = $routeParams.id;
+        
+        for (i = 0; i < assessments.length; i++) {
+            if (id == assessments[i].assessmentID) {
+                $scope.assessment = master.groupassessments[i];
+               
+
+                $(".feedback").html($scope.assessment.feedback);
+                $scope.showStars($scope.assessment.score);
+                return;
+            }
+        }
+        
+        //Couldn't find id
+        $location.path("/marks");
+    };
+    
+    $scope.showStars = function(count) {
+        //show stars
+        for (i=0; i<count; i++) {
+            $scope.stars[i].state = "_on";
+        }
+    }
+    
+    $scope.reroute();
 });
 
 /*
