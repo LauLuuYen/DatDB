@@ -2,7 +2,7 @@
     <div class="heading">Your Assessment</div>
 
     <div class="linebreak"></div>
-    <div>Please read the report carefully and give your group's assessment with a rating and a feedback:</div>
+    <div>Here you can read your peer's group report.  You can either give your group's assessment with a rating and a feedback or view your assessment:</div><br>
 
     <div class="heading2">Group: {{assessment.groupname}}</div>
     <div class="heading2">Status: {{assessment._status}}</div>
@@ -11,9 +11,19 @@
     
     <!--View/Edit mode-->
     <div id="viewmode" class="conceal">
-        <div>
-            <span class="viewstar _off"></span>
-        <div>
+        <div class="input_wrapper">
+            <div class="heading2">Your group's rating:</div>
+            <span><img src="../img/star_off.png" class="viewstar"></img><span>
+            <span><img src="../img/star_off.png" class="viewstar"></img><span>
+            <span><img src="../img/star_off.png" class="viewstar"></img><span>
+            <span><img src="../img/star_off.png" class="viewstar"></img><span>
+            <span><img src="../img/star_off.png" class="viewstar"></img><span>
+        </div><br>
+        
+        <div class="input_wrapper">
+            <div class="heading2">Your group's feedback:</div>
+            <div class="feedback"></div>
+        </div>
     </div>
 
     <div id="editmode" class="conceal">

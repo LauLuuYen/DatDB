@@ -26,7 +26,12 @@
     <div class="heading">Group Assessment Tasks</div>
 
     <div class="linebreak"></div>
-    <div>Here is the list of reports your group has to give an assessment to:</div>
+    <div>Here is the list of reports your group has to give an assessment to.</div><br>
+
+    <div class="heading2">Colour codings:</div>
+    <div>Grey - The group hasn't submitted and finalised their report yet</div>
+    <div>Red - Your group has yet to make an assessment</div>
+    <div>Green - Your group has completed the assessment</div>
 
     <div class="container">
         <ul id="container">

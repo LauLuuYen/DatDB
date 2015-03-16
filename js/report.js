@@ -269,6 +269,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
                     $("#editmode").show();
                 } else {
                     $("#viewmode").show();
+                    $(".feedback").html($scope.assessment.feedback);
                 }
                
                 return;

@@ -285,10 +285,6 @@ class SQL_Helper {
                 $row["title"] = $title;
                 $row["status"] = $reportstatus;
                 $row["isdisabled"] = $reportstatus != "Complete";
-                
-                if ($row["isdisabled"]) {
-                    $row["_status"] = "Group hasn't submitted final report";
-                }
                 $data[] = $row;
             }
             $stmt->free_result();
@@ -874,6 +870,48 @@ class SQL_Helper {
         }
     }
     
+    
+    /*
+    *   Get assessment marks for a particular group
+    *   @params: int - $groupID
+    *   @return: array - $data
+    */
+    public function getAssessmentMarksInGroup($groupID) {
+        $stmt = $this->conn->prepare("SELECT R.id, A.title, current_status, feedback, score, AE.timestamp FROM reports R JOIN assignments A JOIN assessments AE JOIN status S ON R.assignmentid = A.id AND AE.reportid = R.id AND AE.statusid = S.id WHERE R.groupid = ?;");
+        $stmt->bind_param("i", $groupID);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($reportID, $title, $status, $feedback, $score, $timestamp);
+            $data = array();
+            
+            while($stmt->fetch()) {
+                $row = array();
+                $row["reportID"] = $reportID;
+                $row["title"] = $title;
+                $row["status"] = $status;
+                $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
+                $row["score"] = is_null($score) ? "-":$score;
+                $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
+                $row["isdisabled"] = $status != "Complete";
+                $data[] = $row;
+            }
+
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    
+    /*
+    *   Get all the available groups of less than 3 members
+    *   @params: none
+    *   @return: array - $data
+    */
     public function getAvailableGroups() {
         $stmt = $this->conn->prepare("SELECT G.name, COUNT(*) FROM users U JOIN groups G ON U.groupid = G.id GROUP BY groupid HAVING COUNT(*) < 3;");
 
