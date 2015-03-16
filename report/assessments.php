@@ -31,7 +31,7 @@
     <div class="container">
         <ul id="container">
             <li ng-repeat="assessment in assessments">
-                <button class="item" ng-click="next(assessment.reportID)"
+                <button class="item" ng-class="assessment._status" ng-click="next(assessment.reportID)"
                     ng-disabled="assessment.isdisabled">
                     <div class="name">Group: <span>{{assessment.groupname}}</span></div>
                     <div class="linebreak"></div>

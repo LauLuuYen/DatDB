@@ -278,7 +278,7 @@ a:active{
     cursor:pointer;
 }
 
-.assessments .item.complete {
+.assessments .item.Complete {
     border:8px solid green;
 }
 

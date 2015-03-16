@@ -249,6 +249,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
     $scope.group = {
         rating:"", feedback:""
     };
+    
     $scope.reroute = function() {
         if (master.assessments == null) {
             $location.path("/assessments");
@@ -260,10 +261,15 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
         
         for (i = 0; i < assessments.length; i++) {
             if (id == assessments[i].reportID) {
+                $scope.assessment = master.assessments[i];
+                $("#report").html($scope.assessment.content);
                
-                $scope.$apply(function() {
-                    $scope.assessment = assessments[i];
-                });
+                if ($scope.assessment._status != "Complete") {
+                    $("#editmode").show();
+                } else {
+                    $("#viewmode").show();
+                }
+               
                 return;
             }
         }
@@ -295,24 +301,25 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
     $scope.submit = function() {
         if ($scope.validate()) {
             showLoading();
-            console.log($scope.group.rating + ", " +$scope.group.feedback);
-            /*
-            var title =  $scope.thread.title;
-            var comment =  $scope.thread.comment;
-
+            
+            var reportID = parseInt($scope.assessment.reportID);
+            var score = $scope.group.rating;
+            var feedback =  $scope.group.feedback;
+            console.log(reportID);
             
             $.ajax({
                 type: "POST",
-                url:"http://lauluuyen.azurewebsites.net/php/threads.php" ,
+                url:"http://lauluuyen.azurewebsites.net/php/makeassessment.php" ,
                 crossDomain: true,
-                data: {title: title, comment: comment},
+                data: {reportID: reportID, score: score, feedback:feedback},
                 dataType: "json",
                 async: true,
-                timeout: 10000,
+                timeout: 15000,
 
                 success: function (result) {
                     if (result.success) {
-                        window.location.href="/forum/";
+                        window.location.href="/report/";
+
                    
                     } else {
                         hideLoading();
@@ -325,7 +332,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
                     alert("An error occured. Please try again in a few moments.");
                 }
             });
-            */
+
         }
     };
 

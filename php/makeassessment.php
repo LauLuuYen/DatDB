@@ -27,40 +27,32 @@ class Assessment{
     public function __construct($reportID, $feedback, $score) {
         $this->userID = $_SESSION["userID"];
         $this->groupID = $_SESSION["groupID"];
-        $this->reportID = $reportID;
+        $this->reportID = (int) $reportID;
         $this->feedback = $feedback;
-        $this->score = $score;
+        $this->score = (int) $score;
     }
   
-  public function checkInputs()
-  {
-    if(!is_int($this->reportID))
-    {
-      result(false, "reportID must be set");
+    public function checkInputs() {
+        if(is_null($this->reportID) || $this->reportID == 0) {
+            result(false, "reportID must be set");
+
+        } else if(strlen($this->feedback) === 0 || is_null($this->feedback)) {
+            result(false, "Feedback must be set");
+
+        } else if(strlen($this->feedback) > 500) {
+            result(false, "Feedback is too long");
+
+        } else if(is_null($this->score) || $this->score == 0) {
+            result(false, "score must be set");
+
+        } else {
+            return true;
+
+        }
+        return false;
     }
-    else if(strlen($this->feedback) === 0 || is_null($this->feedback)) 
-    {
-      result(false, "Feedback must be set");
-    }
-    else if(strlen($this->feedback) > 500)
-    {
-      result(false, "Feedback is too long");
-    }
-    else if(!is_int($this->score))
-    {
-      result(false, "score must be set");
-    }
-    else
-    {
-      return true;
-    }
-    return false;
-  }
   
-    //TODO block update when assessment is already complete
-    //TODO block update if deadline timestamp is due
-    public function submitAssessment()
-    {
+    public function submitAssessment() {
         require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
@@ -72,7 +64,6 @@ class Assessment{
         }
 
         $this->sql_helper->close();
-
     }
   
 }
@@ -82,7 +73,7 @@ require_once "session.php";
 
 if($userSession->isLoggedIn()) {
 
-    if(empty($_POST)) {
+    if(!empty($_POST)) {
         $reportID = $_POST["reportID"];
         $feedback = $_POST["feedback"];
         $score = $_POST["score"];
