@@ -2,10 +2,7 @@
 
 require_once "../php/session.php";
 
-if(!$userSession->isLoggedIn()) {
-    $url = "http://" . $_SERVER["HTTP_HOST"];
-    header("Location: " . $url);
-}
+$userSession->isLoggedIn("student");
 
 ?>
 
@@ -44,10 +41,42 @@ if(!$userSession->isLoggedIn()) {
     <div class="row">
         <div class="col-md-12">
             <div class="banner">
-            
 
+                <div class="row">
+                    <div class="col-xs-2 no-padding">
+                        <div style="background-color:red; width:100%; height:100px;">
+
+                        </div>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/forum">
+                            <div class="tab">
+                                Forum
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/account">
+                            <div class="tab">
+                                Account
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/about">
+                            <div class="tab">
+                                About
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-2 no-padding">
+                        <div class="tab">
+                            Log out
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-
         </div>
     </div>
     

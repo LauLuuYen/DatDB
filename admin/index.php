@@ -2,10 +2,7 @@
 
 require_once "../php/session.php";
 
-if(!$userSession->isLoggedIn()) { //Check admin
-    $url = "http://" . $_SERVER["HTTP_HOST"];
-    header("Location: " . $url);
-}
+$userSession->isLoggedIn("admin");
 
 ?>
 <!DOCTYPE html>

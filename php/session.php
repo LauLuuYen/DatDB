@@ -27,11 +27,19 @@ class Session {
     }
     
     
-    public function isLoggedIn() {
+    public function isLoggedIn(role) {
         session_start();
                 
-        return (isset($_SESSION["userID"]) &&
-                isset($_SESSION["name"]));
+        $loggedIn = isset($_SESSION["userID"]) &&
+                    isset($_SESSION["name"]) &&
+                    isset($_SESSION["lastname"]) &&
+                    isset($_SESSION["roleID"]) &&
+                    isset($_SESSION["groupID"]);
+        
+        if (!$loggedIn) {
+            $url = "http://" . $_SERVER["HTTP_HOST"];
+            header("Location: " . $url);
+        }
     }
 
 
@@ -41,12 +49,12 @@ class Session {
     *   @return: none
     */
     public function destroySession() {
-    	
-    	if(!session_destroy())
-    	{
+    	if(!session_destroy()) {
     		$this->setSessionVal("userID", -1);	
     	}
-        //echo "Session destroyed";
+        
+        $url = "http://" . $_SERVER["HTTP_HOST"];
+        header("Location: " . $url);
     }
     
 }

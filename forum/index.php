@@ -2,10 +2,7 @@
 
 require_once "../php/session.php";
 
-if(!$userSession->isLoggedIn()) {
-    $url = "http://" . $_SERVER["HTTP_HOST"];
-    header("Location: " . $url);
-}
+$userSession->isLoggedIn("student");
 
 ?>
 <!DOCTYPE html>
