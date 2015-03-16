@@ -14,12 +14,10 @@
           $this->sql_helper = new SQL_Helper();
           echo $this->userID;
           $success = $this->sql_helper->deleteComment($this->commentID, $this->userID);
-  
-           $url = "http://" . $_SERVER["HTTP_HOST"]."/forum";
-          header("Location: " . $url);
-          
+          echo "test";
           $this->sql_helper->close();
-  
+          $url = "http://" . $_SERVER["HTTP_HOST"]."/forum";
+          header("Location: " . $url);
   	}
   	
   }
