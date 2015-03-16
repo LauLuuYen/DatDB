@@ -146,6 +146,7 @@ app.controller("CreateThread", function ($scope, master) {
 
                 error: function(xhr, status, error) {
                     hideLoading();
+                    console.log(JSON.stringify(xhr));
                     alert("An error occured. Please try again in a few moments.");
                 }
             });
@@ -248,6 +249,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
 
                 error: function(xhr, status, error) {
                     hideLoading();
+                    console.log(JSON.stringify(xhr));
                     alert("An error occured. Please try again in a few moments.");
                 }
             });
