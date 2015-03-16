@@ -19,7 +19,7 @@ class Get {
         $data = array();
         
         //Get all assessment marks
-        $data["assessments"] = $this->sql_helper->getAssessmentMarks($this->groupID);
+        $data["assessments"] = $this->sql_helper->getAssessmentMarksInGroup($this->groupID);
         
         $this->sql_helper->close();
         
