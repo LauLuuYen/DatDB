@@ -383,6 +383,20 @@ a:active{
   opacity : 1;
 }
 
+
+.viewstar {
+    height:40px;
+    width:40px;
+}
+.viewstar._off {
+    background      : url('../img/star_off.png');
+    background-size : contain;
+}
+.viewstar._on {
+    background      : url('../img/star_off.png');
+    background-size : contain;
+}
+
 .navbar-brand a {
     line-height: 100px;
     height: 100px;

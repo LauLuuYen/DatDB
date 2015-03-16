@@ -250,6 +250,7 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
         rating:"", feedback:""
     };
     
+    
     $scope.reroute = function() {
         if (master.assessments == null) {
             $location.path("/assessments");

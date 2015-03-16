@@ -11,7 +11,9 @@
     
     <!--View/Edit mode-->
     <div id="viewmode" class="conceal">
-        View stff
+        <div>
+            <span class="viewstar _off"></span>
+        <div>
     </div>
 
     <div id="editmode" class="conceal">
