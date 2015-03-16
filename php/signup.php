@@ -183,7 +183,7 @@ if ($signup->checkInputs()) {
 */
 require_once "session.php";
 
-if($userSession->isLoggedIn()) { //TODO make admin only in session
+if($userSession->isLoggedIn("admin")) { //TODO make admin only in session
 
     if(!empty($_POST)) {
         $name = $_POST["name"];

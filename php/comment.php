@@ -81,7 +81,7 @@ class Comment {
     
 require_once "session.php";
 
-if($userSession->isLoggedIn()) {
+if($userSession->isLoggedIn("student")) {
 
     if(!empty($_POST)) {
         $threadID = $_POST["threadID"];

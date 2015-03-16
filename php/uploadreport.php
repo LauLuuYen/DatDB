@@ -84,7 +84,7 @@ class FileParser {
 
 require_once "session.php";
 
-if($userSession->isLoggedIn()) {
+if($userSession->isLoggedIn("student")) {
 
     if (!empty($_FILES["myFile"])) {
         $file = $_FILES["myFile"];

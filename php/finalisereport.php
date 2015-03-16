@@ -68,7 +68,7 @@ class Report {
 
 require_once "session.php";
 
-if($userSession->isLoggedIn()) {
+if($userSession->isLoggedIn("student")) {
 
     if(!empty($_POST)) {
         $id = $_POST["reportID"];

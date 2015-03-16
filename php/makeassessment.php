@@ -71,7 +71,7 @@ class Assessment{
 
 require_once "session.php";
 
-if($userSession->isLoggedIn()) {
+if($userSession->isLoggedIn("student")) {
 
     if(!empty($_POST)) {
         $reportID = $_POST["reportID"];
