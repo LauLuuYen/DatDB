@@ -12,8 +12,8 @@
   	{
   		require_once "include/sql_helper.php";
           $this->sql_helper = new SQL_Helper();
-          echo "a";
-          echo $this->userID;
+          //echo "a";
+          //echo $this->userID;
           $success = $this->sql_helper->deleteComment($this->commentID, $this->userID);
           echo "test";
           $this->sql_helper->close();
