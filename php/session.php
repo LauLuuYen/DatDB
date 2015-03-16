@@ -27,7 +27,7 @@ class Session {
     }
     
     
-    public function isLoggedIn(role) {
+    public function isLoggedIn($role) {
         session_start();
                 
         $loggedIn = isset($_SESSION["userID"]) &&
@@ -48,7 +48,7 @@ class Session {
     *   @params: none
     *   @return: none
     */
-    public function destroySession() {
+    public function logout() {
     	if(!session_destroy()) {
     		$this->setSessionVal("userID", -1);	
     	}
