@@ -39,7 +39,9 @@ class Session {
         if (!$loggedIn) {
             $url = "http://" . $_SERVER["HTTP_HOST"];
             header("Location: " . $url);
+            return false;
         }
+        return true;
     }
 
 
