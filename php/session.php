@@ -49,9 +49,8 @@ class Session {
     *   @return: none
     */
     public function logout() {
-    	if(!session_destroy()) {
-    		$this->setSessionVal("userID", -1);	
-    	}
+    	session_start();
+        session_destroy();
         
         $url = "http://" . $_SERVER["HTTP_HOST"];
         header("Location: " . $url);

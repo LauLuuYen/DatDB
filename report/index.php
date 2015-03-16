@@ -2,11 +2,7 @@
 
 require_once "../php/session.php";
 
-if (isset($_GET["logout"])) {
-    $userSession->logout();
-} else {
-    $userSession->isLoggedIn("student");
-}
+$userSession->isLoggedIn("student");
 
 ?>
 
@@ -74,7 +70,7 @@ if (isset($_GET["logout"])) {
                         </a>
                     </div>
                     <div class="col-xs-offset-2 col-xs-2 no-padding">
-                        <a href="index.php?logout=true">
+                        <a href="/php/get_logout.php">
                             <div class="tab">
                                 Logout
                             </div>
