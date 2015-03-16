@@ -31,6 +31,7 @@
     <div>Grey - The group hasn't given you an assessment yet.</div>
     <div>Green - The group has given you an assessment.</div>
 
+
     <div class="container">
         <ul id="container">
             <li ng-repeat="assessment in groupassessments">

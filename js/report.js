@@ -33,6 +33,12 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: "marks.php",
             controller: "Marks"
         })
+        
+        .when("/marks/:id", {
+            templateUrl: "viewassessment.php",
+            controller: "ViewAssessment"
+        })
+        
         .otherwise({
             redirectTo: "/"
         });
@@ -346,16 +352,23 @@ app.controller("MakeAssessment", function ($scope, master, $routeParams, $locati
 
 app.controller("Marks", function ($scope, master) {
     $scope.groupassessments = [
-        {   "assignmentID":"317281", "title":"my name is tan","status":"Incomplete","feedback":"","score":2,"timestamp":"","isdisabled":true
-        },
-        {   "assignmentID":"317281", "title":"my name is tan","status":"Incomplete","feedback":"","score":2,"timestamp":"","isdisabled":true
+        {   "assignmentID":"317281", "title":"my name is tansfg sfglk sl fskb lf sfk ","status":"Incomplete","feedback":"","score":2,"timestamp":"","isdisabled":true
         }
     ];
-    
+
+    $scope.next = function(id) {
+        $location.path("/marks/"+id);
+    };
     
     getData(function() {
         //master
     });
+});
+
+
+app.controller("ViewAssessment", function ($scope, master) {
+    console.log("viewing assessment");
+    
 });
 
 /*
