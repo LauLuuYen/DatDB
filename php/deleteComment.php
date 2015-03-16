@@ -3,6 +3,7 @@
   class commentEraser
   {
     public function __construct($commentID) {
+      
     $this->userID = $_SESSION["userID"];
     $this->commentID = $commentID;
     }
@@ -11,7 +12,7 @@
   	{
   		require_once "include/sql_helper.php";
           $this->sql_helper = new SQL_Helper();
-  
+          echo $this->userID;
           $success = $this->sql_helper->deleteComment($this->commentID, $this->userID);
   
            $url = "http://" . $_SERVER["HTTP_HOST"]."/forum";
