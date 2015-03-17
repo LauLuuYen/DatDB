@@ -53,13 +53,15 @@ $userSession->isLoggedIn("admin");
                             <img src="../img/logo.png" class="logo"></img>
                         </a>
                     </div>
+                    <!-- FORUM REMOVED FROM ADMIN PAGE
                     <div class="col-xs-2 no-padding">
-                        <!-- <a href="/forum"> -->
+                         <a href="/forum"> 
                             <div class="tab">
                                 Forum
                             </div>
                         </a>
                     </div>
+                    -->
                     <div class="col-xs-2 no-padding">
                         <a href="/account">
                             <div class="tab">
