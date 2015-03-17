@@ -51,6 +51,8 @@ app.controller('Login', function ($scope, master) {
                 },
 
                 error: function(xhr, status, error) {
+                	
+                console.log("Testing"+JSON.stringify(xhr));
                     hideLoading();
                     alert("An error occurred.  Please try again in a few moments.");
                 }
