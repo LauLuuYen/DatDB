@@ -41,7 +41,29 @@ class Session {
             header("Location: " . $url);
             return false;
         }
-        return true;
+        
+	require_once "include/sql_helper.php";
+	$sql_helper = new SQL_Helper();
+	$name = strtolower($sql_helper->getRole($_SESSION["roleID"]));
+	$role = strtolower($role);
+	$sql_helper->close();
+	//echo $name;+
+	if($name == $role)
+	{
+		return true;
+	}
+	else if($name == "admin")
+	{
+		$url = "http://" . $_SERVER["HTTP_HOST"]."/admin";
+        	 header("Location: " . $url);
+	}
+	else if ($name == "student")
+	{
+		$url = "http://" . $_SERVER["HTTP_HOST"]."/report";
+        	 header("Location: " . $url);
+	}
+	
+        return false;
     }
 
 
