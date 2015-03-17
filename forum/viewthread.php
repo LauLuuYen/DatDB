@@ -11,8 +11,7 @@
     <div class="container">
         <div class="comment">
             <div id="txt"></div><br>
-            <div id="date">sdsgsgfgs</div>
-            <div>(TODO add feature to delete comments)</div>
+            <div id="date"></div>
         </div>
     </div>
 
@@ -23,6 +22,15 @@
 
         <div dynamic="itemlist"></div>
 
+    </div>
+
+
+    <div class="container">
+        <div class="comment" ng-repeat="post in comments">
+            <div>{{post.content}}</div><br>
+            <div>By {{post.fullname}} " at " {{post.timestamp}}</div>
+            <a class="link">Delete Comment</a>
+        </div>
     </div>
 
     <div class="container2">

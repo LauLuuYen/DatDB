@@ -61,7 +61,7 @@ app.controller("Main", function ($scope, master, $location) {
             var row = {threadID:id, title:title, timestamp:timestamp, count:c_len, fullname:fullname};
             temp.push(row);
         }
-        console.log(JSON.stringify(temp));
+
         $scope.$apply(function() {
             $scope.threads = temp;
         });
@@ -157,6 +157,8 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     $scope.thread = {
         comment:""
     };
+    $scope.comments = [{content:"adgadg", fullname:"adfdag", timestamp:"sfgfg"},
+                        {content:"adgadg", fullname:"adfdag", timestamp:"sfgfg"}];
     
     $scope.back=function(){
     	window.location.href="/forum/";
@@ -175,7 +177,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         for (i = 0; i < threads.length; i++) {
             var thread = threads[i];
             if (id == thread.threadID) {
-                $scope.injectScript(thread.title, thread.comments);
+                $scope.getComments(thread.title, thread.comments);
                 return;
             }
         }
@@ -184,23 +186,26 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         window.location.href="/forum/";
     };
     
-    $scope.injectScript = function(title, comments) {
+    $scope.getComments = function(title, comments) {
         $(".heading").html("Thread: " + title);
         $("#txt").html(comments[0].content);
         $("#date").html("By " + comments[0].fullname +" at " +comments[0].timestamp);
-        var script = "<div>Comments:</div>";
-
-        for (i = 1;i<comments.length; i++) {
-            script += "<div class='comment'>"+
-                        "<div>"+comments[i].content+"</div><br>"+
-                        "<div>By " + comments[i].fullname +" at " +comments[i].timestamp+"</div>"+
-                      "</div>";
+        var temp = [];
+        
+        for (i=1; i<comment.length; i++) {
+                var row = { content:comments[i].content,
+                            fullname:comments[i].fullname,
+                            timestamp:comments[i].timestamp
+                            candelete:comments[i].candelete };
+                temp.push(row);
         }
         
-        if (comments.length > 1){
-            $scope.itemlist = script;
-        }
+        console.log(JSON.stringify(temp));
+        $scope.$apply(function() {
+            $scope.threads = temp;
+        });
     };
+
     
     $scope.onChange = function(id) {
         var id = "#"+id;
