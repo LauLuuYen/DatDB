@@ -982,16 +982,12 @@ class SQL_Helper {
     public function getRole($roleID)
     {
     	$stmt = $this->conn->prepare("SELECT name FROM roles WHERE id=?;");
-    	echo "Snookie";
         $stmt->bind_param("i", $roleID);
-        echo "Lambada";
          if ($stmt->execute()) {
             $stmt->store_result();
             $stmt->bind_result($userRole);
             $stmt->fetch();
-            echo "Hootie";
             $stmt->close();
-	echo "Bootie";
             return $userRole;
         } 
         else 
