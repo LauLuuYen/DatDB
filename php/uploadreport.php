@@ -90,7 +90,7 @@ if($userSession->isLoggedIn("student")) {
         $file = $_FILES["myFile"];
      
         if ($file["error"] === UPLOAD_ERR_OK) {
-            result(false, "An error occured uploading.");
+            result(false, "An error occured uploading");
             
         } else if ($file["size"] > 5000000) { //5mb
             result(false, "File size too big");

@@ -168,12 +168,14 @@ app.controller("Submit", function ($scope, master) {
                 } else {
                     hideLoading();
                     alert(data.message);
+                    $scope.updatefeedback(data.message);
 
                 }
             },
             
             error:  function(xhr, status, error) {
                 hideLoading();
+                alert("Please try again in a few moments");
                 $scope.updatefeedback("Please try again in a few moments");
             }
 
