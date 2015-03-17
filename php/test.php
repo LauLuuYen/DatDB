@@ -4,11 +4,11 @@ session_start();
 echo "Hello Now";
 require_once "include/sql_helper.php";
 echo "Hello Pikachu";
-$this->sql_helper = new SQL_Helper();
+$sql_helper = new SQL_Helper();
 echo "Hello";
-$name = $this->sql_helper->getRole($_SESSION["roleID"]);
+$name = $sql_helper->getRole($_SESSION["roleID"]);
 echo "Hello Dino";
-$this->sql_helper->close();
+$sql_helper->close();
 echo $name;
 
 ?>
