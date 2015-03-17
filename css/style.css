@@ -517,6 +517,7 @@ ul#container {
 
 .forum .item:hover {
     background-color: #B2DBF6;
+    border: 2px solid black;
 }
 
 .forum .item ._left {
