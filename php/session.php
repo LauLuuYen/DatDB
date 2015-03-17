@@ -59,7 +59,7 @@ class Session {
 	}
 	else if ($name == "student")
 	{
-		$url = "http://" . $_SERVER["HTTP_HOST"]."/student";
+		$url = "http://" . $_SERVER["HTTP_HOST"]."/report";
         	 header("Location: " . $url);
 	}
 	
