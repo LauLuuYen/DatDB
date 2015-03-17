@@ -584,6 +584,7 @@ ul#container {
     position:absolute;
     right:10px;
     bottom:5px
+    pointer:cursor;
 }
 
 .comment .link.candelete {
