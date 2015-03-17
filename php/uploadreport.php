@@ -31,6 +31,10 @@ class FileParser {
         $this->txtfile = $txtfile;
     }
 
+    public function checkTXT() {
+        result(false, "TXT test");
+    }
+    
     public function checkXML() {
         $xml = @simplexml_load_file($this->txtfile['tmp_name']);
 
@@ -63,6 +67,9 @@ class FileParser {
         if (strlen($content) > 5000) {
             result(false, "Report has exceeded 5000 characters");
             return;
+        } else if (strlen($content) == 0) {
+            result(false, "Cannot submit empty report");
+            return;
         }
         
         require_once "include/sql_helper.php";
@@ -89,19 +96,31 @@ if($userSession->isLoggedIn("student")) {
     if (!empty($_FILES["myFile"])) {
         $file = $_FILES["myFile"];
      
-        if ($file["error"] === UPLOAD_ERR_OK) {
+        if ($file["error"] !== UPLOAD_ERR_OK) {
             result(false, "An error occured uploading");
-            
+ 
         } else if ($file["size"] > 5000000) { //5mb
             result(false, "File size too big");
             
         } else {
-            result(false, "ext: ".$file["name"]);
-            return;
-        
+            $ext = pathinfo($file["name"], PATHINFO_EXTENSION);
+           
             $reportID = $_POST["reportID"];
             $parser = new FileParser($reportID, $file);
-            $parser->checkXML();
+            
+            switch ($ext) {
+                case "xml":
+                    $parser->checkXML();
+                    
+                case "txt":
+                    $parser->checkTXT();
+
+                default:
+                    result(false, "Unrecognised extension");
+            }
+
+    
+        
         }
         
         
