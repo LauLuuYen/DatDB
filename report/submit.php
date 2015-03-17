@@ -78,7 +78,7 @@
             </div>
             <div>
                 <br>
-                <img src="../img/xmlguideline.png" alt=" xmlguidelinesmall.png">
+                <img src="../img/xmlguidelinesmall.png" alt=" xmlguidelinesmall.png">
                 <br>
             </div>
         </div>
