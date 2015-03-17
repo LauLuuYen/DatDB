@@ -1,6 +1,6 @@
 
 html, body {
-    width:100%;
+    max-width:100%;
     overflow-x: hidden;
     margin: 0;
     background-image: url("/img/innerbg.gif");
@@ -518,7 +518,6 @@ ul#container {
 
 .forum .item:hover {
     background-color: #B2DBF6;
-    border: 2px solid lightblue;
 }
 
 .forum .item ._left {
