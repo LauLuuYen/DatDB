@@ -46,7 +46,9 @@ class threadEraser
 
         $sqlThreadOwner = $this->sql_helper->getThreadOwner($this->threadID);
         
-        if(sqlThreadOwner == $this->userID)
+        echo $sqlThreadOwner;
+        
+        if($sqlThreadOwner == $this->userID)
         {
             echo ("You are the thread owner");
             //DELETE COMMENT
