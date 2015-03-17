@@ -44,7 +44,17 @@ class threadEraser
         require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
-        //$success = $this->sql_helper->deleteThread($this->threadID, $this->userID);
+        $sqlThreadOwner = $this->sql_helper->getThreadOwner($this->threadID);
+        
+        if(sqlThreadOwner == $this->userID)
+        {
+            echo ("You are the thread owner");
+            //DELETE COMMENT
+        }
+        else
+        {
+            echo ("You are not the thread owner");
+        }
 
         $this->sql_helper->close();
         
