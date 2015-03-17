@@ -42,12 +42,7 @@ app.controller('Login', function ($scope, master) {
                 success: function (result)
                 {
                     if (result.success) {
-<<<<<<< HEAD
-                        //window.location.href="/report/";
-=======
-                       // window.location.href="/report/";
->>>>>>> da075e4125782630e63d7334c3e3a739e6d75db3
-                        alert(result.message);
+                       window.location.href=result.message;
                     } else {
                         hideLoading();
                         alert(result.message);
@@ -56,7 +51,6 @@ app.controller('Login', function ($scope, master) {
 
                 error: function(xhr, status, error) {
                     hideLoading();
-                    console.log(JSON.stringify(xhr));
                     alert("An error occurred.  Please try again in a few moments.");
                 }
             });
