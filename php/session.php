@@ -27,6 +27,35 @@ class Session {
     }
     
     
+
+    public function isLoggedInMain() {
+        session_start();
+                
+        $loggedIn = isset($_SESSION["userID"]) &&
+                    isset($_SESSION["name"]) &&
+                    isset($_SESSION["lastname"]) &&
+                    isset($_SESSION["roleID"]);
+        
+        if ($loggedIn) {
+        
+        	require_once "include/sql_helper.php";
+            $sql_helper = new SQL_Helper();
+            $role = strtolower($sql_helper->getRole($_SESSION["roleID"]));
+            $sql_helper->close();
+
+            if($role == "admin")
+            {
+                $url = "http://" . $_SERVER["HTTP_HOST"]."/admin";
+                header("Location: " . $url);
+            }
+            else if ($role == "student")
+            {
+                $url = "http://" . $_SERVER["HTTP_HOST"]."/report";
+                header("Location: " . $url);
+            }
+        }
+    }
+    
     public function isLoggedIn($role) {
         session_start();
                 
@@ -47,8 +76,7 @@ class Session {
 	$role = strtolower($role);
 	$sql_helper->close();
 
-	if($name == $role)
-	{
+	if($name == $role) {
 		return true;
 	}
 	else if($name == "admin")
