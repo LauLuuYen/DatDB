@@ -32,7 +32,9 @@ class FileParser {
     }
 
     public function checkTXT() {
-        result(false, "TXT test");
+        $content = $this->txtfile['tmp_name'];
+        result(false, "f".$content);
+        
     }
     
     public function checkXML() {
@@ -111,10 +113,10 @@ if($userSession->isLoggedIn("student")) {
             switch ($ext) {
                 case "xml":
                     $parser->checkXML();
-                    
+                    break;
                 case "txt":
                     $parser->checkTXT();
-
+                    break;
                 default:
                     result(false, "Unrecognised extension");
             }

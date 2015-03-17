@@ -53,6 +53,7 @@ class Session {
                 $url = "http://" . $_SERVER["HTTP_HOST"]."/report";
                 header("Location: " . $url);
             }
+            
         }
     }
     

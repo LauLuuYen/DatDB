@@ -152,8 +152,7 @@ app.controller("Submit", function ($scope, master) {
                     myXhr.upload.addEventListener('progress',function(e) {
                         if(e.lengthComputable){
                             var progress = "Progress: "+ (e.loaded/e.total)*100 + "%";
-                            $scope.updatefeedback(progress);
-                            $(".error").html(progress);
+                            $(".error").html(progress);                            
                         }
                     }, false);
                 }
@@ -173,6 +172,7 @@ app.controller("Submit", function ($scope, master) {
             
             error:  function(xhr, status, error) {
                 hideLoading();
+                console.log(JSON.stringify(xhr));
                 $scope.updatefeedback("Please try again in a few moments");
             }
 
