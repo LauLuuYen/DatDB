@@ -157,8 +157,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     $scope.thread = {
         comment:""
     };
-    $scope.comments = [{content:"adgadg", fullname:"adfdag", timestamp:"sfgfg"},
-                        {content:"adgadg", fullname:"adfdag", timestamp:"sfgfg"}];
+    $scope.comments = [];
     
     $scope.back=function(){
     	window.location.href="/forum/";
@@ -202,7 +201,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         
         console.log(JSON.stringify(temp));
         $scope.$apply(function() {
-            $scope.threads = temp;
+            $scope.comments = temp;
         });
     };
 
