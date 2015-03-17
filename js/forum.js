@@ -261,7 +261,33 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     };
 
     $scope.deleteComment = function(id) {
-        alert("dellete id:" +id );
+        showLoading();
+        $.ajax({
+            type: "POST",
+            url:"http://lauluuyen.azurewebsites.net/php/deleteComment.php" ,
+            crossDomain: true,
+            data: {commentID: id},
+            dataType: "json",
+            async: true,
+            timeout: 10000,
+
+            success: function (result) {
+                if (result.success) {
+                    window.location.href="/forum/";
+               
+                } else {
+                    hideLoading();
+                    alert(result.message);
+                }
+            },
+
+            error: function(xhr, status, error) {
+                hideLoading();
+                console.log(JSON.stringify(xhr));
+                alert("An error occured. Please try again in a few moments.");
+            }
+        });
+            
     };
 
     $scope.reroute();
