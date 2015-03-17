@@ -1,3 +1,11 @@
+<?php
+
+require_once "php/session.php";
+
+$userSession->isLoggedInMain();
+
+?>
+
 <!doctype html>
 <html lang="en" ng-app="myApp">
 
