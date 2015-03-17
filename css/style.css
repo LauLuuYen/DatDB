@@ -488,6 +488,7 @@ a {
 
 .forum .newthread:hover {
     background-color: #B2DBF6;
+    color: black;
 }
 
 ul#container {
