@@ -583,8 +583,9 @@ ul#container {
     display:none;
     position:absolute;
     right:10px;
-    bottom:5px
+    bottom:5px;
     pointer:cursor;
+    z-index:2;
 }
 
 .comment .link.candelete {

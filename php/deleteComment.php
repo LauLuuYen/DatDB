@@ -26,8 +26,7 @@ class commentEraser
 
         $this->sql_helper->close();
         
-        $url = "http://" . $_SERVER["HTTP_HOST"]."/forum";
-        header("Location: " . $url);
+        result(true, "Success");
   	}
   	
 }
