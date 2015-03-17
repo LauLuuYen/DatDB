@@ -89,7 +89,9 @@ class Login {
                 unset($data["password"]); //Remove password
                 $userSession->login($data);
                 
-                result(true, "Success!");
+                $role = strtolower($this->sql_helper->getRole($_SESSION("roleID")));
+                
+                result(true, $role);
                 
             }
         }
