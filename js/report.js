@@ -110,6 +110,7 @@ app.controller("Submit", function ($scope, master) {
         switch (extension) {
             //Valid file extensions
             case "xml":
+            case "txt":
                 break;
             default:
                 $scope.updatefeedback("Please use the right file extension.");
