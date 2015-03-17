@@ -91,13 +91,15 @@ if($userSession->isLoggedIn("student")) {
      
         if ($file["error"] !== UPLOAD_ERR_OK) {
             result(false, "An error occured uploading.");
-            exit;
+            
+        } else if ($file["size"] > 500000) {
+        
         }
 
         $reportID = $_POST["reportID"];
         $parser = new FileParser($reportID, $file);
         $parser->checkXML();
-
+        
         
     } else {
         result(false, "Error in request!");

@@ -1,5 +1,27 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+define("DEBUG", false);
+
+if (DEBUG) {
+    ini_set("display_errors",1);
+    ini_set("display_startup_errors",1);
+    error_reporting(E_ALL & ~E_NOTICE);
+}
+
+
+/*
+*   Echoes to the client the result of the process.
+*   @params: bool - $success, string - $msg
+*   @return: none
+*/
+function result($success, $msg) {
+    $response["success"] = $success;
+    $response["message"] = $msg;
+    echo json_encode($response);
+}
+
+
 class commentEraser
 {
     public function __construct($commentID) {
@@ -35,13 +57,7 @@ require_once "session.php";
 
 if($userSession->isLoggedIn("student")) 
 {
-    $commentID = 241;
-    $commentEraser = new commentEraser($commentID);
 
-    if ($commentEraser->checkInputs()) {
-        $commentEraser->deleteComment();
-    }
-      
     if(!empty($_POST)) {
         $commentID = $_POST["commentID"];
         $commentEraser = new commentEraser($commentID);
@@ -54,6 +70,7 @@ if($userSession->isLoggedIn("student"))
     {
         result(false, "Error in request!");
     }
+
 }
 else
 {
