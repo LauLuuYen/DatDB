@@ -22,7 +22,7 @@
 </script>
 
 <div class="submitreport">
-    <div class="heading">Submit/ View Report</div>
+    <div class="heading">Submit / View Report</div>
 
     <div class="linebreak"></div>
 
@@ -63,7 +63,11 @@
                 when you finalise the report after uploading it.
             <div class="upload">
                 <form enctype="multipart/form-data" ng-submit="send()">
-                    <input id="uploadfile" name="myFile" type="file" accept=".xml"></input>
+                   <!-- <input id="uploadfile" name="myFile" type="file" accept=".xml"></input> -->
+                    <div class="fileUpload btn btn-primary">
+                      <span>Choose file</span>
+                         <input type="file" class="upload" accept=".xml" />
+                    </div>
                     <button id="btn_uploadfile" type="submit" disabled>Upload</button>
                     <div class="error invisible" style="margin-top:10px;">Error:</div>
                     <div class="clean"></div>
