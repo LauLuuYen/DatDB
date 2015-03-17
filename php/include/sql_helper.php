@@ -979,10 +979,10 @@ class SQL_Helper {
         }
     }
     
-    public function getRole($userID)
+    public function getRole($roleID)
     {
     	$stmt = $this->conn->prepare("SELECT name FROM roles WHERE id=?;");
-        $stmt->bind_param("i", $userID);
+        $stmt->bind_param("i", $roleID);
         
          if ($stmt->execute()) {
             $stmt->store_result();
