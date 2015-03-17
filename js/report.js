@@ -112,7 +112,6 @@ app.controller("Submit", function ($scope, master) {
             case "xml":
                 break;
             default:
-                alert("Please use the right file extension.");
                 $scope.updatefeedback("Please use the right file extension.");
                 $("#btn_uploadfile").attr("disabled","disabled");
                 return;
@@ -121,7 +120,6 @@ app.controller("Submit", function ($scope, master) {
         //TODO check file size
         var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
         if (byte > 5000000) {
-            alert("Filesize too big");
             $scope.updatefeedback("Filesize too big");
         }
 
@@ -154,7 +152,7 @@ app.controller("Submit", function ($scope, master) {
                         if(e.lengthComputable){
                             var progress = "Progress: "+ (e.loaded/e.total)*100 + "%";
                             $scope.updatefeedback(progress);
-
+                            $(".error").html(progress);
                         }
                     }, false);
                 }
@@ -167,7 +165,6 @@ app.controller("Submit", function ($scope, master) {
 
                 } else {
                     hideLoading();
-                    alert(data.message);
                     $scope.updatefeedback(data.message);
 
                 }
@@ -175,7 +172,6 @@ app.controller("Submit", function ($scope, master) {
             
             error:  function(xhr, status, error) {
                 hideLoading();
-                alert("Please try again in a few moments");
                 $scope.updatefeedback("Please try again in a few moments");
             }
 
@@ -200,19 +196,20 @@ app.controller("Submit", function ($scope, master) {
                
                 } else {
                     hideLoading();
-                    alert(result.message);
+                    $scope.updatefeedback(result.message);
                 }
             },
 
             error: function(xhr, status, error) {
                 hideLoading();
-                alert("An error occured. Please try again in a few moments.");
+                $scope.updatefeedback("An error occured. Please try again in a few moments.");
             }
         });
     };
     
     $scope.updatefeedback = function(message) {
         $(".error").html("Error: "+ message);
+        alert("Error: " +message);
         $(".error").removeClass("invisible");
     };
     
