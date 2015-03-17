@@ -112,13 +112,18 @@ app.controller("Submit", function ($scope, master) {
             case "xml":
                 break;
             default:
+                alert("Please use the right file extension.");
                 $scope.updatefeedback("Please use the right file extension.");
                 $("#btn_uploadfile").attr("disabled","disabled");
                 return;
         }
 
         //TODO check file size
-        //var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
+        var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
+        if (byte > 5000000) {
+            alert("Filesize too big");
+            $scope.updatefeedback("Filesize too big");
+        }
 
         $("#btn_uploadfile").removeAttr("disabled");
 
@@ -162,7 +167,7 @@ app.controller("Submit", function ($scope, master) {
 
                 } else {
                     hideLoading();
-                    $scope.updatefeedback(data.message);
+                    alert(data.message);
 
                 }
             },

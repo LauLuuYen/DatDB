@@ -64,8 +64,8 @@
             <div class="upload">
                 <form enctype="multipart/form-data" ng-submit="send()">
                     <input id="uploadfile" name="myFile" type="file" accept=".xml"></input>
-                    <div class="error invisible">Error:</div>
                     <button id="btn_uploadfile" type="submit" disabled>Upload</button>
+                    <div class="error invisible" style="margin-top:10px;">Error:</div>
                     <div class="clean"></div>
                 </form>
             </div>
