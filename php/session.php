@@ -33,7 +33,7 @@ class Session {
         $loggedIn = isset($_SESSION["userID"]) &&
                     isset($_SESSION["name"]) &&
                     isset($_SESSION["lastname"]) &&
-                    isset($_SESSION["roleID"]));
+                    isset($_SESSION["roleID"]);
         
         if (!$loggedIn) {
             $url = "http://" . $_SERVER["HTTP_HOST"];
