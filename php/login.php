@@ -72,6 +72,7 @@ class Login {
         //Retrieve the login details
         $data = $this->sql_helper->getLoginDetails($this->email);
         
+        
         //Check if email exist
         if (is_null($data)) {
             result(false, "Invalid email/password combination");
@@ -83,20 +84,33 @@ class Login {
                 result(false, "Invalid email/password combination");
                 
             } else {
+                //Get rolename
+
             
                 //Store user data in a session
                 require_once "session.php";
                 unset($data["password"]); //Remove password
                 $userSession->login($data);
                 
-                $role = strtolower($this->sql_helper->getRole($_SESSION("roleID")));
+                //Role
+                $role = strtolower($this->sql_helper->getRole($data["roleID"]));
                 
-                result(true, $role);
+                $url = "http://" . $_SERVER["HTTP_HOST"];
+                
+                if($role == "admin") {
+                    $url = $url."/admin";
+            
+                } else if ($role == "student") {
+                    $url = $url."/report";
+                }
+                
+                result(true, $url);
                 
             }
         }
             
         $this->sql_helper->close();
+
     }
 
 }
