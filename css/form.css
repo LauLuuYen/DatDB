@@ -62,10 +62,11 @@ textarea {
     border: 2px solid lightblue;
     background-color:white;
     margin-right:5px;
+    border-radius: 5px;
 }
 
 .submitbtn:hover {
-    background-color:yellow;
+    background-color:#B2DBF6;
 }
 
 .error {
