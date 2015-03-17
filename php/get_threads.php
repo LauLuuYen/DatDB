@@ -7,6 +7,7 @@ class Get {
 
     public function __construct() {
         session_start();
+        $this->userID = $_SESSION["userID"];
         $this->groupID = $_SESSION["groupID"];
     }
   
@@ -27,7 +28,7 @@ class Get {
         //Go through every thread, find comments
         foreach($threads as &$thread) {
             $threadID = $thread["threadID"];
-            $thread["comments"] = $this->sql_helper->getAllComments($threadID);
+            $thread["comments"] = $this->sql_helper->getAllComments($threadID, $this->userID);
         }
         
         $data["forum"]["threads"] = $threads;

@@ -43,7 +43,7 @@
             <div class="item" ng-click="viewThread(thread.threadID);">
                 <div class="_left">
                     <div class="title">{{thread.title}}</div>
-                    <div class="date">Last post: {{thread.fullname_l}} at {{thread.timestamp}}</div>
+                    <div class="date">Last Post: {{thread.fullname}} at {{thread.timestamp}}</div>
                 </div>
                 <div class="_right">
                     <div class="n">{{thread.count}}</div>

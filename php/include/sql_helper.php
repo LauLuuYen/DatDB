@@ -364,14 +364,14 @@ class SQL_Helper {
     *   @params: int - $threadID, bool - $full
     *   @return: array - $data
     */
-    public function getAllComments($threadID)
+    public function getAllComments($threadID, $userID)
     {
-        $stmt = $this->conn->prepare("SELECT C.id, U.name, U.lastname, C.content, C.timestamp FROM comment C JOIN users U ON U.id = C.userID WHERE threadID=?;");
+        $stmt = $this->conn->prepare("SELECT C.id, U.name, U.lastname, C.content, userid, C.timestamp FROM comment C JOIN users U ON U.id = C.userID WHERE threadID=?;");
         $stmt->bind_param("i", $threadID);
         
          if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($id, $name, $lastname, $content, $timestamp);
+            $stmt->bind_result($id, $name, $lastname, $content, $c_userID, $timestamp);
             
             $data = array();
             while($stmt->fetch()) {
@@ -380,6 +380,7 @@ class SQL_Helper {
                 $row["fullname"] = $name . " " . $lastname;
                 $row["timestamp"] = $timestamp;
                 $row["content"] = str_replace("\n", "<br/>", $content);
+                $row["candelete"] = $userID == $c_userID;
                 $data[] = $row;
                
             }

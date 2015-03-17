@@ -53,15 +53,12 @@ app.controller("Main", function ($scope, master, $location) {
             var c_len = thread.comments.length;
             var comment = thread.comments[c_len-1];
             
-        
             var id = thread.threadID;
             var title = thread.title;
-            var timestamp_s = thread.timestamp;
-            var fullname_s = thread.comments[0].fullname;
-            var fullname_l = comment.fullname;
-            var timestamp_l = comment.timestamp;
+            var fullname = comment.fullname;
+            var timestamp = comment.timestamp;
     
-            var row = {threadID:id, title:title, fullname:fullname_l, timestamp:timestamp_l, count:c_len, started:timestamp_s, started_user:fullname_s};
+            var row = {threadID:id, title:title, timestamp:timestamp, count:c_len, fullname:fullname};
             temp.push(row);
         }
         console.log(JSON.stringify(temp));
