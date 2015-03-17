@@ -72,8 +72,8 @@
 
             <div class="heading2">Report Guidelines:</div>
             <div>
-                You can upload your report in <b>"txt"<b> format or <b>"xml"<b> format. Maximum length of your report is <b>5000 characters<b>. Maximum file size is <b>5MB<b>.
-                If you submit your report in xml format, please put your report between the opening tag <b>&ltContent&gt<b> and the closing tag <b>&lt/Content&gt<b>. 
+                You can upload your report in <b>"txt"</b> format or <b>"xml"</b> format. Maximum length of your report is <b>5000 characters</b>. Maximum file size is <b>5MB</b>.
+                If you submit your report in xml format, please put your report between the opening tag <b>&ltContent&gt</b> and the closing tag <b>&lt/Content&gt</b>. 
                 An example is shown below for clarification. 
             </div>
             <div>
