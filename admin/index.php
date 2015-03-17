@@ -54,7 +54,7 @@ $userSession->isLoggedIn("admin");
                         </a>
                     </div>
                     <div class="col-xs-2 no-padding">
-                        <a href="/forum">
+                        <!-- <a href="/forum"> -->
                             <div class="tab">
                                 Forum
                             </div>
