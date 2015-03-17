@@ -994,9 +994,28 @@ class SQL_Helper {
         {
             die("An error occurred performing a request");
         }
-    	
     }
-
+	
+	
+	public function getThreadOwner($threadID) 
+    	{
+	        $stmt = $this->conn->prepare("SELECT userid FROM comment WHERE threadid=? ORDER BY timestamp ASC LIMIT 1;");
+	        $stmt->bind_param("i", $threadID);
+        
+	        if ($stmt->execute()) {
+	            $stmt->store_result();
+	            $stmt->bind_result($userID);
+	            $stmt->fetch();
+	            $stmt->close();
+	            return $userID;
+	        } 
+	        else 
+	        {
+	            die("An error occurred performing a request");
+	        }
+    	}
+	
+	
 }
 
 
