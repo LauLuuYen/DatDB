@@ -42,7 +42,8 @@ app.controller('Login', function ($scope, master) {
                 success: function (result)
                 {
                     if (result.success) {
-                        window.location.href="/report/";
+                       // window.location.href="/report/";
+                        alert(result.message);
                     } else {
                         hideLoading();
                         alert(result.message);
