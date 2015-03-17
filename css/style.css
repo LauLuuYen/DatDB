@@ -477,7 +477,7 @@ a {
     height:50px;
     line-height: 50px;
     background-color:#2F729E;
-    border:2px solid lightblue;
+    /*border:2px solid lightblue; */
     border-radius:5px;
     color: white;
     font-size:20px;
