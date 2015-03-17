@@ -185,6 +185,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         window.location.href="/forum/";
     };
     
+    
     $scope.getComments = function(title, comments) {
         $(".heading").html("Thread: " + title);
         $("#txt").html(comments[0].content);
@@ -192,7 +193,8 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         var temp = [];
         
         for (i=1; i<comments.length; i++) {
-                var row = { content:comments[i].content,
+                var row = { commentID:comments[i].commentID,
+                            content:comments[i].content,
                             fullname:comments[i].fullname,
                             timestamp:comments[i].timestamp,
                             candelete:comments[i].candelete? "candelete":"" };
@@ -258,6 +260,9 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         }
     };
 
+    $scope.deleteComment = function(id) {
+        alert("dellete id:" +id );
+    };
 
     $scope.reroute();
         
