@@ -978,6 +978,27 @@ class SQL_Helper {
             die("An error occurred performing a request");
         }
     }
+    
+    public function getRole($userID)
+    {
+    	$stmt = $this->conn->prepare("SELECT name FROM roles WHERE id=?;");
+        $stmt->bind_param("i", $userID);
+        
+         if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($userRole);
+            $stmt->fetch();
+            
+            $stmt->close();
+
+            return $userRole;
+        } 
+        else 
+        {
+            die("An error occurred performing a request");
+        }
+    	
+    }
 
 }
 
