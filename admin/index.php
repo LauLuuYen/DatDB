@@ -49,7 +49,7 @@ $userSession->isLoggedIn("admin");
             <div class="banner">
                 <div class="row">
                     <div class="col-xs-2 no-padding">
-                        <a href="/report">
+                        <a href="/admin">
                             <img src="../img/logo.png" class="logo"></img>
                         </a>
                     </div>
