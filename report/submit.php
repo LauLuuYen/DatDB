@@ -77,7 +77,9 @@
                 An example is shown below for clarification. 
             </div>
             <div>
-                <img src="../img/xmlguidelinesmall.png" alt=" xmlguidelinesmall.png">
+                <br>
+                <img src="../img/xmlguideline.png" alt=" xmlguidelinesmall.png">
+                <br>
             </div>
         </div>
 
