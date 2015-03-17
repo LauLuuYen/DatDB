@@ -89,16 +89,20 @@ if($userSession->isLoggedIn("student")) {
     if (!empty($_FILES["myFile"])) {
         $file = $_FILES["myFile"];
      
-        if ($file["error"] !== UPLOAD_ERR_OK) {
+        if ($file["error"] === UPLOAD_ERR_OK) {
             result(false, "An error occured uploading.");
             
-        } else if ($file["size"] > 500000) {
+        } else if ($file["size"] > 5000000) { //5mb
+            result(false, "File size too big");
+            
+        } else {
+            result(false, "ext: ".$file["name"]);
+            return;
         
+            $reportID = $_POST["reportID"];
+            $parser = new FileParser($reportID, $file);
+            $parser->checkXML();
         }
-
-        $reportID = $_POST["reportID"];
-        $parser = new FileParser($reportID, $file);
-        $parser->checkXML();
         
         
     } else {
