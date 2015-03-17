@@ -65,7 +65,7 @@
                 <form enctype="multipart/form-data" ng-submit="send()">
                    <!-- <input id="uploadfile" name="myFile" type="file" accept=".xml"></input> -->
                     <div class="fileUpload btn btn-primary">
-                      <span>Choose file</span>
+                      <span>Choose</span>
                          <input type="file" class="upload" accept=".xml" />
                     </div>
                     <button id="btn_uploadfile" type="submit" disabled>Upload</button>
