@@ -191,18 +191,18 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         $("#date").html("By " + comments[0].fullname +" at " +comments[0].timestamp);
         var temp = [];
         
-        for (i=1; i<comment.length; i++) {
+        for (i=1; i<comments.length; i++) {
                 var row = { content:comments[i].content,
                             fullname:comments[i].fullname,
-                            timestamp:comments[i].timestamp
-                            candelete:comments[i].candelete };
+                            timestamp:comments[i].timestamp,
+                            candelete:comments[i].candelete? "candelete":"" };
                 temp.push(row);
         }
         
         console.log(JSON.stringify(temp));
-        $scope.$apply(function() {
-            $scope.comments = temp;
-        });
+
+        $scope.comments = temp;
+        
     };
 
     

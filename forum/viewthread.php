@@ -29,7 +29,7 @@
         <div class="comment" ng-repeat="post in comments">
             <div>{{post.content}}</div><br>
             <div>By {{post.fullname}} " at " {{post.timestamp}}</div>
-            <a class="link">Delete Comment</a>
+            <a class="link" ng-class="comment.candelete">Delete Comment</a>
         </div>
     </div>
 
