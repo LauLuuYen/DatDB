@@ -46,34 +46,43 @@ $userSession->isLoggedIn("admin");
 <body>
     <div class="row">
         <div class="col-md-12">
-           <div class="banner">
-              <div class="row">
-              	<div class="col-xs-8 col-sm-4 col-md-2">
-        	<!-- <a href="/" title="Return to the homepage" id="logo">
-+  		 <img style="width: 80%; height: 80%;" src="/img/logo.gif" />
-+		 </a> -->
-		<a class="navbar-brand" rel="home" href="#" title="Return to the homepage">
-		   <img style="height:100%;" src="/img/logo.gif">
-		</a>
-		</div>
-		<div class="col-xs-0 col-sm-4 col-md-6">
-			
-		</div>
-		   <div class="col-xs-4 col-sm-4 col-md-4">
-		      <div class="pull-right top">
-			<button type="button" class="btn btn-primary" aria-label="setting">
-  			<span class="glyphicon glyphicon-cog" aria-hidden="true"> Setting </span>
-			</button>
-			<button type="button" class="btn btn-primary" aria-label="about">
-  			<span class="glyphicon glyphicon-user" aria-hidden="true"> About </span>
-			</button>
-			<button type="button" class="btn btn-primary" aria-label="logout">
-  			<span class="glyphicon glyphicon-log-out" aria-hidden="true"> Log Out </span>
-			</button>
-		   </div>
-		 </div>
-	      </div>
-           </div>
+            <div class="banner">
+                <div class="row">
+                    <div class="col-xs-2 no-padding">
+                        <a href="/report">
+                            <img src="../img/logo.png" class="logo"></img>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/forum">
+                            <div class="tab">
+                                Forum
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/account">
+                            <div class="tab">
+                                Account
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/about">
+                            <div class="tab">
+                                About
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-2 no-padding">
+                        <a href="/php/get_logout.php">
+                            <div class="tab">
+                                Logout
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 	</div>
     </div>
     
