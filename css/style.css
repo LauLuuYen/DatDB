@@ -476,9 +476,10 @@ a {
     width:200px;
     height:50px;
     line-height: 50px;
-    background-color:red;
+    background-color:#2F729E;
     border:2px solid lightblue;
     border-radius:5px;
+    color: white;
     font-size:20px;
     text-align:center;
     cursor:pointer;
@@ -486,7 +487,7 @@ a {
 }
 
 .forum .newthread:hover {
-    background-color:yellow;
+    background-color: #B2DBF6;
 }
 
 ul#container {
@@ -514,7 +515,7 @@ ul#container {
 }
 
 .forum .item:hover {
-    background-color:yellow;
+    background-color: #B2DBF6;
 }
 
 .forum .item ._left {
