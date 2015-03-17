@@ -2,7 +2,7 @@
 
 require_once "php/session.php";
 
-$userSession->isLoggedIn("");
+$userSession->isLoggedInMain();
 
 ?>
 
