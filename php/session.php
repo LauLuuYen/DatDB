@@ -33,8 +33,7 @@ class Session {
         $loggedIn = isset($_SESSION["userID"]) &&
                     isset($_SESSION["name"]) &&
                     isset($_SESSION["lastname"]) &&
-                    isset($_SESSION["roleID"]) &&
-                    isset($_SESSION["groupID"]);
+                    isset($_SESSION["roleID"]));
         
         if (!$loggedIn) {
             $url = "http://" . $_SERVER["HTTP_HOST"];
@@ -47,7 +46,7 @@ class Session {
 	$name = strtolower($sql_helper->getRole($_SESSION["roleID"]));
 	$role = strtolower($role);
 	$sql_helper->close();
-	//echo $name;+
+
 	if($name == $role)
 	{
 		return true;
