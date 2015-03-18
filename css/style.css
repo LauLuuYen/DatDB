@@ -428,11 +428,13 @@ a {
 .heading2 {
     font-size:18px;
     margin-top:5px;
+    margin-left:5px;
 }
 
 .heading3 {
     font-size:25px;
     margin-top:5px;
+    margin-left:5px;
 }
 
 .forum, .createthread, .viewthread, .submitreport, .assessments, .makeassessment,
