@@ -12,7 +12,7 @@
 
     <form ng-submit="submit()">
         <div class="input_wrapper">
-            <input type="text" ng-model="thread.title" ng-change="onChange('title_e')" placeholder="Title" maxlength="50"> </input>
+            <input type="text" class="input_text title" ng-model="thread.title" ng-change="onChange('title_e')" placeholder="Title" maxlength="50"> </input>
             <span id="title_e" class="error invisible">Error: Please type in a title</span>
         </div>
 

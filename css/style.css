@@ -281,6 +281,10 @@ a {
 }
 
 .assessments .item:hover:enabled, .viewmarks .item:hover:enabled {
+    background-color:#F38E8E;
+}
+
+.assessments .item.Complete:hover:enabled, .viewmarks .item.Complete:hover:enabled {
     background-color:#ACF295;
 }
 
@@ -486,6 +490,7 @@ ul#container {
 .forum #query {
     width:250px;
     border:2px solid #EB5D5D;
+    outline: none;
 }
 .forum .container {
     width:100%;
