@@ -54,12 +54,12 @@
 
     <div class="linebreak"></div>
 
-    <div>Here you can create an assignment for all the available groups.</div>
+    <div>Here you can create an assignment for all the available groups. The adminstrator needs to give an assignment a title, a content and a deadline. Which groups that assessess each other is randomly determined, but the adminstrator can re-randomize the list if they wish to do so.</div>
     
     <form ng-submit="submit()">
 
         <div class="input_wrapper">
-            Title
+            Assignment Title
             <input type="text" class="input_text" ng-model="assignment.title"
                 maxlength="80" placeholder="Title (80 characters maximum)"
                 ng-change="onChange('e1')"></input>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="input_wrapper">
-            Content<br>
+            Assignment Content<br>
             <textarea cols="95" rows="5" class="input_text content" ng-model="assignment.content"
                  maxlength="800" placeholder="Task (800 characters maximum)"
                 ng-change="onChange('e2')"></textarea>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="input_wrapper">
-            Date Submission<br>
+            Assignment Deadline<br>
             <input type="text" class="input_text date" id="datepicker" ng-model="assignment.date"
                 placeholder="Select date" ng-change="onChange('e3')"></input>
             <div id="e3" class="error invisible">Error: Please select a date</div><br>
