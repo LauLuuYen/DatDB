@@ -93,7 +93,7 @@ $userSession->isLoggedIn("admin");
                         <div class="left_panel">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="panel header">Home > <a href="#/">Admin</a></div>
+                                    <div class="panel header"><a href="#/">Home</a></div>
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
                                     <a class="panel btn" href="#/user">Create User</a>
