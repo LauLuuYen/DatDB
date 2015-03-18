@@ -60,14 +60,14 @@ textarea {
     min-width: 160px;
     font-size: 120%;
     height: 45px;
-    border: 2px solid lightblue;
+    border: 2px solid #EE6666;
     background-color:white;
     margin-right:5px;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 
 .submitbtn:hover {
-    background-color:#B2DBF6;
+    background-color:#EE6666;
 }
 
 .error {
