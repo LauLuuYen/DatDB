@@ -1,4 +1,5 @@
 <?php
+
 class LeaderboardClass 
 {
 	
@@ -6,8 +7,9 @@ class LeaderboardClass
 	{
 	require_once "../php/include/sql_helper.php";
 	$this->sql_helper = new SQL_Helper();
-	
-	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
+	session_start();
+	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();
+	$leaderboardArray["_groupName"] = $_SESSION["groupname"];
 	$this->sql_helper->close();
 	return $leaderboardArray;
 	}
@@ -59,6 +61,7 @@ table tr:nth-child(even) {
             //Build an array containing assignment records.
             var leadingboardArray = new Array();
             var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+            alert("_groupName");
             leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
             var j = 0;
             var n = 0;
@@ -135,7 +138,7 @@ table tr:nth-child(even) {
             	//alert("LOL");
             	if(leadingboardArray[k][1] == "Zeldafans")
             	{
-            		alert("Your group name is: " + leadingboardArray[k][1]);
+            		//alert("Your group name is: " + leadingboardArray[k][1]);
             		//alert("LOL");
             		//console.log("Your group name is: " + leadingboardArray[k][1]);
             		
