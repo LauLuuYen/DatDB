@@ -125,6 +125,7 @@ table tr:nth-child(even) {
             var dvTable = document.getElementById("dvTable");
             dvTable.innerHTML = "";
             dvTable.appendChild(table);
+            console.log(leadingboardArray);
         }
     </script>
 
