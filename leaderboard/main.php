@@ -161,7 +161,7 @@ center.hidden {
 		            		//alert("Your rank is: " + userRankArray);
 		            		//document.getElementById("rankField").value=userRankString;
 		            		$("#rankField").show();
-		            		$("#rankField").html(userRankString);
+		            		$("#rankField").html("Your group's rank is: " + userRankString);
 		            		
 		            	}
 		            }
