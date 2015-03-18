@@ -34,7 +34,7 @@ class Get {
         $data["groups"] = $this->sql_helper->count_groups();
         $data["reports"] = $this->sql_helper->count_reports();
         $data["assessments"] = $this->sql_helper->count_assessments();
-        $data["assessments"] = $this->sql_helper->count_students();
+        $data["students"] = $this->sql_helper->count_students();
         
         $this->sql_helper->close();
         
