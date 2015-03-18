@@ -1074,7 +1074,7 @@ class SQL_Helper {
         
 		if ($stmt->execute())  {
             $stmt->store_result();
-            $stmt->bind_result($reportID, $status);
+            $stmt->bind_result($status);
             
             $data = array();
             while($stmt->fetch()) {
