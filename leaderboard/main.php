@@ -137,12 +137,10 @@ table tr:nth-child(even) {
 		            var userRankArray = [];
 		            for (var k = 1; k < leadingboardArray.length; k++)
 		            {
-		            	//alert("LOL");
 		            	if(leadingboardArray[k][1] == jsLeaderboardJSON["_groupName"])
 		            	{
 		            		alert("Your group name is: " + leadingboardArray[k][1]);
 		            		alert("Your rank is: " + leadingboardArray[k][0]);
-		            		//console.log("Your group name is: " + leadingboardArray[k][1]);
 		            		
 		            	}
 		            }
