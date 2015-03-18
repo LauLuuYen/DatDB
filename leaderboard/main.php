@@ -159,7 +159,8 @@ center.hidden {
 		            		//alert("Your group name is: " + leadingboardArray[k][1]);
 		            		//alert("Your rank is: " + leadingboardArray[k][0]);
 		            		//alert("Your rank is: " + userRankArray);
-		            		document.getElementById("rankField").value=userRankString;
+		            		//document.getElementById("rankField").value=userRankString;
+		            		$("#rankField").html(userRankString);
 		            	}
 		            }
 		            
