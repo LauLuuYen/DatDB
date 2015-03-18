@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["n"]);
+var app = angular.module("myApp", ["ngRoute"]);
 
 /*
 *
@@ -24,7 +24,7 @@ app.controller('Login', function ($scope, master) {
         
         showLoading();
 
-
+        return;
             $.ajax({
                 type: "POST",
                 url:"http://lauluuyen.azurewebsites.net/php/login.php" ,
@@ -47,7 +47,7 @@ app.controller('Login', function ($scope, master) {
 
                 error: function(xhr, status, error) {
                 	
-                console.log("Testing"+JSON.stringify(xhr));
+                    console.log("Testing"+JSON.stringify(xhr));
                     hideLoading();
                     alert("An error occurred.  Please try again in a few moments.");
                 }

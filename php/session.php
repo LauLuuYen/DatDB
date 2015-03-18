@@ -69,19 +69,20 @@ class Session {
         if (!$loggedIn) {
             $url = "http://" . $_SERVER["HTTP_HOST"];
             header("Location: " . $url);
-            return false;
+            return;
         }
-        
+        /*
         require_once "include/sql_helper.php";
         $sql_helper = new SQL_Helper();
         $name = strtolower($sql_helper->getRole($_SESSION["roleID"]));
         $role = strtolower($role);
         $sql_helper->close();
-
+        */
         if($name == $role) {
-            return true;
+            return;
         }
         
+        /*
         $url = "http://" . $_SERVER["HTTP_HOST"];
         
         if($name == "admin") {
@@ -91,8 +92,8 @@ class Session {
             $url = $url."/report";
         }
         header("Location: " . $url);
-	
-        return false;
+        */
+
     }
 
 
