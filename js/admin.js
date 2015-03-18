@@ -36,11 +36,6 @@ app.config(function($routeProvider) {
             templateUrl: "all.php",
             controller: "All"
         })
-           
-        .when("/leaderboard", {
-            templateUrl: "leaderboard.php",
-            controller: "Leaderboard"
-        })
         
         .otherwise({
             redirectTo: "/"
@@ -283,10 +278,6 @@ app.controller("Assignment", function ($scope, master) {
 
 });
 
-
-app.controller("Leaderboard", function ($scope, master) {
-    console.log("view leaderboard");
-});
 
 app.controller("All", function ($scope, master) {
     console.log("view all");

@@ -105,9 +105,6 @@ $userSession->isLoggedIn("admin");
                                     <a class="panel btn" href="#/search">Search User</a>
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
-                                    <a class="panel btn" href="#/leaderboard">Leaderboard</a>
-                                </div>
-                                <div class="col-xs-4 col-sm-12 col-md-12">
                                     <a class="panel btn" href="#/all">View All</a>
                                 </div>
                             </div>
