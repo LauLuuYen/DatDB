@@ -436,7 +436,7 @@ a {
 
 .forum, .createthread, .viewthread, .submitreport, .assessments, .makeassessment,
 .createuser, .createassignment, .searchusers, .viewmarks,
-.about, .viewall .main {
+.about, .viewall, .main {
     padding:10px 5px;
 }
 
@@ -569,6 +569,7 @@ ul#container {
     bottom:5px;
     pointer:cursor;
     z-index:2;
+    cursor:pointer;
 }
 
 .comment .link.candelete {
