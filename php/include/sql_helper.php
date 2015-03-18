@@ -944,6 +944,22 @@ class SQL_Helper {
         }
     }
     
+    public function getAggregateMark($groupID) {
+        $stmt = $this->conn->prepare("SELECT AVG(score) FROM assessments WHERE reportid=(SELECT id FROM reports WHERE groupid=?);");
+        $stmt->bind_param("i", $groupID);
+        
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($score);
+
+            $stmt->close();
+            return $score;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
 	//Leaderboard function
 	public function fetchLeaderBoard()
 	{

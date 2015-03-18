@@ -21,6 +21,13 @@ class Get {
         //Get all assessment marks
         $data["assessments"] = $this->sql_helper->getAssessmentMarksInGroup($this->groupID);
         
+        //for ($data["assessments"] as $test) {
+            //$groupID = $row["groupID"];
+            //echo "";
+            //$row["groupmark"] = $this->sql_helper->getAggregateMark($this->groupID);
+        //}
+        
+        
         $this->sql_helper->close();
         
         return $data;
