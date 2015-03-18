@@ -1042,6 +1042,19 @@ class SQL_Helper {
 	            die("An error occurred performing a request");
 	        }
     	}
+
+    public function deleteThread($threadID) {
+        $stmt = $this->conn->prepare("DELETE FROM thread WHERE id=?; DELETE FROM comment WHERE threadid=?;");
+        $stmt->bind_param("ii", $threadID, $threadID);
+
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
 	
 	
 }

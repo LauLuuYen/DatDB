@@ -44,20 +44,16 @@ class threadEraser
         require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
 
-        $sqlThreadOwner = $this->sql_helper->getThreadOwner($this->threadID);
+        $userID = $this->sql_helper->getThreadOwner($this->threadID);
         
-        echo "sql thread owner is: " . $sqlThreadOwner;
+        if($userID != $this->userID) {
+            result(false, "Invalid permission");
+            return;
+        }
         
-        if($sqlThreadOwner == $this->userID)
-        {
-            echo ("You are the thread owner");
-            //DELETE COMMENT
-        }
-        else
-        {
-            echo ("You are not the thread owner");
-        }
-
+        //User has permission to delete their own thread, with all comments
+        $success = $this->sql_helper->deleteThread($this->threadID);
+        
         $this->sql_helper->close();
         
         result(true, "Success");
@@ -70,12 +66,12 @@ require_once "session.php";
 if($userSession->isLoggedIn("student")) 
 {
 
-        $threadID = 21;
-        $threadEraser = new threadEraser($threadID);
+    $threadID = 171;
+    $threadEraser = new threadEraser($threadID);
 
-        if ($threadEraser->checkInputs()) {
-            $threadEraser->deleteThread();
-        }
+    if ($threadEraser->checkInputs()) {
+        $threadEraser->deleteThread();
+    }
 
 /*
     if(!empty($_POST)) {
