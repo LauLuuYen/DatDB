@@ -15,7 +15,7 @@ groups; upload or submit its assessments of other groups’ reports; receive ass
     </div>
     <div class="heading3">About Us</div>
     <div>
-        <img src="group.jpg" alt="group photo">
+        <img src="/img/group.jpg" alt="group photo">
     </div>
     <div>
         Rex Lau: zcabyyl@ucl.ac.uk </br>
