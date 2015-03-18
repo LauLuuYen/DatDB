@@ -29,6 +29,10 @@
     <div class="heading">Search User</div>
     <div class="linebreak"></div>
     <div class="container">
+    <br>
+    <div>This page shows all student accounts. Students can be searched by their UserID, Name, Lastname, Email and GroupID.</div>
+    <br>
+    
         <span>
             Search box:<br>
             <input type="text" id="query" ng-model="query"/>
