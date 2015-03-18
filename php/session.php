@@ -69,7 +69,7 @@ class Session {
         if (!$loggedIn) {
             $url = "http://" . $_SERVER["HTTP_HOST"];
             header("Location: " . $url);
-            return;
+            return true;
         }
         
         require_once "include/sql_helper.php";
@@ -79,7 +79,7 @@ class Session {
         $sql_helper->close();
         
         if($name == $role) {
-            return;
+            return true;
         }
         
         
@@ -93,7 +93,7 @@ class Session {
         }
         header("Location: " . $url);
         
-
+        return false;
     }
 
 
