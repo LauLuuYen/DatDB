@@ -130,7 +130,7 @@ table tr:nth-child(even) {
             //alert(leadingboardArray);
             //alert(leadingboardArray.length);
             var userRankArray = [];
-            for (var k = 1; i < leadingboardArray.length; k++)
+            for (var k = 1; k < leadingboardArray.length; k++)
            {
             	alert("LOL");
             	//if(leadingboardArray[1] == "Zeldafans")
