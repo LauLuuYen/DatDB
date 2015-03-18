@@ -14,7 +14,7 @@
     <div class="heading3">About Us</div>
     <div>
         Rex Lau: zcabyyl@ucl.ac.uk </br>
-        Tan Luu: Insert Email </br>
+        Tan Luu: zcabxtl@ucl.ac.uk </br>
         Tuan Nguyen: zcabtng@ucl.ac.uk </br>
 
     </div>
