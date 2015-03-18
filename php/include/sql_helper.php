@@ -951,7 +951,8 @@ class SQL_Helper {
         if ($stmt->execute()) {
             $stmt->store_result();
             $stmt->bind_result($score);
-
+            $stmt->fetch();
+            
             $stmt->close();
             return $score;
             

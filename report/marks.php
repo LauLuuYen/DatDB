@@ -37,6 +37,8 @@
             <li ng-repeat="assessment in groupassessments">
                 <button class="item" ng-class="assessment.status" ng-click="next(assessment.assessmentID)"
                     ng-disabled="assessment.isdisabled">
+                    <div class="name">Group: <span>{{assessment.groupname}}</span></div>
+                    <div class="linebreak"></div>
                     <div class="assignment">Assignment: {{assessment.title}}</div>
                     <div class="status">Status: {{assessment.status}}</div>
                     <div class="score">Score: {{assessment.score}}/5</div>

@@ -123,6 +123,7 @@ app.controller("Submit", function ($scope, master) {
         var byte = $("#uploadfile")[0].files[0].size; //5000000 (5mb)
         if (byte > 5000000) {
             $scope.updatefeedback("Filesize too big");
+            return;
         }
 
         $("#btn_uploadfile").removeAttr("disabled");

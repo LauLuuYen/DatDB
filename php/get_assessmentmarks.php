@@ -23,7 +23,7 @@ class Get {
 
         foreach ($assessments as &$row) {
             $groupID = $row["groupID"];
-            $row["groupmark"] = $this->sql_helper->getAggregateMark($this->groupID);
+            $row["groupmark"] = $this->sql_helper->getAggregateMark($groupID);
         }
 
         
