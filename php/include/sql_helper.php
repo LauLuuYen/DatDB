@@ -953,6 +953,8 @@ class SQL_Helper {
             $stmt->bind_result($score);
             $stmt->fetch();
             
+            $score = is_null($score)? "-":$score;
+            
             $stmt->close();
             return $score;
             

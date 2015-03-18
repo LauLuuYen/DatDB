@@ -1,6 +1,8 @@
 <div class="viewassessment">
     <div class="heading">Your Report Assessment</div>
 
+    <div class="heading2">Group's Aggregrated Mark: 3/5</div>
+    <br>
     <div class="linebreak"></div>
     <div>Here is the assessment of your report made by another group.</div><br>
 

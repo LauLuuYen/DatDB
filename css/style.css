@@ -312,18 +312,12 @@ a {
 .assessments .assignment, .viewmarks .assignment {
     position:absolute;
     left:10px;
-}
-
-.viewmarks .assignment {
-    width:75%;
     text-align:left;
+    
 }
 
-.assessments .assignment {
+.assessments .assignment, .viewmarks .assignment {
     bottom:30px;
-}
-.viewmarks .assignment {
-    top:10px;
 }
 
 .assessments .status, .viewmarks .status {
