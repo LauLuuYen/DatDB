@@ -34,6 +34,6 @@
     <div>Submitted & Finalised Reports: {{stat.reports}}</div>
     <div>Assessments Completed: {{stat.assessments_s}}</div>
     <div>Received Assessments: {{stat.assessments_r}}</div>
-    <div>Average agregated mark {{stat.mark}}/5</div>
+    <div>Group's average aggregated mark {{stat.mark}}/5</div>
 
 </div>
