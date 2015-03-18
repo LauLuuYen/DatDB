@@ -26,7 +26,8 @@
 </script>
 
 <div class="searchusers">
-
+    <div class="heading">Search User</div>
+    <div class="linebreak"></div>
     <div class="container">
         <span>
             Search box:<br>
