@@ -18,7 +18,7 @@ class Get {
         $data = array();
         
         //Get all available groups;
-        $data["grouplist"] =$this->sql_helper->getAllGroups(false);
+        $data["grouplist"] =$this->sql_helper->getAllGroups();
         
         $this->sql_helper->close();
         
