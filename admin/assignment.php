@@ -59,7 +59,7 @@
     <form ng-submit="submit()">
 
         <div class="input_wrapper">
-            Assignment Title
+            <h2>Assignment Title</h2>
             <input type="text" class="input_text" ng-model="assignment.title"
                 maxlength="80" placeholder="Title (80 characters maximum)"
                 ng-change="onChange('e1')"></input>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="input_wrapper">
-            Assignment Content<br>
+            <h2>Assignment Content</h2><br>
             <textarea cols="95" rows="5" class="input_text content" ng-model="assignment.content"
                  maxlength="800" placeholder="Task (800 characters maximum)"
                 ng-change="onChange('e2')"></textarea>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="input_wrapper">
-            Assignment Deadline<br>
+            <h2>Assignment Deadline</h2><br>
             <input type="text" class="input_text date" id="datepicker" ng-model="assignment.date"
                 placeholder="Select date" ng-change="onChange('e3')"></input>
             <div id="e3" class="error invisible">Error: Please select a date</div><br>
