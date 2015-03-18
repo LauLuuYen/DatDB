@@ -1,15 +1,10 @@
-var app = angular.module('myApp', []);
+var app = angular.module("myApp", []);
 
 /*
 *
 */
-app.factory('master', function() {  
-	var data = {
-
-        
-        
-	};
-
+app.factory("master", function() {
+	var data = {};
 	return data;
 });
 
@@ -43,7 +38,7 @@ app.controller('Login', function ($scope, master) {
                 {
                     if (result.success) {
                         console.log(result.message);
-                       window.location.href=result.message;
+                        window.location.href=result.message;
                     } else {
                         hideLoading();
                         alert(result.message);
