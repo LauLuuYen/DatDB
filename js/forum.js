@@ -191,6 +191,7 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         $("#txt").html(comments[0].content);
         $("#date").html("By " + comments[0].fullname +" at " +comments[0].timestamp);
         if (comments[0].candelete) {
+            console.log("candelete thread");
             $("#threadlink").addClass("candelete");
         }
         var temp = [];
@@ -294,7 +295,38 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
     };
     
     $scope.deleteThread = function() {
-        alert("delete thread");
+
+        showLoading();
+        
+        var id = $routeParams.id;
+
+        $.ajax({
+            type: "POST",
+            url:"http://lauluuyen.azurewebsites.net/php/deleteThread.php" ,
+            crossDomain: true,
+            data: {threadID: id},
+            dataType: "json",
+            async: true,
+            timeout: 15000,
+
+            success: function (result) {
+                if (result.success) {
+                    window.location.href="/forum/";
+               
+                } else {
+                    hideLoading();
+                    alert(result.message);
+                }
+            },
+
+            error: function(xhr, status, error) {
+                hideLoading();
+                console.log(JSON.stringify(xhr));
+                alert("An error occured. Please try again in a few moments.");
+            }
+        });
+        
+            
     };
 
     $scope.reroute();
