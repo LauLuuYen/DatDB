@@ -19,12 +19,12 @@ $userSession->isLoggedIn("student");
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <link rel="stylesheet" type="text/css" href="../css/loader.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
     
     
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="../lib/jquery-latest.min.js"></script>
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-route.js"></script>
 
 
     <script type="text/javascript">

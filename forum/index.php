@@ -18,13 +18,13 @@ $userSession->isLoggedIn("student");
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <link rel="stylesheet" type="text/css" href="../css/loader.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
     
     
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
-    <script src="http://code.angularjs.org/1.0.4/angular-sanitize.min.js"></script>
+    <script src="../lib/jquery-latest.min.js"></script>
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-route.js"></script>
+    <script src="../lib/angular-sanitize.min.js"></script>
     
     <script type="text/javascript">
         var response = JSON.parse('<?php require_once "../php/get_profile.php";?>');
