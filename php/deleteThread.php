@@ -71,7 +71,7 @@ if($userSession->isLoggedIn("student"))
 {
 
         $threadID = 21;
-        $threadEraser = new threadEraser($commentID);
+        $threadEraser = new threadEraser($threadID);
 
         if ($threadEraser->checkInputs()) {
             $threadEraser->deleteThread();
