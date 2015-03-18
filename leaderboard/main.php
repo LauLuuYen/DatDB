@@ -60,7 +60,7 @@ center.hidden {
     <div class="linebreak"></div>
     <div>
 	    <br>
-	    <center class="conceal" id="rankField">Rank placeholder</center>
+	    <center class="conceal heading2" id="rankField">Rank placeholder</center>
 	    <br>
 		    <script type="text/javascript">
 		        function createLeaderboard() 
