@@ -68,6 +68,7 @@ textarea {
 
 .submitbtn:hover {
     background-color:#EE6666;
+    color: white;
 }
 
 .error {
