@@ -54,7 +54,10 @@ app.controller("Main", function ($scope, master) {
     $scope.stat = {};
     
     getData(function(data) {
-        $scope.stat = data;
+        console.log(JSON.stringify(data));
+        $scope.$apply(function() {
+            $scope.stat = data;
+        });
     });
 });
 
