@@ -49,6 +49,10 @@ app.controller("Main", function ($scope, master) {
 
     $scope.profile = master.profile;
     
+    getData(function(data) {
+        console.log(JSON.stringify(data));
+    });
+    
 });
 
 app.controller("Submit", function ($scope, master) {
