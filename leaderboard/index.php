@@ -123,93 +123,91 @@ class LeaderboardClass
             <div class="innerbody">
 
                 <!-- <div ng-view></div> -->
-                	<br><br>
-	<center class="heading">LEADERBOARD</center> 
-	
-	<br><br>
-    <script type="text/javascript">
-        function createLeaderboard() 
-        {
-            //Build an array containing assignment records.
-            var leadingboardArray = new Array();
-            var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-            leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
-            var j = 0;
-            var n = 0;
-            var previousMark = -1;
-            var currentMark = -1;
-            for (i in jsLeaderboardJSON) 
-		 {
-		 	currentMark = jsLeaderboardJSON[j].averageMark;
-			
-			if((!jsLeaderboardJSON[j].averageMark) && (j>0) && (jsLeaderboardJSON[j-1].averageMark == null))
-		 	{
-		 		n--;
-		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "-"]);
-		 	}
-		 	else if(currentMark == previousMark)
-		 	{	
-		 		n--;
-		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
-		 		
-		 	}
-		 	else if(!jsLeaderboardJSON[j].averageMark)
-		 	{
-		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "-"]);
-		 		
-		 	}
-		 	else
-		 	{
-		 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
-		 		previousMark = jsLeaderboardJSON[j].averageMark;
-		 	}
-		 	//alert(jsLeaderboardJSON[0].groupName);
-		     j++;
-		     n++;
-		 }
- 
-         
-            //Create a HTML Table element.
-            var table = document.createElement("TABLE");
-            table.border = "1";
-         
-            //Get the count of columns.
-            var columnCount = leadingboardArray[0].length;
-         
-            //Add the header row.
-            var row = table.insertRow(-1);
-            for (var i = 0; i < columnCount; i++) {
-                var headerCell = document.createElement("TH");
-                headerCell.innerHTML = leadingboardArray[0][i];
-                row.appendChild(headerCell);
-            }
-         
-            //Add the data rows.
-            for (var i = 1; i < leadingboardArray.length; i++) 
-            {
-                row = table.insertRow(-1);
-                for (var j = 0; j < columnCount; j++) 
-                {
-                    var cell = row.insertCell(-1);
-                    cell.innerHTML = leadingboardArray[i][j];
-                }
-            }   
-     
-            var dvTable = document.getElementById("dvTable");
-            dvTable.innerHTML = "";
-            dvTable.appendChild(table);
-        }
-    </script>
-
-		 <script>
-			var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-	    		createLeaderboard();
-		</script>
+		        <br><br>
+			<center class="heading">LEADERBOARD</center> 
+			<br><br>
+		    	<script type="text/javascript">
+		        function createLeaderboard() 
+		        {
+		            //Build an array containing assignment records.
+		            var leadingboardArray = new Array();
+		            var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+		            leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
+		            var j = 0;
+		            var n = 0;
+		            var previousMark = -1;
+		            var currentMark = -1;
+		            for (i in jsLeaderboardJSON) 
+				 {
+				 	currentMark = jsLeaderboardJSON[j].averageMark;
+					
+					if((!jsLeaderboardJSON[j].averageMark) && (j>0) && (jsLeaderboardJSON[j-1].averageMark == null))
+				 	{
+				 		n--;
+				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "-"]);
+				 	}
+				 	else if(currentMark == previousMark)
+				 	{	
+				 		n--;
+				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+				 		
+				 	}
+				 	else if(!jsLeaderboardJSON[j].averageMark)
+				 	{
+				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, "-"]);
+				 		
+				 	}
+				 	else
+				 	{
+				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
+				 		previousMark = jsLeaderboardJSON[j].averageMark;
+				 	}
+				 	//alert(jsLeaderboardJSON[0].groupName);
+				     j++;
+				     n++;
+				 }
+		 
+		         
+		            //Create a HTML Table element.
+		            var table = document.createElement("TABLE");
+		            table.border = "1";
+		         
+		            //Get the count of columns.
+		            var columnCount = leadingboardArray[0].length;
+		         
+		            //Add the header row.
+		            var row = table.insertRow(-1);
+		            for (var i = 0; i < columnCount; i++) {
+		                var headerCell = document.createElement("TH");
+		                headerCell.innerHTML = leadingboardArray[0][i];
+		                row.appendChild(headerCell);
+		            }
+		         
+		            //Add the data rows.
+		            for (var i = 1; i < leadingboardArray.length; i++) 
+		            {
+		                row = table.insertRow(-1);
+		                for (var j = 0; j < columnCount; j++) 
+		                {
+		                    var cell = row.insertCell(-1);
+		                    cell.innerHTML = leadingboardArray[i][j];
+		                }
+		            }   
+		     
+		            var dvTable = document.getElementById("dvTable");
+		            dvTable.innerHTML = "";
+		            dvTable.appendChild(table);
+		        }
+		    	</script>
 		
-	<div id="dvTable"></div>
+				 <script>
+					var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+			    		createLeaderboard();
+				</script>
+				
+			<div id="dvTable"></div>
 
      
-            
             </div>
         </div>
     </div>
