@@ -290,6 +290,7 @@ a {
 
 .assessments .item:disabled, .viewmarks .item:disabled {
     border:5px solid gray;
+    cursor:not-allowed;
 }
 
 
