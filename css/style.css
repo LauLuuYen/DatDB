@@ -435,6 +435,12 @@ a {
     margin: 0px 10px;
 }
 
+.imgcenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .forum, .createthread, .viewthread, .submitreport, .assessments, .makeassessment,
 .createuser, .createassignment, .searchusers, .viewmarks,
 .about, .viewall, .main {
