@@ -46,13 +46,10 @@ table tr:nth-child(even) {
 
 
 <div class="main">
-    <div class="heading">Account</div>
+    <div class="heading">LEADERBAORD</div>
     <div class="linebreak"></div>
     <div>
     
-    	<br><br>
-	<center class="heading">LEADERBOARD</center>
-	<br><br>
     <script type="text/javascript">
         function createLeaderboard() 
         {
