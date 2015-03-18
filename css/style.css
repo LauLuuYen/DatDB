@@ -276,10 +276,6 @@ a {
     cursor:pointer;
 }
 
-.viewmarks .item {
-    height:100px;
-}
-
 .assessments .item.Complete, .viewmarks .item.Complete {
     border:5px solid green;
 }
@@ -294,13 +290,13 @@ a {
 }
 
 
-.assessments .name {
+.assessments .name, .viewmarks .name {
     position:absolute;
     top:5px;
     left:10px;
 }
 
-.assessments .name span {
+.assessments .name span, .viewmarks .name span {
     font-size:24px;
 }
 
