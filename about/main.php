@@ -3,7 +3,7 @@
     <div class="linebreak"></div>
     <div>Welcome to our database project website for COMP3013</div>
 
-    <div class="headin2">About Us</div>
+    <div class="heading2">About Us</div>
     <div>
         Rex Lau: zcabyyl@ucl.ac.uk 
         Tan Luu: Insert Email
