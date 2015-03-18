@@ -1,10 +1,11 @@
 <div class="about">
     <div class="heading">About</div>
     <div class="linebreak"></div>
-    <div>Welcome to our database project website for COMP3001</div>
+    <div>Welcome to our database project website for COMP3013</div>
 
+    <div class="headin2">About Us</div>
     <div>
-        Rex Lau: Insert Email
+        Rex Lau: zcabyyl@ucl.ac.uk 
         Tan Luu: Insert Email
         Tuan Nguyen: zcabtng@ucl.ac.uk
 
