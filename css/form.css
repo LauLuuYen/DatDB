@@ -24,6 +24,10 @@
     height:150px;
 }
 
+.input_text.title {
+    width:250px;
+}
+
 .input_text.date {
     width:150px;
     cursor:pointer;
