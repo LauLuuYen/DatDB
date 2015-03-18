@@ -68,8 +68,6 @@ center.hidden {
 		            //Build an array containing assignment records.
 		            var leadingboardArray = new Array();
 		            var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-		            //console.log(JSON.stringify(jsLeaderboardJSON));
-		            //alert(jsLeaderboardJSON["_groupName"]);
 		            leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
 		            var j = 0;
 		            var n = 0;
@@ -102,10 +100,8 @@ center.hidden {
 				 	}
 				 	else
 				 	{
-				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);
-				 		previousMark = jsLeaderboardJSON[j].averageMark;
+				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);				 		previousMark = jsLeaderboardJSON[j].averageMark;
 				 	}
-				 	//alert(jsLeaderboardJSON[0].groupName);
 				     j++;
 				     n++;
 				 }
@@ -142,9 +138,6 @@ center.hidden {
 		            dvTable.appendChild(table);
 		            
 		            // Pull out rank for current user
-		            //console.log(leadingboardArray);
-		            //alert(leadingboardArray);
-		            //alert(leadingboardArray.length);
 		            var userRankArray = [];
 		            var userRankString = "";
 		            for (var k = 1; k < leadingboardArray.length; k++)
@@ -152,14 +145,7 @@ center.hidden {
 		            	if(leadingboardArray[k][1] == jsLeaderboardJSON["_groupName"])
 		            	{
 		            		userRankArray.push(leadingboardArray[k][0]);
-		            		//userRankArray.push("1");
-		            		//userRankArray.push("8");
 		            		userRankString = userRankArray.toString();
-		            		//alert(userRankString);
-		            		//alert("Your group name is: " + leadingboardArray[k][1]);
-		            		//alert("Your rank is: " + leadingboardArray[k][0]);
-		            		//alert("Your rank is: " + userRankArray);
-		            		//document.getElementById("rankField").value=userRankString;
 		            		$("#rankField").show();
 		            		$("#rankField").html("Your group's rank is: " + userRankString);
 		            		
