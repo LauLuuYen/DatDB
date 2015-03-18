@@ -44,29 +44,29 @@ class LeaderboardClass
     </script>
     <script src="../js/leaderboard.js"></script>
 
-<style>
-h1 {
-    border-bottom: 3px solid #cc9900;
-    color: #996600;
-    font-size: 30px;
-    
-}
-table, th , td  {
-    border: 1px solid grey;
-    border-collapse: collapse;
-    padding: 5px;
-    text-align:center;
-    margin: 0 auto;
-}
-table tr:nth-child(odd)	{
-    background-color: #f1f1f1;
-    text-align:center;
-}
-table tr:nth-child(even) {
-    background-color: #ffffff;
-    text-align:center;
-}
-</style>
+	<style>
+	h1 {
+	    border-bottom: 3px solid #cc9900;
+	    color: #996600;
+	    font-size: 30px;
+	    
+	}
+	table, th , td  {
+	    border: 1px solid grey;
+	    border-collapse: collapse;
+	    padding: 5px;
+	    text-align:center;
+	    margin: 0 auto;
+	}
+	table tr:nth-child(odd)	{
+	    background-color: #f1f1f1;
+	    text-align:center;
+	}
+	table tr:nth-child(even) {
+	    background-color: #ffffff;
+	    text-align:center;
+	}
+	</style>
 
 
 </head>
@@ -124,7 +124,9 @@ table tr:nth-child(even) {
 
                 <!-- <div ng-view></div> -->
                 	<br><br>
-	<center class="heading">LEADERBOARD</center>
+	<center class="heading">LEADERBOARD</center> 
+	<?php echo json_encode($leaderBoardDataArray); ?>
+	<!--
 	<br><br>
     <script type="text/javascript">
         function createLeaderboard() 
@@ -200,15 +202,14 @@ table tr:nth-child(even) {
         }
     </script>
 
-<!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
-	 <script>
-		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-    		createLeaderboard();
-	</script>
-	
-<div id="dvTable"></div>
+		 <script>
+			var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
+	    		createLeaderboard();
+		</script>
+		
+	<div id="dvTable"></div>
 
-                
+                -->
             
             </div>
         </div>
