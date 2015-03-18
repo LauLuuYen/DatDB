@@ -1,5 +1,4 @@
 <?php
-
 class LeaderboardClass 
 {
 	
@@ -128,7 +127,6 @@ table tr:nth-child(even) {
         }
     </script>
 
-<!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	 <script>
 		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
