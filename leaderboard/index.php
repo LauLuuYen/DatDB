@@ -1,7 +1,24 @@
 <?php
-
-
+class LeaderboardClass 
+{
+	
+	public function retrieveLeaderboard() 
+	{
+	require_once "../php/include/sql_helper.php";
+	$this->sql_helper = new SQL_Helper();
+	
+	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
+	$this->sql_helper->close();
+	return $leaderboardArray;
+	}
+	
+}
+	$leaderboardinstance = new LeaderboardClass();
+	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
+	
+	$jsonLeaderboardData = json_encode($leaderBoardDataArray);
 ?>
+
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 
@@ -26,6 +43,33 @@
         data["profile"] = response["profile"];
     </script>
     <script src="../js/leaderboard.js"></script>
+
+
+<style>
+h1 {
+    border-bottom: 3px solid #cc9900;
+    color: #996600;
+    font-size: 30px;
+    
+}
+table, th , td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align:center;
+    margin: 0 auto;
+}
+table tr:nth-child(odd)	{
+    background-color: #f1f1f1;
+    text-align:center;
+}
+table tr:nth-child(even) {
+    background-color: #ffffff;
+    text-align:center;
+}
+</style>
+
+
 
 </head>
 
@@ -87,6 +131,7 @@
         </div>
     </div>
     
+
     
 </body>
 	
