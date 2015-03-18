@@ -78,7 +78,8 @@
                     col-md-offset-1 col-md-10">
             <div class="innerbody">
 
-                <div ng-view></div>
+                <!-- <div ng-view></div> -->
+                <?php echo "test"; ?>
                 
             
             </div>
