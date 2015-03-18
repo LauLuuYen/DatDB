@@ -18,6 +18,7 @@ class Get {
         $data = array();
         
         $data["groups"] = $this->sql_helper->getAllGroups();
+        $data["assignments"] = $this->sql_helper->getAllAssignments();
         $data["reports"] = $this->sql_helper->getAllReports();
         $data["assessments"] = $this->sql_helper->getAllAssessments();
         

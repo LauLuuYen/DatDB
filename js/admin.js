@@ -289,42 +289,20 @@ app.controller("Leaderboard", function ($scope, master) {
 
 app.controller("All", function ($scope, master) {
     console.log("view all");
-    $scope.groups = [
-      {  
-         "groupID":21,
-         "groupname":"Zdafeefef 2"
-      },
-      {  
-         "groupID":71,
-         "groupname":"Gangnam"
-      }];
-    $scope.reports = [
-      {  
-         "id":3122,
-         "groupid":21,
-         "status":"Incomplete",
-         "content":"",
-         "userid":"",
-         "timestamp":""
-      },
-      {  
-         "id":3132,
-         "groupid":71,
-         "status":"Incomplete",
-         "content":"",
-         "userid":"",
-         "timestamp":""
-      },
-      {  
-         "id":3142,
-         "groupid":81,
-         "status":"Draft",
-         "content":"",
-         "userid":131,
-         "timestamp":"2015-03-16 20:31:52"
-      }];
-      
+    $scope.groups = [];
+    $scope.assignments = [];
+    $scope.reports = [];
+    $scope.assessments = [];
     
+    getData(function(data) {
+        
+        $scope.apply(function() {
+            $scope.groups = data["groups"];
+            $scope.assignments = data["assignments"];
+            $scope.reports = data["reports"];
+            $scope.assessments = data["assessments"];
+        });
+    });
 });
 
 

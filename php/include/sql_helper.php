@@ -712,7 +712,7 @@ class SQL_Helper {
                 $row["reportid"] = $reportid;
                 $row["status"] = $status;
                 $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
-                $row["score"] = is_null($score) ? "":$score;
+                $row["score"] = is_null($score) ? "-":$score;
                 $row["userid"] = is_null($userid) ? "":$userid;
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $data[] = $row;
@@ -728,17 +728,18 @@ class SQL_Helper {
     }
     
     public function getAllReports() {
-        $stmt = $this->conn->prepare("SELECT R.id, groupid, current_status, content, userid, timestamp FROM reports R JOIN status S ON R.statusid = S.id;");
+        $stmt = $this->conn->prepare("SELECT R.id, groupid, assignmentid, current_status, content, userid, timestamp FROM reports R JOIN status S ON R.statusid = S.id;");
         
         if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($reportid, $groupid, $status, $content, $userid, $timestamp);
+            $stmt->bind_result($reportid, $groupid, $assignmentid, $status, $content, $userid, $timestamp);
             $data = array();
             
             while($stmt->fetch()) {
                 $row = array();
                 $row["id"] = $reportid;
                 $row["groupid"] = $groupid;
+                $row["assignmentid"] = $assignmentid;
                 $row["status"] = $status;
                 $row["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
                 $row["userid"] = is_null($userid) ? "":$userid;
