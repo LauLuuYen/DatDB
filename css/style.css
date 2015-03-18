@@ -588,3 +588,7 @@ ul#container {
 .comment .link.candelete {
     display:block;
 }
+
+#rankField {
+	color:rgb(238,102,102);
+}
