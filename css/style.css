@@ -184,7 +184,7 @@ a {
 .createassignment #randombtn {
     margin:5px 0;
     background-color:white;
-    border: 2px solid lightblue;
+    border: 2px solid #EE6666;
     width:100px;
     padding-left:12px;
     cursor:pointer;
@@ -231,7 +231,7 @@ a {
     height:50px;
     background-color:white;
     color:black;
-    border:2px solid lightblue;
+    border:2px solid #EE6666;
     padding:12px;
 }
 
@@ -308,8 +308,8 @@ a {
     position:absolute;
     top:30px;
     width:100%;
-    height:1px;
-    background-color:black;
+    height:2px;
+    background-color:#EE6666;
 }
 
 
@@ -456,7 +456,7 @@ a {
     width:200px;
     height:50px;
     line-height: 50px;
-    background-color:#2F729E;
+    background-color:#EE6666;
     /*border:2px solid lightblue; */
     border-radius:5px;
     color: white;
@@ -467,7 +467,7 @@ a {
 }
 
 .forum .newthread:hover {
-    background-color: #B2DBF6;
+    background-color: #EE9B9B;
     color: black;
 }
 
@@ -478,7 +478,7 @@ ul#container {
 
 .forum #query {
     width:250px;
-    border:2px solid lightblue;
+    border:2px solid #EB5D5D;
 }
 .forum .container {
     width:100%;
@@ -492,11 +492,12 @@ ul#container {
     height:95px;
     margin:10px auto;
     cursor:pointer;
-    border: 2px solid lightblue;
+    border: 2px solid #EE6666;
 }
 
 .forum .item:hover {
-    background-color: #B2DBF6;
+    background-color: #F87C7C;
+    color: white;
 }
 
 .forum .item ._left {
@@ -511,7 +512,7 @@ ul#container {
     width:100px;
     height:100%;
     float:right;
-    border-left:2px solid lightblue;
+    border-left:2px solid #EE6666;
     text-align:center;
 }
 
@@ -556,7 +557,7 @@ ul#container {
 .viewthread .comment {
     position:relative;
     background-color:white;
-    border:2px solid lightblue;
+    border:2px solid #EE6666;
     min-height:65px;
     margin:5px 0;
 }
