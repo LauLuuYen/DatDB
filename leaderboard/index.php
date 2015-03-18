@@ -125,8 +125,7 @@ class LeaderboardClass
                 <!-- <div ng-view></div> -->
                 	<br><br>
 	<center class="heading">LEADERBOARD</center> 
-	<?php echo json_encode($leaderBoardDataArray); ?>
-	<!--
+	
 	<br><br>
     <script type="text/javascript">
         function createLeaderboard() 
@@ -209,7 +208,7 @@ class LeaderboardClass
 		
 	<div id="dvTable"></div>
 
-                -->
+     
             
             </div>
         </div>
