@@ -25,7 +25,7 @@
         var data = {};
         data["profile"] = response["profile"];
     </script>
-    <script src="../js/account.js"></script>
+    <script src="../js/leaderboard.js"></script>
 
 </head>
 
@@ -48,9 +48,9 @@
                         </a>
                     </div>
                     <div class="col-xs-2 no-padding">
-                        <a href="/account">
+                        <a href="/leaderboard">
                             <div class="tab">
-                                Account
+                                Leaderboard
                             </div>
                         </a>
                     </div>

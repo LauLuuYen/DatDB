@@ -6,17 +6,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-	var data = {
-        "profile" : {
-            "userID": 123,
-            "name": "tuan",
-            "lastname": "nguyen",
-            "groupid": 3
-        }
-        
-        
-	};
-    
+
 	return data;
 });
 
@@ -35,24 +25,10 @@ app.config(function($routeProvider, $locationProvider) {
 );
 
 app.controller("Main", function ($scope, master) {
-    console.log("Leaderboards");
-
-
-});
-
-/*
-*   Compile angularjs scripts
-*/
-app.directive("dynamic", function ($compile) {
-  return {
-    restrict: 'A',
-    replace: true,
-    link: function (scope, ele, attrs) {
-      scope.$watch(attrs.dynamic, function(html) {
-        ele.html(html);
-        $compile(ele.contents())(scope);
-      });
+    if (master.profile.role == "student") {
+        $("#forumlink").show();
+        $("#logoutlink").removeClass("col-xs-offset-4");
+        $("#logoutlink").addClass("col-xs-offset-2");
     }
-  };
-});
 
+});
