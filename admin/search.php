@@ -45,7 +45,6 @@
             <td>GroupID</td>
         </tr>
 
-
         <tr class="r0" ng-repeat="user in users | filter:query">
             <td>{{user.userID}}</td>
             <td>{{user.name}}</td>
@@ -53,8 +52,6 @@
             <td>{{user.email}}</td>
             <td>{{user.groupID}}</td>
         </tr>
-            
-
 
     </table>
 </div>

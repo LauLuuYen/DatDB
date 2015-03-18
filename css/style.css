@@ -436,7 +436,7 @@ a {
 
 .forum, .createthread, .viewthread, .submitreport, .assessments, .makeassessment,
 .createuser, .createassignment, .searchusers, .viewmarks,
-.about {
+.about, .viewall {
     padding:10px 5px;
 }
 

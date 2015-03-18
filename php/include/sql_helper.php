@@ -740,7 +740,7 @@ class SQL_Helper {
                 $row["id"] = $reportid;
                 $row["groupid"] = $groupid;
                 $row["status"] = $status;
-                $row["feedback"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
+                $row["content"] = is_null($content) ? "":str_replace("\n", "<br/>", $content);
                 $row["userid"] = is_null($userid) ? "":$userid;
                 $row["timestamp"] = is_null($timestamp) ? "":$timestamp;
                 $data[] = $row;
