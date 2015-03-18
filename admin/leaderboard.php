@@ -61,7 +61,7 @@ table tr:nth-child(even) {
             //Build an array containing assignment records.
             var leadingboardArray = new Array();
             var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
-            alert("_groupName");
+            alert(jsLeaderboardJSON["_groupName"]);
             leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
             var j = 0;
             var n = 0;
