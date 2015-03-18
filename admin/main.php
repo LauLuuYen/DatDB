@@ -2,7 +2,8 @@
 
     <div class="heading">Hi, {{profile.name}} {{profile.lastname}}</div>
     <div class="linebreak"></div>
-    <div>You are an administrator.</div>
+    <div>You are an administrator. An adminstrator have the following authorities:</div>
+    <br>
     <div>
     
         <ul>
