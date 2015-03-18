@@ -4,7 +4,7 @@
     <div>Here is the assessment of your report made by the group.</div><br>
 
     <div class="heading2">By Group: {{group.name}}</div>
-    <div style="width:200px; height:38px; background-color:lightgray; font-size:18px;text-align:center;">Aggregrated Mark: {{group.score}}/5</div>
+    <div style="width:300px; height:38px; background-color:lightgray; font-size:18px;text-align:center;">Aggregrated Mark: {{group.score}}/5</div>
 
 
     <div class="heading2">Assessed on: {{assessment.timestamp}}</div>
