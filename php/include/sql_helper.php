@@ -1068,6 +1068,128 @@ class SQL_Helper {
         }
     }
 	
+    public function get_reportStats($groupID) {
+        $stmt = $this->conn->prepare("SELECT current_status FROM reports R JOIN status S ON R.statusid = S.id WHERE groupid=?");
+        $stmt->bind_param("i", $groupID);
+        
+		if ($stmt->execute())  {
+            $stmt->store_result();
+            $stmt->bind_result($reportID, $status);
+            
+            $data = array();
+            while($stmt->fetch()) {
+                $row = array();
+                $row["status"] = $status;
+                $data[] = $row;
+            }
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    public function get_assessmentSentStats($groupID) {
+        $stmt = $this->conn->prepare("SELECT current_status FROM assessments A JOIN status S ON A.statusid =S.id WHERE groupid=?");
+        $stmt->bind_param("i", $groupID);
+        
+		if ($stmt->execute())  {
+            $stmt->store_result();
+            $stmt->bind_result($status);
+            
+            $data = array();
+            while($stmt->fetch()) {
+                $row = array();
+                $row["status"] = $status;
+                $data[] = $row;
+            }
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    public function get_assessmentReceivedStats($groupID) {
+       $stmt = $this->conn->prepare("SELECT current_status FROM reports R JOIN assessments A JOIN status S ON R.id = A.reportid AND S.id=A.statusid WHERE R.groupid=?;");
+        $stmt->bind_param("i", $groupID);
+        
+		if ($stmt->execute())  {
+            $stmt->store_result();
+            $stmt->bind_result($status);
+            
+            $data = array();
+            while($stmt->fetch()) {
+                $row = array();
+                $row["status"] = $status;
+                $data[] = $row;
+            }
+            $stmt->free_result();
+            $stmt->close();
+            return $data;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    public function count_assignments() {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM assignments;");
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($count);
+            $stmt->fetch();
+            $stmt->close();
+            return $userID;
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    public function count_groups() {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM groups;");
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($count);
+            $stmt->fetch();
+            $stmt->close();
+            return $userID;
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    public function count_reports() {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM reports;");
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($count);
+            $stmt->fetch();
+            $stmt->close();
+            return $userID;
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    public function count_assessments() {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM assessments;");
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($count);
+            $stmt->fetch();
+            $stmt->close();
+            return $userID;
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+ 
 	
 }
 
