@@ -467,7 +467,7 @@ a {
 }
 
 .forum .newthread:hover {
-    background-color: #B2DBF6;
+    background-color: #F87C7C;
     color: black;
 }
 
@@ -478,7 +478,7 @@ ul#container {
 
 .forum #query {
     width:250px;
-    border:2px solid lightblue;
+    border:2px solid #EB5D5D;
 }
 .forum .container {
     width:100%;
@@ -496,7 +496,7 @@ ul#container {
 }
 
 .forum .item:hover {
-    background-color: #B2DBF6;
+    background-color: #F87C7C;
 }
 
 .forum .item ._left {
