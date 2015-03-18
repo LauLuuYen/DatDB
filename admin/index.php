@@ -18,16 +18,16 @@ $userSession->isLoggedIn("admin");
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <link rel="stylesheet" type="text/css" href="../css/loader.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="//jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/jquery-ui.css">
+    <link rel="stylesheet" href="../lib/jquery-ui-theme.css">
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
     
     
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
-    <script src="http://code.angularjs.org/1.0.4/angular-sanitize.min.js"></script>
+    <script src="../lib/jquery-1.10.2.js"></script>
+    <script src="../lib/jquery-ui.js"></script>
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-route.js"></script>
+    <script src="../lib/angular-sanitize.min.js"></script>
 
     <script type="text/javascript">
         var response = JSON.parse('<?php require_once "../php/get_profile.php";?>');
