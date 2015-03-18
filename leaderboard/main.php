@@ -146,16 +146,19 @@ center.hidden {
 		            //alert(leadingboardArray);
 		            //alert(leadingboardArray.length);
 		            var userRankArray = [];
+		            var userRankString = "";
 		            for (var k = 1; k < leadingboardArray.length; k++)
 		            {
 		            	if(leadingboardArray[k][1] == jsLeaderboardJSON["_groupName"])
 		            	{
 		            		userRankArray.push(leadingboardArray[k][0]);
-		            		
+		            		userRankArray.push("1");
+		            		userRankArray.push("8");
+		            		userRankString = userRankArray.toString();
 		            		//alert("Your group name is: " + leadingboardArray[k][1]);
 		            		//alert("Your rank is: " + leadingboardArray[k][0]);
-		            		alert("Your rank is: " + userRankArray);
-		            		//document.getElementById("rankField").value=;
+		            		//alert("Your rank is: " + userRankArray);
+		            		document.getElementById("rankField").value=userRankString;
 		            	}
 		            }
 		            
