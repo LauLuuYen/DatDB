@@ -437,9 +437,10 @@ a {
 }
 
 .heading4 {
-    font-size:16px;
+    font-size:15px;
     margin-top:3px;
     margin-left:3px;
+    font-weight:bold;
 }
 
 .aboutbody {
