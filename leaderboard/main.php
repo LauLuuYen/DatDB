@@ -141,7 +141,7 @@ table tr:nth-child(even) {
 		            	if(leadingboardArray[k][1] == jsLeaderboardJSON["_groupName"])
 		            	{
 		            		alert("Your group name is: " + leadingboardArray[k][1]);
-		            		//alert("LOL");
+		            		alert("Your rank is: " + leadingboardArray[k][0]);
 		            		//console.log("Your group name is: " + leadingboardArray[k][1]);
 		            		
 		            	}
