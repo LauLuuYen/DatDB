@@ -43,6 +43,15 @@ table tr:nth-child(even) {
     background-color: #ffffff;
     text-align:center;
 }
+
+h1.visible {
+    visibility: visible
+}
+
+h1.hidden {
+    visibility: hidden
+}
+
 </style>
 
 
@@ -50,7 +59,8 @@ table tr:nth-child(even) {
     <div class="heading">Leaderboard</div>
     <div class="linebreak"></div>
     <div>
-    
+    <h1 class="visible" id="rankField">Rank placeholder</h1>
+    <br><br>
 		    <script type="text/javascript">
 		        function createLeaderboard() 
 		        {
@@ -141,7 +151,6 @@ table tr:nth-child(even) {
 		            	{
 		            		alert("Your group name is: " + leadingboardArray[k][1]);
 		            		alert("Your rank is: " + leadingboardArray[k][0]);
-		            		
 		            	}
 		            }
 		            
