@@ -32,9 +32,9 @@ class FileParser {
     }
 
     public function checkTXT() {
-        $content = $this->txtfile['tmp_name'];
-        result(false, "f".$content);
+        $content = trim(file_get_contents($this->txtfile['tmp_name']));
         
+        $this->submitReport($content);
     }
     
     public function checkXML() {

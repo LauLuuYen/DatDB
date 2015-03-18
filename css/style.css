@@ -457,7 +457,8 @@ a {
 }
 
 .forum, .createthread, .viewthread, .submitreport, .assessments, .makeassessment,
-.createuser, .viewall, .createassignment, .searchusers, .viewmarks {
+.createuser, .viewall, .createassignment, .searchusers, .viewmarks,
+.about {
     padding:10px 5px;
 }
 

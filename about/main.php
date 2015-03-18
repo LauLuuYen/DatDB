@@ -1,5 +1,6 @@
-<div>
-    About page
+<div class="about">
+    <div class="heading">About</div>
+    <div class="linebreak"></div>
 
 
 
