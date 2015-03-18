@@ -437,6 +437,10 @@ a {
     margin-left:5px;
 }
 
+.aboutbody {
+    margin: 0px 10px;
+}
+
 .forum, .createthread, .viewthread, .submitreport, .assessments, .makeassessment,
 .createuser, .createassignment, .searchusers, .viewmarks,
 .about, .viewall, .main {
