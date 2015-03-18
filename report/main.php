@@ -31,8 +31,9 @@
 
     <br>
     <div class="heading2">The Info:</div>
-    <div>Submitted & Finalised Reports: 1/2</div>
-    <div>Assessments Completed: 2/5</div>
-    <div>Received Assessments: 2/4</div>
+    <div>Submitted & Finalised Reports: {{stat.reports}}</div>
+    <div>Assessments Completed: {{stat.assessments_s}}</div>
+    <div>Received Assessments: {{stat.assessments_r}}</div>
+    <div>Average agregated mark {{stat.mark}}/5</div>
 
 </div>

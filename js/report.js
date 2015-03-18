@@ -48,9 +48,13 @@ app.config(function($routeProvider, $locationProvider) {
 app.controller("Main", function ($scope, master) {
 
     $scope.profile = master.profile;
+    $scope.stat = {};
     
     getData(function(data) {
         console.log(JSON.stringify(data));
+        $scope.$apply(function() {
+            $scope.stat = data;
+        });
     });
     
 });
