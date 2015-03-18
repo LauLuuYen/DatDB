@@ -31,7 +31,12 @@ app.config(function($routeProvider) {
             templateUrl: "search.php",
             controller: "Search"
         })
-        
+
+        .when("/all", {
+            templateUrl: "all.php",
+            controller: "All"
+        })
+           
         .when("/leaderboard", {
             templateUrl: "leaderboard.php",
             controller: "Leaderboard"
@@ -280,6 +285,10 @@ app.controller("Assignment", function ($scope, master) {
 
 app.controller("Leaderboard", function ($scope, master) {
     console.log("view leaderboard");
+});
+
+app.controller("All", function ($scope, master) {
+    console.log("view all");
 });
 
 
