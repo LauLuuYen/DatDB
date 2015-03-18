@@ -46,7 +46,7 @@ table tr:nth-child(even) {
 
 
 <div class="main">
-    <div class="heading">LEADERBAORD</div>
+    <div class="heading">Leaderboard</div>
     <div class="linebreak"></div>
     <div>
     
