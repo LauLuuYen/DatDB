@@ -20,6 +20,7 @@
     box-sizing: border-box;
     height:150px;
     border: 2px solid #EE6666;
+    background-color: #FCDFDF;
 }
 
 .input_text.date {
