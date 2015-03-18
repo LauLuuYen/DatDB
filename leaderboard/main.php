@@ -43,6 +43,15 @@ table tr:nth-child(even) {
     background-color: #ffffff;
     text-align:center;
 }
+
+center.visible {
+    visibility: visible
+}
+
+center.hidden {
+    visibility: hidden
+}
+
 </style>
 
 
@@ -50,7 +59,9 @@ table tr:nth-child(even) {
     <div class="heading">Leaderboard</div>
     <div class="linebreak"></div>
     <div>
-    
+	    <br>
+	    <center class="conceal heading2" id="rankField">Rank placeholder</center>
+	    <br>
 		    <script type="text/javascript">
 		        function createLeaderboard() 
 		        {
@@ -135,14 +146,22 @@ table tr:nth-child(even) {
 		            //alert(leadingboardArray);
 		            //alert(leadingboardArray.length);
 		            var userRankArray = [];
+		            var userRankString = "";
 		            for (var k = 1; k < leadingboardArray.length; k++)
 		            {
-		            	//alert("LOL");
-		            	if(leadingboardArray[k][1] == "Zeldafans")
+		            	if(leadingboardArray[k][1] == jsLeaderboardJSON["_groupName"])
 		            	{
+		            		userRankArray.push(leadingboardArray[k][0]);
+		            		//userRankArray.push("1");
+		            		//userRankArray.push("8");
+		            		userRankString = userRankArray.toString();
+		            		//alert(userRankString);
 		            		//alert("Your group name is: " + leadingboardArray[k][1]);
-		            		//alert("LOL");
-		            		//console.log("Your group name is: " + leadingboardArray[k][1]);
+		            		//alert("Your rank is: " + leadingboardArray[k][0]);
+		            		//alert("Your rank is: " + userRankArray);
+		            		//document.getElementById("rankField").value=userRankString;
+		            		$("#rankField").show();
+		            		$("#rankField").html("Your group's rank is: " + userRankString);
 		            		
 		            	}
 		            }
