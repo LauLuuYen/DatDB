@@ -6,17 +6,7 @@ var app = angular.module("myApp", ["ngRoute"]);
 *
 */
 app.factory("master", function() {
-	var data = {
-        "profile" : {
-            "userID": 123,
-            "name": "tuan",
-            "lastname": "nguyen",
-            "groupid": 3
-        }
-        
-        
-	};
-    
+
 	return data;
 });
 
@@ -35,8 +25,11 @@ app.config(function($routeProvider, $locationProvider) {
 );
 
 app.controller("Main", function ($scope, master) {
-    console.log("account");
-
+    if (master.profile.role == "student") {
+        $("#forumlink").show();
+        $("#logoutlink").removeClass("col-xs-offset-4");
+        $("#logoutlink").addClass("col-xs-offset-2");
+    }
 
 });
 

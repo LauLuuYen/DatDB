@@ -97,9 +97,9 @@ body {
     min-height:750px;
     background-color:white;
     padding-bottom:100px;
-    -moz-box-shadow: 0px 8px 12px gray;
-    -webkit-box-shadow: 0px 8px 12px gray;
-    box-shadow: 0px 8px 12px gray;
+    -moz-box-shadow: 0px 8px 12px rgb(180,180,180);
+    -webkit-box-shadow: 0px 8px 12px rgb(180,180,180);
+    box-shadow: 0px 8px 12px rgb(180,180,180);
 }
 
 
@@ -217,7 +217,7 @@ a {
 }
 
 .submitreport .finalsubmit:hover {
-    background-color:red;
+    background-color:rgb(238,102,102);
 }
 
 .submitreport .upload {
@@ -271,7 +271,7 @@ a {
     height:125px;
     background-color:white;
     padding:0;
-    border:5px solid red;
+    border:5px solid rgb(238,102,102);
     margin: 8px auto;
     cursor:pointer;
 }

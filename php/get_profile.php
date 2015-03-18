@@ -26,6 +26,7 @@ class Get {
         $profile["name"] = $this->name;
         $profile["lastname"] = $this->lastname;
         $profile["groupID"] = $this->groupID;
+        $profile["role"] = $this->sql_helper->getRole($this->roleID);
         
         $data["profile"] = $profile;
         

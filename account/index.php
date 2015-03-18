@@ -20,6 +20,11 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script type="text/javascript">
+        var response = JSON.parse('<?php require_once "../php/get_profile.php";?>');
+        var data = {};
+        data["profile"] = response["profile"];
+    </script>
     <script src="../js/account.js"></script>
 
 </head>
@@ -27,7 +32,44 @@
 <body>
     <div class="row">
         <div class="col-md-12">
-            <div class="banner"></div>
+
+            <div class="banner">
+                <div class="row">
+                    <div class="col-xs-2 no-padding">
+                        <a href="/admin">
+                            <img src="../img/logo.png" class="logo"></img>
+                        </a>
+                    </div>
+                    <div id="forumlink" class="col-xs-2 no-padding conceal">
+                        <a href="/forum">
+                            <div class="tab">
+                                Forum
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/account">
+                            <div class="tab">
+                                Account
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-2 no-padding">
+                        <a href="/about">
+                            <div class="tab">
+                                About
+                            </div>
+                        </a>
+                    </div>
+                    <div id="logoutlink" class="col-xs-offset-4 col-xs-2 no-padding">
+                        <a href="/php/get_logout.php">
+                            <div class="tab">
+                                Logout
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
