@@ -125,7 +125,7 @@ table tr:nth-child(even) {
             dvTable.innerHTML = "";
             dvTable.appendChild(table);
             
-            var rankingJSON = JSON.stringify(leadingboardArray);
+            //var rankingJSON = JSON.stringify(leadingboardArray);
             // Pull out rank for current user
             //alert(leadingboardArray);
             alert(leadingboardArray.length);
