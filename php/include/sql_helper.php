@@ -885,17 +885,19 @@ class SQL_Helper {
     *   @return: array - $data
     */
     public function getAssessmentMarksInGroup($groupID) {
-        $stmt = $this->conn->prepare("SELECT R.id, AE.groupid, A.title, current_status, feedback, score, AE.timestamp FROM reports R JOIN assignments A JOIN assessments AE JOIN status S ON R.assignmentid = A.id AND AE.reportid = R.id AND AE.statusid = S.id WHERE R.groupid = ?;");
+        $stmt = $this->conn->prepare("SELECT R.id, AE.groupid, G.name, A.title, current_status, feedback, score, AE.timestamp FROM reports R JOIN assignments A JOIN assessments AE JOIN status S JOIN groups G ON R.assignmentid = A.id AND AE.reportid = R.id AND AE.statusid = S.id AND G.id = AE.groupid WHERE R.groupid = ?;");
         $stmt->bind_param("i", $groupID);
 
         if ($stmt->execute()) {
             $stmt->store_result();
-            $stmt->bind_result($reportID, $o_groupID, $title, $status, $feedback, $score, $timestamp);
+            $stmt->bind_result($reportID, $o_groupID, $groupname, $title, $status, $feedback, $score, $timestamp);
             $data = array();
             
             while($stmt->fetch()) {
                 $row = array();
                 $row["assessmentID"] = $reportID . $o_groupID;
+                $row["groupID"] = $o_groupID;
+                $row["groupname"] = $groupname;
                 $row["title"] = $title;
                 $row["status"] = $status;
                 $row["feedback"] = is_null($feedback) ? "":str_replace("\n", "<br/>", $feedback);
