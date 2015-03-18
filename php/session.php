@@ -24,6 +24,7 @@ class Session {
         $_SESSION["lastname"] = $data["lastname"];
         $_SESSION["roleID"] = $data["roleID"];
         $_SESSION["groupID"] = $data["groupID"];
+        $_SESSION["groupname"] = $data["groupname"];
     }
     
     
@@ -71,25 +72,25 @@ class Session {
             return false;
         }
         
-	require_once "include/sql_helper.php";
-	$sql_helper = new SQL_Helper();
-	$name = strtolower($sql_helper->getRole($_SESSION["roleID"]));
-	$role = strtolower($role);
-	$sql_helper->close();
+        require_once "include/sql_helper.php";
+        $sql_helper = new SQL_Helper();
+        $name = strtolower($sql_helper->getRole($_SESSION["roleID"]));
+        $role = strtolower($role);
+        $sql_helper->close();
 
-	if($name == $role) {
-		return true;
-	}
-	else if($name == "admin")
-	{
-		$url = "http://" . $_SERVER["HTTP_HOST"]."/admin";
-        	 header("Location: " . $url);
-	}
-	else if ($name == "student")
-	{
-		$url = "http://" . $_SERVER["HTTP_HOST"]."/report";
-        	 header("Location: " . $url);
-	}
+        if($name == $role) {
+            return true;
+        }
+        
+        $url = "http://" . $_SERVER["HTTP_HOST"];
+        
+        if($name == "admin") {
+            $url = $url."/admin";
+
+        } else if ($name == "student") {
+            $url = $url."/report";
+        }
+        header("Location: " . $url);
 	
         return false;
     }

@@ -12,6 +12,7 @@ class Get {
         $this->lastname = $_SESSION["lastname"];
         $this->roleID = $_SESSION["roleID"];
         $this->groupID = $_SESSION["groupID"];
+        $this->groupname = $_SESSION["groupname"];
     }
 	
     
@@ -26,6 +27,7 @@ class Get {
         $profile["name"] = $this->name;
         $profile["lastname"] = $this->lastname;
         $profile["groupID"] = $this->groupID;
+        $profile["groupname"] = $this->groupname;
         $profile["role"] = $this->sql_helper->getRole($this->roleID);
         
         $data["profile"] = $profile;

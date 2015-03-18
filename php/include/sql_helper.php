@@ -52,6 +52,7 @@ class SQL_Helper {
                 "lastname" => $lastname,
                 "roleID"=>$roleID,
                 "groupID"=>$groupID,
+                "groupname"=>$this->getGroupname($groupID),
                 "password"=>$password
             );
             return $data;
@@ -638,6 +639,24 @@ class SQL_Helper {
             $stmt->close();
 
             return $groupID;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+	}
+    
+	public function getGroupname($id) {
+		$stmt = $this->conn->prepare("SELECT name FROM groups WHERE id=?");
+        $stmt->bind_param("i", $id);
+
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($groupname);
+            
+            $registrant = $stmt->fetch();//Bind result with row
+            $stmt->close();
+
+            return $groupname;
             
         } else {
             die("An error occurred performing a request");
