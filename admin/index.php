@@ -53,15 +53,6 @@ $userSession->isLoggedIn("admin");
                             <img src="../img/logo.png" class="logo"></img>
                         </a>
                     </div>
-                    <!-- FORUM REMOVED FROM ADMIN PAGE
-                    <div class="col-xs-2 no-padding">
-                         <a href="/forum"> 
-                            <div class="tab">
-                                Forum
-                            </div>
-                        </a>
-                    </div>
-                    -->
                     <div class="col-xs-2 no-padding">
                         <a href="/account">
                             <div class="tab">
@@ -108,9 +99,6 @@ $userSession->isLoggedIn("admin");
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
                                     <a class="panel btn" href="#/assignments">Create Assignment</a>
-                                </div>
-                                <div class="col-xs-4 col-sm-12 col-md-12">
-                                    <a class="panel btn" href="#/all">View All</a>
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
                                     <a class="panel btn" href="#/search">Search User</a>
