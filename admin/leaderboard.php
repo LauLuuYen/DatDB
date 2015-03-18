@@ -132,9 +132,10 @@ table tr:nth-child(even) {
             var userRankArray = [];
             for (var m in leadingboardArray)
             {
+            	alert("LOL");
             	//if(leadingboardArray[1] == "Zeldafans")
             	//{
-            		alert("Your group name is: " . leadingboardArray[1]);
+            		//alert("Your group name is: " . leadingboardArray[1]);
             	//}
             }
             
