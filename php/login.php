@@ -91,7 +91,7 @@ class Login {
                 require_once "session.php";
                 unset($data["password"]); //Remove password
                 $userSession->login($data);
-                /*
+                
                 //Role
                 $role = strtolower($this->sql_helper->getRole($data["roleID"]));
                 
@@ -103,9 +103,8 @@ class Login {
                 } else if ($role == "student") {
                     $url = $url."/report";
                 }
-                */
-                //result(true, $url);
-                result(true, "http://" . $_SERVER["HTTP_HOST"] . "/report");
+                
+                result(true, $url);
             }
         }
             

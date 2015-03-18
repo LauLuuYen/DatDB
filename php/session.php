@@ -71,18 +71,18 @@ class Session {
             header("Location: " . $url);
             return;
         }
-        /*
+        
         require_once "include/sql_helper.php";
         $sql_helper = new SQL_Helper();
         $name = strtolower($sql_helper->getRole($_SESSION["roleID"]));
         $role = strtolower($role);
         $sql_helper->close();
-        */
+        
         if($name == $role) {
             return;
         }
         
-        /*
+        
         $url = "http://" . $_SERVER["HTTP_HOST"];
         
         if($name == "admin") {
@@ -92,7 +92,7 @@ class Session {
             $url = $url."/report";
         }
         header("Location: " . $url);
-        */
+        
 
     }
 

@@ -1,4 +1,6 @@
-var app = angular.module("myApp", ["ngRoute"]);
+var app = angular.module("myApp", []);
+
+
 
 /*
 *
@@ -24,7 +26,6 @@ app.controller('Login', function ($scope, master) {
         
         showLoading();
 
-        return;
             $.ajax({
                 type: "POST",
                 url:"http://lauluuyen.azurewebsites.net/php/login.php" ,
