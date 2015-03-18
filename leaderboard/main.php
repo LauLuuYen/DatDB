@@ -66,8 +66,13 @@ table tr:nth-child(even) {
 		            var currentMark = -1;
 		            for (i in jsLeaderboardJSON) 
 				 {
+				 	if(i == "_groupName")
+				 	{
+				 		break;
+				 	}
+				 
 				 	currentMark = jsLeaderboardJSON[j].averageMark;
-					alert(i);
+					
 					if((!jsLeaderboardJSON[j].averageMark) && (j>0) && (jsLeaderboardJSON[j-1].averageMark == null))
 				 	{
 				 		n--;
