@@ -1,5 +1,4 @@
 <?php
-
 class LeaderboardClass 
 {
 	
@@ -125,10 +124,10 @@ table tr:nth-child(even) {
             var dvTable = document.getElementById("dvTable");
             dvTable.innerHTML = "";
             dvTable.appendChild(table);
+            alert(leadingboardArray);
         }
     </script>
 
-<!-- <input type="button" value="Generate Table" onclick="GenerateTable()" /> -->
 	 <script>
 		var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
     		createLeaderboard();
