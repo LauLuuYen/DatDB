@@ -69,7 +69,7 @@ class Session {
         if (!$loggedIn) {
             $url = "http://" . $_SERVER["HTTP_HOST"];
             header("Location: " . $url);
-            return true;
+            return false;
         }
         
         require_once "include/sql_helper.php";
