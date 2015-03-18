@@ -16,6 +16,7 @@
     padding-right:5px;
     border: 2px solid #EE6666;
     background-color:#FFECEC;
+    outline: none;
 }
 
 .input_text.content {
@@ -51,8 +52,6 @@
     -webkit-transform: scale(1.05);
     -moz-transform: scale(1.05);
     transform: scale(1.05);
-    outline-color: transparent;
-    outline-style: none;
 }
 
 textarea {
