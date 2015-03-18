@@ -7,9 +7,9 @@
     <div class="heading3">About the Project</div>
     <div class="heading3">About Us</div>
     <div>
-        Rex Lau: zcabyyl@ucl.ac.uk 
-        Tan Luu: Insert Email
-        Tuan Nguyen: zcabtng@ucl.ac.uk
+        Rex Lau: zcabyyl@ucl.ac.uk </br>
+        Tan Luu: Insert Email </br>
+        Tuan Nguyen: zcabtng@ucl.ac.uk </br>
 
     </div>
 </div>
