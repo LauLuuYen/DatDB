@@ -60,7 +60,7 @@ center.hidden {
     <div class="linebreak"></div>
     <div>
 	    <br>
-	    <center class="visible" id="rankField">Rank placeholder</center>
+	    <center class="conceal" id="rankField">Rank placeholder</center>
 	    <br>
 		    <script type="text/javascript">
 		        function createLeaderboard() 
@@ -152,15 +152,17 @@ center.hidden {
 		            	if(leadingboardArray[k][1] == jsLeaderboardJSON["_groupName"])
 		            	{
 		            		userRankArray.push(leadingboardArray[k][0]);
-		            		//userRankArray.push("1");
-		            		//userRankArray.push("8");
+		            		userRankArray.push("1");
+		            		userRankArray.push("8");
 		            		userRankString = userRankArray.toString();
 		            		//alert(userRankString);
 		            		//alert("Your group name is: " + leadingboardArray[k][1]);
 		            		//alert("Your rank is: " + leadingboardArray[k][0]);
 		            		//alert("Your rank is: " + userRankArray);
 		            		//document.getElementById("rankField").value=userRankString;
+		            		$("#rankField").show();
 		            		$("#rankField").html(userRankString);
+		            		
 		            	}
 		            }
 		            
