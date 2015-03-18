@@ -10,17 +10,17 @@
     box-sizing: border-box;
     margin-bottom: 10px;
     width:100%;
-    height:25px;
+    height:28px;
     font-size:15px;
     padding-left:5px;
     padding-right:5px;
+    border: 2px solid #EE6666;
+    background-color:#FFECEC;
 }
 
 .input_text.content {
     box-sizing: border-box;
     height:150px;
-    border: 2px solid #EE6666;
-    background-color: #FCDFDF;
 }
 
 .input_text.date {
