@@ -2,8 +2,8 @@
 
     
     <div class="heading">Hi, {{profile.name}} {{profile.lastname}}</div>
-    <div class="linebreak"></div><br>
-    <div class="heading2">Group: <em>{{profile.groupname}}</em></div>
+    <div class="linebreak"></div>
+    <div class="heading2">Group: <em>{{profile.groupname}}</em></div><br>
     <div>...you can do this for your group and that...</div>
 
     <br>
