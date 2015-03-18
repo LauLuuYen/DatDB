@@ -44,11 +44,11 @@ table tr:nth-child(even) {
     text-align:center;
 }
 
-centre.visible {
+center.visible {
     visibility: visible
 }
 
-centre.hidden {
+center.hidden {
     visibility: hidden
 }
 
@@ -59,7 +59,7 @@ centre.hidden {
     <div class="heading">Leaderboard</div>
     <div class="linebreak"></div>
     <div>
-    <centre class="visible" id="rankField">Rank placeholder</centre>
+    <center class="visible" id="rankField">Rank placeholder</center>
     <br><br>
 		    <script type="text/javascript">
 		        function createLeaderboard() 
