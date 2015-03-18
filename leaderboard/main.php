@@ -152,14 +152,14 @@ center.hidden {
 		            	if(leadingboardArray[k][1] == jsLeaderboardJSON["_groupName"])
 		            	{
 		            		userRankArray.push(leadingboardArray[k][0]);
-		            		userRankArray.push("1");
-		            		userRankArray.push("8");
+		            		//userRankArray.push("1");
+		            		//userRankArray.push("8");
 		            		userRankString = userRankArray.toString();
-		            		alert(userRankString);
+		            		//alert(userRankString);
 		            		//alert("Your group name is: " + leadingboardArray[k][1]);
 		            		//alert("Your rank is: " + leadingboardArray[k][0]);
 		            		//alert("Your rank is: " + userRankArray);
-		            		//document.getElementById("rankField").value=userRankString;
+		            		document.getElementById("rankField").value=userRankString;
 		            	}
 		            }
 		            
