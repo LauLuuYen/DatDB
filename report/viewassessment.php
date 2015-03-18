@@ -7,10 +7,10 @@
     <div style="width:300px; height:35px; background-color:lightgray; font-size:18px;">&nbsp;Their Aggregrated Mark: {{group.score}}/5</div><br>
 
 
-    <div class="heading2">{{group.name}} assessed your report on: {{assessment.timestamp}}</div>
+    <div class="heading2">Date assessed by {{group.name}}: {{assessment.timestamp}}</div>
     
     <div class="input_wrapper">
-        <div class="heading2">{{group.name}} gave your reprot the mark:</div>
+        <div class="heading2">Mark given by {{group.name}}:</div>
         <span>
             <span ng-repeat="star in stars" class="viewstar" ng-class="star.state"></span>
         </span>
@@ -18,7 +18,7 @@
     </div>
     
     <div class="input_wrapper">
-        <div class="heading2">{{group.name}} gave following feedback:</div>
+        <div class="heading2">Feedback by {{group.name}}:</div>
         <div class="feedback"></div>
     </div>
 
