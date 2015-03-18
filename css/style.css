@@ -73,6 +73,7 @@ body {
     background-color:rgb(238,102,102);
     z-index:2;
     overflow-x: hidden;
+    overflow-y: hidden;
     border-bottom:1px solid lightgray;
 }
 
