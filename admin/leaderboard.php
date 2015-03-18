@@ -130,15 +130,15 @@ table tr:nth-child(even) {
             //alert(leadingboardArray);
             //alert(leadingboardArray.length);
             var userRankArray = [];
-            for (var k = 1; i < leadingboardArray.length; k++)
+            for (var k = 1; k < leadingboardArray.length; k++)
            {
-            	alert("LOL");
-            	//if(leadingboardArray[1] == "Zeldafans")
+            	//alert("LOL");
+            	if(leadingboardArray[k][1] == "Zeldafans")
             	//{
             		//alert("LOL");
             		//console.log("Your group name is: " + leadingboardArray[k][1]);
-            		//alert("Your group name is: " + leadingboardArray[k][1]);
-            	//}
+            		alert("Your group name is: " + leadingboardArray[k][1]);
+            	}
             }
             
 
