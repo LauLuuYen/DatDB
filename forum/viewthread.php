@@ -12,6 +12,7 @@
         <div class="comment">
             <div id="txt"></div><br>
             <div id="date"></div>
+            <a id="threadlink" class="link" ng-click="deleteThread()">Delete Thread</a>
         </div>
     </div>
 

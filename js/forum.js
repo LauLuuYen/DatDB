@@ -190,6 +190,9 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         $(".heading").html("Thread: " + title);
         $("#txt").html(comments[0].content);
         $("#date").html("By " + comments[0].fullname +" at " +comments[0].timestamp);
+        if (comments[0].candelete) {
+            $("#threadlink").addClass("candelete");
+        }
         var temp = [];
         
         for (i=1; i<comments.length; i++) {
@@ -288,6 +291,10 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
             }
         });
             
+    };
+    
+    $scope.deleteThread = function() {
+        alert("delete thread");
     };
 
     $scope.reroute();
