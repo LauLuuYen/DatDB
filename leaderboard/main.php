@@ -9,7 +9,7 @@ class LeaderboardClass
 	$this->sql_helper = new SQL_Helper();
 	session_start();
 	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();
-	$leaderboardArray["_groupName"] = $_SESSION["groupname"];
+	//$leaderboardArray["_groupName"] = $_SESSION["groupname"];
 	$this->sql_helper->close();
 	return $leaderboardArray;
 	}
@@ -58,7 +58,7 @@ table tr:nth-child(even) {
 		            var leadingboardArray = new Array();
 		            var jsLeaderboardJSON = <?php echo json_encode($leaderBoardDataArray); ?>;
 		            //console.log(JSON.stringify(jsLeaderboardJSON));
-		            alert(jsLeaderboardJSON["_groupName"]);
+		            //alert(jsLeaderboardJSON["_groupName"]);
 		            leadingboardArray.push(["Rank", "Group Name", "Average mark"]);
 		            var j = 0;
 		            var n = 0;
