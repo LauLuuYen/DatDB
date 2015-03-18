@@ -125,23 +125,20 @@ table tr:nth-child(even) {
             dvTable.innerHTML = "";
             dvTable.appendChild(table);
             
-            //var rankingJSON = JSON.stringify(leadingboardArray);
             // Pull out rank for current user
-            console.log(leadingboardArray);
+            //console.log(leadingboardArray);
             //alert(leadingboardArray);
             //alert(leadingboardArray.length);
-            //var userRankArray = [];
-            //for (m in leadingboardArray)
-            //{
-            //	if()
-            //	{
-            //		
-            //	}
-           // }
+            var userRankArray = [];
+            for (var m in leadingboardArray)
+            {
+            	//if(leadingboardArray[1] == "Zeldafans")
+            	//{
+            		alert("Your group name is: " . leadingboardArray[1]);
+            	//}
+            }
             
-            
-            
-            
+
         }
     </script>
 
