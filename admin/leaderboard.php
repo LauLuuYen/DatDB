@@ -135,6 +135,7 @@ table tr:nth-child(even) {
             	//alert("LOL");
             	//if(leadingboardArray[1] == "Zeldafans")
             	//{
+            		console.log("Your group name is: " + leadingboardArray[k][1]);
             		alert("Your group name is: " + leadingboardArray[k][1]);
             	//}
             }
