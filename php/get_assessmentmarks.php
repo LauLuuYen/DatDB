@@ -19,14 +19,15 @@ class Get {
         $data = array();
         
         //Get all assessment marks
-        $data["assessments"] = $this->sql_helper->getAssessmentMarksInGroup($this->groupID);
+        $assessments = $this->sql_helper->getAssessmentMarksInGroup($this->groupID);
+
+        foreach ($assessments as &$row) {
+            $groupID = $row["groupID"];
+            $row["groupmark"] = $this->sql_helper->getAggregateMark($this->groupID);
+        }
+
         
-        //for ($data["assessments"] as $test) {
-            //$groupID = $row["groupID"];
-            //echo "";
-            //$row["groupmark"] = $this->sql_helper->getAggregateMark($this->groupID);
-        //}
-        
+        $data["assessments"] = $assessments;
         
         $this->sql_helper->close();
         
