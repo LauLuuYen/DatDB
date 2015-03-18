@@ -81,7 +81,7 @@
         </div>
 
         <div class="input_wrapper">
-            <div class="heading2">Group Assessment Assigner</div>
+            <div class="heading4">Group Assessment Assigner</div>
             <div>Here is the table showing the groups that are to be assessing the reports made by another group for this assignment.  Press the Randomise button until you are happy with the listing.</div>
             <br>
             <div id="randombtn" ng-click="randomise();">Randomise</div>
