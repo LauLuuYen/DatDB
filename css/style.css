@@ -281,6 +281,10 @@ a {
 }
 
 .assessments .item:hover:enabled, .viewmarks .item:hover:enabled {
+    background-color:#F38E8E;
+}
+
+.assessments .item.Complete:hover:enabled, .viewmarks .item.Complete:hover:enabled {
     background-color:#ACF295;
 }
 
