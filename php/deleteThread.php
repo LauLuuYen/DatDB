@@ -48,48 +48,39 @@ class threadEraser
         
         if($userID != $this->userID) {
             result(false, "Invalid permission");
-            return;
-        }
         
-        //User has permission to delete their own thread, with all comments
-        $success = $this->sql_helper->deleteThread($this->threadID);
+        } else {
+
+            //User has permission to delete their own thread, with all comments
+            $this->sql_helper->deleteThread($this->threadID);
+            $this->sql_helper->deleteCommentByThreadID($this->threadID);
+            result(true, "Success");
+            
+        }
         
         $this->sql_helper->close();
         
-        result(true, "Success");
   	}
   	
 }
   
 require_once "session.php";
 
-if($userSession->isLoggedIn("student")) 
-{
+if($userSession->isLoggedIn("student"))  {
 
-    $threadID = 171;
-    $threadEraser = new threadEraser($threadID);
-
-    if ($threadEraser->checkInputs()) {
-        $threadEraser->deleteThread();
-    }
-
-/*
     if(!empty($_POST)) {
-        $commentID = $_POST["commentID"];
-        $commentEraser = new commentEraser($commentID);
+        $threadID = $_POST["threadID"];
+        $threadEraser = new threadEraser($threadID);
 
-        if ($commentEraser->checkInputs()) {
-            $commentEraser->deleteComment();
+        if ($threadEraser->checkInputs()) {
+            $threadEraser->deleteThread();
         }
-    }
-    else
-    {
+        
+    } else {
         result(false, "Error in request!");
     }
-    */
-}
-else
-{
+    
+} else {
     result(false, "Session timeout");
 }
 

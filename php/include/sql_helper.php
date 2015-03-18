@@ -1044,8 +1044,20 @@ class SQL_Helper {
     	}
 
     public function deleteThread($threadID) {
-        $stmt = $this->conn->prepare("DELETE FROM thread WHERE id=?; DELETE FROM comment WHERE threadid=?;");
-        $stmt->bind_param("ii", $threadID, $threadID);
+        $stmt = $this->conn->prepare("DELETE FROM thread WHERE id=?;");
+        $stmt->bind_param("i", $threadID);
+
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    public function deleteCommentByThreadID($threadID) {
+        $stmt = $this->conn->prepare("DELETE FROM comment WHERE threadid=?;");
+        $stmt->bind_param("i", $threadID);
 
         if ($stmt->execute()) {
             $stmt->close();
