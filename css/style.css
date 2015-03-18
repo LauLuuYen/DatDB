@@ -486,6 +486,7 @@ ul#container {
 .forum #query {
     width:250px;
     border:2px solid #EB5D5D;
+    outline: none;
 }
 .forum .container {
     width:100%;
