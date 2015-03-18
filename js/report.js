@@ -383,6 +383,7 @@ app.controller("Marks", function ($scope, master, $location) {
 
 app.controller("ViewAssessment", function ($scope, master, $routeParams, $location) {
     $scope.stars = [{state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}, {state:"_off"}];
+    $scope.group = { name:"", score:"-" };
     
     $scope.reroute = function() {
         if (master.groupassessments == null) {
@@ -397,7 +398,9 @@ app.controller("ViewAssessment", function ($scope, master, $routeParams, $locati
             if (id == assessments[i].assessmentID) {
                 $scope.assessment = master.groupassessments[i];
                
-
+                $scope.group.name = $scope.assessment.groupname;
+                $scope.group.score = $scope.assessment.groupmark;
+               
                 $(".feedback").html($scope.assessment.feedback);
                 $scope.showStars($scope.assessment.score);
                 return;
