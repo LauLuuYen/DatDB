@@ -124,7 +124,23 @@ table tr:nth-child(even) {
             var dvTable = document.getElementById("dvTable");
             dvTable.innerHTML = "";
             dvTable.appendChild(table);
-            alert(leadingboardArray);
+            
+            var rankingJSON = JSON.stringify(leadingboardArray);
+            // Pull out rank for current user
+            //alert(leadingboardArray);
+            alert leadingboardArray.length;
+            //var userRankArray = [];
+            //for (m in leadingboardArray)
+            //{
+            //	if()
+            //	{
+            //		
+            //	}
+           // }
+            
+            
+            
+            
         }
     </script>
 
