@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute"]);
+var app = angular.module("myApp", ["ngRoute", "ngSanitize"]);
 
 /*
 *
@@ -296,7 +296,7 @@ app.controller("All", function ($scope, master) {
     
     getData(function(data) {
         
-        $scope.apply(function() {
+        $scope.$apply(function() {
             $scope.groups = data["groups"];
             $scope.assignments = data["assignments"];
             $scope.reports = data["reports"];

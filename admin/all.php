@@ -52,7 +52,7 @@
         <tr class="r0" ng-repeat="assignment in assignments">
             <td>{{assignment.assignmentID}}</td>
             <td>{{assignment.title}}</td>
-            <td>{{assignment.task}}</td>
+            <td ng-bind-html="assignment.task"></td>
             <td>{{assignment.deadline}}</td>
             <td>{{assignment.created}}</td>
         </tr>
@@ -76,7 +76,7 @@
             <td>{{report.groupid}}</td>
             <td>{{report.assignmentid}}</td>
             <td>{{report.status}}</td>
-            <td>{{report.content}}</td>
+            <td ng-bind-html="report.content"></td>
             <td>{{report.userid}}</td>
             <td>{{report.timestamp}}</td>
         </tr>
@@ -98,7 +98,7 @@
             <td>{{assessment.groupid}}</td>
             <td>{{assessment.reportid}}</td>
             <td>{{assessment.status}}</td>
-            <td>{{assessment.feedback}}</td>
+            <td ng-bind-html="assessment.feedback"></td>
             <td>{{assessment.score}}/5</td>
             <td>{{assessment.userid}}</td>
             <td>{{assessment.timestamp}}</td>

@@ -27,6 +27,7 @@ $userSession->isLoggedIn("admin");
     <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="http://code.angularjs.org/1.0.4/angular-sanitize.min.js"></script>
 
     <script type="text/javascript">
         var response = JSON.parse('<?php require_once "../php/get_profile.php";?>');

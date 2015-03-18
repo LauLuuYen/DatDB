@@ -19,7 +19,7 @@
 
     <div class="container">
         <div class="comment" ng-repeat="post in comments">
-            <div>{{post.content}}</div><br>
+            <div ng-bind-html="post.content"></div><br>
             <div>By {{post.fullname}} " at " {{post.timestamp}}</div>
             <a class="link" ng-class="post.candelete" ng-click="deleteComment(post.commentID)">Delete Comment</a>
         </div>

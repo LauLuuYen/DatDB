@@ -24,7 +24,8 @@ $userSession->isLoggedIn("student");
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
-
+    <script src="http://code.angularjs.org/1.0.4/angular-sanitize.min.js"></script>
+    
     <script type="text/javascript">
         var response = JSON.parse('<?php require_once "../php/get_profile.php";?>');
         var data = {};
