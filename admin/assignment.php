@@ -54,8 +54,8 @@
 
     <div class="linebreak"></div>
 
-    <div>Here you can create an assignment for all the available groups. The adminstrator needs to give an assignment a title, a content and a deadline. Which groups that assessess each other is randomly determined, but the adminstrator can re-randomize the list if they wish to do so.</div>
-    
+    <div>Here, an adminstrator can create an assignment for all the available groups. The adminstrator needs to give an assignment a title, a content and a deadline. Which groups that assessess each other is randomly determined, but the adminstrator can re-randomize the list if they wish to do so.</div>
+    <br>
     <form ng-submit="submit()">
 
         <div class="input_wrapper">
@@ -84,6 +84,7 @@
         <div class="input_wrapper">
             <div class="heading2">Group Assessment Assigner</div>
             <div>Here is the table showing the groups that are to be assessing the reports made by another group for this assignment.  Press the Randomise button until you are happy with the listing.</div>
+            <br>
             <div id="randombtn" ng-click="randomise();">Randomise</div>
 
             <div id="randomsection"></div>
