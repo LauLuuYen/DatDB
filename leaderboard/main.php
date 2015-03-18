@@ -1,23 +1,23 @@
 <?php
 
-class LeaderboardClass 
-{
-	
-	public function retrieveLeaderboard() 
+	class LeaderboardClass 
 	{
-	require_once "../php/include/sql_helper.php";
-	$this->sql_helper = new SQL_Helper();
-	
-	$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
-	$this->sql_helper->close();
-	return $leaderboardArray;
+		
+		public function retrieveLeaderboard() 
+		{
+		require_once "../php/include/sql_helper.php";
+		$this->sql_helper = new SQL_Helper();
+		
+		$leaderboardArray = $this->sql_helper->fetchLeaderBoard();	
+		$this->sql_helper->close();
+		return $leaderboardArray;
+		}
+		
 	}
-	
-}
-	$leaderboardinstance = new LeaderboardClass();
-	$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
-	
-	$jsonLeaderboardData = json_encode($leaderBoardDataArray);
+		$leaderboardinstance = new LeaderboardClass();
+		$leaderBoardDataArray = $leaderboardinstance->retrieveLeaderboard();
+		
+		$jsonLeaderboardData = json_encode($leaderBoardDataArray);
 ?>
 
 <style>
