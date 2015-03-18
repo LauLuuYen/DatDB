@@ -51,7 +51,11 @@ app.config(function($routeProvider) {
 app.controller("Main", function ($scope, master) {
 
     $scope.profile = master.profile;
+    $scope.stat = {};
     
+    getData(function(data) {
+        $scope.stat = data;
+    });
 });
 
 app.controller("User", function ($scope, master) {

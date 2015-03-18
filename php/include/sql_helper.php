@@ -1145,7 +1145,7 @@ class SQL_Helper {
             $stmt->bind_result($count);
             $stmt->fetch();
             $stmt->close();
-            return $userID;
+            return $count;
         } else {
             die("An error occurred performing a request");
         }
@@ -1158,7 +1158,7 @@ class SQL_Helper {
             $stmt->bind_result($count);
             $stmt->fetch();
             $stmt->close();
-            return $userID;
+            return $count;
         } else {
             die("An error occurred performing a request");
         }
@@ -1171,7 +1171,7 @@ class SQL_Helper {
             $stmt->bind_result($count);
             $stmt->fetch();
             $stmt->close();
-            return $userID;
+            return $count;
         } else {
             die("An error occurred performing a request");
         }
@@ -1184,12 +1184,26 @@ class SQL_Helper {
             $stmt->bind_result($count);
             $stmt->fetch();
             $stmt->close();
-            return $userID;
+            return $count;
         } else {
             die("An error occurred performing a request");
         }
     }
- 
+     public function count_students() {
+        $student = "student";
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM users WHERE roleid=(SELECT id FROM roles WHERE name=?);");
+        $stmt->bind_param("s", $student);
+        
+        if ($stmt->execute()) {
+            $stmt->store_result();
+            $stmt->bind_result($count);
+            $stmt->fetch();
+            $stmt->close();
+            return $count;
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
 	
 }
 
