@@ -67,12 +67,12 @@
     <table class="awesomeTable">
         <tr class="awesomeHead">
             <td class="row-fivePercent">ID</td>
-            <td class="row-fivePercent">GroupID</td>
-            <td class="row-fivePercent">AssignmentID</td>
+            <td class="row-tenPercent">GroupID</td>
+            <td class="row-tenPercent">AssignmentID</td>
             <td class="row-tenPercent">Status</td> 
-            <td class="row-fiftyPercent">Content</td>
+            <td class="row-fortyfivePercent">Content</td>
             <td class="row-fivePercent">UserID</td>
-            <td class="row-twentyPercent">Timestamp</td>
+            <td class="row-fifteenPercent">Timestamp</td>
         </tr>
         <tr class="r0" ng-repeat="report in reports">
             <td>{{report.id}}</td>
