@@ -64,7 +64,7 @@
 
     <br>
     <div class="heading2">All Reports</div>
-    <table class="randomtable" style="table-layout:auto; width:100%; overflow:hidden; word-wrap:break-word;">
+    <table class="randomtable>
         <tr class="head">
             <td>ID</td>
             <td>GroupID</td>
