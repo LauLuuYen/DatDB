@@ -134,6 +134,11 @@ textarea {
 
 }
 
+.awesomeTable .tdAwesomeScroll {
+    overflow: auto;
+
+}
+
 /* Column widths are based on these cells */
 .row-fivePercent {
   width: 5%;
