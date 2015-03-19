@@ -1,7 +1,6 @@
 <div class="main">
     <div class="heading">Settings</div>
     <div class="linebreak"></div>
-    <div>Blah blah blah beef</div><br>
 
     <div class="heading3">Change your password</div>
 
