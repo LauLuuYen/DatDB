@@ -26,7 +26,7 @@
     
     <div class="heading">Hi, {{profile.name}} {{profile.lastname}}</div>
     <div class="linebreak"></div>
-    <div class="heading2">Group: <em>{{profile.groupname}}</em></div><br>
+    <div class="heading2">Your group: <em>{{profile.groupname}}</em></div><br>
     <div>As a student, you can do the following:</div>
     
     <div>
@@ -43,7 +43,7 @@
     
 
     <br>
-    <div class="heading2">The Info:</div>
+    <div class="heading2">Your group info:</div>
     <div>Submitted & Finalised Reports: {{stat.reports}}</div>
     <div>Assessments Completed: {{stat.assessments_s}}</div>
     <div>Received Assessments: {{stat.assessments_r}}</div>
