@@ -30,7 +30,7 @@
 
     <div class="heading2">Colour codings:</div>
     <div><b><font color="grey">Grey</font></b> - The group hasn't submitted and finalised their report yet</div>
-    <div><font color="red">Red</font></b> - Your group has yet to make an assessment</div>
+    <div><b><font color="red">Red</font></b> - Your group has yet to make an assessment</div>
     <div><b><font color="green">Green</font></b> - Your group has completed the assessment</div>
 
     <div class="container">
