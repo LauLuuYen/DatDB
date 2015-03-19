@@ -70,7 +70,7 @@
             <td class="row-tenPercent">GroupID</td>
             <td class="row-tenPercent">AssignmentID</td>
             <td class="row-tenPercent">Status</td> 
-            <td class="row-fortyfivePercent">Content</td>
+            <td class="row-fortyfivePercent tdAwesomeScroll">Content</td>
             <td class="row-fivePercent">UserID</td>
             <td class="row-fifteenPercent">Timestamp</td>
         </tr>
