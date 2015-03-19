@@ -15,10 +15,10 @@ $userSession->isLoggedInMain();
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="stylesheet" type="text/css" href="css/loader.css">
-    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
 
-    <script src="lib/jquery-latest.min.js"></script>
-    <script src="lib/angular.min.js"></script>
+    <script src="../lib/jquery-latest.min.js"></script>
+    <script src="../lib/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/loader.js"></script>
     
@@ -43,22 +43,24 @@ $userSession->isLoggedInMain();
     <div class="row">
         <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
 
-            <form class="loginbox" ng-submit="submit()">
-                <div id="title">Please Login to Proceed</div><br>
+            <div class="loginbox">
+                <form ng-submit="submit()">
+                    <div id="title">Please Login to Proceed</div><br>
 
-                <div class="input_wrapper">
-                    <div class="heading2">Email Address:</div>
-                    <input class="input_text" ng-model="account.email" maxlength=100></input>
-                    <div class="error invisible">Error: Please enter your email address</div>
-                </div>
-                <div class="input_wrapper">
-                    <div class="heading2">Password:</div>
-                    <input type="password" class="input_text" ng-model="account.password" maxlength=40></input>
-                    <div class="error invisible">Error: Please enter your password</div>
-                </div>
+                    <div class="input_wrapper">
+                        <div class="heading2">Email Address:</div>
+                        <input class="input_text" ng-model="account.email" maxlength=100></input>
+                        <div class="error invisible">Error: Please enter your email address</div>
+                    </div>
+                    <div class="input_wrapper">
+                        <div class="heading2">Password:</div>
+                        <input type="password" class="input_text" ng-model="account.password" maxlength=40></input>
+                        <div class="error invisible">Error: Please enter your password</div>
+                    </div>
 
-                <button type="submit" id="submit">Login</button>
-            </form>
+                    <button type="submit" id="submit">Login</button>
+                </form>
+            </div>
 
         </div>
     </div>
