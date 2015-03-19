@@ -1,7 +1,6 @@
 <div class="main">
     <div class="heading">Settings</div>
     <div class="linebreak"></div>
-    <div>Blah blah blah beef</div><br>
 
     <div class="heading3">Change your password</div>
 
@@ -18,7 +17,7 @@
                 ng-change="onChange('e2')"></input>
             <div id="e2" class="error invisible">Error: Please enter your new password</div>
             
-            <div class="heading2">Old password:</div>
+            <div class="heading2">Confirm password:</div>
             <input type="password" class="input_text" ng-model="pw.p2" maxlength=40
                 ng-change="onChange('e3')"></input>
             <div id="e3" class="error invisible">Error: Passwords do not match</div>
