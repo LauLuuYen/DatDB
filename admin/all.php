@@ -63,7 +63,7 @@
 
 
     <br>
-    <div class="heading2">All Reports</div>
+    <div class="heading2" style="table-layout:fixed; width:100%; overflow:hidden; border:1px solid #f00; word-wrap:break-word;">All Reports</div>
     <table class="randomtable">
         <tr class="head">
             <td>ID</td>
