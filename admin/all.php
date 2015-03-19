@@ -63,8 +63,8 @@
 
 
     <br>
-    <div class="heading2" style="table-layout:fixed; width:100%; overflow:hidden; border:1px solid #f00; word-wrap:break-word;">All Reports</div>
-    <table class="randomtable">
+    <div class="heading2">All Reports</div>
+    <table class="randomtable" style="table-layout:fixed; width:100%; overflow:hidden; border:1px solid #f00; word-wrap:break-word;">
         <tr class="head">
             <td>ID</td>
             <td>GroupID</td>
