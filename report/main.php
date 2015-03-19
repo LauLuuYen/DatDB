@@ -27,7 +27,17 @@
     <div class="heading">Hi, {{profile.name}} {{profile.lastname}}</div>
     <div class="linebreak"></div>
     <div class="heading2">Group: <em>{{profile.groupname}}</em></div><br>
-    <div>...you can do this for your group and that...</div>
+    <div>As a student, you can do the following:</div>
+    
+    <div>
+        <ul>
+          <li>Submit a group report for any assignments you have been given. After submission the report can be viewed any time.</li>
+          <li>Submit an assessment on other groups' reports, provided that you and the other groups have been given the same assignment.</li>
+          <li>View what score other groups have given your reports.</li>
+          <li>View the leaderboard and your group's rank within it. The leaderboard ranks student groups by highest average score on their reports.</li>
+        </ul>
+    </div>
+    
 
     <br>
     <div class="heading2">The Info:</div>
