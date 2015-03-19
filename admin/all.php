@@ -31,8 +31,8 @@
     <br>
     
     <div class="heading2">All Groups</div>
-    <table class="randomtable">
-        <tr class="head">
+    <table class="awesomeTable">
+        <tr class="awesomeHead">
             <td>ID</td>
             <td>Group Name</td>
         </tr>
