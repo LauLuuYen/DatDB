@@ -89,13 +89,13 @@
     <div class="heading2">All Assessments</div>
     <table class="awesomeTable">
         <tr class="awesomeHead">
-            <td>GroupID</td>
-            <td>ReportID</td>
-            <td>Status</td>
-            <td>Feedback</td>
-            <td>Score</td>
-            <td>UserID</td>
-            <td>Timestamp</td>
+            <td class="row-fivePercent">GroupID</td>
+            <td class="row-fivePercent">ReportID</td>
+            <td class="row-tenPercent">Status</td>
+            <td class="row-fortyfivePercent">Feedback</td>
+            <td class="row-fivePercent">Score</td>
+            <td class="row-fivePercent">UserID</td>
+            <td class="row-fifteenPercent">Timestamp</td>
         </tr>
         <tr class="r0" ng-repeat="assessment in assessments">
             <td>{{assessment.groupid}}</td>
