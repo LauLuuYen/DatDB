@@ -92,7 +92,7 @@ class SQL_Helper {
     *   @return: bool - $success
     */
 	public function createUser($name, $lastname, $email, $password, $roleID, $groupID) {
-        $password_md5 = md5($this->password);
+        $password_md5 = md5($password);
         $timestamp = date("Y-m-d H:i:s");
         
 		$stmt = $this->conn->prepare("INSERT INTO users (name, lastname, email, password, roleid, groupid, timestamp) VALUES(?,?,?,?,?,?,?)");

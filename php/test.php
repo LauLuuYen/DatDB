@@ -1,9 +1,8 @@
 <?php
 
-require_once "../php/session.php";
+$pass = "abc123";
 
-$userSession->isLoggedIn("admin");
-
+echo md5($pass);
 
 
 
