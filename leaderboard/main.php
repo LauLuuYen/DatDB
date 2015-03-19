@@ -100,7 +100,8 @@ center.hidden {
 				 	}
 				 	else
 				 	{
-				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);				 		previousMark = jsLeaderboardJSON[j].averageMark;
+				 		leadingboardArray.push([n+1, jsLeaderboardJSON[j].groupName, jsLeaderboardJSON[j].averageMark]);	
+				 		previousMark = jsLeaderboardJSON[j].averageMark;
 				 	}
 				     j++;
 				     n++;
