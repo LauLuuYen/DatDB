@@ -33,7 +33,8 @@ app.controller("Login", function ($scope, master) {
         if ($scope.account.email=="") {
             $("#e1").removeClass("invisible");
             pass = false;
-        } else if ($scope.account.password=="") {
+        }
+        if ($scope.account.password=="") {
             $("#e2").removeClass("invisible");
             pass = false;
         }
