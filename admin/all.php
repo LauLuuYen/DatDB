@@ -29,7 +29,6 @@
   table-layout: fixed;
   width: 100%;
   white-space: nowrap;
-  background-color:white;
   border:2px solid grey;
   margin:10px 0;
 }
