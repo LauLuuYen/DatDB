@@ -37,11 +37,12 @@
     <div id="submission" class="conceal">
 
         <div class="input_wrapper">
-            <div class="heading2">Task:</div>
-            <div id="task"></div>
-            <div>Deadline: <span id="deadline"></span></div>
-            <div>Status: <span id="status"></span><div>
-
+                <div class="heading2">Task:</div>
+                <div class="input_wrapper task">
+                    <div id="task"></div>
+                </div>
+                <div>Deadline: <span id="deadline"></span></div>
+                <div>Status: <span id="status"></span><div>
         </div>
 
         <div id="report" class="input_wrapper conceal">

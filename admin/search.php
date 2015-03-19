@@ -26,13 +26,13 @@
 </script>
 
 <div class="searchusers">
-    <div class="heading">Search User</div>
+    <div class="heading">Search Student</div>
     <div class="linebreak"></div>
     </br>
     <div>This page shows all student accounts. Students can be searched by their UserID, Name, Lastname, Email and GroupID.</div>
     </br>
 
-    <div class="container">
+    <div class="input_wrapper">
         <span>
             <div class="heading2">Search box:</div>
             <input type="text" id="query" class="input_text" style="width:300px" ng-model="query" ></input>

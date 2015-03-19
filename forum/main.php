@@ -25,8 +25,8 @@
     <div class="heading">Group Forum</div>
 
     <div class="linebreak"></div>
-    <div>This is your group forum blah...</div>
-
+    <div>Here is your group forum. You and your group members can create threads and submit comments to each other's threads. Deletion of comments and threads is only allowed if you are the original poster. You can also use the search box to search for individual threads.</div>
+    <br>
     <div class="container">
         <span>
             Search box:<br>
