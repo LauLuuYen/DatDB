@@ -28,9 +28,19 @@ app.controller("Login", function ($scope, master) {
         }
     };
     
+    $scope.validEmail = function(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    };
+ 
     $scope.validate = function() {
         var pass = true;
         if ($scope.account.email=="") {
+            $("#e1").html("Error: Please enter your email address");
+            $("#e1").removeClass("invisible");
+            pass = false;
+        } else if (!$scope.validEmail($scope.account.email)) {
+            $("#e1").html("Error: Please enter a valid email address");
             $("#e1").removeClass("invisible");
             pass = false;
         }
