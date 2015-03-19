@@ -109,7 +109,7 @@ $userSession->isLoggedIn("admin");
                                     <a class="panel btn" href="#/assignments">Create Assignment</a>
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
-                                    <a class="panel btn" href="#/search">Search User</a>
+                                    <a class="panel btn" href="#/search">Search Student</a>
                                 </div>
                                 <div class="col-xs-4 col-sm-12 col-md-12">
                                     <a class="panel btn" href="#/all">Overview</a>
