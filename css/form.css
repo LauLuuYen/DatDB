@@ -7,7 +7,8 @@
 }
 
 .input_wrapper.task {
-    border: 2px solid #EE6666;
+    border: 1px solid #EA9090;
+    padding: 2px;
 }
 
 .input_text {
