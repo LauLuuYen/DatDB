@@ -29,6 +29,7 @@
   table-layout: fixed;
   width: 100%;
   white-space: nowrap;
+  background-color:white;
   border:2px solid grey;
   margin:10px 0;
 }
@@ -82,6 +83,7 @@
     <br>
     <div class="heading2">All Assignments</div>
     <table class="randomtable">
+    <thead>
         <tr class="head">
             <td>ID</td>
             <td>Title</td>
@@ -89,6 +91,7 @@
             <td>Deadline</td>
             <td>Created</td>
         </tr>
+        </thead>
         <tr class="r0" ng-repeat="assignment in assignments">
             <td>{{assignment.assignmentID}}</td>
             <td>{{assignment.title}}</td>
