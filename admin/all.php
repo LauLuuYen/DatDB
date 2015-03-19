@@ -23,50 +23,6 @@
 
 </script>
 
-<style>
-
-.awesomeTable {
-  table-layout: fixed;
-  width: 100%;
-  white-space: nowrap;
-  background-color:white;
-  border:2px solid grey;
-  margin:10px 0;
-}
-
-.awesomeTable .awesomeHead {
-    background-color:darkgrey;
-    color:white;
-}
-
-.awesomeTable td {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Column widths are based on these cells */
-.row-tenPercent {
-  width: 10%;
-}
-.row-fortyPercent {
-  width: 40%;
-}
-.row-thirtyPercent {
-  width: 30%;
-}
-.row-twentyPercent {
-  width: 20%;
-}
-.row-fiftyPercent {
-  width: 50%;
-}
-.row-sixtyPercent {
-  width: 60%;
-}
-
-</style>
-
 <div class="viewall">
     <div class="heading">Overview</div>
     <div class="linebreak"></div>
