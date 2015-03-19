@@ -16,51 +16,17 @@ body {
 *   Login page / index.html
 */
 
-.box {
-    width:300px;
-    height:200px;
-    padding: 40px 30px;
+.loginbox {
+    height:400px;
+    width:100%;
+    background-color:white;
+    margin-top:100px;
+    -moz-box-shadow: 0px 0px 20px rgb(180,180,180);
+    -webkit-box-shadow: 0px 0px 20px rgb(180,180,180);
+    box-shadow: 0px 0px 20px rgb(180,180,180);
+    padding:10px 20px;
 }
 
-.login.box {
-    background-color:#6AA2EF;
-    position: fixed;
-    margin: 14% 40%;
-    height:280px;
-    width:320px;
-    box-shadow: 10px 10px 5px #888888;
-    border: 2px solid #6AA2EF;
-    border-radius: 10px;
-    
-}
-
-.createuser.box {
-    background-color:blue;
-}
-
-
-
-    img.bg {
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
-	
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-	
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-@media screen and (max-width: 1024px) { /* Specific to this particular image */
-  img.bg {
-    left: 50%;
-    margin-left: -512px;   /* 50% */
-  }
-}
 
 .no-padding {
     padding-left: 0 !important;

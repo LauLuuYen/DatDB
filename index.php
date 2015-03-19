@@ -5,21 +5,20 @@ require_once "php/session.php";
 $userSession->isLoggedInMain();
 
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="UTF-8">
-    <title>The HTML5 Herald</title>
+    <title>Peer Review</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="stylesheet" type="text/css" href="css/loader.css">
-    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
 
-    <script src="../lib/jquery-latest.min.js"></script>
-    <script src="../lib/angular.min.js"></script>
+    <script src="lib/jquery-latest.min.js"></script>
+    <script src="lib/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/loader.js"></script>
     
@@ -27,27 +26,43 @@ $userSession->isLoggedInMain();
 
 
 </head>
+<body>
 
-<body ng-controller="Login">
-<img src="img/background1.jpg" class="bg">
-<div class="login box">
-    <!--Login form-->
-    <form ng-submit="submit()">
-        
-            <div class="input_wrapper">
-                <input type="text" class="input_text login"  placeholder="Email" ng-model="account.email">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="banner">
+                <div class="row">
+                    <div class="col-xs-2 no-padding">
+                        <img src="img/logo.png" class="logo"></img>
+                    </div>
+                </div>
             </div>
-            
-            <div class="input_wrapper">
-                <input type="password" class="input_text login" placeholder="Password" ng-model="account.password">
-            </div>
-            
-            <div class="input_wrapper">
-                <button type="submit" class="btn">Login</button>
-            </div>
-            
-        </form>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4">
+
+            <form class="loginbox" ng-submit="">
+                <div id="title">Please Login to proceed</div><br>
+
+                <div class="input_wrapper">
+                    <div class="heading2">Email Address:</div>
+                    <input class="input_text" maxlength=100></input>
+                    <div class="error">Error: Please enter your email address</div>
+                </div>
+                <div class="input_wrapper">
+                    <div class="heading2">Password:</div>
+                    <input class="input_text" maxlength=40></input>
+                    <div class="error">Error: Please enter your password</div>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+
+        </div>
+    </div>
+
 </body>
-	
+
 </html>
