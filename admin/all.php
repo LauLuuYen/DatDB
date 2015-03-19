@@ -24,7 +24,7 @@
 </script>
 
 <div class="viewall">
-    <div class="heading">View All</div>
+    <div class="heading">Overview</div>
     <div class="linebreak"></div>
     
     <div>Here, all assignments, groups, reports and assessments are summarized in tables for an easy overview.</div>
