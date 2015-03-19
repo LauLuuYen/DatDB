@@ -128,15 +128,12 @@ textarea {
 }
 
 .awesomeTable td {
+    overflow: auto;
+    /*
   white-space: nowrap;
     overflow: hidden;
   text-overflow: ellipsis;
-
-}
-
-.awesomeTable .tdAwesomeScroll {
-    overflow: auto;
-
+    */
 }
 
 /* Column widths are based on these cells */
