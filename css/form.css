@@ -129,6 +129,8 @@ textarea {
 
 .awesomeTable td {
   white-space: nowrap;
+    overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Column widths are based on these cells */
