@@ -59,7 +59,33 @@ app.controller("Main", function ($scope, master) {
     
     $scope.submit = function() {
         if ($scope.validate()) {
-            alert("submit");
+
+            showLoading();
+            $.ajax({
+                type: "POST",
+                url:"http://lauluuyen.azurewebsites.net/php/changePw.php" ,
+                crossDomain: true,
+                data: {
+                    pwo:$scope.pw.o, pw1:$scope.pw.p1,
+                    pw2:$scope.pw.p2
+                },
+                dataType: "json",
+                async: true,
+                timeout: 120000,
+
+                success: function (result) {
+                    if (result.success) {
+                        window.location.href="/settings/";
+                    } else {
+                        hideLoading();
+                        alert(result.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    hideLoading();
+                    alert("An error occurred.  Please try again in a few moments.");
+                }
+            });
         }
         
     };
