@@ -95,6 +95,22 @@ class Session {
         
         return false;
     }
+    
+    public function isLoggedIn() {
+        session_start();
+                
+        $loggedIn = isset($_SESSION["userID"]) &&
+                    isset($_SESSION["name"]) &&
+                    isset($_SESSION["lastname"]) &&
+                    isset($_SESSION["roleID"]);
+        
+        if (!$loggedIn) {
+            $url = "http://" . $_SERVER["HTTP_HOST"];
+            header("Location: " . $url);
+            return false;
+        }
+        return true;
+    }
 
 
     /*
