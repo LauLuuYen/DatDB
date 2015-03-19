@@ -26,7 +26,7 @@
 </script>
 
 <div class="searchusers">
-    <div class="heading">Search User</div>
+    <div class="heading">Search Student</div>
     <div class="linebreak"></div>
     </br>
     <div>This page shows all student accounts. Students can be searched by their UserID, Name, Lastname, Email and GroupID.</div>
