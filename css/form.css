@@ -130,7 +130,6 @@ textarea {
 .awesomeTable td {
   white-space: nowrap;
     overflow: hidden;
-    overflow-y: scroll;
   text-overflow: ellipsis;
 
 }
