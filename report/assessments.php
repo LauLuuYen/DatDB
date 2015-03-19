@@ -29,9 +29,9 @@
     <div>Here is the list of reports your group has to give an assessment to. You can only start assessing another group's report if they have already submitted their reports. If they haven't submitted their reports yet, you will be unable to assess their reports until they do so.</div><br>
 
     <div class="heading2">Colour codings:</div>
-    <div>Grey - The group hasn't submitted and finalised their report yet</div>
-    <div>Red - Your group has yet to make an assessment</div>
-    <div>Green - Your group has completed the assessment</div>
+    <div><font color="grey">Grey</font> - The group hasn't submitted and finalised their report yet</div>
+    <div><font color="red">Red</font> - Your group has yet to make an assessment</div>
+    <div><font color="green">Green</font> - Your group has completed the assessment</div>
 
     <div class="container">
         <ul id="container">
