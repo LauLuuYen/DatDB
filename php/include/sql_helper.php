@@ -1204,6 +1204,47 @@ class SQL_Helper {
             die("An error occurred performing a request");
         }
     }
+    
+    public function can_changepassword($userID, $password_md5) {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id=? AND password=?;");
+        $stmt->bind_param("is", $userID, $password_md5);
+        
+        if ($stmt->execute()) {
+            $registrant = $stmt->fetch();
+            $stmt->close();
+            $exist = count($registrant) > 0;
+            return $exist;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    public function update_password($userID, $password_md5) {
+        $stmt = $this->conn->prepare("UPDATE users SET password=? WHERE id=?;");
+        $stmt->bind_param("si", $password_md5, $userID);
+        
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
+    
+    public function delete_user($userID) {
+        $stmt = $this->conn->prepare("DELETE FROM users WHERE id=?;");
+        $stmt->bind_param("i", $userID);
+        
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+            
+        } else {
+            die("An error occurred performing a request");
+        }
+    }
 	
 }
 

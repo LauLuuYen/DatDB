@@ -1,7 +1,7 @@
 <?php
 
 header("Access-Control-Allow-Origin: *");
-define("DEBUG", false);
+define("DEBUG", true);
 
 if (DEBUG) {
     ini_set("display_errors",1);
@@ -56,58 +56,47 @@ class ChangePassword {
 	}
 	
 	public function change() {
-        echo "changepassword";
-        /*
+        $this->pw_o = md5($this->pw_o);
+        $this->pw_1 = md5($this->pw_1);
+        $this->pw_2 = null;
+        
         require_once "include/sql_helper.php";
         $this->sql_helper = new SQL_Helper();
         
-        $success = $this->sql_helper->createComment($this->threadID, $this->comment, $this->userID);
-        
-		if ($success) {
-			result(true, "Success");
-		} else {
-			result(false, "Failed to create comment");
-		}
-        
+        $canchange = $this->sql_helper->can_changepassword($this->userID, $this->pw_o );
+        if ($canchange) {
+            $this->sql_helper->update_password($this->userID, $this->pw_1);
+            result(true, "Success");
+            
+        } else {
+            result(false, "Wrong password");
+        }
+ 
         $this->sql_helper->close();
-        */
 	}
-	
-
 	
 }
 
 
 require_once "session.php";
 
-if($userSession->isLoggedIn()) {
-    $pw_o = "sfgg";
-    $pw_1 = "adf";
-    $pw_2 = "adfdfg";
-    $changer = new ChangePassword($pw_o, $pw_1, $pw_2);
-
-    if($changer->checkInputs()) {
-        $changer->change();
-    }
-    
-} else {
-    result(false, "Session timeout");
-}
-/*
-
-
+if($userSession->isLoggedInEither()) {
     if(!empty($_POST)) {
-        $threadID = $_POST["threadID"];
-        $input = $_POST["comment"];
-        $comment = new Comment($input, $threadID);
+        $pw_o = $_POST["pwo"];
+        $pw_1 = $_POST["pw1"];
+        $pw_2 = $_POST["pw2"];
+        $changer = new ChangePassword($pw_o, $pw_1, $pw_2);
 
-        if($comment->checkInputs()) {
-            $comment->makeComment();
+        if($changer->checkInputs()) {
+            $changer->change();
         }
     } else {
         result(false, "Error in request!");
     }
     
-*/
+} else {
+    result(false, "Session timeout");
+}
+
 
 ?>

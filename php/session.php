@@ -96,7 +96,7 @@ class Session {
         return false;
     }
     
-    public function isLoggedIn() {
+    public function isLoggedInEither() {
         session_start();
                 
         $loggedIn = isset($_SESSION["userID"]) &&
