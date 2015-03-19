@@ -15,10 +15,10 @@ $userSession->isLoggedInMain();
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
     <link rel="stylesheet" type="text/css" href="css/loader.css">
-    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
 
-    <script src="../lib/jquery-latest.min.js"></script>
-    <script src="../lib/angular.min.js"></script>
+    <script src="lib/jquery-latest.min.js"></script>
+    <script src="lib/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/loader.js"></script>
     
@@ -26,7 +26,7 @@ $userSession->isLoggedInMain();
 
 
 </head>
-<body>
+<body ng-controller="Login">
 
     <div class="row">
         <div class="col-xs-12">
