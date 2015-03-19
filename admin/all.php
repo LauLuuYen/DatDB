@@ -33,6 +33,12 @@
   border:2px solid grey;
   margin:10px 0;
 }
+
+.awesomeTable .awesomeHead {
+    background-color:darkgrey;
+    color:white;
+}
+
 .awesomeTable td {
   white-space: nowrap;
   overflow: hidden;
@@ -70,7 +76,7 @@
     
     <div class="heading2">All Groups</div>
     <table class="randomtable">
-        <tr class="head">
+        <tr class="awesomeHead">
             <td>ID</td>
             <td>Group Name</td>
         </tr>
@@ -83,7 +89,6 @@
     <br>
     <div class="heading2">All Assignments</div>
     <table class="randomtable">
-    <thead>
         <tr class="head">
             <td>ID</td>
             <td>Title</td>
@@ -91,7 +96,6 @@
             <td>Deadline</td>
             <td>Created</td>
         </tr>
-        </thead>
         <tr class="r0" ng-repeat="assignment in assignments">
             <td>{{assignment.assignmentID}}</td>
             <td>{{assignment.title}}</td>
