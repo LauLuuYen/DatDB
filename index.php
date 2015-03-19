@@ -41,23 +41,23 @@ $userSession->isLoggedInMain();
     </div>
 
     <div class="row">
-        <div class="col-xs-offset-3 col-xs-6 col-md-offset-4 col-md-4">
+        <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
 
-            <form class="loginbox" ng-submit="">
-                <div id="title">Please Login to proceed</div><br>
+            <form class="loginbox" ng-submit="submit()">
+                <div id="title">Please Login to Proceed</div><br>
 
                 <div class="input_wrapper">
                     <div class="heading2">Email Address:</div>
-                    <input class="input_text" maxlength=100></input>
-                    <div class="error">Error: Please enter your email address</div>
+                    <input class="input_text" ng-model="account.email" maxlength=100></input>
+                    <div class="error invisible">Error: Please enter your email address</div>
                 </div>
                 <div class="input_wrapper">
                     <div class="heading2">Password:</div>
-                    <input class="input_text" maxlength=40></input>
-                    <div class="error">Error: Please enter your password</div>
+                    <input type="password" class="input_text" ng-model="account.password" maxlength=40></input>
+                    <div class="error invisible">Error: Please enter your password</div>
                 </div>
 
-                <button type="submit">Login</button>
+                <button type="submit" id="submit">Login</button>
             </form>
 
         </div>
