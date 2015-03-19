@@ -6,7 +6,7 @@
     margin: 10px 0;
 }
 
-.input_wrapper .task {
+.input_wrapper.task {
     border: 2px solid #EE6666;
 }
 
