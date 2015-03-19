@@ -38,7 +38,6 @@
 
         <div class="input_wrapper">
                 <div class="heading2">Task:</div>
-                <div id="task"></div>
                 <div>Deadline: <span id="deadline"></span></div>
                 <div>Status: <span id="status"></span><div>
         </div>
