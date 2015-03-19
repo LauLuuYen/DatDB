@@ -43,7 +43,7 @@
     </div>
 
     <br>
-    <div class="heading2">The Info:</div>
+    <div class="heading2">Assignments summary:</div>
     <div>Assignment(s): {{stat.assignments}}</div>
     <div>Group(s): {{stat.groups}}</div>
     <div>Student(s): {{stat.students}}</div>

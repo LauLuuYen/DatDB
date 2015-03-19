@@ -24,9 +24,12 @@
 </script>
 
 <div class="viewall">
-    <div class="heading">View All</div>
+    <div class="heading">Overview</div>
     <div class="linebreak"></div>
-
+    
+    <div>Here, all assignments, groups, reports and assessments are summarized in tables for an easy overview.</div>
+    <br>
+    
     <div class="heading2">All Groups</div>
     <table class="randomtable">
         <tr class="head">
@@ -61,7 +64,7 @@
 
     <br>
     <div class="heading2">All Reports</div>
-    <table class="randomtable">
+    <table class="randomtable" style="table-layout:fixed; width:100%; overflow:hidden; border:1px solid #f00; word-wrap:break-word;">
         <tr class="head">
             <td>ID</td>
             <td>GroupID</td>

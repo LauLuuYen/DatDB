@@ -28,9 +28,8 @@
     <div>Here you can view the assessments that other groups (anonymously) have made on your report for different assignments.</div><br>
 
     <div class="heading2">Colour codings:</div>
-    <div>Grey - The group hasn't given you an assessment yet.</div>
-    <div>Green - The group has given you an assessment.</div>
-
+    <div><b><font color="grey">Grey</font></b> - The group hasn't given you an assessment yet.</div>
+    <div><b><font color="green">Green</font></b> - The group has given you an assessment.</div>
 
     <div class="container">
         <ul id="container">
