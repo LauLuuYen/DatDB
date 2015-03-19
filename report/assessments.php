@@ -26,7 +26,7 @@
     <div class="heading">Group Assessment Tasks</div>
 
     <div class="linebreak"></div>
-    <div>Here is the list of reports your group has to give an assessment to.</div><br>
+    <div>Here is the list of reports your group has to give an assessment to. You can only start an assessment once the other groups have submitted their reports. If they haven't submitted their reports yet, you will be unable to assess their reports until they do so.</div><br>
 
     <div class="heading2">Colour codings:</div>
     <div>Grey - The group hasn't submitted and finalised their report yet</div>
