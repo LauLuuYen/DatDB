@@ -64,7 +64,7 @@
                 when you finalise the report after uploading it.
             <div class="upload">
                 <form enctype="multipart/form-data" ng-submit="send()">
-                    <input id="uploadfile" name="myFile" type="file" accept=".xml"></input>
+                    <input id="uploadfile" name="myFile" type="file" accept=".xml,.txt"></input>
                     <button id="btn_uploadfile" type="submit" disabled>Upload</button>
                     <div class="error invisible" style="margin-top:10px;">Error:</div>
                     <div class="clean"></div>
