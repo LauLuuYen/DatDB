@@ -40,6 +40,6 @@ class Get {
 }
 
 $data = new Get();
-echo $data->retrieve();
+echo json_encode($data->retrieve());
 
 ?>

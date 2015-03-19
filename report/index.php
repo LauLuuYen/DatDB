@@ -28,8 +28,7 @@ $userSession->isLoggedIn("student");
 
 
     <script type="text/javascript">
-        var response = '<?php require_once "../php/get_profile.php";?>';
-        console.log(response);
+        var response = <?php require_once "../php/get_profile.php"; ?>;
         var data = {};
         data["profile"] = response["profile"];
     </script>

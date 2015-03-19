@@ -17,7 +17,7 @@
     <script src="../lib/angular.min.js"></script>
     <script src="../lib/angular-route.js"></script>
     <script type="text/javascript">
-        var response = JSON.parse('<?php require_once "../php/get_profile.php";?>');
+        var response = <?php require_once "../php/get_profile.php"; ?>;
         var data = {};
         data["profile"] = response["profile"];
     </script>
