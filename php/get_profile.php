@@ -23,14 +23,14 @@ class Get {
 
         $data = array();
         $profile = array();
-        $profile["userID"] = $this->userID;
-        $profile["name"] = $this->name;
-        $profile["lastname"] = $this->lastname;
-        $profile["groupID"] = $this->groupID;
-        $profile["groupname"] = $this->groupname;
-        $profile["role"] = $this->sql_helper->getRole($this->roleID);
+        $profile['userID'] = $this->userID;
+        $profile['name'] = $this->name;
+        $profile['lastname'] = $this->lastname;
+        $profile['groupID'] = $this->groupID;
+        $profile['groupname'] = $this->groupname;
+        $profile['role'] = $this->sql_helper->getRole($this->roleID);
         
-        $data["profile"] = $profile;
+        $data['profile'] = $profile;
         
         $this->sql_helper->close();
         
@@ -40,7 +40,6 @@ class Get {
 }
 
 $data = new Get();
-echo json_encode($data->retrieve());
-
+echo $data->retrieve();
 
 ?>
