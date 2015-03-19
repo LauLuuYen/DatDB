@@ -6,6 +6,10 @@
     margin: 10px 0;
 }
 
+.input_wrapper .task {
+    border: 2px solid #EE6666;
+}
+
 .input_text {
     box-sizing: border-box;
     margin-bottom: 10px;
