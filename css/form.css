@@ -129,6 +129,7 @@ textarea {
 
 .awesomeTable td {
     overflow: auto;
+    border: .4pt;
     /*
   white-space: nowrap;
     overflow: hidden;
