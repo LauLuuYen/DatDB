@@ -1238,8 +1238,9 @@ class SQL_Helper {
         $stmt->bind_param("i", $userID);
         
         if ($stmt->execute()) {
+            $rows = mysqli_affected_rows($this->conn);
             $stmt->close();
-            return true;
+            return $rows>0;
             
         } else {
             die("An error occurred performing a request");
