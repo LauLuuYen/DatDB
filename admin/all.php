@@ -46,11 +46,11 @@
     <div class="heading2">All Assignments</div>
     <table class="awesomeTable">
         <tr class="awesomeHead">
-            <td>ID</td>
-            <td>Title</td>
-            <td>Task</td>
-            <td>Deadline</td>
-            <td>Created</td>
+            <td class="row-fivePercent">ID</td>
+            <td class="row-thirtyPercent">Title</td>
+            <td class="row-fortyPercent">Task</td>
+            <td class="row-tenPercent">Deadline</td>
+            <td class="row-fifteenPercent">Created</td>
         </tr>
         <tr class="r0" ng-repeat="assignment in assignments">
             <td>{{assignment.assignmentID}}</td>
