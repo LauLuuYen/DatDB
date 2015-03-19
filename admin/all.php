@@ -76,7 +76,7 @@
     
     <div class="heading2">All Groups</div>
     <table class="randomtable">
-        <tr class="awesomeHead">
+        <tr class="head">
             <td>ID</td>
             <td>Group Name</td>
         </tr>
@@ -109,7 +109,7 @@
     <br>
     <div class="heading2">All Reports</div>
     <table class="awesomeTable">
-        <tr class="head">
+        <tr class="awesomeHead">
             <td class="row-tenPercent">ID</td>
             <td class="row-tenPercent">GroupID</td>
             <td class="row-tenPercent">AssignmentID</td>
