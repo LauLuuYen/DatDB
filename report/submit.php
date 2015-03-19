@@ -26,7 +26,7 @@
 
     <div class="linebreak"></div>
 
-    <div>In this section, you can view your assignment tasks and submit your report!</div>
+    <div>In this section, you can view your assignment tasks and submit your report. Only one report is allowed per assignment. After submission, you can view your report any time.</div>
 
     <div class="input_wrapper">
         <div class="heading2">Please pick your assignment:</div>
