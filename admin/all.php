@@ -31,8 +31,8 @@
     <br>
     
     <div class="heading2">All Groups</div>
-    <table class="randomtable">
-        <tr class="head">
+    <table class="awesomeTable">
+        <tr class="awesomeHead">
             <td>ID</td>
             <td>Group Name</td>
         </tr>
@@ -44,13 +44,13 @@
 
     <br>
     <div class="heading2">All Assignments</div>
-    <table class="randomtable">
-        <tr class="head">
-            <td>ID</td>
-            <td>Title</td>
-            <td>Task</td>
-            <td>Deadline</td>
-            <td>Created</td>
+    <table class="awesomeTable">
+        <tr class="awesomeHead">
+            <td class="row-fivePercent">ID</td>
+            <td class="row-thirtyPercent">Title</td>
+            <td class="row-fortyPercent">Task</td>
+            <td class="row-tenPercent">Deadline</td>
+            <td class="row-fifteenPercent">Created</td>
         </tr>
         <tr class="r0" ng-repeat="assignment in assignments">
             <td>{{assignment.assignmentID}}</td>
@@ -87,15 +87,15 @@
 
     <br>
     <div class="heading2">All Assessments</div>
-    <table class="randomtable">
-        <tr class="head">
-            <td>GroupID</td>
-            <td>ReportID</td>
-            <td>Status</td>
-            <td>Feedback</td>
-            <td>Score</td>
-            <td>UserID</td>
-            <td>Timestamp</td>
+    <table class="awesomeTable">
+        <tr class="awesomeHead">
+            <td class="row-fivePercent">GroupID</td>
+            <td class="row-fivePercent">ReportID</td>
+            <td class="row-tenPercent">Status</td>
+            <td class="row-fortyfivePercent">Feedback</td>
+            <td class="row-fivePercent">Score</td>
+            <td class="row-fivePercent">UserID</td>
+            <td class="row-fifteenPercent">Timestamp</td>
         </tr>
         <tr class="r0" ng-repeat="assessment in assessments">
             <td>{{assessment.groupid}}</td>
