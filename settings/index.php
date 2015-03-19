@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="stylesheet" type="text/css" href="../css/form.css">
+    <link rel="stylesheet" type="text/css" href="../css/loader.css">
     <link rel="stylesheet" href="../lib/bootstrap.min.css">
     
     
@@ -27,6 +28,7 @@
         data["profile"] = response["profile"];
     </script>
     <script src="../js/settings.js"></script>
+    <script src="../js/loader.js"></script>
 
 </head>
 
