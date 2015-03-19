@@ -99,15 +99,15 @@
 
     <br>
     <div class="heading2">All Reports</div>
-    <table class="randomtable">
+    <table class="awesomeTable">
         <tr class="head">
-            <td>ID</td>
-            <td>GroupID</td>
-            <td>AssignmentID</td>
-            <td>Status</td>
-            <td>Content</td>
-            <td>UserID</td>
-            <td>Timestamp</td>
+            <td class="row-tenPercent">ID</td>
+            <td class="row-tenPercent">GroupID</td>
+            <td class="row-tenPercent">AssignmentID</td>
+            <td class="row-tenPercent">Status</td> 
+            <td class="row-fortyPercent">Content</td>
+            <td class="row-tenPercent">UserID</td>
+            <td class="row-tenPercent">Timestamp</td>
         </tr>
         <tr class="r0" ng-repeat="report in reports">
             <td>{{report.id}}</td>
