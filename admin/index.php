@@ -68,7 +68,14 @@ $userSession->isLoggedIn("admin");
                             </div>
                         </a>
                     </div>
-                    <div class="col-xs-offset-4 col-xs-2 no-padding">
+                    <div class="col-xs-2 no-padding">
+                        <a href="/settings">
+                            <div class="tab">
+                                Settings
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xs-offset-2 col-xs-2 no-padding">
                         <a href="/php/get_logout.php">
                             <div class="tab">
                                 Logout

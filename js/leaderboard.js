@@ -27,8 +27,7 @@ app.config(function($routeProvider, $locationProvider) {
 app.controller("Main", function ($scope, master) {
     if (master.profile.role == "student") {
         $("#forumlink").show();
-        $("#logoutlink").removeClass("col-xs-offset-4");
-        $("#logoutlink").addClass("col-xs-offset-2");
+        $("#logoutlink").removeClass("col-xs-offset-2");
     }
 
 });

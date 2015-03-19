@@ -583,6 +583,21 @@ ul#container {
     display:block;
 }
 
+.cpw {
+    width:300px;
+}
+.cpw #submit {
+    width:120px;
+    background-color:white;
+    border:2px solid #EE6666;
+    margin-top:10px;
+    outline:none;
+}
+.cpw #submit:hover {
+    background-color:#EE6666;
+    color:white;
+}
+
 #rankField {
 	color:rgb(238,102,102);
 	font-weight: bold;
