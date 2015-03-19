@@ -35,6 +35,8 @@
           <li>Submit an assessment on other groups' reports, provided that you and the other groups have been given the same assignment.</li>
           <li>View what score other groups have given your reports.</li>
           <li>View the leaderboard and your group's rank within it. The leaderboard ranks student groups by highest average score on their reports.</li>
+          <li>Change your password.</li>
+          <li>Engage in forum discussion with your own group members. You can create threads and submit comments. Deletion of threads and comments is only allowed if you are the original poster./li>
         </ul>
     </div>
     
