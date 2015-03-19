@@ -63,7 +63,7 @@
 
 
     <br>
-    <div class="heading2" style="max-width:95%">All Reports</div>
+    <div class="heading2">All Reports</div>
     <table class="randomtable">
         <tr class="head">
             <td>ID</td>
