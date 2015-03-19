@@ -44,8 +44,8 @@
 
     <br>
     <div class="heading2">All Assignments</div>
-    <table class="randomtable">
-        <tr class="head">
+    <table class="awesomeTable">
+        <tr class="awesomeHead">
             <td>ID</td>
             <td>Title</td>
             <td>Task</td>
@@ -87,8 +87,8 @@
 
     <br>
     <div class="heading2">All Assessments</div>
-    <table class="randomtable">
-        <tr class="head">
+    <table class="awesomeTable">
+        <tr class="awesomeHead">
             <td>GroupID</td>
             <td>ReportID</td>
             <td>Status</td>
