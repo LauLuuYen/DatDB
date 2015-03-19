@@ -69,7 +69,8 @@ if($userSession->isLoggedIn("admin"))  {
     } else {
         result(false, "Error in request!");
     }
-    } else {
+    
+} else {
     result(false, "Session timeout");
 }
 

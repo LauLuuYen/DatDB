@@ -313,7 +313,7 @@ app.controller("Search", function ($scope, master) {
     
     $scope.validate = function() {
         var pass = true;
-        if (isNaN($scope.user.id)) {
+        if ($scope.user.id=="" || isNaN($scope.user.id) || $scope.user.id == null) {
             $("#e1").removeClass("invisible");
             pass = false;
         }
@@ -322,7 +322,31 @@ app.controller("Search", function ($scope, master) {
     
     $scope.submit = function() {
         if ($scope.validate()) {
-            alert("submit");
+            showLoading();
+            $.ajax({
+                type: "POST",
+                url:"http://lauluuyen.azurewebsites.net/php/deleteUser.php" ,
+                crossDomain: true,
+                data: {
+                    userID:$scope.user.id
+                },
+                dataType: "json",
+                async: true,
+                timeout: 120000,
+
+                success: function (result) {
+                    if (result.success) {
+                        window.location.href="/admin/";
+                    } else {
+                        hideLoading();
+                        alert(result.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    hideLoading();
+                    alert("An error occurred.  Please try again in a few moments.");
+                }
+            });
         }
     };
     getData(function(users) {

@@ -35,7 +35,7 @@
     <div class="container">
         <span>
             <div class="heading2">Search box:</div>
-            <input type="text" id="query" ng-model="query" ></input>
+            <input type="text" id="query" class="input_text" style="width:300px" ng-model="query" ></input>
 
         </span>
     </div>
@@ -63,8 +63,8 @@
     <form class="cpw" ng-submit="submit()">
         <div class="input_wrapper">
             <div class="heading2">Delete User by ID</div>
-            <input type="number" class="input_text" placeholder="user" ng-change="onChange('e1')" ng-model="user.id"></input>
-            <div id="e1" class="error">Error: Please type a userID</div>
+            <input type="number" class="input_text" placeholder="userID" ng-change="onChange('e1')" ng-model="user.id"></input>
+            <div id="e1" class="error invisible">Error: Please type in a valid number</div>
         </div>
         <button id="submit" type="submit">Delete</button>
     </form>
