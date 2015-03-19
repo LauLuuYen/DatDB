@@ -1,6 +1,6 @@
+(function(){
+
 var app = angular.module("myApp", []);
-
-
 
 /*
 *
@@ -59,3 +59,5 @@ app.controller("Login", function ($scope, master) {
     
 
 });
+
+})();

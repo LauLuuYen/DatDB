@@ -1,3 +1,5 @@
+(function(){
+
 var app = angular.module("myApp", ["ngRoute", "ngSanitize"]);
 
 /*
@@ -357,3 +359,4 @@ app.controller("Search", function ($scope, master) {
     
 });
 
+})();

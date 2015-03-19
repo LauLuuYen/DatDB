@@ -1,6 +1,6 @@
+(function(){
+
 var app = angular.module("myApp", ["ngRoute", "ngSanitize"]);
-
-
 
 /*
 *
@@ -333,4 +333,5 @@ app.controller("ViewThread", function ($scope, master, $routeParams) {
         
 });
 
+})();
 
