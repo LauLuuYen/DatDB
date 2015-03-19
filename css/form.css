@@ -129,8 +129,14 @@ textarea {
 }
 
 /* Column widths are based on these cells */
+.row-fivePercent {
+  width: 5%;
+}
 .row-tenPercent {
   width: 10%;
+}
+.row-fifteenPercent {
+  width: 5%;
 }
 .row-fortyPercent {
   width: 40%;
