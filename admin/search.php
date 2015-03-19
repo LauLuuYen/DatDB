@@ -32,9 +32,9 @@
     <div>This page shows all student accounts. Students can be searched by their UserID, Name, Lastname, Email and GroupID.</div>
     </br>
 
-    <div class="container">
+    <div class="input_wrapper">
         <span>
-            <div class="heading2" style="margin-left:0px">Search box:</div>
+            <div class="heading2">Search box:</div>
             <input type="text" id="query" class="input_text" style="width:300px" ng-model="query" ></input>
 
         </span>
