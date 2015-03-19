@@ -25,7 +25,6 @@
     <div class="heading">Group Forum</div>
 
     <div class="linebreak"></div>
-    <div>This is your group forum blah...</div>
 
     <div class="container">
         <span>
