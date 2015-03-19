@@ -34,7 +34,7 @@
     <br>
     
         <span>
-            Search box:<br>
+            <div class="heading2">Search box:</div>
             <input type="text" id="query" ng-model="query"/>
 
         </span>

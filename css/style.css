@@ -96,7 +96,7 @@ body {
 
 .panel.header{
     height:50px;
-    background-color:lightgray;
+    background-color:white;
     line-height:50px;
     color:white;
 }
@@ -400,6 +400,12 @@ a {
     font-size:25px;
     margin-top:5px;
     margin-left:5px;
+}
+
+.heading4 {
+    font-size:17px;
+    margin-top:3px;
+    margin-left:3px;
 }
 
 .aboutbody {
