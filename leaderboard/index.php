@@ -64,7 +64,7 @@
                             </div>
                         </a>
                     </div>
-                    <div id="logoutlink" class="col-xs-2 no-padding">
+                    <div id="logoutlink" class="col-xs-offset-2 col-xs-2 no-padding">
                         <a href="/php/get_logout.php">
                             <div class="tab">
                                 Logout

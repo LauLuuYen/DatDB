@@ -49,13 +49,13 @@ $userSession->isLoggedInMain();
 
                     <div class="input_wrapper">
                         <div class="heading2">Email Address:</div>
-                        <input class="input_text" ng-model="account.email" maxlength=100></input>
-                        <div class="error invisible">Error: Please enter your email address</div>
+                        <input class="input_text" ng-model="account.email" ng-change="onChange('e1')" maxlength=100></input>
+                        <div id="e1" class="error invisible">Error: Please enter your email address</div>
                     </div>
                     <div class="input_wrapper">
                         <div class="heading2">Password:</div>
-                        <input type="password" class="input_text" ng-model="account.password" maxlength=40></input>
-                        <div class="error invisible">Error: Please enter your password</div>
+                        <input type="password" class="input_text" ng-model="account.password" ng-change="onChange('e2')" maxlength=40></input>
+                        <div id="e2" class="error invisible">Error: Please enter your password</div>
                     </div>
 
                     <button type="submit" id="submit">Login</button>
