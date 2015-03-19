@@ -26,7 +26,10 @@
 <div class="viewall">
     <div class="heading">View All</div>
     <div class="linebreak"></div>
-
+    
+    <div>Here, all assignments, groups, reports and assessments are summarized in tables for an easy overview.</div>
+    <br>
+    
     <div class="heading2">All Groups</div>
     <table class="randomtable">
         <tr class="head">
