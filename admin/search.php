@@ -28,14 +28,14 @@
 <div class="searchusers">
     <div class="heading">Search User</div>
     <div class="linebreak"></div>
-    <div class="container">
-    <br>
+    </br>
     <div>This page shows all student accounts. Students can be searched by their UserID, Name, Lastname, Email and GroupID.</div>
-    <br>
-    
+    </br>
+
+    <div class="container">
         <span>
             <div class="heading2">Search box:</div>
-            <input type="text" id="query" ng-model="query"/>
+            <input type="text" id="query" ng-model="query" ></input>
 
         </span>
     </div>
@@ -59,5 +59,14 @@
         </tr>
 
     </table>
+    <br>
+    <form class="cpw" ng-submit="submit()">
+        <div class="input_wrapper">
+            <div class="heading2">Delete User by ID</div>
+            <input type="number" class="input_text" placeholder="user" ng-change="onChange('e1')" ng-model="user.id"></input>
+            <div id="e1" class="error">Error: Please type a userID</div>
+        </div>
+        <button id="submit" type="submit">Delete</button>
+    </form>
 </div>
 

@@ -302,7 +302,29 @@ app.controller("Search", function ($scope, master) {
     console.log("search");
     $scope.users = [];
     
+    $scope.user = { id:"" };
     
+    $scope.onChange = function(id) {
+        var id = "#"+id;
+        if (!$(id).hasClass("invisible")) {
+            $(id).addClass("invisible");
+        }
+    };
+    
+    $scope.validate = function() {
+        var pass = true;
+        if (isNaN($scope.user.id)) {
+            $("#e1").removeClass("invisible");
+            pass = false;
+        }
+        return pass;
+    };
+    
+    $scope.submit = function() {
+        if ($scope.validate()) {
+            alert("submit");
+        }
+    };
     getData(function(users) {
         $scope.$apply(function() {
             $scope.users = users;
